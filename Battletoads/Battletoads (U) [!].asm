@@ -550,14 +550,14 @@ byte_0_1E0:	.BYTE 0	; (uninited)	; ...
 byte_0_1FD:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_200:	.BYTE 0	; (uninited)	; ...
-byte_0_201:	.BYTE 0	; (uninited)	; ...
-byte_0_202:	.BYTE 0	; (uninited)	; ...
-byte_0_203:	.BYTE 0	; (uninited)	; ...
-byte_0_204:	.BYTE 0	; (uninited)	; ...
-byte_0_205:	.BYTE 0	; (uninited)	; ...
-byte_0_206:	.BYTE 0	; (uninited)	; ...
-byte_0_207:	.BYTE 0	; (uninited)	; ...
+Sprites_Ypos:	.BYTE 0	; (uninited)	; ...
+Sprites_Adress:	.BYTE 0	; (uninited)	; ...
+Sprites_Attrib:	.BYTE 0	; (uninited)	; ...
+Sprites_Xpos:	.BYTE 0	; (uninited)	; ...
+sprite2_Ypos:	.BYTE 0	; (uninited)	; ...
+sprite2_adress:	.BYTE 0	; (uninited)	; ...
+sprite2_attrib:	.BYTE 0	; (uninited)	; ...
+sprite2_Xpos:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -571,15 +571,11 @@ byte_0_207:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_215:	.BYTE 0	; (uninited)	; ...
+sprite6_adress:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_219:	.BYTE 0	; (uninited)	; ...
-		.BYTE 0	; (uninited)
-		.BYTE 0	; (uninited)
-		.BYTE 0	; (uninited)
-		.BYTE 0	; (uninited)
+sprite7_adress:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -603,13 +599,17 @@ byte_0_219:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_235:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_238:	.BYTE 0	; (uninited)	; ...
-byte_0_239:	.BYTE 0	; (uninited)	; ...
-byte_0_23A:	.BYTE 0	; (uninited)	; ...
-byte_0_23B:	.BYTE 0	; (uninited)	; ...
+		.BYTE 0	; (uninited)
+		.BYTE 0	; (uninited)
+sprite14_adress:.BYTE 0	; (uninited)	; ...
+		.BYTE 0	; (uninited)
+		.BYTE 0	; (uninited)
+sprite15_Ypos:	.BYTE 0	; (uninited)	; ...
+sprite15_adress:.BYTE 0	; (uninited)	; ...
+sprite15_attrib:.BYTE 0	; (uninited)	; ...
+sprite15_Xpos:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -1240,7 +1240,9 @@ player2_flags:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 Objects_state:	.BYTE 0	; (uninited)	; ...
+					; бит 5	($20) -	наличие	стика
 player2_state:	.BYTE 0	; (uninited)	; ...
+					; бит 5	($20) -	наличие	стика
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -3778,7 +3780,7 @@ loc_0_89A6:				; ...
 loc_0_89CA:				; ...
 		LDA	#0
 		STA	objects_some_anim,X
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40
 		BNE	loc_0_8A08
 		LDA	#$FC
@@ -3915,7 +3917,7 @@ loc_0_8A99:				; ...
 		LDA	byte_0_8AE8,Y
 		STA	byte_0_E1
 		LDY	byte_0_21
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40
 		CMP	#$40
 		LDA	#$1C
@@ -4083,7 +4085,7 @@ loc_0_8BA2:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8BB8:				; ...
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		ORA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		AND	#$40
 		BNE	loc_0_8BD6
@@ -5328,7 +5330,7 @@ loc_0_93FB:				; ...
 
 
 sub_0_93FE:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		BEQ	locret_0_93C7
 		LDA	#$DF ; '▀'
@@ -5406,7 +5408,7 @@ loc_0_9480:
 
 loc_0_9485:				; ...
 		JSR	sub_0_E1A7
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	loc_0_9494
 
@@ -5914,7 +5916,7 @@ loc_0_9796:				; ...
 		BNE	loc_0_97BA
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		BNE	loc_0_97BA
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	locret_0_9795
 
@@ -5956,7 +5958,7 @@ loc_0_97D8:				; ...
 		ORA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
 		ORA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		BNE	loc_0_983A
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BEQ	loc_0_983A
 		LDA	Objects_Flags,X
@@ -5998,8 +6000,8 @@ loc_0_983A:				; ...
 		AND	#8
 		BEQ	loc_0_9876
 		LDA	#$40 ; '@'
-		ORA	Objects_state,Y
-		STA	Objects_state,Y
+		ORA	Objects_state,Y	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		LDA	#$D4 ; '╘'
 		STA	Obj_anims_timer,Y
 		JSR	sub_0_DEC3
@@ -6486,7 +6488,7 @@ loc_0_9B86:				; ...
 obj_code_ptrs:	.WORD no_obj_code	; ...
 		.WORD object_player	; 1
 		.WORD object_player	; 2
-		.WORD loc_0_AE2D	; 3   ?	reload gfx?
+		.WORD loc_0_AE2D	; 3
 		.WORD object_delete?	; 4
 		.WORD object_tall_walker_head ;	5 голова ходули
 		.WORD object_rope	; 6 верёвка
@@ -6743,8 +6745,8 @@ loc_0_9EA6:				; ...
 		LDA	#$BF ; '┐'
 
 loc_0_9EA8:				; ...
-		AND	Objects_state,X
-		STA	Objects_state,X
+		AND	Objects_state,X	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 
 locret_0_9EAE:				; ...
 		RTS
@@ -6965,7 +6967,7 @@ loc_0_9FED:				; ...
 		BPL	loc_0_A067
 
 loc_0_A00D:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$10
 		BEQ	loc_0_A02D
 		JSR	sub_0_EE1E
@@ -7606,7 +7608,7 @@ loc_0_A45E:				; ...
 		BNE	loc_0_A478
 		LDA	Objects_HitID,X
 		BEQ	loc_0_A475
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		BPL	loc_0_A475
 		LDA	Objects_Flags,X
 		AND	#4
@@ -7666,7 +7668,7 @@ loc_0_A4D0:				; ...
 		JSR	sub_0_9148
 
 loc_0_A4D8:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		BEQ	loc_0_A4E3
 		LDA	#$3E ; '>'
@@ -7699,7 +7701,7 @@ loc_0_A503:				; ...
 		LDA	Level_ID	; $10
 		CMP	#2
 		BEQ	loc_0_A521
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		BEQ	loc_0_A521
 		LDA	#8
@@ -7788,7 +7790,7 @@ loc_0_A589:				; ...
 		BCC	loc_0_A55D
 
 loc_0_A592:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		CMP	#$20 ; ' '
 		LDA	#$48 ; 'H'
@@ -7855,7 +7857,7 @@ loc_0_A5F0:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A5FD:				; ...
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BEQ	loc_0_A618
 		LDA	Objects_TypeID,Y
@@ -7941,7 +7943,7 @@ loc_0_A680:				; ...
 		LDA	#3
 		JSR	sub_0_8AF7
 		BNE	loc_0_A68E
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	loc_0_A614
 
@@ -8987,7 +8989,7 @@ loc_0_AD1B:				; ...
 
 loc_0_AD1F:				; ...
 		LDY	Level_ID	; $10
-		LDA	level_unk11,Y
+		LDA	level_flags_sit_and_xz,Y
 		AND	#4
 		AND	InputHold_P1,X	; данные первого джойстика на зажатие
 		BNE	loc_0_AD1B
@@ -9029,7 +9031,7 @@ loc_0_AD35:				; ...
 
 loc_0_AD60:				; ...
 		LDX	Level_ID	; $10
-		LDA	level_unk11,X
+		LDA	level_flags_sit_and_xz,X
 		AND	#$80 ; 'А'
 		LDX	Object_RamSlotID_tmp
 		ORA	Objects_Z_floor
@@ -9089,7 +9091,7 @@ loc_0_ADBE:				; ...
 locret_0_ADC4:				; ...
 		RTS
 ; ---------------------------------------------------------------------------
-level_unk11:	.BYTE $80, $80,	$80, $80, 4, $84, $80, 4, $84, 4, $84, 4, 0, 4,	0 ; ...
+level_flags_sit_and_xz:.BYTE $80, $80, $80, $80, 4, $84, $80, 4, $84, 4, $84, 4, 0, 4, 0 ; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_ADD4:				; ...
@@ -9520,9 +9522,9 @@ loc_0_B0A3:				; ...
 		STA	Objects_Z_speed,X
 		LDA	#0
 		STA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		ORA	#$20 ; ' '
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		JMP	loc_0_A517
 ; ---------------------------------------------------------------------------
 
@@ -11152,12 +11154,12 @@ sub_0_BBB4:				; ...
 		BCS	loc_0_BBDF
 		LDA	#$81 ; 'Б'
 		STA	Objects_death_timer,Y
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		BEQ	loc_0_BBDF
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$DF ; '▀'
-		STA	Objects_state,Y
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		JSR	loc_0_95D0
 		LDA	#0
 
@@ -11201,7 +11203,7 @@ object_raven_claw:			; ...
 		BNE	loc_0_BC42
 		LDY	#1
 		STY	byte_0_DE
-		LDA	player2_state
+		LDA	player2_state	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		BEQ	loc_0_BC23
 		DEY
@@ -11211,12 +11213,12 @@ loc_0_BC23:				; ...
 		CLC
 		JSR	sub_0_8AFB
 		BMI	loc_0_BC3D
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		BNE	loc_0_BC3D
 		LDA	#$20 ; ' '
-		ORA	Objects_state,Y
-		STA	Objects_state,Y
+		ORA	Objects_state,Y	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 
 loc_0_BC3A:				; ...
 		JMP	reset_some_vars
@@ -11579,7 +11581,7 @@ loc_0_BE87:				; ...
 		LDA	Obj_anims_timer,X
 		BEQ	loc_0_BEB5
 		LDY	Obj_anim_frame,X
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BEQ	loc_0_BEB5
 		LDA	Obj_anims_timer,X
@@ -11712,7 +11714,7 @@ loc_0_BF6C:				; ...
 
 loc_0_BF75:				; ...
 		LDY	Objects_TargetID,X
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BEQ	loc_0_BF89
 		JSR	sub_0_E2E9
@@ -14457,9 +14459,9 @@ loc_0_D147:				; ...
 		TXA
 		ADC	#$81 ; 'Б'
 		STA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$DF ; '▀'
-		STA	Objects_state,Y
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		TYA
 		TAX
 		JSR	loc_0_9E99
@@ -14554,7 +14556,7 @@ loc_0_D1E5:				; ...
 		JSR	sub_0_D06A
 		JSR	sub_0_8F4C
 		JSR	sub_0_9E59
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	loc_0_D20F
 		STA	Objects_Z_speed,X
@@ -15916,19 +15918,19 @@ loc_0_DABD:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_DAC0:				; ...
+fill_sprite_buffer:			; ...
 		LDX	#0
 		LDA	#$F8 ; '°'
 
 loc_0_DAC4:				; ...
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		BNE	loc_0_DAC4
 		RTS
-; End of function sub_0_DAC0
+; End of function fill_sprite_buffer
 
 ; ---------------------------------------------------------------------------
-		JSR	sub_0_DAC0
+		JSR	fill_sprite_buffer
 		STX	PPU_SPR_ADDR	; SPR-RAM Address Register (W)
 		LDA	#2
 		STA	SPR_DMA		; Sprite DMA Register (W)
@@ -15951,9 +15953,9 @@ clear_states:				; ...
 		STA	Objects_HitID,X
 		LDA	#0
 		STA	Objects_Hit_timer,X
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$7F ; ''
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		LDA	Objects_Flags,X
 		AND	#$EB ; 'ы'
 		STA	Objects_Flags,X
@@ -16165,7 +16167,7 @@ loc_0_DC1D:				; ...
 
 loc_0_DC20:				; ...
 		INC	byte_0_22
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		BMI	loc_0_DC3F
 		LDA	Obj_Amindata2_tmp
 		ROL	A
@@ -16191,7 +16193,7 @@ loc_0_DC3F:				; ...
 
 
 sub_0_DC45:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$20 ; ' '
 		ASL	A
 		ORA	#3
@@ -16204,9 +16206,9 @@ loc_0_DC53:				; ...
 		LDA	Level_ID	; $10
 		CMP	#2
 		BEQ	sub_0_DC61
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		ORA	#$80 ; 'А'
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 ; End of function sub_0_DC45
 
 
@@ -16244,8 +16246,8 @@ loc_0_DC8D:				; ...
 		CMP	#$AF ; 'п'
 		BEQ	loc_0_DCAE
 		LDA	#$40 ; '@'
-		ORA	Objects_state,Y
-		STA	Objects_state,Y
+		ORA	Objects_state,Y	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		LDA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
 		BPL	loc_0_DCAE
 		AND	#$1F
@@ -16416,8 +16418,10 @@ loc_0_DDAD:				; ...
 		LDA	word_0_1F+1
 		AND	#$20 ; ' '
 		BEQ	loc_0_DDCB
-		ORA	Objects_state,X
-		STA	Objects_state,X
+		ORA	Objects_state,X	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
+
+delete_stick:
 		LDA	#0
 		STA	Objects_TypeID,Y
 		BEQ	loc_0_DDF6
@@ -16556,8 +16560,8 @@ loc_0_DE91:				; ...
 loc_0_DE9D:				; ...
 		JSR	sub_0_DFFF
 		LDA	#$40 ; '@'
-		ORA	Objects_state,Y
-		STA	Objects_state,Y
+		ORA	Objects_state,Y	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		BNE	sub_0_DEC3
 
 loc_0_DEAA:				; ...
@@ -16768,8 +16772,8 @@ locret_0_DFE5:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_DFE6:				; ...
-		ASL	Objects_state,X
-		LSR	Objects_state,X
+		ASL	Objects_state,X	; бит 5	($20) -	наличие	стика
+		LSR	Objects_state,X	; бит 5	($20) -	наличие	стика
 
 loc_0_DFEC:				; ...
 		JMP	loc_0_DF7E
@@ -16999,7 +17003,7 @@ loc_0_E1D0:				; ...
 		JSR	loc_0_B057
 
 loc_0_E1DD:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	loc_0_E1F7
 		LDA	#7
@@ -17232,7 +17236,7 @@ sub_0_E317:				; ...
 		ORA	Lives_Player1,Y	; кол-во жизней	(сердечек)
 		AND	#$80 ; 'А'
 		STA	tmp_var_1A
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		ORA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
 		ORA	tmp_var_1A
@@ -18489,9 +18493,9 @@ loc_0_EACF:				; ...
 		STA	Objects_Z_speed,Y
 
 loc_0_EAD2:				; ...
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		ORA	#$10
-		STA	Objects_state,Y
+		STA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		LDA	Objects_TypeID,X
 		CMP	#$3E ; '>'
 		BNE	loc_0_EAF3
@@ -18683,7 +18687,7 @@ loc_0_EC20:				; ...
 		LDA	#0
 		STA	Objects_death_timer,X
 		STA	Obj_anims_timer,X
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		LDA	Objects_Life,X
 		ORA	#$F0 ; 'Ё'
 		STA	Objects_Life,X
@@ -18760,7 +18764,7 @@ loc_0_EC9E:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_ECB3:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	loc_0_ECC0
 
@@ -19229,7 +19233,7 @@ object_slizen:				; ...
 		JSR	sub_0_8E52
 		LDA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
 		JSR	loc_0_B075
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		ORA	Objects_death_timer,Y
 		BEQ	loc_0_EF9D
@@ -20072,9 +20076,9 @@ object_l10_xz:				; ...
 		JSR	loc_0_914A
 
 loc_0_F4FF:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		ORA	#$40 ; '@'
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		LDA	#1
 		STA	Objects_Life,X
 		LDA	#$B3 ; '│'
@@ -20312,7 +20316,7 @@ loc_0_F687:				; ...
 		STA	Objects_Life,X
 		BNE	loc_0_F69B
 		LDA	#$40 ; '@'
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		LDA	#$E0 ; 'р'
 		STA	Objects_death_timer,X
 
@@ -20524,8 +20528,8 @@ loc_0_F7F2:				; ...
 		STA	Objects_death_timer,X
 		LSR	Obj_anims_timer,X
 		LDA	#$40 ; '@'
-		ORA	Objects_state,X
-		STA	Objects_state,X
+		ORA	Objects_state,X	; бит 5	($20) -	наличие	стика
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		LDA	Objects_X_speed,X
 		ORA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
 		ORA	Objects_Z_floor,X
@@ -20599,7 +20603,7 @@ loc_0_F86F:				; ...
 		LDA	Obj_anims_timer,Y
 		CMP	#4
 		BCS	locret_0_F866
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		ORA	Objects_death_timer,Y
 		BNE	locret_0_F866
@@ -20706,7 +20710,7 @@ loc_0_F921:				; ...
 		BCC	loc_0_F967
 
 loc_0_F928:				; ...
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BNE	loc_0_F967
 		LDA	Obj_anims_timer,Y
@@ -21023,7 +21027,7 @@ loc_0_FB24:				; ...
 		LDA	Level_ID	; $10
 		CMP	#7
 		BEQ	loc_0_FB39
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$40 ; '@'
 		BEQ	loc_0_FB39
 
@@ -21163,9 +21167,9 @@ loc_0_FBF2:				; ...
 
 sub_0_FBF9:				; ...
 		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		ORA	#$40 ; '@'
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 
 loc_0_FC03:				; ...
 		LDA	#0
@@ -22576,18 +22580,18 @@ loc_1000_8568:				; ...
 		ASL	A
 		TAX
 		LDA	byte_1000_853E,X
-		STA	byte_0_200
+		STA	Sprites_Ypos
 		SEC
 		SBC	#3
-		STA	byte_0_204
+		STA	sprite2_Ypos
 		LDA	#$40 ; '@'
-		STA	byte_0_201
-		STA	byte_0_205
+		STA	Sprites_Adress
+		STA	sprite2_adress
 		LDA	byte_1000_853F,X
-		STA	byte_0_203
+		STA	Sprites_Xpos
 		CLC
 		ADC	#3
-		STA	byte_0_207
+		STA	sprite2_Xpos
 		LDY	#1
 
 loc_1000_858E:				; ...
@@ -22596,7 +22600,7 @@ loc_1000_858E:				; ...
 		ASL	A
 		TAX
 		TYA
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	FrameCounter	; $B
 		AND	#8
 		BNE	loc_1000_85A1
@@ -22605,7 +22609,7 @@ loc_1000_858E:				; ...
 
 loc_1000_85A1:				; ...
 		LDA	#$F8 ; '°'
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 
 loc_1000_85A6:				; ...
 		DEY
@@ -28552,7 +28556,7 @@ sub_3000_D11D:				; ...
 ; End of function sub_3000_D11D
 
 ; ---------------------------------------------------------------------------
-level_unk9:	.BYTE $23, $23,	$23, $23, $30, $23, $23, $32, $23, $23,	$23, $23, $23 ;	...
+level_backgn_Y_pos:.BYTE $23, $23, $23,	$23, $30, $23, $23, $32, $23, $23, $23,	$23, $23 ; ...
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -28565,7 +28569,7 @@ sub_3000_D144:				; ...
 
 loc_3000_D14C:				; ...
 		CLC
-		ADC	level_unk9 - 1,X
+		ADC	level_backgn_Y_pos - 1,X ; смещение фона относительно спрайтов
 		CLC
 		ADC	byte_0_83
 		BCS	loc_3000_D159
@@ -31698,9 +31702,9 @@ loc_5000_B4BF:				; ...
 		LDA	#3
 		STA	Objects_Z_speed,X
 		STA	byte_0_3BF,X
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		ORA	#$40 ; '@'
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 
 loc_5000_B50D:				; ...
 		JMP	loc_5000_B9FF
@@ -32869,7 +32873,7 @@ loc_5000_BC0D:				; ...
 		BCS	loc_5000_BC24
 		LDA	byte_0_3BF,X
 		BNE	loc_5000_BC2A
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$10
 		BEQ	loc_5000_BC24
 		LDA	#1
@@ -32958,15 +32962,15 @@ loc_5000_BC91:				; ...
 loc_5000_BC94:				; ...
 		CMP	#5
 		BNE	locret_5000_BCBB
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$10
 		BEQ	sub_5000_BCB0
 		JSR	sub_5000_BCB0
 
 loc_5000_BCA2:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$EF ; 'я'
-		STA	Objects_state,X
+		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		LDA	#0
 		STA	Objects_Z_floor,X
 		RTS
@@ -32991,7 +32995,7 @@ locret_5000_BCBB:			; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_BCBC:				; ...
-		LDA	Objects_state,X
+		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		AND	#$10
 		BEQ	loc_5000_BCC9
 		JSR	sub_5000_B422
@@ -33657,16 +33661,16 @@ loc_6000_85F4:				; ...
 
 loc_6000_85F6:				; ...
 		LDA	Objects_X_shadow,Y
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		LDA	#$BD
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	tmp_var_19
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		CLC
 		ADC	#$40
 		STA	tmp_var_19
 		LDA	byte_0_8C
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		INX
 		INX
@@ -33685,7 +33689,7 @@ loc_6000_85F6:				; ...
 		BNE	loc_6000_85F4
 
 loc_6000_862C:				; ...
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 loc_6000_862F:				; ...
@@ -33699,8 +33703,8 @@ loc_6000_862F:				; ...
 loc_6000_863B:				; ...
 		TAY			; 0 or E
 
-loc_6000_863C:				; ...
-		STY	ObjCounter_tmp_var_15 ;	9e
+object_sprites:				; ...
+		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		LDA	Objects_RamSlotIDs_tmp,Y
 		TAY
 		LDA	Objects_Flags,Y
@@ -33714,11 +33718,11 @@ loc_6000_863C:				; ...
 		BNE	loc_6000_8659
 
 loc_6000_8656:				; ...
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 loc_6000_8659:				; ...
-		STY	tmp_var_16
+		STY	tmp_var_16	; slotID
 		LDA	Objects_TypeID,Y
 		CMP	#$67
 		BEQ	loc_6000_86B1
@@ -33803,37 +33807,37 @@ loc_6000_86BF:				; ...
 
 loc_6000_86C2:				; ...
 		AND	#1
-		BNE	object_unk_cycle
+		BNE	object_sprites_cycle
 
 loc_6000_86C6:				; ...
-		JSR	sub_6000_8C0A
+		JSR	objects_some_sprites
 		TXA
 		BEQ	locret_6000_86EE
 
 loc_6000_86CC:				; ...
 		LDA	tmp_var_16
 		BEQ	loc_6000_86D2
-		BPL	object_unk_cycle
+		BPL	object_sprites_cycle
 
 loc_6000_86D2:				; ...
-		JSR	sub_6000_86EF
+		JSR	objects_second_pal ; для спрайтов головы и пуза	Реша - ставит желтую палитру
 
-object_unk_cycle:			; ...
+object_sprites_cycle:			; ...
 		LDA	FrameCounter	; $B
 		AND	#1
 		BEQ	odd_or_even_frame
 		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		DEY			; object rotation back
-		BMI	loc_6000_870C
-		JMP	loc_6000_863C
+		BMI	object_sprites_
+		JMP	object_sprites
 ; ---------------------------------------------------------------------------
 
 odd_or_even_frame:			; ...
 		INC	ObjCounter_tmp_var_15 ;	object rotation	forw
 		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		CPY	#$F
-		BEQ	loc_6000_870C
-		JMP	loc_6000_863C
+		BEQ	object_sprites_
+		JMP	object_sprites
 ; ---------------------------------------------------------------------------
 
 locret_6000_86EE:			; ...
@@ -33842,7 +33846,7 @@ locret_6000_86EE:			; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_6000_86EF:				; ...
+objects_second_pal:			; ...
 		LDY	byte_0_8F
 		BEQ	locret_6000_86EE
 
@@ -33851,10 +33855,10 @@ loc_6000_86F3:				; ...
 		AND	#3
 		BEQ	locret_6000_870B
 		DEC	byte_0_8E
-		LDA	byte_0_202,Y
+		LDA	Sprites_Attrib,Y
 		AND	#$FC
 		ORA	#2
-		STA	byte_0_202,Y
+		STA	Sprites_Attrib,Y
 		INY
 		INY
 		INY
@@ -33863,16 +33867,16 @@ loc_6000_86F3:				; ...
 
 locret_6000_870B:			; ...
 		RTS
-; End of function sub_6000_86EF
+; End of function objects_second_pal
 
 ; ---------------------------------------------------------------------------
 
-loc_6000_870C:				; ...
+object_sprites_:			; ...
 		LDY	#0
 
-loc_6000_870E:				; ...
+object_sprites_cycle_:			; ...
 		CPX	#$F9
-		BCS	sub_6000_8778
+		BCS	hide_sprites_by_Y
 		LDA	Objects_TypeID,Y
 		BEQ	loc_6000_8773
 		LDA	Objects_Z_floor,Y
@@ -33893,28 +33897,28 @@ loc_6000_8726:				; ...
 		LDA	Objects_Y_shad,Y
 		CLC
 		ADC	#5
-		STA	byte_0_200,X
-		STA	byte_0_204,X
+		STA	Sprites_Ypos,X
+		STA	sprite2_Ypos,X
 		LDA	Objects_Flags,Y
 		ASL	A
 		ASL	A
 		AND	#$20
-		STA	byte_0_206,X
+		STA	sprite2_attrib,X
 		ORA	#$40
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	#0
-		STA	byte_0_205,X
-		STA	byte_0_201,X
+		STA	sprite2_adress,X
+		STA	Sprites_Adress,X
 		LDA	Objects_X_shadow,Y
 		SEC
 		SBC	byte_0_8B
 		BCC	loc_6000_8773
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		LDA	Objects_X_shadow,Y
 		ADC	byte_0_8B
 		SBC	#8
 		BCC	loc_6000_876D
-		STA	byte_0_207,X
+		STA	sprite2_Xpos,X
 		INX
 		INX
 		INX
@@ -33930,16 +33934,16 @@ loc_6000_876D:				; ...
 loc_6000_8773:				; ...
 		INY
 		CPY	#$F
-		BNE	loc_6000_870E
+		BNE	object_sprites_cycle_
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_6000_8778:				; ...
+hide_sprites_by_Y:			; ...
 		LDA	#$F8
 
 loc_6000_877A:				; ...
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		INX
 		INX
@@ -33948,7 +33952,7 @@ loc_6000_877A:				; ...
 
 locret_6000_8783:			; ...
 		RTS
-; End of function sub_6000_8778
+; End of function hide_sprites_by_Y
 
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -34024,7 +34028,7 @@ loc_6000_87E5:				; ...
 		EOR	#$FF
 		ADC	byte_0_8B
 		STA	Objects_TargetID,Y
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 locret_6000_87F4:			; ...
@@ -34038,17 +34042,17 @@ byte_6000_8806:	.BYTE $D0, $D0,	$D1, $D2, $D4, $D4, $D4, $D4, $D4, $D4,	$D4, $D4
 
 sub_6000_8815:				; ...
 		LDA	Objects_unk2,Y
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	Objects_unk_cnt,Y
 		AND	#$40
 		ORA	#2
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	byte_0_18
 		CLC
 		ADC	Objects_unk_cnt2,Y
 		STA	byte_0_18
 		LDA	byte_0_8B
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		ADC	Objects_unk_cnt,Y
 		STA	byte_0_8B
 ; End of function sub_6000_8815
@@ -34059,7 +34063,7 @@ sub_6000_8815:				; ...
 
 sub_6000_8837:				; ...
 		LDA	byte_0_8C
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		INX
 		INX
@@ -34072,7 +34076,7 @@ locret_6000_8840:			; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_8841:				; ...
-		JSR	sub_6000_8C0A
+		JSR	objects_some_sprites
 		TXA
 		BEQ	locret_6000_8840
 		LDY	tmp_var_16
@@ -34081,7 +34085,7 @@ loc_6000_8841:				; ...
 		STA	Objects_Flags,Y
 		LDA	objects_some_anim,Y
 		STA	Objects_X_shadow,Y
-		JSR	sub_6000_8C0A
+		JSR	objects_some_sprites
 		LDY	tmp_var_16
 		LDA	Objects_Flags,Y
 		AND	#$BF
@@ -34102,7 +34106,7 @@ loc_6000_887A:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_887D:				; ...
-		JSR	sub_6000_8C0A
+		JSR	objects_some_sprites
 		TXA
 		BEQ	locret_6000_8840
 		LDY	tmp_var_16
@@ -34126,7 +34130,7 @@ loc_6000_88A6:				; ...
 		STA	Objects_Y_shad,Y
 		LDA	#$5C
 		STA	Obj_anim_frame,Y
-		JSR	sub_6000_8C0A
+		JSR	objects_some_sprites
 		TXA
 		BEQ	locret_6000_8840
 		LDY	tmp_var_16
@@ -34160,15 +34164,15 @@ loc_6000_88D3:				; ...
 		ADC	Objects_Y_shad,Y
 		STA	Objects_Y_shad,Y
 		LDA	#$7F
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	#2
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	Objects_Y_shad,Y
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		LDA	Objects_X_shadow,Y
 		SEC
 		SBC	#4
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		INX
 		INX
 		INX
@@ -34178,7 +34182,7 @@ loc_6000_88D3:				; ...
 		BNE	loc_6000_88D3
 
 loc_6000_8914:				; ...
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 locret_6000_8917:			; ...
@@ -34205,13 +34209,13 @@ loc_6000_8918:				; ...
 loc_6000_8937:				; ...
 		LDA	byte_6000_8966,Y
 		BEQ	loc_6000_8914
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	#2
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	byte_0_8C
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		LDA	byte_0_8B
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		CLC
 		ADC	#8
 		BCS	loc_6000_8914
@@ -34234,7 +34238,7 @@ byte_6000_8966:	.BYTE $ED, $F2,	0, 6, $EE, $F2,	0, 6, $EF, $F2,	0, 6, $F0, $F2,	
 ; ---------------------------------------------------------------------------
 
 loc_6000_898D:				; ...
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 loc_6000_8990:				; ...
@@ -34290,6 +34294,8 @@ loc_6000_89DB:				; ...
 		SEC
 		SBC	#4
 		SBC	byte_0_8D
+
+level4_stick_bug:			;  if Y	= 3D
 		STA	Objects_Z_floor,Y
 		JMP	loc_6000_86B4
 ; ---------------------------------------------------------------------------
@@ -34311,17 +34317,17 @@ sub_6000_89FE:				; ...
 
 loc_6000_8A0F:				; ...
 		LDA	byte_6000_8806,Y
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	tmp_var_1C
 		AND	#$40
 		EOR	#$42
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	byte_0_18
 		CLC
 		ADC	tmp_var_1B
 		STA	byte_0_18
 		LDA	byte_0_8B
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		ADC	tmp_var_1C
 		STA	byte_0_8B
 		ROR	A
@@ -34421,20 +34427,20 @@ loc_6000_8AA0:				; ...
 loc_6000_8AA3:				; ...
 		CLC
 		ADC	Objects_X_shadow,Y
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		STA	Objects_X_shadow,Y
 		ROR	A
 		EOR	Objects_unk2,Y
 		BMI	loc_6000_8AED
 		LDA	#$FA
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	#2
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	Objects_Y_shad,Y
 		SEC
 		SBC	byte_0_8B
 		BCC	loc_6000_8AED
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		SEC
 		SBC	Objects_Life,Y
 		BEQ	loc_6000_8ADA
@@ -34460,7 +34466,7 @@ loc_6000_8ADA:				; ...
 		STA	byte_0_1FD,X
 
 loc_6000_8AED:				; ...
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 loc_6000_8AF0:				; ...
@@ -34486,13 +34492,13 @@ loc_6000_8AF8:				; ...
 loc_6000_8B12:				; ...
 		LDY	byte_0_8C
 		LDA	byte_0_8B
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		LDA	byte_6000_8B6F,Y
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	byte_6000_8B70,Y
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	byte_6000_8B71,Y
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 
 loc_6000_8B2B:				; ...
 		INX
@@ -34595,7 +34601,7 @@ loc_6000_8BBF:				; ...
 		BCS	loc_6000_8BF8
 
 loc_6000_8BC3:				; ...
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		LDA	byte_6000_8E48,Y
 		BEQ	loc_6000_8BE1
 		STA	tmp_var_1B
@@ -34618,11 +34624,11 @@ loc_6000_8BE1:				; ...
 		BCS	loc_6000_8BF8
 
 loc_6000_8BE5:				; ...
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		LDA	#2
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	#$26
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		INX
 		INX
 		INX
@@ -34638,7 +34644,7 @@ loc_6000_8BF8:				; ...
 		BNE	loc_6000_8BA4
 
 loc_6000_8C02:				; ...
-		JMP	object_unk_cycle
+		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
 loc_6000_8C05:				; ...
@@ -34651,17 +34657,17 @@ locret_6000_8C09:			; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_6000_8C0A:				; ...
+objects_some_sprites:			; ...
 		LDA	Objects_X_shadow,Y
-		STA	byte_0_17
+		STA	byte_0_17	; x_shadow_ 18
 		LDA	Objects_Y_shad,Y
-		SEC
-		SBC	Objects_Z_floor,Y
+		SEC			; a8
+		SBC	Objects_Z_floor,Y ; a8
 		BCC	loc_6000_8C05
-		STA	byte_0_8C
+		STA	byte_0_8C	; y-z_shadow
 		LDA	Obj_anim_frame,Y
 		BEQ	loc_6000_8C05
-		LDA	Objects_state,Y
+		LDA	Objects_state,Y	; 00
 		AND	#$20
 		BNE	loc_6000_8C29
 		JMP	read_obj_anim
@@ -34720,7 +34726,7 @@ loc_6000_8C70:				; ...
 		AND	#$40
 		BEQ	loc_6000_8C87
 		LDA	#$42
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	byte_0_17
 		SEC
 		SBC	byte_6000_AE89,Y
@@ -34731,17 +34737,17 @@ loc_6000_8C70:				; ...
 
 loc_6000_8C87:				; ...
 		LDA	#2
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		LDA	byte_6000_AE89,Y
 		CLC
 		ADC	byte_0_17
 
 loc_6000_8C92:				; ...
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		LDA	word_6000_AE8A,Y
 		CLC
 		ADC	byte_0_8C
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		LDA	Level_ID	; $10
 		CMP	#2
 		BNE	loc_6000_8CAC
@@ -34755,7 +34761,7 @@ loc_6000_8CAC:				; ...
 		LDA	#$DA
 
 loc_6000_8CAE:				; ...
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		INX
 		INX
 		INX
@@ -34776,7 +34782,7 @@ loc_6000_8CBE:				; ...
 
 read_obj_anim:				; ...
 		LDA	Obj_anim_frame,Y
-		CPY	#2
+		CPY	#2		; for players
 		BCS	sub_6000_8CEA
 		CMP	#$1E
 		BEQ	loc_6000_8CE0
@@ -34796,15 +34802,15 @@ loc_6000_8CE0:				; ...
 
 locret_6000_8CE9:			; ...
 		RTS
-; End of function sub_6000_8C0A
+; End of function objects_some_sprites
 
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_6000_8CEA:				; ...
-		STA	byte_0_18
-		LDA	Objects_Flags,Y
+		STA	byte_0_18	; anim frame tmp
+		LDA	Objects_Flags,Y	; 40
 ; End of function sub_6000_8CEA
 
 
@@ -34813,9 +34819,9 @@ sub_6000_8CEA:				; ...
 
 sub_6000_8CEF:				; ...
 		AND	#$63
-		STA	tmp_var_1B
+		STA	tmp_var_1B	; 40
 		AND	#$40
-		STA	byte_0_90
+		STA	byte_0_90	; 40
 		LDA	Level_ID	; $10
 		CMP	#$A
 		BEQ	loc_6000_8D11
@@ -34975,18 +34981,18 @@ loc_6000_8DCB:				; ...
 		INY
 
 loc_6000_8DCE:				; ...
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	(tmp_var_19),Y
 		CLC
 		ADC	byte_0_8B
 		BCS	loc_6000_8DFA
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		INY
 		LDA	byte_0_8C
 		SEC
 		SBC	(tmp_var_19),Y
 		BCC	loc_6000_8DFB
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INY
 		LDA	byte_0_8D
 		BPL	loc_6000_8DF0
@@ -34995,7 +35001,7 @@ loc_6000_8DCE:				; ...
 		INY
 
 loc_6000_8DF0:				; ...
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		INX
 		INX
 		INX
@@ -35035,18 +35041,18 @@ loc_6000_8E10:				; ...
 		INY
 
 loc_6000_8E13:				; ...
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	byte_0_8B
 		SEC
 		SBC	(tmp_var_19),Y
 		BCC	loc_6000_8E3F
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		INY
 		LDA	byte_0_8C
 		SEC
 		SBC	(tmp_var_19),Y
 		BCC	loc_6000_8E40
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INY
 		LDA	byte_0_8D
 		BPL	loc_6000_8E35
@@ -35055,7 +35061,7 @@ loc_6000_8E13:				; ...
 		EOR	tmp_var_1B
 
 loc_6000_8E35:				; ...
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		INX
 		INX
 		INX
@@ -35096,8 +35102,8 @@ loc_6000_8E6F:				; ...
 
 loc_6000_8E74:				; ...
 		LDA	#0
-		STA	Objects_state
-		STA	player2_state
+		STA	Objects_state	; бит 5	($20) -	наличие	стика
+		STA	player2_state	; бит 5	($20) -	наличие	стика
 		LDA	#6
 		STA	LevelPos_CamPosX_H
 		LDA	#$C0 ; '└'
@@ -35319,7 +35325,7 @@ sub_6000_901D:				; ...
 		JSR	loc_6000_FE88
 
 loc_6000_9020:				; ...
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDX	#0
 		JSR	sub_6000_D5FB
 		LDA	#0
@@ -35591,7 +35597,7 @@ sub_6000_91AC:				; ...
 loc_6000_91BA:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#4
 		JSR	sub_6000_DB92
 		LDX	#$32 ; '2'
@@ -35826,7 +35832,7 @@ byte_6000_97BA:	.BYTE $20, $20,	$21	; ...
 loc_6000_97C0:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#2
 		LDY	#4
 		JSR	sub_6000_DB94
@@ -36136,7 +36142,7 @@ loc_6000_99FA:				; ...
 loc_6000_9A01:				; ...
 		JSR	loc_6000_9A0C
 		BEQ	loc_6000_9A09
-		JSR	sub_6000_8778
+		JSR	hide_sprites_by_Y
 
 loc_6000_9A09:				; ...
 		JMP	loc_6000_A87D
@@ -36234,7 +36240,7 @@ loc_6000_9A7F:				; ...
 		LDA	#$33 ; '3'
 
 loc_6000_9A9D:				; ...
-		STA	byte_0_235,Y
+		STA	sprite14_adress,Y
 		INY
 		INY
 		INY
@@ -36299,7 +36305,7 @@ byte_6000_9AE3:	.BYTE $72, $6C,	$40, $41, $42, $51, $50, $52, $53, $54,	$54, $C,
 
 loc_6000_9CB9:				; ...
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#$75
 		STA	RandomValue_1	; $25
 		STA	RandomValue_3	; $27
@@ -36763,7 +36769,7 @@ loc_6000_A005:				; ...
 		LDA	#$F8 ; '°'
 
 loc_6000_A007:				; ...
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		INX
 		INX
@@ -36806,16 +36812,16 @@ loc_6000_A01E:				; ...
 		INC	object3_Y_shadow
 
 loc_6000_A05B:				; ...
-		LDA	byte_0_201,X
+		LDA	Sprites_Adress,X
 		AND	#3
 		EOR	#3
 		AND	FrameCounter	; $B
 		BNE	loc_6000_A073
-		INC	byte_0_203,X
-		LDA	byte_0_203,X
+		INC	Sprites_Xpos,X
+		LDA	Sprites_Xpos,X
 		AND	#1
 		BEQ	loc_6000_A073
-		DEC	byte_0_200,X
+		DEC	Sprites_Ypos,X
 
 loc_6000_A073:				; ...
 		INX
@@ -36831,7 +36837,7 @@ loc_6000_A07B:				; ...
 		BNE	loc_6000_A08A
 
 loc_6000_A081:				; ...
-		DEC	byte_0_203,X
+		DEC	Sprites_Xpos,X
 		INX
 		INX
 		INX
@@ -36842,10 +36848,10 @@ loc_6000_A08A:				; ...
 		LDX	Object_RamSlotID_tmp
 
 loc_6000_A08C:				; ...
-		LDA	byte_0_200,X
+		LDA	Sprites_Ypos,X
 		CMP	#$F8 ; '°'
 		BEQ	loc_6000_A0DA
-		LDA	byte_0_203,X
+		LDA	Sprites_Xpos,X
 		CMP	#$64 ; 'd'
 		BCS	loc_6000_A0AB
 		LDA	byte_0_F4
@@ -36876,19 +36882,19 @@ loc_6000_A0B7:				; ...
 		LDA	#5
 
 loc_6000_A0B9:				; ...
-		ADC	byte_0_200,X
+		ADC	Sprites_Ypos,X
 		SBC	object_3_Xpos_L
 		BCC	loc_6000_A0CF
 		CMP	#$B
 		BCS	loc_6000_A0D4
 		LDA	#$20 ; ' '
-		ORA	byte_0_202,X
-		STA	byte_0_202,X
+		ORA	Sprites_Attrib,X
+		STA	Sprites_Attrib,X
 		BNE	loc_6000_A0D4
 
 loc_6000_A0CF:				; ...
 		LDA	#$F8 ; '°'
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 
 loc_6000_A0D4:				; ...
 		INX
@@ -36932,7 +36938,7 @@ loc_6000_A112:				; ...
 		LDX	#0
 
 loc_6000_A114:				; ...
-		LDA	byte_0_201,X
+		LDA	Sprites_Adress,X
 		CMP	#$25 ; '%'
 		BEQ	loc_6000_A12C
 		BCC	loc_6000_A139
@@ -36941,15 +36947,15 @@ loc_6000_A114:				; ...
 		CMP	#$27 ; '''
 		BEQ	loc_6000_A12C
 		LDA	#$F8 ; '°'
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		BNE	loc_6000_A139
 
 loc_6000_A12C:				; ...
 		LDA	#$2A ; '*'
-		STA	byte_0_201,X
-		LDA	byte_0_202,X
+		STA	Sprites_Adress,X
+		LDA	Sprites_Attrib,X
 		EOR	#1
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 
 loc_6000_A139:				; ...
 		INX
@@ -37002,7 +37008,7 @@ loc_6000_A16A:				; ...
 
 loc_6000_A16D:				; ...
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDX	#$20 ; ' '
 		JSR	sub_6000_D5FB
 		JSR	sub_6000_DAFC
@@ -37053,13 +37059,13 @@ sub_6000_A1D2:				; ...
 
 loc_6000_A1D6:				; ...
 		TYA
-		STA	byte_0_239,X
+		STA	sprite15_adress,X
 		CLC
 		ADC	#$E
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		LDA	#0
-		STA	byte_0_202,X
-		STA	byte_0_23A,X
+		STA	Sprites_Attrib,X
+		STA	sprite15_attrib,X
 		INY
 		INX
 		INX
@@ -37087,17 +37093,17 @@ loc_6000_A1FE:				; ...
 		JSR	sub_6000_DAD1
 		AND	#3
 		EOR	#$23 ; '#'
-		STA	byte_0_202,X
+		STA	Sprites_Attrib,X
 		JSR	sub_6000_DAD1
 		AND	#3
 		CLC
 		ADC	tmp_var_16
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		JSR	sub_6000_DAD1
 		AND	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		JSR	sub_6000_DAD1
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		INX
 		INX
 		INX
@@ -37610,11 +37616,11 @@ loc_6000_A717:				; ...
 		LDA	Objects_Zpos_H
 		CMP	#6
 		BEQ	loc_6000_A739
-		LDA	byte_0_200,X
+		LDA	Sprites_Ypos,X
 		CMP	#$C0 ; '└'
 		BCC	loc_6000_A731
 		LDA	#$F8 ; '°'
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		BNE	loc_6000_A73F
 
 loc_6000_A731:				; ...
@@ -37631,13 +37637,13 @@ loc_6000_A73D:				; ...
 		BNE	loc_6000_A742
 
 loc_6000_A73F:				; ...
-		DEC	byte_0_200,X
+		DEC	Sprites_Ypos,X
 
 loc_6000_A742:				; ...
-		LDA	byte_0_203,X
+		LDA	Sprites_Xpos,X
 		SEC
 		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	byte_0_203,X
+		STA	Sprites_Xpos,X
 		INX
 		INX
 		INX
@@ -37765,19 +37771,19 @@ loc_6000_A82E:				; ...
 		TYA
 		CLC
 		ADC	byte_0_17
-		STA	byte_0_23B,X
-		STA	byte_0_203,X
+		STA	sprite15_Xpos,X
+		STA	Sprites_Xpos,X
 		LDA	#$F8 ; '°'
-		STA	byte_0_238,X
+		STA	sprite15_Ypos,X
 		BCS	loc_6000_A84B
 		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		ADC	Objects_X_speed
 		ADC	#$50 ; 'P'
-		STA	byte_0_238,X
+		STA	sprite15_Ypos,X
 		ADC	#$F
 
 loc_6000_A84B:				; ...
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		INX
 		INX
@@ -37821,7 +37827,7 @@ sub_6000_A883:				; ...
 loc_6000_A88A:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#4
 		JSR	sub_6000_DB9B
 		LDA	#6
@@ -38023,9 +38029,9 @@ loc_6000_A9BE:				; ...
 		AND	#$58 ; 'X'
 		BNE	loc_6000_A9ED
 		LDY	#$C6 ; '╞'
-		STY	byte_0_215
+		STY	sprite6_adress
 		INY
-		STY	byte_0_219
+		STY	sprite7_adress
 
 loc_6000_A9ED:				; ...
 		LDA	#$9C ; 'Ь'
@@ -38074,27 +38080,27 @@ loc_6000_AA15:				; ...
 		JSR	sub_6000_AA3D
 
 loc_6000_AA3A:				; ...
-		JMP	sub_6000_8778
+		JMP	hide_sprites_by_Y
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_6000_AA3D:				; ...
-		LDA	byte_6000_AA58,Y
+		LDA	unk1_ptr_L,Y
 		STA	tmp_var_19
-		LDA	byte_6000_AA64,Y
+		LDA	unk1_ptr_H,Y
 		JMP	loc_6000_8D23
 ; End of function sub_6000_AA3D
 
 ; ---------------------------------------------------------------------------
 byte_6000_AA48:	.BYTE	0,  0,	0,  1,	0,  0,	0,  0,	1,  1,	1,  2,	2,  2,	2,  2 ;	...
-byte_6000_AA58:	.BYTE $93, $B0,	$C7, $DE, $E7, $F0, $1B, $46, $B6, $B6,	$6C, $89 ; ...
-byte_6000_AA64:	.BYTE $DE, $DE,	$DE, $DE, $DE, $DE, $DF, $DF, $DF, $DF,	$E1, $E1 ; ...
+unk1_ptr_L:	.BYTE $93, $B0,	$C7, $DE, $E7, $F0, $1B, $46, $B6, $B6,	$6C, $89 ; ...
+unk1_ptr_H:	.BYTE $DE, $DE,	$DE, $DE, $DE, $DE, $DF, $DF, $DF, $DF,	$E1, $E1 ; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_AA70:				; ...
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#$44 ; 'D'
 		JSR	sub_6000_DB92
 		LDA	byte_0_8D
@@ -38194,7 +38200,7 @@ byte_6000_AB33:	.BYTE $B1, $45,	$25, $65, $F1, $85, $65, $A5 ; ...
 loc_6000_AB3B:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#$14
 		JSR	sub_6000_DB9B
 		LDA	#$16
@@ -38229,7 +38235,7 @@ loc_6000_AB3B:				; ...
 loc_6000_AB8A:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#8
 		LDY	#4
 		JSR	sub_6000_DB94
@@ -38269,7 +38275,7 @@ loc_6000_AB8A:				; ...
 loc_6000_ABE5:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#$1A
 		JSR	sub_6000_DB9B
 		LDA	#4
@@ -38300,7 +38306,7 @@ loc_6000_AC24:				; ...
 		LDA	#0
 		STA	byte_0_C9
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#$A
 		LDY	#4
 		JSR	sub_6000_DB94
@@ -38369,7 +38375,7 @@ sub_6000_AC9E:				; ...
 loc_6000_ACB8:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#0
 		JSR	sub_6000_DAE5
 		LDA	#$30 ; '0'
@@ -38398,7 +38404,7 @@ loc_6000_ACB8:				; ...
 loc_6000_ACF7:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#$10
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDA	#$16
@@ -38464,7 +38470,7 @@ loc_6000_AD2D:				; ...
 loc_6000_AD7A:				; ...
 		JSR	sub_6000_91AC
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEBD
+		JSR	clear_sprites
 		LDA	#6
 		JSR	sub_6000_DAE5
 		LDA	#$30 ; '0'
@@ -38574,7 +38580,7 @@ loc_6000_AE29:				; ...
 
 loc_6000_AE33:				; ...
 		LDA	byte_6000_E124,Y
-		STA	byte_0_201,X
+		STA	Sprites_Adress,X
 		INY
 		INX
 		INX
@@ -38595,7 +38601,7 @@ byte_6000_AE89:	.BYTE 0			; ...
 
 loc_6000_D5BB:				; ...
 		JSR	loc_6000_FE88
-		JSR	loc_6000_FEB2
+		JSR	fill_sprite_buffer_
 		LDA	#$16
 		STA	byte_6000_FFC9
 		LDX	#$9A ; 'Ъ'
@@ -38604,7 +38610,7 @@ loc_6000_D5BB:				; ...
 		JSR	sub_6000_D765
 		JSR	sub_6000_D5EE
 		LDX	Level_ID	; $10
-		LDA	level_unk10,X
+		LDA	level_infobar_colors,X
 
 loc_6000_D5D7:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
@@ -38612,7 +38618,7 @@ loc_6000_D5D7:				; ...
 		BPL	loc_6000_D5D7
 		JMP	sub_6000_DAFC
 ; ---------------------------------------------------------------------------
-level_unk10:	.BYTE $FF, $FF,	$AA, $FF, 0, $55, $55, $FF, $FF, 0, 0, 0, 0, 0 ; ...
+level_infobar_colors:.BYTE $FF,	$FF, $AA, $FF, 0, $55, $55, $FF, $FF, 0, 0, 0, 0, 0 ; ...
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -38831,7 +38837,7 @@ sub_6000_DAFC:				; ...
 		TAY
 		JSR	sub_6000_DAEE
 		LDY	byte_0_17
-		LDA	word_6000_DBAC,Y
+		LDA	unk_6000_DBAC,Y
 		PHA
 		LDA	unk_6000_DBAB,Y
 		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
@@ -38922,50 +38928,71 @@ unk_6000_DBA8:	.BYTE	8		; ...
 unk_6000_DBA9:	.BYTE $28 ; (		; ...
 unk_6000_DBAA:	.BYTE $2A ; *		; ...
 unk_6000_DBAB:	.BYTE $20		; ...
-word_6000_DBAC:	.WORD $A, $FF00, $4030,	$2202, $28E, $FCFF, 0, $808, $9022, $1A, $FF10,	$30F0, $220A, $1C92, 0,	$DCFF, $C1A, $9822, $22	; ...
-		.WORD $170E, $804, $220E, $2416, 0, $ECFF, $1030, $1E22, $1C, $F00, $9C0, $2214, $2694,	0, 2, $1610, $9622, $2E, 0, $900
-		.WORD $2218, $2694, 0, $A800, $1A38, $9C22, $26, 0, $3000, $221C, $3E3C, 0, $ECFF, $1E58, $9E22, $40, $100, $3898, $2220
-		.WORD $269C, $308, $8401, $AD, $808, 8,	$800, $B00, $302, $2A8C, $1806,	$180C, $1000, $1007, $100F, $1017, $800, $808
-		.WORD $810, $818, 2, $A, $30B, $8B03, $736, $C18, $118,	$910, $1010, $10, $708,	$F08, $1708, $20B, $A00, $C00, $302
-		.WORD $418C, $1806, $180E, $1002, $1008, $1010,	$1018, $800, $808, $810, 1, 6, $E, $31A, $8C03,	$14D, $918, $1118, $18
-		.WORD $810, $1010, $1810, $B10,	$1208, $1A08, $D08, $1200, $A00, $303, $598E, $1808, $1810, $1003, $100B, $1013, $101B
-		.WORD $801, $809, $810,	$818, $920, 0, 7, $F, $313, $8E03, $67,	$20, $718, $F18, $418, $C10, $1410, $510, $908,	$1008
-		.WORD $1808, $908, $1000, $1800, $1100,	$305, $758B, $1002, $1005, $100D, $1015, $800, $807, $80F, $817, 7, $F,	$17
-		.WORD $30D, $8B03, $86,	$418, $C18, $518, $D10,	$210, $A08, $1208, $208, $800, $1000, $F00, $305, $918A, $1004,	$100C
-		.WORD $1014, $800, $805, $80D, $815, 4,	9, $11,	$708, $8A03, $A3, $818,	$18, $610, $E10, $210, $A08, $1208, $908, $1100
-		.WORD $E00, $301, $9B88, $1005,	$100B, $800, $808, $810, 0, 7, $F, $40B, $D03, $86, $8718, $1804, $C88,	$8918, $1005
-		.WORD $D8A, $8B10, $802, $A8C, $8208, $80F, $1783, $8E08, 2, $88F, $8400, $10, $1885, $804, $203, $8082, 0, 8, 4, $8102
-		.WORD $F8, $400, $200, $F981, 0, $308, $8402, $FB, $808, 8, $800, $1E00, $116, $2D89, $100A, $1012, $F17, $800,	$808
-		.WORD $810, 0, 8, $D, $C0C, $403, $836,	$3610, 8, $37, $3708, $810, $409, $2403, $1CB1,	$B178, $7014, $1CB2, $B370, $680C
-		.WORD $14B4, $B568, $681C, $4B6, $B760,	$600C, $14B8, $B960, $601C, $4BA, $BB58, $580C,	$14BC, $BD58, $581C, $ABE, $BF50
-		.WORD $5012, $CC0, $C148, $4810, $BC0, $C140, $400F, $AC0, $C138, $380E, $9C0, $C130, $300D, $8C0, $C128, $280C, $7C0
-		.WORD $C120, $200B, $6C0, $C118, $180A,	$5C0, $C110, $1009, $4C0, $C108, $808, $1C2, $C300, 9, $305, $2FF, $C4,	$200
-		.WORD $4C4, $C200, $404, $2FF, $C5, $201, $2C5,	$C200, $303, $102, $C6,	$200, $203, $C701, 0, $201, $102, $C8, $900
-		.WORD $200, $C987, $2004, $1800, $1805,	$1000, $1004, $802, $805, $508,	$8402, $2D6, $A08, 8, $800, $900, 6, $C88C, $1E00
-		.WORD $2008, $2010, $1600, $1808, $1810, $1008,	$1010, $807, $80F, 6, $E, $404,	$8900, $AD4, $1210, $1610, $60E, $E08
-		.WORD $1608, 6,	$800, $1000, $300, $C, $DD89, $1000, $1008, $1010, $1018, $800,	$808, $810, $818, $10, $50B, $8201, $E6
-		.WORD $800, $300, $10A,	$E882, $800, 0,	0, $D20, $1FE, $FE30, $3208, $10FE, $FE34, $3617, $8FE,	$FE2A, $2C10, $18FE
-		.WORD $FE2E, $2410, $18FE, $FE26, $2620, $10FE,	$FE1C, $1E18, $20FE, $1E, $2000, $FE0D,	$1E20, $18FE, $FE1E, $1C10, $20FE
-		.WORD $FE26, $2618, $10FE, $FE24, $2E18, $10FE,	$FE2C, $2A08, $17FE, $FE36, $3410, $8FE, $FE32,	$3001, 0, $96FF, $BAE
-		.WORD $218, $1813, $1B02, $218,	$1000, $802, $210, $1010, $1802, $210, $1020, $602, $208, $80E,	$1602, $208, $81E, $602
-		.WORD $200, $E,	$1602, $200, $1E, $1502, $318, $1015, $1503, $308, 9, $1103, $300, $19,	$C03, $314, $9892, $1808, $1810
-		.WORD $1818, $1000, $1008, $1010, $1018, $1020,	$800, $808, $810, $818,	$820, 0, 8, $10, $18, $20, $510, $9501,	$C70
-		.WORD $948, $1140, $340, $B38, $1338, $1938, $38, $830,	$1030, $1730, $A30, $1228, $B28, $1120,	$C20, $1218, $D18, $F10
-		.WORD $E10, $D08, $1A00, $104, $309C, $4813, $4828, $4000, $400F, $4017, $4026,	$3803, $380B, $3813, $381B, $3822, $3007
-		.WORD $300F, $3017, $301E, $280E, $2816, $281E,	$2824, $2012, $201A, $2022, $1815, $181D, $1015, $1019,	$814, $14, $41A
-		.WORD $9CFF, $1330, $8100, $28,	$81, $8108, $80F, $1781, $8108,	$826, $381, $8110, $100B, $1381, $8110,	$101B, $2281
-		.WORD $8110, $1807, $F81, $8118, $1817,	$1E81, $8118, $200E, $1681, $8120, $201E, $2481, $8120,	$2812, $1A81, $8128
-		.WORD $2822, $1581, $8130, $301D, $1581, $8138,	$3819, $1481, $8140, $4814, $1C81, $F4,	$4C9A, $2802, $280A, $2812, $281A
-		.WORD $2822, $2828, $2000, $2008, $2010, $2018,	$2020, $2028, $1804, $180C, $1814, $181C, $1824, $1008,	$100F, $1017
-		.WORD $101F, $80B, $813, $819, $10, $17, $710, $93FF, $EC0, $220, $180D, $C02, $28, $280E, $200, $20, $2009, $1100, $20
-		.WORD $1800, $300, $18,	$180B, $1300, $18, $1003, $A00,	$10, $1012, $800, 8, $810, $600, 0, $B,	$1300, 0, $608,	$8FFF
-		.WORD $7D8, $4220, $2003, $842,	$4218, $1802, $842, $4210, $1000, $742,	$4208, $801, $542, $4200, 3, $342, $4320, $1808
-		.WORD $443, $4318, $1008, $43, $4310
-byte_6000_E124:	.BYTE 0, 1, 6, 7, $E, $F, $16, $17, $20, $21, $29, $2A,	2, 3, 8, 9, $10, $11, $18, $19,	$22, $23, $2B, $2A, 0, 4, 6 ; ...
-		.BYTE $A, $12, $13, $1A, $1B, $24, $25,	$2B, $2A, 0, 1,	6, 7, $E, $F, $1C, $1D,	$26, $27, $2C, $2A, 2, 5, $B, $C, $14
-		.BYTE $15, $1E,	$1F, $28, $25, $2B, $2A, 2, 1, $D, 7, $12, $F, $1A, $1B, $24, $25, $2B,	$2A, 0,	0, 2, $8C, $31,	0, $28
-		.BYTE 8, $28, 0, $20, 8, $20, 0, $18, 8, $18, 0, $10, 8, $10, 0, 8, 8, 8, 0, 0,	8, 0, 8, 8, 3, $84, $2F, 0, 8, 8, 8
+unk_6000_DBAC:	.BYTE  $A		; ...
+		.BYTE 0, 0, $FF, $30, $40, 2, $22, $8E,	2, $FF,	$FC, 0,	0, 8, 8, $22, $90, $1A,	0, $10,	$FF, $F0, $30, $A, $22,	$92
+		.BYTE $1C, 0, 0, $FF, $DC, $1A,	$C, $22, $98, $22, 0, $E, $17, 4, 8, $E, $22, $16, $24,	0, 0, $FF, $EC,	$30, $10, $22
+		.BYTE $1E, $1C,	0, 0, $F, $C0, 9, $14, $22, $94, $26, 0, 0, 2, 0, $10, $16, $22, $96, $2E, 0, 0, 0, 0, 9, $18, $22, $94
+		.BYTE $26, 0, 0, 0, $A8, $38, $1A, $22,	$9C, $26, 0, 0,	0, 0, $30, $1C,	$22, $3C, $3E, 0, 0, $FF, $EC, $58, $1E, $22
+		.BYTE $9E, $40,	0, 0, 1, $98, $38, $20,	$22, $9C, $26, 8, 3, 1,	$84, $AD, 0, 8,	8, 8, 0, 0, 8, 0, $B, 2, 3, $8C, $2A
+		.BYTE 6, $18, $C, $18, 0, $10, 7, $10, $F, $10,	$17, $10, 0, 8,	8, 8, $10, 8, $18, 8, 2, 0, $A,	0, $B, 3, 3, $8B, $36
+		.BYTE 7, $18, $C, $18, 1, $10, 9, $10, $10, $10, 0, 8, 7, 8, $F, 8, $17, $B, 2,	0, $A, 0, $C, 2, 3, $8C, $41, 6, $18
+		.BYTE $E, $18, 2, $10, 8, $10, $10, $10, $18, $10, 0, 8, 8, 8, $10, 8, 1, 0, 6,	0, $E, 0, $1A, 3, 3, $8C, $4D, 1, $18
+		.BYTE 9, $18, $11, $18,	0, $10,	8, $10,	$10, $10, $18, $10, $B,	8, $12,	8, $1A,	8, $D, 0, $12, 0, $A, 3, 3, $8E, $59
+		.BYTE 8, $18, $10, $18,	3, $10,	$B, $10, $13, $10, $1B,	$10, 1,	8, 9, 8, $10, 8, $18, 8, $20, 9, 0, 0, 7, 0, $F, 0, $13
+		.BYTE 3, 3, $8E, $67, 0, $20, 0, $18, 7, $18, $F, $18, 4, $10, $C, $10,	$14, $10, 5, 8,	9, 8, $10, 8, $18, 8, 9, 0, $10
+		.BYTE 0, $18, 0, $11, 5, 3, $8B, $75, 2, $10, 5, $10, $D, $10, $15, $10, 0, 8, 7, 8, $F, 8, $17, 8, 7, 0, $F, 0, $17
+		.BYTE 0, $D, 3,	3, $8B,	$86, 0,	$18, 4,	$18, $C, $18, 5, $10, $D, $10, 2, 8, $A, 8, $12, 8, 2, 0, 8, 0,	$10, 0,	$F, 5
+		.BYTE 3, $8A, $91, 4, $10, $C, $10, $14, $10, 0, 8, 5, 8, $D, 8, $15, 8, 4, 0, 9, 0, $11, 0, 8,	7, 3, $8A, $A3,	0, $18
+		.BYTE 8, $18, 0, $10, 6, $10, $E, $10, 2, 8, $A, 8, $12, 8, 9, 0, $11, 0, $E, 1, 3, $88, $9B, 5, $10, $B, $10, 0, 8
+		.BYTE 8, 8, $10, 8, 0, 0, 7, 0,	$F, 0, $B, 4, 3, $D, $86, 0, $18, $87, 4, $18, $88, $C,	$18, $89, 5, $10, $8A, $D, $10
+		.BYTE $8B, 2, 8, $8C, $A, 8, $82, $F, 8, $83, $17, 8, $8E, 2, 0, $8F, 8, 0, $84, $10, 0, $85, $18, 4, 8, 3, 2, $82, $80
+		.BYTE 0, 0, 8, 0, 4, 0,	2, $81,	$F8, 0,	0, 4, 0, 2, $81, $F9, 0, 0, 8, 3, 2, $84, $FB, 0, 8, 8,	8, 0, 0, 8, 0, $1E, $16
+		.BYTE 1, $89, $2D, $A, $10, $12, $10, $17, $F, 0, 8, 8,	8, $10,	8, 0, 0, 8, 0, $D, 0, $C, $C, 3, 4, $36, 8, $10, $36
+		.BYTE 8, 0, $37, 0, 8, $37, $10, 8, 9, 4, 3, $24, $B1, $1C, $78, $B1, $14, $70,	$B2, $1C, $70, $B3, $C,	$68, $B4, $14
+		.BYTE $68, $B5,	$1C, $68, $B6, 4, $60, $B7, $C,	$60, $B8, $14, $60, $B9, $1C, $60, $BA,	4, $58,	$BB, $C, $58, $BC, $14
+		.BYTE $58, $BD,	$1C, $58, $BE, $A, $50,	$BF, $12, $50, $C0, $C,	$48, $C1, $10, $48, $C0, $B, $40, $C1, $F, $40,	$C0
+		.BYTE $A, $38, $C1, $E,	$38, $C0, 9, $30, $C1, $D, $30,	$C0, 8,	$28, $C1, $C, $28, $C0,	7, $20,	$C1, $B, $20, $C0, 6
+		.BYTE $18, $C1,	$A, $18, $C0, 5, $10, $C1, 9, $10, $C0,	4, 8, $C1, 8, 8, $C2, 1, 0, $C3, 9, 0, 5, 3, $FF, 2, $C4, 0
+		.BYTE 0, 2, $C4, 4, 0, $C2, 4, 4, $FF, 2, $C5, 0, 1, 2,	$C5, 2,	0, $C2,	3, 3, 2, 1, $C6, 0, 0, 2, 3, 2,	1, $C7,	0, 0
+		.BYTE 1, 2, 2, 1, $C8, 0, 0, 9,	0, 2, $87, $C9,	4, $20,	0, $18,	5, $18,	0, $10,	4, $10,	2, 8, 5, 8, 8, 5, 2, $84, $D6
+		.BYTE 2, 8, $A,	8, 0, 0, 8, 0
+		.BYTE 9, 6, 0, $8C, $C8, 0, $1E, 8, $20, $10, $20, 0, $16, 8, $18, $10,	$18, 8,	$10, $10, $10, 7, 8, $F, 8, 6, 0, $E
+		.BYTE 0, 4, 4, 0, $89, $D4, $A,	$10, $12, $10, $16, $E,	6, 8, $E, 8, $16, 6, 0,	0, 8, 0, $10, 0
+		.BYTE 3, $C, 0,	$89, $DD, 0, $10, 8, $10, $10, $10, $18, $10, 0, 8, 8, 8, $10, 8, $18, 8, $10, 0, $B, 5, 1, $82, $E6
 		.BYTE 0, 0, 8, 0
+		.BYTE 3, $A, 1,	$82, $E8, 0, 8,	0, 0
+		.BYTE 0, 0, $20, $D, $FE, 1, $30, $FE, 8, $32, $FE, $10, $34, $FE, $17,	$36, $FE, 8, $2A, $FE, $10, $2C, $FE, $18, $2E
+		.BYTE $FE, $10,	$24, $FE, $18, $26, $FE, $20, $26, $FE,	$10, $1C, $FE, $18, $1E, $FE, $20, $1E
+		.BYTE 0, 0, $20, $D, $FE, $20, $1E, $FE, $18, $1E, $FE,	$10, $1C, $FE, $20, $26, $FE, $18, $26,	$FE, $10, $24, $FE, $18
+		.BYTE $2E, $FE,	$10, $2C, $FE, 8, $2A, $FE, $17, $36, $FE, $10,	$34, $FE, 8, $32, $FE, 1, $30
+		.BYTE 0, 0, $FF, $96, $AE, $B, $18, 2, $13, $18, 2, $1B, $18, 2, 0, $10, 2, 8, $10, 2, $10, $10, 2, $18, $10, 2, $20
+		.BYTE $10, 2, 6, 8, 2, $E, 8, 2, $16, 8, 2, $1E, 8, 2, 6, 0, 2,	$E, 0, 2, $16, 0, 2, $1E, 0, 2,	$15, $18, 3, $15, $10
+		.BYTE 3, $15, 8, 3, 9, 0, 3, $11, 0, 3,	$19, 0,	3, $C, $14, 3, $92, $98, 8, $18, $10, $18, $18,	$18, 0,	$10, 8,	$10
+		.BYTE $10, $10,	$18, $10, $20, $10, 0, 8, 8, 8,	$10, 8,	$18, 8,	$20, 8,	0, 0, 8, 0, $10, 0, $18, 0, $20, 0
+		.BYTE $10, 5, 1, $95, $70, $C, $48, 9, $40, $11, $40, 3, $38, $B, $38, $13, $38, $19, $38, 0, $30, 8, $30, $10,	$30
+		.BYTE $17, $30,	$A, $28, $12, $28, $B, $20, $11, $20, $C, $18, $12, $18, $D, $10, $F, $10, $E, 8, $D, 0, $1A, 4, 1, $9C
+		.BYTE $30, $13,	$48, $28, $48, 0, $40, $F, $40,	$17, $40, $26, $40, 3, $38, $B,	$38, $13, $38, $1B, $38, $22, $38, 7
+		.BYTE $30, $F, $30, $17, $30, $1E, $30,	$E, $28, $16, $28, $1E,	$28, $24, $28, $12, $20, $1A, $20, $22,	$20, $15, $18
+		.BYTE $1D, $18,	$15, $10, $19, $10, $14, 8, $14, 0, $1A, 4, $FF, $9C, $30, $13,	0, $81,	$28, 0,	$81, 0,	8, $81,	$F, 8
+		.BYTE $81, $17,	8, $81,	$26, 8,	$81, 3,	$10, $81, $B, $10, $81,	$13, $10, $81, $1B, $10, $81, $22, $10,	$81, 7,	$18
+		.BYTE $81, $F, $18, $81, $17, $18, $81,	$1E, $18, $81, $E, $20,	$81, $16, $20, $81, $1E, $20, $81, $24,	$20, $81, $12
+		.BYTE $28, $81,	$1A, $28, $81, $22, $28, $81, $15, $30,	$81, $1D, $30, $81, $15, $38, $81, $19,	$38, $81, $14, $40, $81
+		.BYTE $14, $48,	$81, $1C, $F4, 0, $9A, $4C, 2, $28, $A,	$28, $12, $28, $1A, $28, $22, $28, $28,	$28, 0,	$20, 8,	$20
+		.BYTE $10, $20,	$18, $20, $20, $20, $28, $20, 4, $18, $C, $18, $14, $18, $1C, $18, $24,	$18, 8,	$10, $F, $10, $17, $10
+		.BYTE $1F, $10,	$B, 8, $13, 8, $19, 8, $10, 0, $17, 0, $10, 7, $FF, $93, $C0, $E, $20, 2, $D, $18, 2, $C, $28, 0, $E
+		.BYTE $28, 0, 2, $20, 0, 9, $20, 0, $11, $20, 0, 0, $18, 0, 3, $18, 0, $B, $18,	0, $13,	$18, 0,	3, $10,	0, $A, $10, 0
+		.BYTE $12, $10,	0, 8, 8, 0, $10, 8, 0, 6, 0, 0,	$B, 0, 0, $13, 0, 0, 8,	6, $FF,	$8F, $D8, 7, $20, $42, 3, $20, $42, 8
+		.BYTE $18, $42,	2, $18,	$42, 8,	$10, $42, 0, $10, $42, 7, 8, $42, 1, 8,	$42, 5,	0, $42,	3, 0, $42, 3, $20, $43,	8, $18
+		.BYTE $43, 4, $18, $43,	8, $10,	$43, 0,	$10, $43
+byte_6000_E124:	.BYTE	 0,   1,   6,	7,  $E,	 $F, $16, $17, $20, $21, $29, $2A ; ...
+		.BYTE	 2,   3,   8,	9, $10,	$11, $18, $19, $22, $23, $2B, $2A
+		.BYTE	 0,   4,   6,  $A, $12,	$13, $1A, $1B, $24, $25, $2B, $2A
+		.BYTE	 0,   1,   6,	7,  $E,	 $F, $1C, $1D, $26, $27, $2C, $2A
+		.BYTE	 2,   5,  $B,  $C, $14,	$15, $1E, $1F, $28, $25, $2B, $2A
+		.BYTE	 2,   1,  $D,	7, $12,	 $F, $1A, $1B, $24, $25, $2B, $2A
+		.BYTE	0,  0,	2,$8C,$31,  0,$28,  8,$28,  0,$20,  8,$20,  0,$18
+		.BYTE	8,$18,	0,$10,	8,$10,	0,  8,	8,  8,	0,  0,	8,  0
+		.BYTE 8, 8, 3, $84, $2F, 0, 8, 8, 8, 0,	0, 8, 0
 byte_6000_E196:	.BYTE $A2, $70,	$70	; ...
 byte_6000_E199:	.BYTE $A0, $DD,	$88	; ...
 byte_6000_E19C:	.BYTE $E1, $E2,	$E2	; ...
@@ -39349,21 +39376,21 @@ loc_6000_FEA8:				; ...
 		RTS
 ; ---------------------------------------------------------------------------
 
-loc_6000_FEB2:				; ...
+fill_sprite_buffer_:			; ...
 		LDX	#0
 
 loc_6000_FEB4:				; ...
 		LDA	#$F8 ; '°'
 
 loc_6000_FEB6:				; ...
-		STA	byte_0_200,X
+		STA	Sprites_Ypos,X
 		INX
 		BNE	loc_6000_FEB6
 		RTS
 ; ---------------------------------------------------------------------------
 
-loc_6000_FEBD:				; ...
-		JSR	loc_6000_FEB2
+clear_sprites:				; ...
+		JSR	fill_sprite_buffer_
 
 loc_6000_FEC0:				; ...
 		STX	PPU_SPR_ADDR	; SPR-RAM Address Register (W)
@@ -39583,7 +39610,7 @@ loc_7000_8078:				; ...
 ; End of function sub_7000_802A
 
 ; ---------------------------------------------------------------------------
-table_divison_7:.BYTE 0, 7, $E,	$15, $1C, $23, $2A, $31, $38, $3F, $46,	$4D ; ...
+table_multiple_7:.BYTE 0, 7, $E, $15, $1C, $23,	$2A, $31, $38, $3F, $46, $4D ; ...
 		.BYTE $54, $5B,	$62, $69, $70, $77, $7E, $85, $8C, $93,	$9A, $A1
 		.BYTE $A8, $AF,	$B6, $BD, $C4, $CB, $D2, $D9, $E0, $E7
 byte_7000_80AC:	.BYTE $20, $20,	$20, $21, $22, $24, $26, $29, $2D, $32,	$39, $43, $53, $6E, $A5	; ...
@@ -39774,7 +39801,7 @@ loc_7000_85EF:				; ...
 		LDX	#$20 ; ' '
 
 loc_7000_85F1:				; ...
-		LDA	table_divison_7,X
+		LDA	table_multiple_7,X
 		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		STA	byte_0_1E0,X
 		LDA	byte_0_C0
@@ -40331,7 +40358,7 @@ loc_7000_8C4B:				; ...
 
 loc_7000_8C4D:				; ...
 		LDA	byte_7000_8C8F,X
-		STA	byte_0_200,Y
+		STA	Sprites_Ypos,Y
 		DEX
 		DEY
 		BPL	loc_7000_8C4D
