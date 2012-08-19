@@ -3426,6 +3426,8 @@ clear_zero_page:			; ...
 loc_0_8787:				; ...
 		STA	$100,X
 		STA	$200,X
+
+loc_0_878D:
 		STA	$300,X
 		STA	$400,X
 		CPX	#$F4
@@ -10552,13 +10554,11 @@ loc_0_B778:				; ...
 		BEQ	loc_0_B775
 		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		TAY
-
-need_fix_ptrs:
-		LDA	$B8C1,Y
+		LDA	byte_0_B8E4 - $23,Y
 		STA	word_0_1F
-		LDA	loc_0_B8CA,Y
+		LDA	byte_0_B8ED - $23,Y
 		STA	word_0_1F+1
-		LDA	$B8D3,Y
+		LDA	byte_0_B8F6 - $23,Y
 		STA	byte_0_21
 		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		LDA	byte_0_E4
@@ -10708,8 +10708,6 @@ loc_0_B8BF:
 		LDA	#0
 		STA	Objects_unk3,Y
 		STA	Objects_Life,Y
-
-loc_0_B8CA:				; ...
 		INC	byte_0_D0
 		LDA	#$C1 ; '┴'
 		STA	Objects_death_timer,Y
@@ -10736,10 +10734,13 @@ loc_0_B8DC:				; ...
 ; End of function sub_0_B8D9
 
 ; ---------------------------------------------------------------------------
-		.BYTE $23
-byte_0_B8E5:	.BYTE $FF, $16,	$FF, $23, $14, $14, $24, $14, $C ; ...
-byte_0_B8EE:	.BYTE $FF, $16,	$40, $C, $A, $C, $16, $A, $D, $10, $10,	$18, $10, $20, $10, $10, $10, $E0, 0, $C0, 0, 0, $C1, $C0, $D0 ; ...
-		.BYTE $E0, 0, 0, $FF, 0, 0, $FF, $FF, 0, 0, 1, 0, 4, 0,	0, 3, 6, 0, 0
+byte_0_B8E4:	.BYTE $23		; ...
+byte_0_B8E5:	.BYTE $FF, $16,	$FF, $23, $14, $14, $24, $14 ; ...
+byte_0_B8ED:	.BYTE $C		; ...
+byte_0_B8EE:	.BYTE $FF, $16,	$40, $C, $A, $C, $16, $A ; ...
+byte_0_B8F6:	.BYTE	$D, $10, $10, $18, $10,	$20, $10, $10, $10, $E0,   0, $C0 ; ...
+		.BYTE	 0,   0, $C1, $C0, $D0,	$E0,   0,   0, $FF,   0,   0, $FF
+		.BYTE  $FF,   0,   0,	1,   0,	  4,   0,   0,	 3,   6,   0,	0
 ; ---------------------------------------------------------------------------
 
 loc_0_B91A:				; ...
@@ -28735,8 +28736,9 @@ sub_3000_D235:				; ...
 ; End of function sub_3000_D235
 
 ; ---------------------------------------------------------------------------
-level_cfg_ptrl:	.BYTE  $34, $34, $EE, $1D, $D5,	 $F, $B4, $D3, $69, $92, $9F, $E2, $51,	$36 ; ...
-level_cfg_ptrh:	.BYTE  $E8, $E8, $E9, $ED, $F2,	$F6, $FA, $D8, $D6, $D3, $DB, $DB, $DE,	$E0 ; ...
+level_cfg_ptrl:	.DL  #level1_cfg,#level1_cfg,#level2_cfg,#level3_cfg,#level4_cfg,#level5_cfg,#level6_cfg,#level7_cfg,#level8_cfg,#level9_cfg,#level10_cfg,#level11_cfg,#level12_cfg,#level13_cfg
+level_cfg_ptrh:	.DH  #level1_cfg,#level1_cfg,#level2_cfg,#level3_cfg,#level4_cfg,#level5_cfg,#level6_cfg,#level7_cfg,#level8_cfg,#level9_cfg,#level10_cfg,#level11_cfg,#level12_cfg,#level13_cfg
+; level_cfg_ptrl
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -28792,8 +28794,9 @@ levels_sub_ptr:	.WORD level4_checkp1	; ...
 		.WORD level11_check4
 		.WORD level11_check5
 		.WORD level11_check6
-lvl_sub_ptl:	.BYTE $3D, $48,	$53, $5E ; ...
-lvl_sub_pth:	.BYTE $D6, $D6,	$D6, $D6 ; ...
+lvl_sub_ptl:	.DL #level_unk_obj1,#level_unk_obj2,#level_unk_obj3,#level_unk_obj4
+lvl_sub_pth:	.DH #level_unk_obj1,#level_unk_obj2,#level_unk_obj3,#level_unk_obj4
+; lvl_sub_ptl
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -30505,7 +30508,7 @@ sub_5000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_5000_BBD6
 ; ---------------------------------------------------------------------------
-		.BYTE  $10, $10, $10, $10, $10,	$10, $10, $10, $10, $10, $10, $10, $10,	$10, $10, $10
+level3_map3:	.BYTE  $10, $10, $10, $10, $10,	$10, $10, $10, $10, $10, $10, $10, $10,	$10, $10, $10
 		.BYTE  $10, $10, $10, $10, $10,	$10, $10, $10, $10, $10, $10, $10, $10,	$10, $10, $10
 		.BYTE  $10, $10, $10, $10, $10,	$10, $10, $10, $10, $10, $10, $10, $10,	$10, $10, $10
 		.BYTE  $11, $11, $11, $11, $11,	$11, $11, $11, $11, $11, $11, $11, $11,	$11, $11, $11
@@ -31253,8 +31256,22 @@ loc_5000_8725:				; ...
 		STA	byte_0_C4
 		RTS
 ; ---------------------------------------------------------------------------
+; map_configs_pointers
+level_map2_ptrL:
+ .DL #intro_map2,#level1_map2,#level2_map2,#level3_map2,#level4_map2,#level12_map2,#level7_map2,#level8_map2,#level6_map2,#level8_map2,#level11_map2,#terratubes_map2,#$812B,#level11_map2
+level_map2_ptrH:
+ .DH #intro_map2,#level1_map2,#level2_map2,#level3_map2,#level4_map2,#level12_map2,#level7_map2,#level8_map2,#level6_map2,#level8_map2,#level11_map2,#terratubes_map2,#$812B,#level11_map2
+level_map1_ptrL:
+ .DL #intro_map1,#level1_map1,#level2_map1,#level3_map1,#level4_map1,#level12_map1,#level7_map1,#level8_map1,#level6_map1,#level8_map1,#level11_map1,#terratubes_map1,#$84EB,#level11_map1
+level_map1_ptrH:
+ .DH #intro_map1,#level1_map1,#level2_map1,#level3_map1,#level4_map1,#level12_map1,#level7_map1,#level8_map1,#level6_map1,#level8_map1,#level11_map1,#terratubes_map1,#$84EB,#level11_map1
+level_map3_ptrL:
+ .DL #intro_map3,#level1_map3,#level2_map3,#level3_map3,#level4_map3,#level12_map3,#level7_map3,#level8_map3,#byte_0_600,#level10_map3,#level11_map3,#terratubes_map3,#level5_map3,#level11_map3
+level_map3_ptrH:
+ .DH #intro_map3,#level1_map3,#level2_map3,#level3_map3,#level4_map3,#level12_map3,#level7_map3,#level8_map3,#byte_0_600,#level10_map3,#level11_map3,#terratubes_map3,#level5_map3,#level11_map3
+
  include parts\leveldata1.asm
-; level_map2_ptrL
+; intro_map3
 ; ---------------------------------------------------------------------------
 
 loc_5000_B257:				; ...
@@ -33158,8 +33175,11 @@ loc_5000_BDDB:				; ...
 		BCC	loc_5000_BDB6
 		RTS
 ; ---------------------------------------------------------------------------
-level_cfgmap_ptrL:.BYTE	$3D, $3D, $BD, $BD, $BD, $7D, $BD, $BD,	$BD, $BD, $BD, $3D ; ...
-level_cfgmap_ptrH:.BYTE	$BE, $BE, $BF, $BF, $BF, $C0, $BF, $BF,	$BF, $BF, $BF, $C1 ; ...
+level_cfgmap_ptrL:
+ .DL #level1_map_cfg,#level1_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level7_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level5_map_cfg
+level_cfgmap_ptrH:
+ .DH #level1_map_cfg,#level1_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level7_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level3_map_cfg,#level5_map_cfg
+; level_cfgmap_ptrs
 
 ; =============== S U B	R O U T	I N E =======================================
 
