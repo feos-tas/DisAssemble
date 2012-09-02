@@ -232,10 +232,10 @@ byte_0_BF:	.BYTE 0	; (uninited)	; ...
 byte_0_C0:	.BYTE 0	; (uninited)	; ...
 byte_0_C1:	.BYTE 0	; (uninited)	; ...
 byte_0_C2:	.BYTE 0	; (uninited)	; ...
-byte_0_C3:	.BYTE 0	; (uninited)	; ...
-byte_0_C4:	.BYTE 0	; (uninited)	; ...
-byte_0_C5:	.BYTE 0	; (uninited)	; ...
-byte_0_C6:	.BYTE 0	; (uninited)	; ...
+level_map1_adrL:.BYTE 0	; (uninited)	; ...
+level_map1_adrH:.BYTE 0	; (uninited)	; ...
+level_map2_adrL:.BYTE 0	; (uninited)	; ...
+level_map2_adrH:.BYTE 0	; (uninited)	; ...
 byte_0_C7:	.BYTE 0	; (uninited)	; ...
 byte_0_C8:	.BYTE 0	; (uninited)	; ...
 byte_0_C9:	.BYTE 0	; (uninited)	; ...
@@ -273,7 +273,7 @@ byte_0_E7:	.BYTE 0	; (uninited)	; ...
 byte_0_E8:	.BYTE 0	; (uninited)	; ...
 byte_0_E9:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
-byte_0_EB:	.BYTE 0	; (uninited)	; ...
+timer_end_music:.BYTE 0	; (uninited)	; ...
 byte_0_EC:	.BYTE 0	; (uninited)	; ...
 byte_0_ED:	.BYTE 0	; (uninited)	; ...
 byte_0_EE:	.BYTE 0	; (uninited)	; ...
@@ -1501,8 +1501,8 @@ Objects_various_flags:.BYTE 0 ;	(uninited) ; ...
 		.BYTE 0	; (uninited)
 players_obj_unk3:.BYTE 0 ; (uninited)	; ...
 		.BYTE 0	; (uninited)
-player1_obj_unk4:.BYTE 0 ; (uninited)	; ...
-player2_obj_unk4:.BYTE 0 ; (uninited)	; ...
+player1_endLvL_timer:.BYTE 0 ; (uninited) ; ...
+player2_endLvL_timer:.BYTE 0 ; (uninited) ; ...
 players_obj_unk5:.BYTE 0 ; (uninited)	; ...
 		.BYTE 0	; (uninited)
 players_obj_unk6:.BYTE 0 ; (uninited)	; ...
@@ -2333,7 +2333,7 @@ loc_0_80EE:				; ...
 ; ---------------------------------------------------------------------------
 		LDX	#$48
 		LDY	#1
-		JSR	sub_0_FFEB
+		JSR	wait_
 		RTS
 ; ---------------------------------------------------------------------------
 		.BYTE $22, $22,	$20, $80, $88, $80, $5F, $A8, $A8
@@ -2667,7 +2667,7 @@ loc_0_830A:				; ...
 		LDA	#3
 		STA	Continues_Player1
 		STA	Continues_Player2
-		JMP	loc_0_E4B4
+		JMP	start_first_jump
 ; End of function sub_0_82C8
 
 ; ---------------------------------------------------------------------------
@@ -2734,7 +2734,7 @@ loc_0_835B:				; ...
 		LDX	#$30
 		LDY	#3
 		JSR	jump_other_bank
-		JSR	sub_0_837E
+		JSR	set_level_music
 
 loc_0_8368:				; ...
 		LDX	#$15
@@ -2754,13 +2754,13 @@ loc_0_8376:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_837E:				; ...
+set_level_music:			; ...
 		LDY	Level_ID	; $10
 
-loc_0_8380:				; ...
+set_music_by_level_id:			; ...
 		LDA	Level_MusicID,Y
 
-loc_0_8383:				; ...
+set_music_track:			; ...
 		STA	byte_0_32
 
 loc_0_8385:				; ...
@@ -2774,11 +2774,13 @@ loc_0_838C:				; ...
 loc_0_838F:
 		LDA	#0
 		JMP	sub_0_FF84
-; End of function sub_0_837E
+; End of function set_level_music
 
 ; ---------------------------------------------------------------------------
 Level_MusicID:	.BYTE 3, 3, 4, 1, $E, $C, $F, 8, 9, $11, $13, $D, $D, $B, $B, $14 ; ...
 ; ---------------------------------------------------------------------------
+
+level_nmi_:
 		JSR	sub_0_8108
 		JSR	sub_0_85B5
 		LDA	#$10
@@ -2806,7 +2808,7 @@ loc_0_83D3:				; ...
 
 loc_0_83D6:				; ...
 		LDA	byte_0_F6
-		BEQ	loc_0_8403
+		BEQ	game_level_cycle
 		INC	byte_0_F8
 		LDA	byte_0_F8
 		AND	#7
@@ -2826,15 +2828,15 @@ loc_0_83F0:				; ...
 byte_0_83F3:	.BYTE $C, $20, $C, $20,	$C, $20, $20, $20, $30,	$20, $30, $20, $30, $20, $20, $20 ; ...
 ; ---------------------------------------------------------------------------
 
-loc_0_8403:				; ...
-		LDA	byte_0_EB
+game_level_cycle:			; ...
+		LDA	timer_end_music
 		CMP	#$7E
 		BCC	loc_0_842B
-		CMP	#$82
+		CMP	#$82		; level	end music flag
 		BCS	loc_0_8429
 		JSR	sub_0_853A
-		LDY	#$F
-		JSR	loc_0_8380
+		LDY	#$F		; level	end music
+		JSR	set_music_by_level_id
 
 loc_0_8415:				; ...
 		LDA	byte_0_40
@@ -2847,10 +2849,10 @@ loc_0_8420:				; ...
 		LDA	byte_0_301
 		BNE	loc_0_8415
 		LDA	#$7E
-		STA	byte_0_EB
+		STA	timer_end_music
 
 loc_0_8429:				; ...
-		DEC	byte_0_EB
+		DEC	timer_end_music
 
 loc_0_842B:				; ...
 		JSR	sub_0_87A3
@@ -2879,7 +2881,7 @@ loc_0_8454:				; ...
 		LDX	#$45
 		LDY	#3
 		JSR	jump_other_bank
-		JSR	sub_0_87C2
+		JSR	objects_functions
 		LDA	Level_ID	; $10
 		CMP	#8
 		BNE	loc_0_8467
@@ -2887,11 +2889,11 @@ loc_0_8454:				; ...
 
 loc_0_8467:				; ...
 		JSR	sub_0_853A
-		LDY	#2
-		LDX	#3
+		LDY	#2		; player gfx func
+		LDX	#3		; at bank 3
 		JSR	jump_other_bank
-		LDX	#3
-		LDY	#6
+		LDX	#3		; sprites func
+		LDY	#6		; at bank 6
 		JSR	jump_other_bank
 		LDA	byte_0_95
 		CMP	#$80
@@ -2900,7 +2902,7 @@ loc_0_8467:				; ...
 		BPL	loc_0_84A5
 		LDA	byte_0_D0
 		BEQ	loc_0_8490
-		LDX	#$48
+		LDX	#$48		; ?
 		LDY	#3
 		JSR	jump_other_bank
 		JMP	loc_0_84A5
@@ -3017,7 +3019,7 @@ loc_0_854B:				; ...
 		BEQ	loc_0_855D
 		LDY	#1
 		LDX	#$22
-		JSR	sub_0_FFEB
+		JSR	wait_
 
 loc_0_855D:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
@@ -3035,7 +3037,7 @@ loc_0_8566:				; ...
 		BNE	loc_0_856F
 
 loc_0_856A:				; ...
-		JSR	sub_0_837E
+		JSR	set_level_music
 		LDX	#$3C
 
 loc_0_856F:				; ...
@@ -3049,7 +3051,7 @@ loc_0_857A:				; ...
 		LDX	#9
 		LDY	#7
 		JSR	jump_other_bank
-		JSR	sub_0_837E
+		JSR	set_level_music
 		LDX	#$3F
 		BNE	loc_0_856F
 
@@ -3151,7 +3153,7 @@ loc_0_85E4:				; ...
 
 loc_0_8612:				; ...
 		LDY	#2
-		JSR	sub_0_FFEB
+		JSR	wait_
 		BEQ	loc_0_8650
 
 loc_0_8619:				; ...
@@ -3186,7 +3188,7 @@ loc_0_863E:				; ...
 loc_0_8643:				; ...
 		LDY	#1
 		LDX	#$54
-		JSR	sub_0_FFEB
+		JSR	wait_
 		LDA	byte_0_84
 		AND	#4
 		BNE	loc_0_865A
@@ -3219,7 +3221,7 @@ loc_0_866B:				; ...
 loc_0_8674:				; ...
 		STA	PPU_SCROLL_REG	; VRAM Address Register	#1 (W2)
 		LDY	#1
-		JSR	sub_0_FFEB
+		JSR	wait_
 		STX	byte_0_FFB3
 		LDA	tmp_var_09
 		BPL	loc_0_86AF
@@ -3236,7 +3238,7 @@ loc_0_8686:				; ...
 
 loc_0_8694:				; ...
 		LDY	#3
-		JSR	sub_0_FFEB
+		JSR	wait_
 
 loc_0_8699:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
@@ -3258,7 +3260,7 @@ loc_0_86AA:				; ...
 loc_0_86AF:				; ...
 		LDY	#1
 		LDX	#$30
-		JSR	sub_0_FFEB
+		JSR	wait_
 
 loc_0_86B6:
 		JMP	loc_0_8686
@@ -3281,7 +3283,7 @@ loc_0_86C7:				; ...
 ; ---------------------------------------------------------------------------
 		LDX	#$28
 		LDY	#3
-		JSR	sub_0_FFEB
+		JSR	wait_
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	LevelPos_CamPosX_L
 		STA	PPU_SCROLL_REG	; VRAM Address Register	#1 (W2)
@@ -3460,16 +3462,16 @@ loc_0_87AA:				; ...
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		JSR	sub_0_91F2
 		INC	Level_tmp
-		JSR	sub_0_E62A
+		JSR	some_with_sound
 		LDA	#$12
-		JSR	loc_0_8383
+		JSR	set_music_track
 		JSR	loc_0_838C
 		JMP	loc_0_DA24
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_87C2:				; ...
+objects_functions:			; ...
 		LDX	#0
 
 loc_0_87C4:				; ...
@@ -3478,7 +3480,7 @@ loc_0_87C4:				; ...
 		BNE	loc_0_87D3
 
 loc_0_87CB:				; ...
-		LDA	#$80
+		LDA	#$80		; flag 80 if no	obj
 		STA	Objects_Flags,X
 		JMP	loc_0_88E3
 ; ---------------------------------------------------------------------------
@@ -3644,7 +3646,7 @@ loc_0_88E3:				; ...
 
 no_obj_code:				; ...
 		RTS
-; End of function sub_0_87C2
+; End of function objects_functions
 
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -4427,7 +4429,7 @@ byte_0_8DAC:	.BYTE $20, $FD,	0, $C, 0, 0, $80, $20, $40 ; ...
 
 loc_0_8DB5:				; ...
 		LDA	#1
-		STA	byte_0_EB
+		STA	timer_end_music
 		RTS
 ; ---------------------------------------------------------------------------
 
@@ -4460,13 +4462,13 @@ loc_0_8DCF:				; ...
 		CLC
 		ADC	byte_0_3B7,X
 		TAY
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BEQ	loc_0_8DF6
 		CPY	#$FD
 		LDY	#0
 		BCC	loc_0_8E19
 		INC	Objects_Zpos_L,X
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BPL	loc_0_8DB5
 		RTS
 ; ---------------------------------------------------------------------------
@@ -4663,11 +4665,11 @@ loc_0_8F1B:				; ...
 		AND	#$80
 		CPX	#2
 		BCS	loc_0_8F29
-		ORA	player1_obj_unk4,X
+		ORA	player1_endLvL_timer,X
 		ORA	byte_0_E4
 
 loc_0_8F29:				; ...
-		ORA	byte_0_EB
+		ORA	timer_end_music
 		BNE	loc_0_8F44
 		LDA	#$D0		; write	death timer
 		STA	Objects_death_timer,X
@@ -4983,7 +4985,7 @@ loc_0_91D1:				; ...
 
 loc_0_91DF:				; ...
 		LDY	#$E
-		JSR	loc_0_8380
+		JSR	set_music_by_level_id
 		LDX	#$5D
 
 loc_0_91E6:				; ...
@@ -5013,7 +5015,7 @@ sub_0_91F2:				; ...
 object_level1_boss_dead:		; ...
 		LDA	Obj_anim_frame,X
 		BNE	loc_0_9216
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BMI	locret_0_923D
 		LDA	Objects_Life,X
 		AND	#$F0
@@ -6816,9 +6818,9 @@ loc_0_9F2A:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_9F2D:				; ...
-		DEC	player1_obj_unk4,X
+		DEC	player1_endLvL_timer,X
 		BEQ	loc_0_9F2A
-		LDA	player1_obj_unk4,X
+		LDA	player1_endLvL_timer,X
 		CMP	#$7F ; ''
 		BNE	loc_0_9F43
 		STA	Objects_unk1,X
@@ -6908,7 +6910,7 @@ loc_0_9FA2:				; ...
 		TAY
 		LDA	Objects_TypeID,Y
 		BEQ	loc_0_9FBE
-		LDA	player1_obj_unk4,Y
+		LDA	player1_endLvL_timer,Y
 		BNE	loc_0_9FBE
 		JMP	loc_0_B16D
 ; ---------------------------------------------------------------------------
@@ -6917,7 +6919,7 @@ loc_0_9FBE:				; ...
 		LDA	byte_0_F0
 		CMP	#3
 		BEQ	loc_0_9FCF
-		DEC	player1_obj_unk4,X
+		DEC	player1_endLvL_timer,X
 		BNE	locret_0_9FCE
 		INC	byte_0_F0
 		JMP	loc_0_857A
@@ -6928,15 +6930,15 @@ locret_0_9FCE:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_9FCF:				; ...
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	locret_0_9FCE
 		LDA	#$82 ; 'В'
-		STA	byte_0_EB
+		STA	timer_end_music
 		RTS
 ; ---------------------------------------------------------------------------
 
 object_player:				; ...
-		LDA	player1_obj_unk4,X
+		LDA	player1_endLvL_timer,X
 		BNE	loc_0_9FA2
 		LDA	byte_0_EC,X
 		BEQ	loc_0_9FE3
@@ -7030,7 +7032,7 @@ loc_0_A067:				; ...
 
 loc_0_A078:				; ...
 		LDA	Objects_death_timer,X
-		ORA	byte_0_EB
+		ORA	timer_end_music
 		BNE	loc_0_A092
 		JSR	loc_0_8F1B
 		LDA	#$20 ; ' '
@@ -7079,7 +7081,7 @@ loc_0_A0BF:				; ...
 		BNE	loc_0_A119
 		LDA	Objects_Flags,X
 		BPL	loc_0_A119
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	loc_0_A119
 		LDA	Objects_Zpos_H,X
 		BMI	loc_0_A0E0
@@ -7517,7 +7519,7 @@ loc_0_A3CF:				; ...
 		LDA	#$7B ; '{'
 		JSR	sub_0_FE66
 		BEQ	loc_0_A435
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	loc_0_A435
 		JMP	sub_0_876B
 ; ---------------------------------------------------------------------------
@@ -8355,7 +8357,7 @@ loc_0_A912:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A915:				; ...
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	loc_0_A922
 		LDA	Level_ID	; $10
 		CMP	#5
@@ -13482,7 +13484,7 @@ loc_0_CB1B:				; ...
 		DEC	Objects_death_timer,X
 		BMI	loc_0_CB6E
 		LDA	#$80 ; 'А'
-		STA	byte_0_EB
+		STA	timer_end_music
 		BNE	loc_0_CAD9
 
 loc_0_CB26:				; ...
@@ -13894,7 +13896,7 @@ object_general_slaughter:		; ...
 		LDA	Obj_anim_frame,X
 		BNE	loc_0_CDC2
 		LDY	#$E
-		JSR	loc_0_8380
+		JSR	set_music_by_level_id
 		LDX	Object_RamSlotID_tmp
 
 loc_0_CDC2:				; ...
@@ -14046,7 +14048,7 @@ loc_0_CEA2:				; ...
 		LDX	#3
 		JSR	jump_other_bank
 		LDY	#$E
-		JSR	loc_0_8380
+		JSR	set_music_by_level_id
 		JMP	loc_0_8710
 ; ---------------------------------------------------------------------------
 
@@ -15144,7 +15146,7 @@ loc_0_D5C9:				; ...
 		STA	byte_0_FE
 
 loc_0_D5D9:				; ...
-		JSR	sub_0_E62A
+		JSR	some_with_sound
 		LDA	#$58 ; 'X'
 		JSR	loc_0_B7F6
 		LDY	Level_tmp
@@ -15173,7 +15175,7 @@ level_unk12:	.BYTE $FC, $FC,	$E4, $E8, $F0, $DC, $F0, 0, $FC, $E4, $DC, $F4,	$F4
 		JSR	jump_other_bank
 		LDX	#$A0 ; 'а'
 		LDY	#$13
-		JSR	sub_0_FFEB
+		JSR	wait_
 		STX	tmp_var_09
 		STX	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDY	Level_tmp
@@ -15201,8 +15203,8 @@ loc_0_D650:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	Level_ID	; $10
 		BNE	loc_0_D65F
-		INC	Level_ID	; $10
-		JSR	sub_0_E62A
+		INC	Level_ID	; level	00->01
+		JSR	some_with_sound
 		JMP	loc_0_E6C3
 ; ---------------------------------------------------------------------------
 
@@ -15347,7 +15349,7 @@ loc_0_D706:				; ...
 		LDA	#$50 ; 'P'
 		STA	Objects_unk3,X
 		LDY	#$E
-		JMP	loc_0_8380
+		JMP	set_music_by_level_id
 ; ---------------------------------------------------------------------------
 
 loc_0_D71D:				; ...
@@ -15794,7 +15796,7 @@ loc_0_D9D1:				; ...
 		JSR	jump_other_bank
 		LDX	#$5C ; '\'
 		LDY	#$D
-		JSR	sub_0_FFEB
+		JSR	wait_
 		LDA	#$18
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDX	#$4E ; 'N'
@@ -17455,7 +17457,7 @@ sub_0_E471:				; ...
 		LDA	Level_ID	; $10
 		CMP	#1
 		BNE	sub_0_E4AD
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	sub_0_E4AD
 		JSR	sub_0_E4AD
 		LDA	Objects_Flags,X
@@ -17497,9 +17499,9 @@ sub_0_E4AD:				; ...
 
 ; ---------------------------------------------------------------------------
 
-loc_0_E4B4:				; ...
-		LDX	#$C
-		LDY	#6
+start_first_jump:			; ...
+		LDX	#$C		; func ID
+		LDY	#6		; bank ID = 6?
 		JSR	jump_other_bank
 		LDX	#$C6 ; '╞'
 		LDY	#$E4 ; 'ф'
@@ -17562,7 +17564,7 @@ loc_0_E4FB:				; ...
 		CMP	#$48 ; 'H'
 		BNE	loc_0_E532
 		LDA	#$10
-		JSR	loc_0_8383
+		JSR	set_music_track
 		JSR	loc_0_838C
 		LDA	#$FF
 		STA	Level_ID	; $10
@@ -17626,7 +17628,7 @@ sub_0_E555:				; ...
 
 loc_0_E571:				; ...
 		LDY	#4
-		JSR	sub_0_FFEB
+		JSR	wait_
 
 loc_0_E576:				; ...
 		LDA	byte_0_40
@@ -17689,7 +17691,7 @@ loc_0_E5DB:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_E5DE:				; ...
-		JSR	sub_0_E62A
+		JSR	some_with_sound
 		JSR	sub_0_E5E7
 		JMP	loc_0_831F
 
@@ -17742,7 +17744,7 @@ byte_0_E628:	.BYTE $C, $F		; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_E62A:				; ...
+some_with_sound:			; ...
 		LDY	#0
 		STY	SND_MASTERCTRL_REG ; pAPU Sound/Vertical Clock Signal Register (R)
 
@@ -17758,7 +17760,7 @@ loc_0_E62F:				; ...
 		DEY
 		STY	SND_MASTERCTRL_REG ; pAPU Sound/Vertical Clock Signal Register (R)
 		RTS
-; End of function sub_0_E62A
+; End of function some_with_sound
 
 ; ---------------------------------------------------------------------------
 
@@ -17902,7 +17904,7 @@ loc_0_E71F:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		STA	tmp_var_09
-		JSR	sub_0_E62A
+		JSR	some_with_sound
 		LDX	#0
 
 loc_0_E735:				; ...
@@ -17921,7 +17923,7 @@ loc_0_E744:				; ...
 		DEX
 		TXS
 		LDA	#$A
-		JSR	loc_0_8383
+		JSR	set_music_track
 		LDX	#$30 ; '0'
 		LDY	#6
 		JSR	jump_other_bank
@@ -18609,7 +18611,7 @@ loc_0_EB6E:				; ...
 		JSR	sub_0_9148
 		LDA	#$24 ; '$'
 		JSR	loc_0_B7F6
-		JSR	sub_0_837E
+		JSR	set_level_music
 		LDX	Object_RamSlotID_tmp
 		LDA	#5
 		STA	Objects_Z_speed
@@ -18666,7 +18668,7 @@ loc_0_EBDE:				; ...
 
 loc_0_EC0C:				; ...
 		LDA	#$80 ; 'А'
-		STA	byte_0_EB
+		STA	timer_end_music
 
 loc_0_EC10:				; ...
 		JMP	reset_some_vars
@@ -19139,7 +19141,7 @@ object_snake_pit_unk:			; ...
 sub_0_EEE3:				; ...
 		JSR	sub_0_C9ED
 		BEQ	locret_0_EF31
-		LDA	player1_obj_unk4,Y
+		LDA	player1_endLvL_timer,Y
 		ORA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
 		BNE	locret_0_EF31
 		LDA	#$10
@@ -19161,12 +19163,12 @@ sub_0_EEE3:				; ...
 		STA	Objects_Z_floor
 		STA	player2_Z_floor
 		LDA	#$80 ; 'А'
-		STA	player1_obj_unk4
-		STA	player2_obj_unk4
+		STA	player1_endLvL_timer
+		STA	player2_endLvL_timer
 
 loc_0_EF24:				; ...
 		LDA	#$80 ; 'А'
-		STA	player1_obj_unk4,Y
+		STA	player1_endLvL_timer,Y
 		LDA	#6
 		JSR	sub_0_BC57
 		JMP	loc_0_B7F4
@@ -19177,7 +19179,7 @@ locret_0_EF31:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_EF32:				; ...
-		JSR	sub_0_E62A
+		JSR	some_with_sound
 		LDA	#$A4 ; 'д'
 		JSR	loc_0_B7F6
 		LDA	#$40 ; '@'
@@ -21472,7 +21474,7 @@ object_level4_checkpoint:		; ...
 
 loc_0_FDF0:				; ...
 		LDA	#$F8 ; '°'
-		STA	byte_0_EB
+		STA	timer_end_music
 
 loc_0_FDF4:				; ...
 		LDX	#$24 ; '$'
@@ -21833,18 +21835,18 @@ jump_other_bank:			; ...
 		LDA	#0
 
 loc_0_FFCD:				; ...
-		ORA	#0
+		ORA	#0		; save bank ID?
 		STA	byte_0_2D
 		LDA	JumpTable_ptr_main ; $13
 		PHA
 		STX	JumpTable_ptr_main ; $13
-		LDA	byte_0_FFB3,Y
+		LDA	byte_0_FFB3,Y	; change bank
 		STA	byte_0_FFB3,Y
 		JSR	sub_0_8000
-		LDY	byte_0_2D
-		PLA
+		LDY	byte_0_2D	; load bank ID
+		PLA			; load old jumptable ptr
 		STA	JumpTable_ptr_main ; $13
-		LDA	byte_0_FFB3,Y
+		LDA	byte_0_FFB3,Y	; change bank
 		STA	byte_0_FFB3,Y
 		RTS
 ; End of function jump_other_bank
@@ -21853,13 +21855,13 @@ loc_0_FFCD:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_FFEB:				; ...
+wait_:					; ...
 		DEX
-		BNE	sub_0_FFEB
+		BNE	wait_
 		DEY
-		BNE	sub_0_FFEB
+		BNE	wait_
 		RTS
-; End of function sub_0_FFEB
+; End of function wait_
 
 ; ---------------------------------------------------------------------------
 
@@ -21887,11 +21889,11 @@ sub_1000_8000:				; ...
 ; End of function sub_1000_8000
 
 ; ---------------------------------------------------------------------------
-		JMP	loc_1000_80A2
+		JMP	unpack_objects_gfx
 ; ---------------------------------------------------------------------------
 		JMP	loc_1000_8719
 ; ---------------------------------------------------------------------------
-		JMP	loc_1000_80A2
+		JMP	unpack_objects_gfx
 ; ---------------------------------------------------------------------------
 		JMP	word_1000_87C4
 ; ---------------------------------------------------------------------------
@@ -21899,7 +21901,8 @@ sub_1000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_1000_801B
 ; ---------------------------------------------------------------------------
-		JMP	loc_1000_8568
+		JMP	planA_spr_blink	; мигание точки	положения жаб на
+					; карте	плана перед началом уровня
 ; ---------------------------------------------------------------------------
 		JMP	loc_1000_85D2
 ; ---------------------------------------------------------------------------
@@ -21977,20 +21980,20 @@ loc_1000_8026:				; ...
 		RTS
 ; ---------------------------------------------------------------------------
 
-loc_1000_80A2:				; ...
+unpack_objects_gfx:			; ...
 		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		LDA	#1
 		STA	tmp_var_00
 		LDA	PPU_STATUS	; PPU Status Register (R)
-		LDA	off_1000_8220,X
+		LDA	obj_gfx_ptrs,X
 		STA	tmp_var_01
-		LDA	off_1000_8220+1,X
+		LDA	obj_gfx_ptrs+1,X
 		STA	tmp_var_02
 		LDY	#0
-		LDA	(tmp_var_01),Y
+		LDA	(tmp_var_01),Y	; 83ac
 		STA	tmp_var_03
 		INY
-		LDA	(tmp_var_01),Y
+		LDA	(tmp_var_01),Y	; 83ad
 		STA	tmp_var_04
 		TYA
 		SEC
@@ -22002,18 +22005,18 @@ loc_1000_80A2:				; ...
 
 loc_1000_80CC:				; ...
 		LDY	#0
-		LDA	(tmp_var_01),Y
+		LDA	(tmp_var_01),Y	; 83ae	end flag
 		BEQ	loc_1000_811C
 		STA	tmp_var_05
 		INY
-		LDA	(tmp_var_01),Y
+		LDA	(tmp_var_01),Y	; 83af
 		STA	tmp_var_08
 		INY
 		LDA	(tmp_var_01),Y
 		STA	tmp_var_06
 		INY
 		LDA	(tmp_var_01),Y
-		STA	tmp_var_07
+		STA	tmp_var_07	; 873c
 		TYA
 		SEC
 		ADC	tmp_var_01
@@ -22022,21 +22025,21 @@ loc_1000_80CC:				; ...
 		ADC	#0
 		STA	tmp_var_02
 		LDA	tmp_var_08
-		CMP	#4
+		CMP	#4		; ?
 		BEQ	loc_1000_8129
 
-loc_1000_80F5:				; ...
-		LDA	tmp_var_05
+set_vram_adr:				; ...
+		LDA	tmp_var_05	; counter
 		BEQ	loc_1000_80CC
-		LDA	tmp_var_04
+		LDA	tmp_var_04	; vram adr
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
-		LDA	tmp_var_03
+		LDA	tmp_var_03	; vram adr
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDA	tmp_var_08
-		ASL	A
+		ASL	A		; 3*2 ptr flag
 		BCS	sub_1000_810E
 		JSR	sub_1000_810E
-		JMP	loc_1000_80F5
+		JMP	set_vram_adr
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -22101,7 +22104,7 @@ loc_1000_8129:				; ...
 		SBC	tmp_var_1A
 		STA	tmp_var_1A
 
-loc_1000_816B:				; ...
+write_gfx:				; ...
 		LDA	(tmp_var_06),Y
 		INY
 		BNE	loc_1000_8172
@@ -22114,9 +22117,9 @@ loc_1000_8172:				; ...
 		BEQ	loc_1000_8188
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		INC	tmp_var_19
-		BNE	loc_1000_816B
+		BNE	write_gfx
 		INC	tmp_var_1A
-		BNE	loc_1000_816B
+		BNE	write_gfx
 
 loc_1000_8185:				; ...
 		JMP	loc_1000_80CC
@@ -22146,12 +22149,12 @@ loc_1000_8197:				; ...
 loc_1000_81A2:				; ...
 		DEC	tmp_var_05
 		BNE	loc_1000_8197
-		BEQ	loc_1000_816B
+		BEQ	write_gfx
 
 loc_1000_81A8:				; ...
 		LDY	#0
 		LDX	#$10
-		JSR	sub_1000_8201
+		JSR	write_to_ppu
 		LDA	#$10
 		JMP	loc_1000_81E6
 ; ---------------------------------------------------------------------------
@@ -22159,9 +22162,9 @@ loc_1000_81A8:				; ...
 loc_1000_81B4:				; ...
 		LDY	#0
 		LDX	#8
-		JSR	sub_1000_8201
+		JSR	write_to_ppu
 		LDX	#8
-		JSR	loc_1000_8217
+		JSR	write_0_to_ppu_
 		LDA	#8
 		JMP	loc_1000_81E6
 ; ---------------------------------------------------------------------------
@@ -22169,9 +22172,9 @@ loc_1000_81B4:				; ...
 loc_1000_81C5:				; ...
 		LDY	#0
 		LDX	#8
-		JSR	loc_1000_8217
+		JSR	write_0_to_ppu_
 		LDX	#8
-		JSR	sub_1000_8201
+		JSR	write_to_ppu
 		LDA	#8
 		JMP	loc_1000_81E6
 ; ---------------------------------------------------------------------------
@@ -22179,40 +22182,40 @@ loc_1000_81C5:				; ...
 loc_1000_81D6:				; ...
 		LDY	#0
 		LDX	#8
-		JSR	sub_1000_8201
+		JSR	write_to_ppu
 		LDY	#0
 		LDX	#8
-		JSR	sub_1000_8201
+		JSR	write_to_ppu
 		LDA	#8
 
 loc_1000_81E6:				; ...
-		CLC
+		CLC			; 873c
 		ADC	tmp_var_06
 		STA	tmp_var_06
 		LDA	tmp_var_07
 		ADC	#0
-		STA	tmp_var_07
-		LDA	tmp_var_03
+		STA	tmp_var_07	; 8744
+		LDA	tmp_var_03	; 1ef0
 		CLC
 		ADC	#$10
 		STA	tmp_var_03
 		LDA	tmp_var_04
 		ADC	#0
-		STA	tmp_var_04
+		STA	tmp_var_04	; 1f00
 		DEC	tmp_var_05
 		RTS
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_1000_8201:				; ...
-		LDA	(tmp_var_06),Y
+write_to_ppu:				; ...
+		LDA	(tmp_var_06),Y	; 873c
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		INY
 		DEX
-		BNE	sub_1000_8201
+		BNE	write_to_ppu
 		RTS
-; End of function sub_1000_8201
+; End of function write_to_ppu
 
 ; ---------------------------------------------------------------------------
 
@@ -22226,8 +22229,8 @@ loc_1000_820B:				; ...
 		RTS
 ; ---------------------------------------------------------------------------
 
-loc_1000_8217:				; ...
-		LDA	#0
+write_0_to_ppu_:			; ...
+		LDA	#0		; 873c
 
 loc_1000_8219:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
@@ -22235,40 +22238,40 @@ loc_1000_8219:				; ...
 		BNE	loc_1000_8219
 		RTS
 ; ---------------------------------------------------------------------------
-off_1000_8220:	.WORD unk_1000_8390	; ...
-		.WORD unk_1000_8294
+obj_gfx_ptrs:	.WORD unk_1000_8390	; ...
+		.WORD level_1_obj_gfx_
 		.WORD unk_1000_8271
-		.WORD unk_1000_83AC
+		.WORD base_obj_gfx
 		.WORD unk_1000_8390
 		.WORD unk_1000_8278
-		.WORD unk_1000_8294
-		.WORD unk_1000_8294
+		.WORD level_1_obj_gfx_
+		.WORD level_1_obj_gfx_
 		.WORD unk_1000_8390
 		.WORD unk_1000_8390
 		.WORD unk_1000_8390
 		.WORD unk_1000_8390
-		.WORD unk_1000_83BF
-		.WORD unk_1000_82B7
-		.WORD unk_1000_82CA
+		.WORD level_end_gfx_
+		.WORD level2_obj_gfx
+		.WORD turbo_tunnel_obj_gfx
 		.WORD unk_1000_8397
 		.WORD unk_1000_83A5
 		.WORD unk_1000_82D9
-		.WORD unk_1000_8302
+		.WORD level_plan_gfx
 		.WORD unk_1000_8325
 		.WORD unk_1000_83A5
 		.WORD unk_1000_8325
 		.WORD unk_1000_8390
 		.WORD unk_1000_8340
-		.WORD unk_1000_827F
+		.WORD level_end_gfx
 		.WORD unk_1000_8286
 		.WORD unk_1000_828D
-		.WORD unk_1000_82F0
-		.WORD unk_1000_82FB
-		.WORD unk_1000_83BF
+		.WORD level_1_boss_gfx
+		.WORD level_1_boss_gfx_
+		.WORD level_end_gfx_
 		.WORD unk_1000_839E
 		.WORD unk_1000_834F
 		.WORD unk_1000_8362
-		.WORD unk_1000_8389
+		.WORD base_obj_gfx2
 		.WORD unk_1000_8266
 unk_1000_8266:	.BYTE	0		; ...
 		.BYTE	0
@@ -22291,7 +22294,7 @@ unk_1000_8278:	.BYTE	0		; ...
 		.BYTE	3
 		.WORD byte_1000_83DE
 		.BYTE	0
-unk_1000_827F:	.BYTE $50 ; P		; ...
+level_end_gfx:	.BYTE $50		; ...
 		.BYTE $1C
 		.BYTE $30 ; 0
 		.BYTE	3
@@ -22309,7 +22312,7 @@ unk_1000_828D:	.BYTE $40 ; @		; ...
 		.BYTE	1
 		.WORD byte_1000_846E
 		.BYTE	0
-unk_1000_8294:	.BYTE	0		; ...
+level_1_obj_gfx_:.BYTE	 0		; ...
 		.BYTE	0
 		.BYTE $21 ; !
 		.BYTE	0
@@ -22336,22 +22339,22 @@ unk_1000_8294:	.BYTE	0		; ...
 		.BYTE	0
 		.WORD byte_1000_85B2
 		.BYTE	0
-unk_1000_82B7:	.BYTE	0		; ...
-		.BYTE	0
-		.BYTE $21 ; !
-		.BYTE	0
+level2_obj_gfx:	.BYTE 0			; ...
+		.BYTE 0
+		.BYTE $21
+		.BYTE 0
 		.WORD byte_1000_B0AD
-		.BYTE	9
-		.BYTE	0
+		.BYTE 9
+		.BYTE 0
 		.WORD byte_1000_B0BD
-		.BYTE $B4 ; ┤
-		.BYTE	4
+		.BYTE $B4
+		.BYTE 4
 		.WORD word_1000_EBA7
-		.BYTE  $F
-		.BYTE	4
+		.BYTE $F
+		.BYTE 4
 		.WORD byte_1000_BBDF
 		.BYTE	0
-unk_1000_82CA:	.BYTE	0		; ...
+turbo_tunnel_obj_gfx:.BYTE 0		; ...
 		.BYTE	0
 		.BYTE $21 ; !
 		.BYTE	0
@@ -22381,7 +22384,7 @@ unk_1000_82D9:	.BYTE	0		; ...
 		.BYTE	4
 		.WORD byte_1000_FCE5
 		.BYTE	0
-unk_1000_82F0:	.BYTE $70 ; p		; ...
+level_1_boss_gfx:.BYTE $70		; ...
 		.BYTE	5
 		.BYTE $11
 		.BYTE	4
@@ -22390,13 +22393,13 @@ unk_1000_82F0:	.BYTE $70 ; p		; ...
 		.BYTE	0
 		.WORD byte_1000_FEB5
 		.BYTE	0
-unk_1000_82FB:	.BYTE $60 ; `		; ...
+level_1_boss_gfx_:.BYTE	$60		; ...
 		.BYTE  $B
 		.BYTE	8
 		.BYTE	4
 		.WORD byte_1000_FCE5
 		.BYTE	0
-unk_1000_8302:	.BYTE	0		; ...
+level_plan_gfx:	.BYTE 0			; ...
 		.BYTE	0
 		.BYTE $21 ; !
 		.BYTE	0
@@ -22501,7 +22504,7 @@ unk_1000_8362:	.BYTE	0		; ...
 		.BYTE	4
 		.WORD byte_1000_BBDF
 		.BYTE	0
-unk_1000_8389:	.BYTE $A0 ; а		; ...
+base_obj_gfx2:	.BYTE $A0		; ...
 		.BYTE  $E
 		.BYTE $16
 		.BYTE	0
@@ -22531,10 +22534,10 @@ unk_1000_83A5:	.BYTE	0		; ...
 		.BYTE	4
 		.WORD word_1000_9E35
 		.BYTE	0
-unk_1000_83AC:	.BYTE $F0 ; Ё		; ...
-		.BYTE $1E
-		.BYTE	4
-		.BYTE	3
+base_obj_gfx:	.BYTE $F0		; ...
+		.BYTE $1E		; f01e - vram adress
+		.BYTE	4		; times
+		.BYTE	3		; type
 		.WORD byte_1000_873C
 		.BYTE	2
 		.BYTE	2
@@ -22546,7 +22549,7 @@ unk_1000_83AC:	.BYTE $F0 ; Ё		; ...
 		.BYTE	1
 		.WORD byte_1000_87BC
 		.BYTE	0
-unk_1000_83BF:	.BYTE	0		; ...
+level_end_gfx_:	.BYTE 0			; ...
 		.BYTE	0
 		.BYTE $30 ; 0
 		.BYTE	0
@@ -22575,8 +22578,9 @@ byte_1000_855A:	.BYTE $F		; ...
 byte_1000_855B:	.BYTE $E0, $23,	$62, $23, $42, $23, $22, $23, 2, $22, $E2, $22,	$C2 ; ...
 ; ---------------------------------------------------------------------------
 
-loc_1000_8568:				; ...
-		LDA	Level_ID	; $10
+planA_spr_blink:			; ...
+		LDA	Level_ID	; мигание точки	положения жаб на
+					; карте	плана перед началом уровня
 		ASL	A
 		TAX
 		LDA	byte_1000_853E,X
@@ -22987,7 +22991,7 @@ sub_2000_8000:				; ...
 ; End of function sub_2000_8000
 
 ; ---------------------------------------------------------------------------
-		JMP	loc_2000_FDD6
+		JMP	players_gfx
 ; ---------------------------------------------------------------------------
 		JMP	loc_2000_CA0E
 ; ---------------------------------------------------------------------------
@@ -22997,7 +23001,7 @@ sub_2000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_2000_ECBE
 ; ---------------------------------------------------------------------------
-		JMP	loc_2000_F23F
+		JMP	level_end_test
 ; ---------------------------------------------------------------------------
 		JMP	loc_2000_F7C9
 ; ---------------------------------------------------------------------------
@@ -24283,7 +24287,7 @@ byte_2000_F22F:	.BYTE  $92, $97, $92, $96, $93,	$95, $93, $94 ;	...
 byte_2000_F237:	.BYTE	 0,   0, $40,	0,   0,	  0, $40,   0 ;	...
 ; ---------------------------------------------------------------------------
 
-loc_2000_F23F:				; ...
+level_end_test:				; ...
 		LDA	byte_0_D2
 		BEQ	loc_2000_F250
 		DEC	byte_0_D2
@@ -24440,7 +24444,7 @@ loc_2000_F30D:				; ...
 
 loc_2000_F31D:				; ...
 		LDX	#1
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	loc_2000_F345
 		LDA	#8
 		CLC
@@ -24670,7 +24674,7 @@ loc_2000_F44E:				; ...
 loc_2000_F471:				; ...
 		PHA
 		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BEQ	loc_2000_F48F
 		PLA
 		LDX	#1
@@ -24833,7 +24837,7 @@ loc_2000_F55D:				; ...
 loc_2000_F562:				; ...
 		LDA	byte_0_D1
 		BEQ	loc_2000_F56C
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	loc_2000_F5B4
 		BEQ	loc_2000_F5D3
 
@@ -24880,20 +24884,20 @@ loc_2000_F59F:				; ...
 		BEQ	loc_2000_F5D3
 
 loc_2000_F5AE:				; ...
-		LDA	byte_0_EB
+		LDA	timer_end_music
 		BNE	loc_2000_F5B4
 		LDA	#$C0 ; '└'
 
 loc_2000_F5B4:				; ...
 		SEC
 		SBC	#1
-		STA	byte_0_EB
-		BNE	loc_2000_F5D3
+		STA	timer_end_music
+		BNE	loc_2000_F5D3	; 1-1=0	; end lvl
 		LDX	#$2A ; '*'
 		LDY	#0
 		STY	byte_0_D4
 		STY	byte_0_D5
-		JMP	sub_2000_FFCB
+		JMP	sub_2000_FFCB	; BANK0:87AA
 ; ---------------------------------------------------------------------------
 level_flags_xz2:.BYTE 0, $A, 0,	$FC, 6,	2, $FD,	0, 1, 0, 6, 5, $59 ; ...
 ; ---------------------------------------------------------------------------
@@ -25928,7 +25932,7 @@ loc_2000_FDD3:				; ...
 		JMP	loc_2000_FB19
 ; ---------------------------------------------------------------------------
 
-loc_2000_FDD6:				; ...
+players_gfx:				; ...
 		LDX	Level_ID	; $10
 		LDA	#$80 ; 'А'
 		CPX	#5
@@ -26169,7 +26173,7 @@ sub_3000_8000:				; ...
 ; End of function sub_3000_8000
 
 ; ---------------------------------------------------------------------------
-		JMP	loc_3000_880E
+		JMP	start_play_music
 ; ---------------------------------------------------------------------------
 		JMP	sub_3000_8865
 ; ---------------------------------------------------------------------------
@@ -26195,7 +26199,7 @@ sub_3000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	sub_3000_D270
 ; ---------------------------------------------------------------------------
-		JMP	sub_3000_D235
+		JMP	load_lvl_obj_config
 ; ---------------------------------------------------------------------------
 		JMP	loc_3000_CD97
 ; ---------------------------------------------------------------------------
@@ -26219,7 +26223,7 @@ sub_3000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_3000_D177
 ; ---------------------------------------------------------------------------
-		JMP	sub_3000_D235
+		JMP	load_lvl_obj_config
 ; ---------------------------------------------------------------------------
 		JMP	loc_3000_CF17
 
@@ -26537,7 +26541,7 @@ byte_3000_8518:	.BYTE $86, $3B,	0, 0, $3B, 0, 0, $7F, $FF, $46,	$3F, $FF, $86, $
 
 loc_3000_852F:				; ...
 		LDA	#3
-		JSR	sub_3000_855E
+		JSR	set_pcm_ptr
 		LDA	byte_0_40
 		AND	#$7F ; ''
 		JMP	loc_3000_8541
@@ -26573,23 +26577,23 @@ byte_3000_855A:	.BYTE 0, 0, 0, $44	; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_3000_855E:				; ...
+set_pcm_ptr:				; ...
 		CLC
 		ADC	#$6D ; 'm'
 		STA	jump_ptr_unk
 		LDA	#$85 ; 'Е'
-		ADC	#0
+		ADC	#0		; 856d
 		STA	jump_ptr_unk+1
 		RTS
-; End of function sub_3000_855E
+; End of function set_pcm_ptr
 
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_3000_856A:				; ...
+play_pcm:				; ...
 		JMP	(jump_ptr_unk)
-; End of function sub_3000_856A
+; End of function play_pcm
 
 ; ---------------------------------------------------------------------------
 		LSR	A
@@ -26640,8 +26644,8 @@ loc_3000_86AC:				; ...
 loc_3000_86AE:				; ...
 		JSR	random_
 		AND	#$F
-		ADC	#$3C ; '<'
-		JSR	sub_3000_856A
+		ADC	#$3C ; '<'      ; 3c-4b
+		JSR	play_pcm
 		DEY
 		BNE	loc_3000_86AE
 		STY	byte_0_43
@@ -26677,7 +26681,7 @@ loc_3000_86E2:				; ...
 		ADC	byte_0_4C
 		STA	byte_0_4E
 		EOR	byte_0_43
-		JSR	sub_3000_856A
+		JSR	play_pcm
 		LDA	byte_0_4E
 		EOR	byte_0_47
 		AND	#$40 ; '@'
@@ -26747,7 +26751,7 @@ loc_3000_8754:				; ...
 		AND	byte_0_4A
 		EOR	byte_0_4E
 		INX
-		JSR	sub_3000_856A
+		JSR	play_pcm
 		DEC	byte_0_48
 		BPL	loc_3000_8754
 
@@ -26816,7 +26820,7 @@ loc_3000_87B9:				; ...
 		EOR	#$7F ; ''
 		LSR	A
 		ADC	byte_0_47
-		JSR	sub_3000_856A
+		JSR	play_pcm
 		LDA	byte_0_4B
 		SBC	byte_0_49
 		STA	byte_0_4B
@@ -26864,9 +26868,11 @@ random_:				; ...
 		RTS
 ; End of function random_
 
-; ---------------------------------------------------------------------------
 
-loc_3000_880E:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+start_play_music:			; ...
 		LDA	byte_0_32
 		TAY
 		ASL	A
@@ -26877,10 +26883,10 @@ loc_3000_880E:				; ...
 		STX	byte_0_32
 		STX	byte_0_4F
 		STX	byte_0_42
-		LDA	$959E,Y
+		LDA	byte_3000_959E,Y
 		STA	byte_0_33
 		LDA	#3
-		JSR	sub_3000_855E
+		JSR	set_pcm_ptr
 
 loc_3000_8828:				; ...
 		TYA
@@ -26911,6 +26917,8 @@ loc_3000_8828:				; ...
 		CPX	#$10
 		BCC	loc_3000_8828
 		RTS
+; End of function start_play_music
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -27871,7 +27879,7 @@ loc_3000_8E0D:				; ...
 		STA	byte_0_4F
 		INY
 		LDA	(byte_0_37),Y
-		JSR	sub_3000_855E
+		JSR	set_pcm_ptr
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
 byte_3000_8E20:	.BYTE 0			; ...
@@ -28073,8 +28081,8 @@ byte_3000_9551:	.BYTE $BD, 8, 7, $F0, 1, 2, $F0, 1, 0 ;	...
 byte_3000_955A:	.BYTE $B8, $8B,	7, $26,	0, $35,	$FF, $46, 0, $55, $FF, $66, 0, $75, $FF, $86, 0, $95, $FF, $A6,	0, $B5,	$FF, $C6, 0 ; ...
 		.BYTE $D5, 0, $E4, 0, $F3, 0, 0
 byte_3000_957A:	.BYTE $72, 1, 7, 2, $34, 0, $84, $10, $C4, 0, $84, $10,	$44, 0,	0 ; ...
-byte_3000_9589:	.BYTE $B2, 1, 7, 2, $84, 0, $10, 0, $10, 0, $10, 0, $B4, 0, $83, $F0, $53, $E0,	$23, $D0, 0, $80, $8A, $8A, $7A, $57 ; ...
-		.BYTE $8A, $8A,	$8A, $8A, $8A, $80, $88, $8A, $8A, $7A,	$8A, $B8, $A0, $52, $8A, $81
+byte_3000_9589:	.BYTE $B2, 1, 7, 2, $84, 0, $10, 0, $10, 0, $10, 0, $B4, 0, $83, $F0, $53, $E0,	$23, $D0, 0 ; ...
+byte_3000_959E:	.BYTE $80, $8A,	$8A, $7A, $57, $8A, $8A, $8A, $8A, $8A,	$80, $88, $8A, $8A, $7A, $8A, $B8, $A0,	$52, $8A, $81 ;	...
 unk_3000_95B3:	.BYTE	4		; ...
  include parts\bank3_95b4.asm
 ; word_3000_95B4
@@ -28416,7 +28424,7 @@ loc_3000_CFDA:				; ...
 		STA	Objects_Flags,Y
 		STA	byte_0_3BF,Y
 		STA	byte_0_B2
-		STA	player1_obj_unk4,Y
+		STA	player1_endLvL_timer,Y
 		STA	players_obj_unk16,Y
 		STA	players_obj_unk13,Y
 		STA	players_obj_unk11,Y
@@ -28729,15 +28737,15 @@ byte_3000_D22F:	.BYTE 1, 9, $11, $19, $21, $29 ; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_3000_D235:				; ...
+load_lvl_obj_config:			; ...
 		LDX	Level_ID	; $10
 		LDA	level_cfg_ptrl,X
 		STA	LevelCfgAdr_L	; текущий адрес	рома для чтения	объектов уровня
 		LDA	level_cfg_ptrh,X
 		STA	LevelCfgAdr_H
-		JSR	level_config_reading
+		JSR	level_config_reading ; при загрузке читаем сразу 2 первых объекта
 		JMP	level_config_reading
-; End of function sub_3000_D235
+; End of function load_lvl_obj_config
 
 ; ---------------------------------------------------------------------------
 level_cfg_ptrl:	.DL  #level1_cfg,#level1_cfg,#level2_cfg,#level3_cfg,#level4_cfg,#level5_cfg,#level6_cfg,#level7_cfg,#level8_cfg,#level9_cfg,#level10_cfg,#level11_cfg,#level12_cfg,#level13_cfg
@@ -30286,13 +30294,13 @@ off_4000_80A5:	.WORD unk_4000_80C9	; ...
 		.WORD unk_4000_80F9
 		.WORD unk_4000_80FF
 		.WORD unk_4000_8105
-		.WORD unk_4000_810B
+		.WORD turbo_tunnel_
 		.WORD unk_4000_8123
 		.WORD unk_4000_8129
 		.WORD unk_4000_8111
 		.WORD unk_4000_80F3
 		.WORD unk_4000_8117
-		.WORD unk_4000_811D
+		.WORD surf_city_
 		.WORD unk_4000_813B
 		.WORD unk_4000_8141
 unk_4000_80C9:	.BYTE $C0 ; └		; ...
@@ -30351,10 +30359,10 @@ unk_4000_8105:	.BYTE	0		; ...
 		.BYTE $FF
 		.WORD word_4000_B983
 		.BYTE	0
-unk_4000_810B:	.BYTE	0		; ...
+turbo_tunnel_:	.BYTE 0			; ...
 		.BYTE $10
 		.BYTE $FF
-		.WORD word_4000_ACFB
+		.WORD turbo_tunnel
 		.BYTE	0
 unk_4000_8111:	.BYTE	0		; ...
 		.BYTE $10
@@ -30366,10 +30374,10 @@ unk_4000_8117:	.BYTE	0		; ...
 		.BYTE $90 ; Р
 		.WORD word_4000_EDF2
 		.BYTE	0
-unk_4000_811D:	.BYTE	0		; ...
+surf_city_:	.BYTE 0			; ...
 		.BYTE $10
 		.BYTE $E0 ; р
-		.WORD word_4000_F404
+		.WORD surf_city
 		.BYTE	0
 unk_4000_8123:	.BYTE	0		; ...
 		.BYTE $10
@@ -30498,7 +30506,7 @@ sub_5000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_5000_836F
 ; ---------------------------------------------------------------------------
-		JMP	loc_5000_8705
+		JMP	level_maps_load
 ; ---------------------------------------------------------------------------
 		JMP	loc_5000_86D2
 ; ---------------------------------------------------------------------------
@@ -30749,7 +30757,7 @@ loc_5000_846A:				; ...
 		STA	word_0_1F+1
 		STY	word_0_1F
 		STX	byte_0_1A4
-		JSR	sub_5000_8676
+		JSR	level_map3
 		LDX	byte_0_1A4
 		TXS
 		LDA	Level_ID	; $10
@@ -30819,14 +30827,14 @@ loc_5000_84C7:				; ...
 		ROL	tmp_var_1A
 		ASL	A
 		ROL	tmp_var_1A
-		ADC	byte_0_C5
+		ADC	level_map2_adrL
 		STA	tmp_var_19
 		LDA	tmp_var_1A
-		ADC	byte_0_C6
+		ADC	level_map2_adrH
 		STA	tmp_var_1A
 		LDA	(tmp_var_1B),Y
 		TAY
-		LDA	(byte_0_C3),Y
+		LDA	(level_map1_adrL),Y
 		AND	word_0_1F
 		STA	byte_0_19F,X
 		DEX
@@ -31118,7 +31126,7 @@ loc_5000_865A:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_5000_8676:				; ...
+level_map3:				; ...
 		LDA	tmp_var_1A
 		ROL	tmp_var_19
 		ROL	A
@@ -31170,7 +31178,7 @@ loc_5000_86B2:				; ...
 
 locret_5000_86C4:			; ...
 		RTS
-; End of function sub_5000_8676
+; End of function level_map3
 
 ; ---------------------------------------------------------------------------
 
@@ -31229,7 +31237,7 @@ loc_5000_86E7:				; ...
 
 ; ---------------------------------------------------------------------------
 
-loc_5000_8705:				; ...
+level_maps_load:			; ...
 		LDY	#$13
 
 loc_5000_8707:				; ...
@@ -31251,13 +31259,13 @@ loc_5000_8707:				; ...
 
 loc_5000_8725:				; ...
 		LDA	level_map2_ptrL,X
-		STA	byte_0_C5
+		STA	level_map2_adrL
 		LDA	level_map2_ptrH,X
-		STA	byte_0_C6
+		STA	level_map2_adrH
 		LDA	level_map1_ptrL,X
-		STA	byte_0_C3
+		STA	level_map1_adrL
 		LDA	level_map1_ptrH,X
-		STA	byte_0_C4
+		STA	level_map1_adrH
 		RTS
 ; ---------------------------------------------------------------------------
 ; map_configs_pointers
@@ -31374,10 +31382,10 @@ loc_5000_B2E0:				; ...
 		ROL	tmp_var_1A
 		ASL	A
 		ROL	tmp_var_1A
-		ADC	byte_0_C5
+		ADC	level_map2_adrL
 		STA	tmp_var_1B
 		LDA	tmp_var_1A
-		ADC	byte_0_C6
+		ADC	level_map2_adrH
 		STA	tmp_var_1C
 		LDY	#0
 
@@ -31681,7 +31689,7 @@ loc_5000_B4BF:				; ...
 		CPX	#2
 		BCS	loc_5000_B510
 		LDA	Objects_death_timer,X
-		ORA	byte_0_EB
+		ORA	timer_end_music
 		BNE	loc_5000_B50D
 		LDA	#$89 ; 'Й'
 		LDX	#$C
@@ -31815,7 +31823,7 @@ loc_5000_B5B6:				; ...
 		STA	byte_0_1E
 
 loc_5000_B5B8:				; ...
-		JSR	sub_5000_8676
+		JSR	level_map3
 		LDX	Object_RamSlotID_tmp
 		LDY	byte_0_C7
 		LDA	Level_ID	; $10
@@ -33382,13 +33390,13 @@ sub_6000_8000:				; ...
 ; End of function sub_6000_8000
 
 ; ---------------------------------------------------------------------------
-		JMP	loc_6000_862F
+		JMP	obj_sprites_
 ; ---------------------------------------------------------------------------
-		JMP	loc_6000_D5BB
+		JMP	level_base_load
 ; ---------------------------------------------------------------------------
-		JMP	sub_6000_DAFC
+		JMP	level_values_load
 ; ---------------------------------------------------------------------------
-		JMP	loc_6000_A16D
+		JMP	first_load
 ; ---------------------------------------------------------------------------
 		JMP	loc_6000_A4F5
 ; ---------------------------------------------------------------------------
@@ -33601,12 +33609,12 @@ loc_6000_8594:				; ...
 		ROL	tmp_var_1A
 		ASL	A
 		ROL	tmp_var_1A
-		ADC	byte_0_C5
+		ADC	level_map2_adrL
 		STA	tmp_var_19
 		LDA	tmp_var_1A
-		ADC	byte_0_C6
+		ADC	level_map2_adrH
 		STA	tmp_var_1A
-		LDA	(byte_0_C3),Y
+		LDA	(level_map1_adrL),Y
 		AND	word_0_1F
 		STA	byte_0_19F,X
 		DEX
@@ -33692,7 +33700,7 @@ loc_6000_862C:				; ...
 		JMP	object_sprites_cycle
 ; ---------------------------------------------------------------------------
 
-loc_6000_862F:				; ...
+obj_sprites_:				; ...
 		LDX	#$E		; ???
 		LDX	#4
 		LDA	FrameCounter	; $B
@@ -35233,12 +35241,12 @@ loc_6000_8F3A:				; ...
 		STA	Objects_Ypos_L
 		LDA	#$20 ; ' '
 		STA	player2_Ypos_L
-		LDA	#$FF
-		STA	player1_obj_unk4
+		LDA	#$FF		; level	1 write	act end	timer
+		STA	player1_endLvL_timer
 		LDA	#$F0 ; 'Ё'
-		STA	player2_obj_unk4
+		STA	player2_endLvL_timer
 		LDA	#$88 ; 'И'
-		STA	byte_0_EB
+		STA	timer_end_music
 		LDX	#$12
 		LDY	#0
 		JSR	loc_6000_FFCB
@@ -37006,12 +37014,12 @@ loc_6000_A16A:				; ...
 		JMP	loc_6000_A16A
 ; ---------------------------------------------------------------------------
 
-loc_6000_A16D:				; ...
+first_load:				; ...
 		JSR	loc_6000_FE88
 		JSR	clear_sprites
 		LDX	#$20 ; ' '
 		JSR	sub_6000_D5FB
-		JSR	sub_6000_DAFC
+		JSR	level_values_load
 		LDA	#$A
 		LDY	#4
 		JSR	sub_6000_DB94
@@ -38599,7 +38607,7 @@ byte_6000_AE89:	.BYTE 0			; ...
 ; word_6000_AE8A
 ; ---------------------------------------------------------------------------
 
-loc_6000_D5BB:				; ...
+level_base_load:			; ...
 		JSR	loc_6000_FE88
 		JSR	fill_sprite_buffer_
 		LDA	#$16
@@ -38616,7 +38624,7 @@ loc_6000_D5D7:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		DEY
 		BPL	loc_6000_D5D7
-		JMP	sub_6000_DAFC
+		JMP	level_values_load
 ; ---------------------------------------------------------------------------
 level_infobar_colors:.BYTE $FF,	$FF, $AA, $FF, 0, $55, $55, $FF, $FF, 0, 0, 0, 0, 0 ; ...
 
@@ -38812,7 +38820,7 @@ sub_6000_DAEE:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_6000_DAFC:				; ...
+level_values_load:			; ...
 		LDA	byte_0_2D
 		PHA
 		LDA	Level_ID	; $10
@@ -38890,7 +38898,7 @@ loc_6000_DB89:				; ...
 		PLA
 		STA	byte_0_2D
 		RTS
-; End of function sub_6000_DAFC
+; End of function level_values_load
 
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -40167,9 +40175,9 @@ loc_7000_8AA3:				; ...
 		LDA	#1
 		STA	tmp_var_00
 		LDA	PPU_STATUS	; PPU Status Register (R)
-		LDA	off_7000_8B6F,X
+		LDA	level_planp_ptr,X
 		STA	tmp_var_01
-		LDA	off_7000_8B6F+1,X
+		LDA	level_planp_ptr+1,X
 		STA	tmp_var_02
 		LDY	#0
 		LDA	(tmp_var_01),Y
@@ -40290,12 +40298,12 @@ loc_7000_8B69:				; ...
 		BNE	loc_7000_8B5E
 		BEQ	loc_7000_8B32
 ; ---------------------------------------------------------------------------
-off_7000_8B6F:	.WORD byte_7000_8BBA	; ...
+level_planp_ptr:.WORD byte_7000_8BBA	; ...
 		.WORD byte_7000_8BC1
 		.WORD byte_7000_8BC8
 		.WORD byte_7000_8BD3
-		.WORD byte_7000_8BDA
-		.WORD byte_7000_8BE1
+		.WORD byte_7000_8BDA	; turbo	tunnel
+		.WORD byte_7000_8BE1	; ice caverns
 		.WORD byte_7000_8BE8
 		.WORD byte_7000_8BF3
 		.WORD byte_7000_8BFA
@@ -40364,12 +40372,12 @@ loc_7000_8C4D:				; ...
 		BPL	loc_7000_8C4D
 		LDX	#0
 
-loc_7000_8C59:				; ...
+clear_objtmp_ids:			; ...
 		TXA
 		STA	Objects_RamSlotIDs_tmp,X
 		INX
 		CPX	#$F
-		BNE	loc_7000_8C59
+		BNE	clear_objtmp_ids
 		LDA	#$10
 		STA	byte_0_9D
 		LDX	#$82 ; 'В'
