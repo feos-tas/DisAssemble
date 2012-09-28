@@ -3435,3 +3435,17 @@ $842E:20 51 FE  JSR $FE51                                                      A
      $D353:C8        INY                                                            A:00 X:FF Y:03 S:FA 
      $D354:B1 B7     LDA ($B7),Y @ $FAC5 = #$D8                                     A:00 X:FF Y:04 S:FA 
 Breakpoint 5 Hit at $D356: $04FC:EC-W-- Condition:$04FC==#C8
+     $D356:9D FD 03  STA $03FD,X @ $04FC = #$C8                                     A:D8 X:FF Y:04 S:FA 
+     $D359:C8        INY                                                            A:D8 X:FF Y:04 S:FA 
+     $D35A:B1 B7     LDA ($B7),Y @ $FAC6 = #$00                                     A:D8 X:FF Y:05 S:FA 
+     $D35C:9D 0C 04  STA $040C,X @ $050B = #$00                                     A:00 X:FF Y:05 S:FA 
+     $D35F:C8        INY                                                            A:00 X:FF Y:05 S:FA 
+     $D360:B1 B7     LDA ($B7),Y @ $FAC7 = #$40                                     A:00 X:FF Y:06 S:FA 
+     $D362:9D 1B 04  STA $041B,X @ $051A = #$40                                     A:40 X:FF Y:06 S:FA 
+     $D365:C8        INY                                                            A:40 X:FF Y:06 S:FA 
+     $D366:B1 B7     LDA ($B7),Y @ $FAC8 = #$00                                     A:40 X:FF Y:07 S:FA 
+     $D368:9D 2A 04  STA $042A,X @ $0529 = #$00                                     A:00 X:FF Y:07 S:FA 
+     $D36B:C8        INY                                                            A:00 X:FF Y:07 S:FA 
+     $D36C:B1 B7     LDA ($B7),Y @ $FAC9 = #$20                                     A:00 X:FF Y:08 S:FA 
+     $D36E:9D 39 04  STA $0439,X @ $0538 = #$20                                     A:20 X:FF Y:08 S:FA 
+     $D371:C8        INY                                                            A:20 X:FF Y:08 S:FA 
