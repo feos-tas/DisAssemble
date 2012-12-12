@@ -1,3 +1,4 @@
+nmi_flags                                  00000009   
 FrameCounter                               0000000B   
 FrameCounter_Even                          0000000C   
 Level_tmp                                  0000000D   
@@ -8,6 +9,7 @@ Lives_Player1                              00000011
 Lives_Player2                              00000012   
 JumpTable_ptr_main                         00000013   
 ObjCounter_tmp_var_15                      00000015   
+jump_ptr_nmi                               00000023   
 RandomValue_1                              00000025   
 RandomValue_2                              00000026   
 RandomValue_3                              00000027   
@@ -16,12 +18,15 @@ InputHold_P1                               00000029
 InputHold_P2                               0000002A   
 InputTap_P1                                0000002B   
 InputTap_P2                                0000002C   
+prev_bank_id                               0000002E   
 music_var32                                00000032   
 checkit_34                                 00000034   
 checkit_37                                 00000037   
 checkit_38                                 00000038   
 jump_ptr_unk                               00000045   
-checkit_76                                 00000076   
+NMI_Areg_saver                             00000075   
+NMI_Xreg_saver                             00000076   
+NMI_Yreg_saver                             00000077   
 Obj_Amindata1_tmp                          00000078   
 Obj_Amindata2_tmp                          00000079   
 Obj_Amindata3_tmp                          0000007A   
@@ -43,6 +48,7 @@ level_map1_adrL                            000000C3
 level_map1_adrH                            000000C4   
 level_map2_adrL                            000000C5   
 level_map2_adrH                            000000C6   
+level_struct                               000000C7   
 unkn_cnt4                                  000000D0   
 Level_CfgAdr_new                           000000E5   
 timer_end_music                            000000EB   
@@ -210,7 +216,7 @@ set_level_music                            0000837E
 set_music_by_level_id                      00008380   
 set_music_track                            00008383   
 Level_MusicID                              00008394   
-level_nmi_                                 000083A4   
+level_nextframe                            000083A4   
 pause_snd_dat                              000083F3   
 game_level_cycle                           00008403   
 update_c8_cb                               000084C7   
@@ -374,8 +380,16 @@ level_cfg_read                             0000FE51
 get_free_obj_slot_IDX                      0000FE58   
 get_obj_slot_type_by_ID                    0000FE66   
 search_object_6b                           0000FE6D   
+IRQ_                                       0000FE74   
+NMI__                                      0000FE75   
+lagged_frame                               0000FE93   
+not_a_level                                0000FEB3   
+wait__0                                    0000FF65   
+NMI_                                       0000FF98   
+return_from_nmi                            0000FFA6   
 jump_other_bank                            0000FFCB   
 wait_                                      0000FFEB   
+RESET_                                     0000FFF2   
 unpack_objects_gfx                         000180A2   
 set_vram_adr                               000180F5   
 write_gfx                                  0001816B   
@@ -386,6 +400,7 @@ level_end_gfx                              0001827F
 level_1_obj_gfx_                           00018294   
 level2_obj_gfx                             000182B7   
 turbo_tunnel_obj_gfx                       000182CA   
+level4_gfx                                 000182D9   
 level_1_boss_gfx                           000182F0   
 level_1_boss_gfx_                          000182FB   
 level_plan_gfx                             00018302   
@@ -399,6 +414,7 @@ players_gfx                                0002FDD6
 write_obj_wanted_frame                     0002FE22   
 set_pcm_ptr                                0003855E   
 play_pcm                                   0003856A   
+play_pcm_cycle?                            000386D1   
 random_                                    000387FA   
 start_play_music                           0003880E   
 some_sounds_                               00038A87   
@@ -514,7 +530,9 @@ level5_checkp2                             0003F7A6
 level5_checkp3                             0003F91C   
 level6_cfg                                 0003FAB4   
 get_object_free_mem                        0003FF38   
+unpack_backg_gfx?                          00048007   
 turbo_tunnel_                              0004810B   
+ice_caverns                                00048111   
 surf_city_                                 0004811D   
 turbo_tunnel                               0004ACFB   
 surf_city                                  0004F404   
@@ -587,6 +605,16 @@ continue_game_end                          0006ACB8
 level_base_load                            0006D5BB   
 level_infobar_colors                       0006D5E0   
 level_values_load                          0006DAFC   
+level_base_X_H                             0006DBA4   
+level_base_X_L                             0006DBA5   
+level_base_Y_H                             0006DBA6   
+level_base_Y_L                             0006DBA7   
+level_struct_id                            0006DBA8   
+level_bg_pal_id                            0006DBA9   
+level_obj_pal_id                           0006DBAA   
+level_bg_gfx_id                            0006DBAB   
+level_obj_gfx_id                           0006DBAC   
+text_decompress                            0006E60F   
 fill_sprite_buffer_                        0006FEB2   
 clear_sprites                              0006FEBD   
 table_multiple_7                           0007808A   

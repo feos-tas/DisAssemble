@@ -36,7 +36,7 @@ tmp_var_05:	.BYTE 0	; (uninited)	; ...
 tmp_var_06:	.BYTE 0	; (uninited)	; ...
 tmp_var_07:	.BYTE 0	; (uninited)	; ...
 tmp_var_08:	.BYTE 0	; (uninited)	; ...
-lag_seter:	.BYTE 0	; (uninited)	; ...
+nmi_flags:	.BYTE 0	; (uninited)	; ...
 tmp_var_0A:	.BYTE 0	; (uninited)	; ...
 FrameCounter:	.BYTE 0	; (uninited)	; ...
 					; $B
@@ -66,7 +66,7 @@ byte_0_1E:	.BYTE 0	; (uninited)	; ...
 word_0_1F:	.BYTE 0,0 ; (uninited)	; ...
 byte_0_21:	.BYTE 0	; (uninited)	; ...
 byte_0_22:	.BYTE 0	; (uninited)	; ...
-word_0_23:	.BYTE 0,0 ; (uninited)	; ...
+jump_ptr_nmi:	.BYTE 0,0 ; (uninited)	; ...
 RandomValue_1:	.BYTE 0	; (uninited)	; ...
 					; $25
 RandomValue_2:	.BYTE 0	; (uninited)	; ...
@@ -84,7 +84,7 @@ InputTap_P1:	.BYTE 0	; (uninited)	; ...
 InputTap_P2:	.BYTE 0	; (uninited)	; ...
 					; данные второго джойстика на нажатие
 byte_0_2D:	.BYTE 0	; (uninited)	; ...
-byte_0_2E:	.BYTE 0	; (uninited)	; ...
+prev_bank_id:	.BYTE 0	; (uninited)	; ...
 byte_0_2F:	.BYTE 0	; (uninited)	; ...
 byte_0_30:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
@@ -153,9 +153,9 @@ byte_0_66:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 byte_0_73:	.BYTE 0	; (uninited)	; ...
 byte_0_74:	.BYTE 0	; (uninited)	; ...
-byte_0_75:	.BYTE 0	; (uninited)	; ...
-checkit_76:	.BYTE 0	; (uninited)	; ...
-byte_0_77:	.BYTE 0	; (uninited)	; ...
+NMI_Areg_saver:	.BYTE 0	; (uninited)	; ...
+NMI_Xreg_saver:	.BYTE 0	; (uninited)	; ...
+NMI_Yreg_saver:	.BYTE 0	; (uninited)	; ...
 Obj_Amindata1_tmp:.BYTE	0 ; (uninited)	; ...
 Obj_Amindata2_tmp:.BYTE	0 ; (uninited)	; ...
 Obj_Amindata3_tmp:.BYTE	0 ; (uninited)	; ...
@@ -236,7 +236,7 @@ level_map1_adrL:.BYTE 0	; (uninited)	; ...
 level_map1_adrH:.BYTE 0	; (uninited)	; ...
 level_map2_adrL:.BYTE 0	; (uninited)	; ...
 level_map2_adrH:.BYTE 0	; (uninited)	; ...
-byte_0_C7:	.BYTE 0	; (uninited)	; ...
+level_struct:	.BYTE 0	; (uninited)	; ...
 byte_0_C8:	.BYTE 0	; (uninited)	; ...
 byte_0_C9:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
@@ -2303,7 +2303,7 @@ loc_0_809C:				; ...
 		CPY	#$28
 		BNE	loc_0_809C
 		LDX	#0
-		JSR	sub_0_FF65
+		JSR	wait__0
 		LDX	#$61
 		JMP	loc_0_FF6A
 ; End of function sub_0_809A
@@ -2478,7 +2478,7 @@ loc_0_81C0:				; ...
 		LDA	#$62
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDA	#$10
-		STA	byte_0_FFC3
+		STA	banks_ids__
 		TXS
 		LDY	#2
 		BNE	loc_0_8236
@@ -2780,11 +2780,11 @@ loc_0_838F:
 Level_MusicID:	.BYTE 3, 3, 4, 1, $E, $C, $F, 8, 9, $11, $13, $D, $D, $B, $B, $14 ; ...
 ; ---------------------------------------------------------------------------
 
-level_nmi_:
+level_nextframe:
 		JSR	sub_0_8108
 		JSR	some_with_ppu
 		LDA	#$10
-		STA	lag_seter
+		STA	nmi_flags
 		ORA	#$80
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDX	#$4B
@@ -3082,7 +3082,7 @@ loc_0_85A6:				; ...
 loc_0_85AB:				; ...
 		LDA	LevelPos_CamPosY_L
 		JSR	byte_0_6F0
-		JSR	sub_0_FF65
+		JSR	wait__0
 		BEQ	loc_0_85CD
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -3222,8 +3222,8 @@ loc_0_8674:				; ...
 		STA	PPU_SCROLL_REG	; VRAM Address Register	#1 (W2)
 		LDY	#1
 		JSR	wait_
-		STX	byte_0_FFB3
-		LDA	lag_seter
+		STX	banks_ids	; prevent 'bus conflict'
+		LDA	nmi_flags
 		BPL	loc_0_86AF
 		JSR	joypads_reading
 
@@ -3243,7 +3243,7 @@ loc_0_8694:				; ...
 loc_0_8699:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	LevelPos_CamPosX_L
-		LDY	lag_seter
+		LDY	nmi_flags
 		BPL	loc_0_86A7
 		LDY	pause_flag
 		BNE	loc_0_86A7
@@ -3295,8 +3295,8 @@ locret_0_86ED:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_86EE:				; ...
-		STX	word_0_23
-		STY	word_0_23+1
+		STX	jump_ptr_nmi
+		STY	jump_ptr_nmi+1
 		LDA	tmp_var_0A
 		ORA	#$18
 		STA	tmp_var_0A
@@ -3330,11 +3330,11 @@ loc_0_8713:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 
 loc_0_8716:				; ...
-		LDA	lag_seter
+		LDA	nmi_flags
 		ORA	#$80
 
 loc_0_871A:				; ...
-		STA	lag_seter
+		STA	nmi_flags
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 
 random_cycle:				; ...
@@ -3354,7 +3354,7 @@ loc_0_872A:				; ...
 		SBC	Objects_Xpos_L
 		EOR	Objects_Y_sub
 		EOR	RandomValue_2,X	; $26
-		SBC	word_0_23+1,X
+		SBC	jump_ptr_nmi+1,X
 		ADC	Objects_Ypos_L,X
 		ADC	FrameCounter	; $B
 		STA	RandomValue_1,X	; $25
@@ -3415,7 +3415,7 @@ sub_0_876B:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#0
 		STA	SND_MASTERCTRL_REG ; pAPU Sound/Vertical Clock Signal Register (R)
-		STA	lag_seter
+		STA	nmi_flags
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		LDX	#$15
@@ -15033,7 +15033,7 @@ loc_0_D51B:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		TAX
 
 loc_0_D528:				; ...
@@ -15176,7 +15176,7 @@ level_unk12:	.BYTE $FC, $FC,	$E4, $E8, $F0, $DC, $F0, 0, $FC, $E4, $DC, $F4,	$F4
 		LDX	#$A0 ; 'а'
 		LDY	#$13
 		JSR	wait_
-		STX	lag_seter
+		STX	nmi_flags
 		STX	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDY	Level_tmp
 		LDA	level_unk12,Y
@@ -15593,7 +15593,7 @@ loc_0_D888:				; ...
 		BNE	loc_0_D856
 		LDA	#0
 		STA	byte_0_40
-		LDA	word_0_23+1
+		LDA	jump_ptr_nmi+1
 		BEQ	loc_0_D8A7
 
 loc_0_D8A4:				; ...
@@ -15624,7 +15624,7 @@ loc_0_D8C1:				; ...
 loc_0_D8C4:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		TAX
 
@@ -15671,7 +15671,7 @@ loc_0_D911:
 		LDA	#0
 		STA	object3_X_shadow
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		TAX
 
@@ -15701,7 +15701,7 @@ byte_0_D93C:	.BYTE 0, 0, 1, 2, 4, 2,	2, 8, 9, 8 ; ...
 
 loc_0_D94E:				; ...
 		LDA	#$18
-		STA	lag_seter
+		STA	nmi_flags
 		LDA	FrameCounter	; $B
 		CMP	#$90 ; 'Р'
 		BCC	loc_0_D95B
@@ -15821,7 +15821,7 @@ loc_0_DA21:				; ...
 loc_0_DA24:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		TAX
 
@@ -17514,12 +17514,12 @@ start_first_jump:			; ...
 loc_0_E4C8:				; ...
 		LDY	#6
 		JSR	jump_other_bank
-		LDA	word_0_23+1
+		LDA	jump_ptr_nmi+1
 		BEQ	loc_0_E4F4
-		LDA	lag_seter
+		LDA	nmi_flags
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		LDA	byte_0_FF
 		BEQ	loc_0_E4EE
 		JSR	joypads_reading
@@ -17569,9 +17569,9 @@ loc_0_E4FB:				; ...
 		LDA	#$FF
 		STA	Level_ID	; $10
 		LDA	#$5A ; 'Z'
-		STA	word_0_23
+		STA	jump_ptr_nmi
 		LDA	#$E5 ; 'х'
-		STA	word_0_23+1
+		STA	jump_ptr_nmi+1
 
 loc_0_E532:				; ...
 		JMP	loc_0_8710
@@ -17635,11 +17635,11 @@ loc_0_E576:				; ...
 		BPL	loc_0_E58C
 
 loc_0_E57A:				; ...
-		LDA	lag_seter
+		LDA	nmi_flags
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		AND	#$7F ; ''
-		STA	lag_seter
+		STA	nmi_flags
 		LDX	#$1B
 		LDY	#3
 		JSR	jump_other_bank
@@ -17653,11 +17653,11 @@ loc_0_E58F:				; ...
 		STA	Level_ID	; $10
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
-		LDA	lag_seter
+		LDA	nmi_flags
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		AND	#$7F ; ''
-		STA	lag_seter
+		STA	nmi_flags
 		LDA	#$FF
 		STA	Lives_Player1	; кол-во жизней	(сердечек)
 		STA	Lives_Player2	; кол-во жизней	(сердечек)
@@ -17903,7 +17903,7 @@ loc_0_E71F:				; ...
 		JSR	sub_0_91F2
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		JSR	some_with_sound
 		LDX	#0
 
@@ -21597,46 +21597,46 @@ search_object_6b:			; ...
 
 ; ---------------------------------------------------------------------------
 
-locret_0_FE74:				; ...
+IRQ_:					; ...
 		RTI
 ; ---------------------------------------------------------------------------
 
-loc_0_FE75:				; ...
-		STA	byte_0_2E
+NMI__:					; ...
+		STA	prev_bank_id
 		STX	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		STX	PPU_SPR_ADDR	; SPR-RAM Address Register (W)
 		LDA	#2
 		STA	SPR_DMA		; Sprite DMA Register (W)
-		LDA	lag_seter
-		BPL	loc_0_FE93
+		LDA	nmi_flags
+		BPL	lagged_frame	; if lag or pcm	played
 		AND	#$7F ; ''
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		DEX
 		TXS
-		JMP	(word_0_23)
+		JMP	(jump_ptr_nmi)	; level_nextframe 83a4
 ; ---------------------------------------------------------------------------
 
-loc_0_FE93:				; ...
-		STY	byte_0_77
+lagged_frame:				; ...
+		STY	NMI_Yreg_saver	; if lag or pcm	played
 		LDY	Level_ID	; $10
-		BMI	loc_0_FEB3
+		BMI	not_a_level	; other	screens
 		AND	#$7F ; ''
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDX	#$C5 ; '┼'
-		JSR	sub_0_FF65
+		JSR	wait__0
 		JSR	some_with_ppu
 
 loc_0_FEA9:				; ...
-		LDA	lag_seter
+		LDA	nmi_flags
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		JMP	loc_0_FFA6
+		JMP	return_from_nmi
 ; ---------------------------------------------------------------------------
 
-loc_0_FEB3:				; ...
-		CPY	#$FE ; '■'
+not_a_level:				; ...
+		CPY	#$FE ; '■'      ; other screens
 		BEQ	loc_0_FED0
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	LevelPos_CamPosX_L
@@ -21658,7 +21658,7 @@ loc_0_FED0:				; ...
 		JSR	sub_0_E555
 		LDA	#0
 		STA	byte_0_40
-		JMP	loc_0_FFA6
+		JMP	return_from_nmi
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -21752,24 +21752,24 @@ loc_0_FF27:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_FF65:				; ...
+wait__0:				; ...
 		LDA	#$10
-		STA	byte_0_FFC3
+		STA	banks_ids__
 
 loc_0_FF6A:				; ...
 		DEX
 		BNE	loc_0_FF6A
 		RTS
-; End of function sub_0_FF65
+; End of function wait__0
 
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_0_FF6E:				; ...
-		STA	byte_0_FFB6
+		STA	banks_ids_
 		JSR	sub_0_FF6E
-		STA	byte_0_FFB3
+		STA	banks_ids	; prevent 'bus conflict'
 		RTS
 ; End of function sub_0_FF6E
 
@@ -21778,10 +21778,10 @@ sub_0_FF6E:				; ...
 
 
 sub_0_FF78:				; ...
-		STA	byte_0_FFB6
+		STA	banks_ids_
 		JSR	sub_0_FF78
 		LDA	#0
-		STA	byte_0_FFB3
+		STA	banks_ids	; prevent 'bus conflict'
 		RTS
 ; End of function sub_0_FF78
 
@@ -21794,37 +21794,38 @@ sub_0_FF84:				; ...
 		AND	#$10
 		ORA	#3
 		TAY
-		STA	byte_0_FFB3,Y
+		STA	banks_ids,Y	; prevent 'bus conflict'
 		JSR	tmp_var_06
 		LDA	byte_0_3E
 		TAY
-		STA	byte_0_FFB3,Y
+		STA	banks_ids,Y	; prevent 'bus conflict'
 		RTS
 ; End of function sub_0_FF84
 
 ; ---------------------------------------------------------------------------
 
-loc_0_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+NMI_:					; ...
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#0
 		LDX	#0
-		STX	byte_0_FFB3
-		JMP	loc_0_FE75
+		STX	banks_ids	; prevent 'bus conflict'
+		JMP	NMI__
 ; ---------------------------------------------------------------------------
 
-loc_0_FFA6:				; ...
-		LDX	checkit_76
-		LDA	byte_0_2E
+return_from_nmi:			; ...
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
-		STA	byte_0_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		STA	banks_ids,Y	; prevent 'bus conflict'
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
-byte_0_FFB3:	.BYTE 0, 1, 2		; ...
-byte_0_FFB6:	.BYTE 3, 4, 5, 6, 7, 8,	9, $A, $B, $C, $D, $E, $F ; ...
-byte_0_FFC3:	.BYTE $10, $11,	$12, $13, $14, $15, $16, $17 ; ...
+banks_ids:	.BYTE 0, 1, 2		; ...
+					; prevent 'bus conflict'
+banks_ids_:	.BYTE 3, 4, 5, 6, 7, 8,	9, $A, $B, $C, $D, $E, $F ; ...
+banks_ids__:	.BYTE $10, $11,	$12, $13, $14, $15, $16, $17 ; ...
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -21838,14 +21839,14 @@ loc_0_FFCD:				; ...
 		LDA	JumpTable_ptr_main ; $13
 		PHA
 		STX	JumpTable_ptr_main ; $13
-		LDA	byte_0_FFB3,Y	; change bank
-		STA	byte_0_FFB3,Y
+		LDA	banks_ids,Y	; change bank
+		STA	banks_ids,Y	; prevent 'bus conflict'
 		JSR	sub_0_8000
 		LDY	byte_0_2D	; load bank ID
 		PLA			; load old jumptable ptr
 		STA	JumpTable_ptr_main ; $13
-		LDA	byte_0_FFB3,Y	; change bank
-		STA	byte_0_FFB3,Y
+		LDA	banks_ids,Y	; change bank
+		STA	banks_ids,Y	; prevent 'bus conflict'
 		RTS
 ; End of function jump_other_bank
 
@@ -21863,14 +21864,14 @@ wait_:					; ...
 
 ; ---------------------------------------------------------------------------
 
-loc_0_FFF2:				; ...
+RESET_:					; ...
 		LDA	#0
-		STA	byte_0_FFB3
+		STA	banks_ids	; prevent 'bus conflict'
 		JMP	loc_0_82A9
 ; ---------------------------------------------------------------------------
-		.WORD loc_0_FF98	; Non-Maskable Interrupt Vector
-		.WORD loc_0_FFF2	; RESET	Interrupt Vector
-		.WORD locret_0_FE74	; IRQ/BRK Interrupt Vector
+		.WORD NMI_		; Non-Maskable Interrupt Vector
+		.WORD RESET_		; RESET	Interrupt Vector
+		.WORD IRQ_		; IRQ/BRK Interrupt Vector
 ; end of 'BANK0'
 
 .base $8000
@@ -22253,7 +22254,7 @@ obj_gfx_ptrs:	.WORD unk_1000_8390	; ...
 		.WORD turbo_tunnel_obj_gfx
 		.WORD unk_1000_8397
 		.WORD unk_1000_83A5
-		.WORD unk_1000_82D9
+		.WORD level4_gfx
 		.WORD level_plan_gfx
 		.WORD unk_1000_8325
 		.WORD unk_1000_83A5
@@ -22364,7 +22365,7 @@ turbo_tunnel_obj_gfx:.BYTE 0		; ...
 		.BYTE	4
 		.WORD word_1000_D99A
 		.BYTE	0
-unk_1000_82D9:	.BYTE	0		; ...
+level4_gfx:	.BYTE 0			; ...
 		.BYTE	0
 		.BYTE $21 ; !
 		.BYTE	0
@@ -22916,19 +22917,19 @@ word_1000_FF66:	.WORD $FFFF, $FFFF, $FFFF, $FFFF, $FFFF, $FFFF,	$FFFF, $FFFF, $F
 ; ---------------------------------------------------------------------------
 
 loc_1000_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#1
 		LDX	#0
 		STX	byte_1000_FFB3
 		JMP	locret_1000_FF65
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_1000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_1000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -26098,19 +26099,19 @@ loc_2000_FF78:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#2
 		LDX	#0
 		STX	byte_2000_FFB3
 		JMP	loc_2000_FF78
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_2000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_2000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -26643,10 +26644,10 @@ loc_3000_86AE:				; ...
 		JSR	random_
 		AND	#$F
 		ADC	#$3C ; '<'      ; 3c-4b
-		JSR	play_pcm
+		JSR	play_pcm	; udar
 		DEY
 		BNE	loc_3000_86AE
-		STY	byte_0_43
+		STY	byte_0_43	; clear
 		STY	byte_0_44
 		STY	byte_0_49
 		STY	byte_0_4A
@@ -26658,7 +26659,7 @@ loc_3000_86AE:				; ...
 		STA	byte_0_4E
 		BNE	loc_3000_86FE
 
-loc_3000_86D1:				; ...
+play_pcm_cycle?:			; ...
 		DEC	byte_0_48
 		BMI	loc_3000_86E2
 		LDA	byte_0_4B
@@ -26683,7 +26684,7 @@ loc_3000_86E2:				; ...
 		LDA	byte_0_4E
 		EOR	byte_0_47
 		AND	#$40 ; '@'
-		BEQ	loc_3000_86D1
+		BEQ	play_pcm_cycle?
 
 loc_3000_86FE:				; ...
 		DEC	byte_0_50
@@ -26718,9 +26719,9 @@ loc_3000_8721:				; ...
 		LDA	byte_0_44
 		ADC	byte_0_42
 		STA	byte_0_44
-		BCC	loc_3000_86D1
+		BCC	play_pcm_cycle?
 		INC	byte_0_43
-		BNE	loc_3000_86D1
+		BNE	play_pcm_cycle?
 
 loc_3000_873D:				; ...
 		JMP	loc_3000_86A5
@@ -28325,7 +28326,7 @@ objects_work:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		SEI
 		LDA	#$F
@@ -30107,19 +30108,19 @@ word_3000_FF46:	.WORD $FFFF, $FFFF, $FFFF, $FFFF ; ...
 ; ---------------------------------------------------------------------------
 
 loc_3000_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#3
 		LDX	#0
 		STX	byte_3000_FFB3
 		JMP	word_3000_FF46
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_3000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_3000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -30182,14 +30183,14 @@ sub_4000_8000:				; ...
 ; End of function sub_4000_8000
 
 ; ---------------------------------------------------------------------------
-		JMP	loc_4000_8007
+		JMP	unpack_backg_gfx?
 ; ---------------------------------------------------------------------------
 
 locret_4000_8006:			; ...
 		RTS
 ; ---------------------------------------------------------------------------
 
-loc_4000_8007:				; ...
+unpack_backg_gfx?:			; ...
 		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	off_4000_80A5,X
@@ -30304,7 +30305,7 @@ off_4000_80A5:	.WORD unk_4000_80C9	; ...
 		.WORD turbo_tunnel_
 		.WORD unk_4000_8123
 		.WORD unk_4000_8129
-		.WORD unk_4000_8111
+		.WORD ice_caverns
 		.WORD unk_4000_80F3
 		.WORD unk_4000_8117
 		.WORD surf_city_
@@ -30371,7 +30372,7 @@ turbo_tunnel_:	.BYTE 0			; ...
 		.BYTE $FF
 		.WORD turbo_tunnel
 		.BYTE	0
-unk_4000_8111:	.BYTE	0		; ...
+ice_caverns:	.BYTE 0			; ...
 		.BYTE $10
 		.BYTE $FF
 		.WORD word_4000_E1CE
@@ -30444,19 +30445,19 @@ word_4000_FF72:	.WORD $FFFF		; ...
 ; ---------------------------------------------------------------------------
 
 loc_4000_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#4
 		LDX	#0
 		STX	byte_4000_FFB3
 		JMP	locret_4000_FF71
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_4000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_4000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -30705,7 +30706,7 @@ loc_5000_8400:				; ...
 loc_5000_8408:				; ...
 		STA	byte_0_1E
 		LDX	byte_0_21
-		LDA	byte_0_C7
+		LDA	level_struct
 		STA	byte_0_21
 		LDA	byte_0_5D4,Y
 		STA	byte_0_30
@@ -31159,7 +31160,7 @@ level_map3:				; ...
 		LDA	byte_0_1D
 		CMP	#$F0 ; 'Ё'
 		BCS	locret_5000_86C4
-		LDA	byte_0_C7
+		LDA	level_struct
 		STA	byte_0_1E
 		LDA	#0
 		LDX	#8
@@ -31832,7 +31833,7 @@ loc_5000_B5B6:				; ...
 loc_5000_B5B8:				; ...
 		JSR	level_map3
 		LDX	Object_RamSlotID_tmp
-		LDY	byte_0_C7
+		LDY	level_struct
 		LDA	Level_ID	; $10
 		CMP	#5
 		BEQ	loc_5000_B551
@@ -32441,7 +32442,7 @@ loc_5000_B96B:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_B97A:				; ...
-		LDY	byte_0_C7
+		LDY	level_struct
 		LDA	checkit_81
 		CMP	#1
 		BEQ	loc_5000_B9A5
@@ -33322,19 +33323,19 @@ loc_5000_FF69:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#5
 		LDX	#0
 		STX	byte_5000_FFB3
 		JMP	locret_5000_FF3D
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_5000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_5000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -35601,7 +35602,7 @@ game_end_event_starter:			; ...
 		LDA	#$FE ; '■'
 		STA	Level_ID	; $10
 		LDA	#$10
-		STA	lag_seter	; var helper?
+		STA	nmi_flags	; var helper?
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		RTS
@@ -36095,11 +36096,11 @@ loc_6000_995C:				; ...
 		STA	checkit_81
 
 loc_6000_9984:				; ...
-		LDA	word_0_23
+		LDA	jump_ptr_nmi
 		SBC	#3
-		STA	word_0_23
+		STA	jump_ptr_nmi
 		BCS	loc_6000_998E
-		DEC	word_0_23+1
+		DEC	jump_ptr_nmi+1
 
 loc_6000_998E:				; ...
 		LDA	byte_0_170
@@ -36558,7 +36559,7 @@ loc_6000_9E68:				; ...
 		JSR	sub_6000_9146
 		LDA	#8
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		LDX	#$B0 ; '░'
 		JMP	loc_6000_A05B
 ; ---------------------------------------------------------------------------
@@ -36607,7 +36608,7 @@ loc_6000_9EBA:				; ...
 
 loc_6000_9EC4:				; ...
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	lag_seter
+		STA	nmi_flags
 		LDA	object2_some_anim
 		BNE	loc_6000_9F15
 		LDA	object_2_X_speed
@@ -37424,7 +37425,7 @@ loc_6000_A5BE:				; ...
 		LDA	FrameCounter	; $B
 		EOR	#$40 ; '@'
 		BNE	loc_6000_A5DC
-		STA	word_0_23+1
+		STA	jump_ptr_nmi+1
 
 loc_6000_A5DC:				; ...
 		LDA	#$16
@@ -37487,7 +37488,7 @@ loc_6000_A625:				; ...
 loc_6000_A628:				; ...
 		LDA	Objects_X_speed
 		BNE	loc_6000_A625
-		STA	lag_seter
+		STA	nmi_flags
 		LDY	#3
 		LDX	#$64 ; 'd'
 		JSR	sub_6000_FFEB
@@ -37538,7 +37539,7 @@ loc_6000_A673:				; ...
 		STA	byte_0_C9
 		STA	byte_0_CB
 		LDA	#0
-		STA	word_0_23+1
+		STA	jump_ptr_nmi+1
 		JMP	loc_6000_A87D
 ; ---------------------------------------------------------------------------
 
@@ -37755,7 +37756,7 @@ loc_6000_A7F0:				; ...
 		JSR	loc_6000_FFCB
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#$10
-		STA	lag_seter
+		STA	nmi_flags
 		LDA	#0
 		STA	Objects_Xpos_L
 		JMP	loc_6000_A87D
@@ -37772,7 +37773,7 @@ loc_6000_A816:				; ...
 		STA	byte_0_17
 		LDA	#6
 		JSR	loc_6000_FF84
-		LDA	lag_seter
+		LDA	nmi_flags
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDA	#0
@@ -38836,25 +38837,25 @@ level_values_load:			; ...
 		ASL	A
 		ADC	Level_ID	; $10
 		TAY
-		LDA	unk_6000_DBA4,Y
+		LDA	level_base_X_H,Y
 		STA	LevelPos_CamPosX_H
-		LDA	unk_6000_DBA5,Y
+		LDA	level_base_X_L,Y
 		STA	LevelPos_CamPosX_L
-		LDA	unk_6000_DBA6,Y
+		LDA	level_base_Y_H,Y
 		STA	LevelPos_CamPosY_H
-		LDA	unk_6000_DBA7,Y
+		LDA	level_base_Y_L,Y
 		STA	LevelPos_CamPosY_L
-		LDA	unk_6000_DBA8,Y
-		STA	byte_0_C7
+		LDA	level_struct_id,Y
+		STA	level_struct
 		STY	byte_0_17
-		LDX	unk_6000_DBA9,Y
-		LDA	unk_6000_DBAA,Y
+		LDX	level_bg_pal_id,Y
+		LDA	level_obj_pal_id,Y
 		TAY
 		JSR	sub_6000_DAEE
 		LDY	byte_0_17
-		LDA	unk_6000_DBAC,Y
+		LDA	level_obj_gfx_id,Y
 		PHA
-		LDA	unk_6000_DBAB,Y
+		LDA	level_bg_gfx_id,Y
 		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
 		AND	#$7F ; ''
 		LDY	#1
@@ -38935,15 +38936,15 @@ sub_6000_DB9B:				; ...
 		LDX	#$12
 		JMP	loc_6000_FFCB
 ; ---------------------------------------------------------------------------
-unk_6000_DBA4:	.BYTE	0		; ...
-unk_6000_DBA5:	.BYTE	0		; ...
-unk_6000_DBA6:	.BYTE	0		; ...
-unk_6000_DBA7:	.BYTE	0		; ...
-unk_6000_DBA8:	.BYTE	8		; ...
-unk_6000_DBA9:	.BYTE $28 ; (		; ...
-unk_6000_DBAA:	.BYTE $2A ; *		; ...
-unk_6000_DBAB:	.BYTE $20		; ...
-unk_6000_DBAC:	.BYTE  $A		; ...
+level_base_X_H:	.BYTE 0			; ...
+level_base_X_L:	.BYTE 0			; ...
+level_base_Y_H:	.BYTE 0			; ...
+level_base_Y_L:	.BYTE 0			; ...
+level_struct_id:.BYTE 8			; ...
+level_bg_pal_id:.BYTE $28		; ...
+level_obj_pal_id:.BYTE $2A		; ...
+level_bg_gfx_id:.BYTE $20		; ...
+level_obj_gfx_id:.BYTE $A		; ...
 		.BYTE 0, 0, $FF, $30, $40, 2, $22, $8E,	2, $FF,	$FC, 0,	0, 8, 8, $22, $90, $1A,	0, $10,	$FF, $F0, $30, $A, $22,	$92
 		.BYTE $1C, 0, 0, $FF, $DC, $1A,	$C, $22, $98, $22, 0, $E, $17, 4, 8, $E, $22, $16, $24,	0, 0, $FF, $EC,	$30, $10, $22
 		.BYTE $1E, $1C,	0, 0, $F, $C0, 9, $14, $22, $94, $26, 0, 0, 2, 0, $10, $16, $22, $96, $2E, 0, 0, 0, 0, 9, $18, $22, $94
@@ -39116,7 +39117,7 @@ loc_6000_E5E9:				; ...
 		STA	tmp_var_19
 
 loc_6000_E5F1:				; ...
-		JSR	loc_6000_E60F
+		JSR	text_decompress
 		CMP	#$FD ; '¤'
 		BNE	loc_6000_E5F1
 		DEC	tmp_var_19
@@ -39127,7 +39128,7 @@ loc_6000_E5FC:				; ...
 		STA	tmp_var_1A
 
 loc_6000_E600:				; ...
-		JSR	loc_6000_E60F
+		JSR	text_decompress
 		LDX	tmp_var_1A
 		INC	tmp_var_1A
 		STA	byte_0_700,X
@@ -39135,44 +39136,50 @@ loc_6000_E600:				; ...
 		BNE	loc_6000_E600
 		RTS
 ; ---------------------------------------------------------------------------
+; $1B stores the current byte, each bit	read shifts it left
+; $1C/$1D is a pointer to the next byte	of the stream (with a -7 byte offset)
+; $1E counts how many bits remain in the current loaded	byte
 
-loc_6000_E60F:				; ...
-		LDX	#0
+text_decompress:			; ...
+		LDX	#0		; X stores current tree	node index
 
 loc_6000_E611:				; ...
-		DEC	byte_0_1E
-		BPL	loc_6000_E623
+		DEC	byte_0_1E	; $1E counts bits left in the current byte at $1B
+		BPL	loc_6000_E623	; if we're out of bits, load a new byte
 		LDY	#7
-		STY	byte_0_1E
-		LDA	(tmp_var_1C),Y
-		STA	tmp_var_1B
-		INC	tmp_var_1C
+		STY	byte_0_1E	; reset	$1E to tell us there are 8 available bits
+		LDA	(tmp_var_1C),Y	; load byte from indirect $1C/$1D address + 7
+		STA	tmp_var_1B	; store	byte in	$1B
+		INC	tmp_var_1C	; increment stream byte	position ($1C/$1D)
 		BNE	loc_6000_E623
 		INC	byte_0_1D
 
 loc_6000_E623:				; ...
-		ASL	tmp_var_1B
+		ASL	tmp_var_1B	; shift	the high bit out of $1B	and...
 		BCS	loc_6000_E631
-		LDA	byte_6000_E63B,X
+		LDA	leftside_tree,X	; if bit is 0 load next	node from $E63B	table
 		TAX
-		BPL	loc_6000_E611
-		LDA	loc_6000_E611,X
-		RTS
+		BPL	loc_6000_E611	; loop to next bit if node < 128
+		LDA	ascii_table - $80,X
+		RTS			; return byte from $E691 + (node - 128)
 ; ---------------------------------------------------------------------------
 
 loc_6000_E631:				; ...
-		LDA	byte_6000_E666,X
+		LDA	rightside_tree,X ; if bit is 1 load next node from $E666 table
 		TAX
-		BPL	loc_6000_E611
-		LDA	loc_6000_E611,X
-		RTS
+		BPL	loc_6000_E611	; loop to next bit if node < 128
+		LDA	ascii_table - $80,X
+		RTS			; return byte from $E691 + (node - 128)
 ; ---------------------------------------------------------------------------
-byte_6000_E63B:	.BYTE $29, $AB,	1, 2, $A7, $A5,	$A4, $A3, $A2, 6, $9F, $9D, 7, 9, $A, $9A, $C, $97, $95, $D, $92, $90, $E, $8E,	$11 ; ...
+leftside_tree:				; ...
+		.BYTE $29, $AB,	1, 2, $A7, $A5,	$A4, $A3, $A2, 6, $9F, $9D, 7, 9, $A, $9A, $C, $97, $95, $D, $92, $90, $E, $8E,	$11
 		.BYTE $8C, $12,	$8A, $89, $87, $86, $16, $18, $1A, $83,	$1C, $1D, $1E, $20, $22, $24, $80, $27
-byte_6000_E666:	.BYTE $2A, $AA,	$A9, $A8, $A6, 3, 4, 5,	$A1, $A0, $9E, $9C, 8, $9B, $B,	$99, $98, $96, $94, $93, $91, $8F, $F, $10, $8D	; ...
-		.BYTE $8B, $13,	$14, $88, $15, $85, $17, $19, $84, $1B,	$82, $81, $1F, $21, $23, $25, $26, $28,	$20, $45, $54, $4F, $41
-		.BYTE $53, $52,	$4E, $48, $80, $49, $55, $44, $4C, $59,	$47, $21, $27, $43, $4D, $42, $2C, $57,	$50, $46, $FD, $4B, $2D
-		.BYTE $2E, $56,	$82, $81, $83, $85, $84, $86, $87, $22,	$5A, $51, $4A, $58, $88, $3F
+rightside_tree:				; ...
+		.BYTE $2A, $AA,	$A9, $A8, $A6, 3, 4, 5,	$A1, $A0, $9E, $9C, 8, $9B, $B,	$99, $98, $96, $94, $93, $91, $8F, $F, $10, $8D
+		.BYTE $8B, $13,	$14, $88, $15, $85, $17, $19, $84, $1B,	$82, $81, $1F, $21, $23, $25, $26, $28
+ascii_table:				; ...
+		.BYTE $20, $45,	$54, $4F, $41, $53, $52, $4E, $48, $80,	$49, $55, $44, $4C, $59, $47, $21, $27,	$43, $4D, $42, $2C, $57
+		.BYTE $50, $46,	$FD, $4B, $2D, $2E, $56, $82, $81, $83,	$85, $84, $86, $87, $22, $5A, $51, $4A,	$58, $88, $3F
 byte_6000_E6BD:	.BYTE 0			; ...
 word_6000_E6BE:	.WORD $EB07, $AC02, $880D, $6D13, $201D, $B823,	$A023, $5A2E, $3537, $E33F, $9E3E, $4546, $CC49, $624B,	$3457, $CD5F ; ...
 		.WORD $D35F, $8066, $416E, $F774, $8376, $167C,	$C687, $8887, $4D88, $3196, $FD9E, $6898, $18AF, $68BF,	$7E57, $B827
@@ -39461,19 +39468,19 @@ loc_6000_FF84:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_FF98:				; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#6
 		LDX	#0
 		STX	byte_6000_FFB3
 		JMP	byte_6000_FEC9
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_6000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_6000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -39691,7 +39698,7 @@ loc_7000_852F:				; ...
 		LDA	Objects_X_speed
 		BNE	loc_7000_8539
 		STX	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STX	lag_seter
+		STX	nmi_flags
 
 loc_7000_8539:				; ...
 		TSX
@@ -40509,8 +40516,8 @@ word_7000_FF40:	.WORD $FFFF, $FFFF, $FFFF, $FFFF ; ...
 
 		; public NMI
 NMI:					; ...
-		STX	checkit_76
-		STA	byte_0_75
+		STX	NMI_Xreg_saver
+		STA	NMI_Areg_saver
 		LDA	#7
 		LDX	#0
 		STX	byte_7000_FFB3
@@ -40518,12 +40525,12 @@ NMI:					; ...
 ; End of function NMI
 
 ; ---------------------------------------------------------------------------
-		LDX	checkit_76
-		LDA	byte_0_2E
+		LDX	NMI_Xreg_saver
+		LDA	prev_bank_id
 		TAY
 		STA	byte_7000_FFB3,Y
-		LDY	byte_0_77
-		LDA	byte_0_75
+		LDY	NMI_Yreg_saver
+		LDA	NMI_Areg_saver
 		RTI
 ; ---------------------------------------------------------------------------
 byte_7000_FFB3:	.BYTE 0, 1, 2		; ...
@@ -40569,5 +40576,6 @@ RESET:					; ...
 		.WORD RESET
 		.WORD IRQ
 ; end of 'BANK7'
+
 
 
