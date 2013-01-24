@@ -37,44 +37,42 @@ tmp_var_06:	.BYTE 0	; (uninited)	; ...
 tmp_var_07:	.BYTE 0	; (uninited)	; ...
 tmp_var_08:	.BYTE 0	; (uninited)	; ...
 nmi_flags:	.BYTE 0	; (uninited)	; ...
+					;  > $80  кадр завершен
 tmp_var_0A:	.BYTE 0	; (uninited)	; ...
 FrameCounter:	.BYTE 0	; (uninited)	; ...
-					; $B
 FrameCounter_Even:.BYTE	0 ; (uninited)	; ...
+					; счетчик каждого второго кадра
 Level_tmp:	.BYTE 0	; (uninited)	; ...
 Continues_Player1:.BYTE	0 ; (uninited)	; ...
 Continues_Player2:.BYTE	0 ; (uninited)	; ...
 Level_ID:	.BYTE 0	; (uninited)	; ...
-					; $10
 Lives_Player1:	.BYTE 0	; (uninited)	; ...
 					; кол-во жизней	(сердечек)
 Lives_Player2:	.BYTE 0	; (uninited)	; ...
 					; кол-во жизней	(сердечек)
 JumpTable_ptr_main:.BYTE 0,0 ; (uninited) ; ...
-					; $13
-ObjCounter_tmp_var_15:.BYTE 0 ;	(uninited) ; ...
-					; счетчик объектов / временные значения	 $15
+					; указатель на функцию при переходе в другой банк
+tmp_var_15:	.BYTE 0	; (uninited)	; ...
+					;  / Object Counter / various tmp
 tmp_var_16:	.BYTE 0	; (uninited)	; ...
-byte_0_17:	.BYTE 0	; (uninited)	; ...
-byte_0_18:	.BYTE 0	; (uninited)	; ...
+tmp_var_17:	.BYTE 0	; (uninited)	; ...
+tmp_var_18:	.BYTE 0	; (uninited)	; ...
 tmp_var_19:	.BYTE 0	; (uninited)	; ...
 tmp_var_1A:	.BYTE 0	; (uninited)	; ...
 tmp_var_1B:	.BYTE 0	; (uninited)	; ...
 tmp_var_1C:	.BYTE 0	; (uninited)	; ...
-byte_0_1D:	.BYTE 0	; (uninited)	; ...
-byte_0_1E:	.BYTE 0	; (uninited)	; ...
-word_0_1F:	.BYTE 0,0 ; (uninited)	; ...
-byte_0_21:	.BYTE 0	; (uninited)	; ...
-byte_0_22:	.BYTE 0	; (uninited)	; ...
+tmp_var_1d:	.BYTE 0	; (uninited)	; ...
+tmp_var_1e:	.BYTE 0	; (uninited)	; ...
+tmp_var_1f:	.BYTE 0	; (uninited)	; ...
+tmp_var_20:	.BYTE 0	; (uninited)	; ...
+tmp_var_21:	.BYTE 0	; (uninited)	; ...
+tmp_var_22:	.BYTE 0	; (uninited)	; ...
 jump_ptr_nmi:	.BYTE 0,0 ; (uninited)	; ...
+					; поинтер на функцию во	время nmi
 RandomValue_1:	.BYTE 0	; (uninited)	; ...
-					; $25
 RandomValue_2:	.BYTE 0	; (uninited)	; ...
-					; $26
 RandomValue_3:	.BYTE 0	; (uninited)	; ...
-					; $27
 RandomValue_4:	.BYTE 0	; (uninited)	; ...
-					; $28
 InputHold_P1:	.BYTE 0	; (uninited)	; ...
 					; данные первого джойстика на зажатие
 InputHold_P2:	.BYTE 0	; (uninited)	; ...
@@ -83,27 +81,26 @@ InputTap_P1:	.BYTE 0	; (uninited)	; ...
 					; данные первого джойстика на нажатие
 InputTap_P2:	.BYTE 0	; (uninited)	; ...
 					; данные второго джойстика на нажатие
-byte_0_2D:	.BYTE 0	; (uninited)	; ...
-prev_bank_id:	.BYTE 0	; (uninited)	; ...
+previous_bankID:.BYTE 0	; (uninited)	; ...
+previous_bankID_NMI:.BYTE 0 ; (uninited) ; ...
 byte_0_2F:	.BYTE 0	; (uninited)	; ...
 byte_0_30:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
-music_var32:	.BYTE 0	; (uninited)	; ...
-byte_0_33:	.BYTE 0	; (uninited)	; ...
-checkit_34:	.BYTE 0	; (uninited)	; ...
+music_id:	.BYTE 0	; (uninited)	; ...
+music_info:	.BYTE 0	; (uninited)	; ...
+music_id_ror:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-checkit_37:	.BYTE 0	; (uninited)	; ...
-checkit_38:	.BYTE 0	; (uninited)	; ...
-byte_0_39:	.BYTE 0	; (uninited)	; ...
-word_0_3A:	.BYTE 0,0 ; (uninited)	; ...
+jump_ptr_unk_0:	.BYTE 0,0 ; (uninited)	; ...
+tmp_var_39:	.BYTE 0	; (uninited)	; ...
+jump_ptr_unk1:	.BYTE 0,0 ; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_3E:	.BYTE 0	; (uninited)	; ...
+prev_bank_id_:	.BYTE 0	; (uninited)	; ...
 byte_0_3F:	.BYTE 0	; (uninited)	; ...
 byte_0_40:	.BYTE 0	; (uninited)	; ...
 byte_0_41:	.BYTE 0	; (uninited)	; ...
-byte_0_42:	.BYTE 0	; (uninited)	; ...
+music_id__:	.BYTE 0	; (uninited)	; ...
 byte_0_43:	.BYTE 0	; (uninited)	; ...
 byte_0_44:	.BYTE 0	; (uninited)	; ...
 jump_ptr_unk:	.BYTE 0,0 ; (uninited)	; ...
@@ -115,13 +112,13 @@ byte_0_4B:	.BYTE 0	; (uninited)	; ...
 byte_0_4C:	.BYTE 0	; (uninited)	; ...
 byte_0_4D:	.BYTE 0	; (uninited)	; ...
 byte_0_4E:	.BYTE 0	; (uninited)	; ...
-byte_0_4F:	.BYTE 0	; (uninited)	; ...
+music_id_:	.BYTE 0	; (uninited)	; ...
 byte_0_50:	.BYTE 0	; (uninited)	; ...
 byte_0_51:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_55:	.BYTE 0	; (uninited)	; ...
+palette:	.BYTE 0	; (uninited)	; ...
 byte_0_56:	.BYTE 0	; (uninited)	; ...
 byte_0_57:	.BYTE 0	; (uninited)	; ...
 byte_0_58:	.BYTE 0	; (uninited)	; ...
@@ -177,10 +174,11 @@ LevelPos_CamPosY_L:.BYTE 0 ; (uninited)	; ...
 LevelPos_CamPosY_H:.BYTE 0 ; (uninited)	; ...
 byte_0_8B:	.BYTE 0	; (uninited)	; ...
 byte_0_8C:	.BYTE 0	; (uninited)	; ...
-byte_0_8D:	.BYTE 0	; (uninited)	; ...
+tmp_var_8d:	.BYTE 0	; (uninited)	; ...
 byte_0_8E:	.BYTE 0	; (uninited)	; ...
 byte_0_8F:	.BYTE 0	; (uninited)	; ...
-byte_0_90:	.BYTE 0	; (uninited)	; ...
+for_spr_unk_90:	.BYTE 0	; (uninited)	; ...
+					; смещение?
 byte_0_91:	.BYTE 0	; (uninited)	; ...
 byte_0_92:	.BYTE 0	; (uninited)	; ...
 byte_0_93:	.BYTE 0	; (uninited)	; ...
@@ -192,8 +190,9 @@ byte_0_98:	.BYTE 0	; (uninited)	; ...
 byte_0_99:	.BYTE 0	; (uninited)	; ...
 byte_0_9A:	.BYTE 0	; (uninited)	; ...
 byte_0_9B:	.BYTE 0	; (uninited)	; ...
-byte_0_9C:	.BYTE 0	; (uninited)	; ...
-byte_0_9D:	.BYTE 0	; (uninited)	; ...
+obj_slotID_tmp2:.BYTE 0	; (uninited)	; ...
+ptr_adr?:	.BYTE 0	; (uninited)	; ...
+					; 10
 Objects_RamSlotIDs_tmp:.BYTE 0 ; (uninited) ; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -242,15 +241,15 @@ byte_0_C9:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 byte_0_CB:	.BYTE 0	; (uninited)	; ...
 byte_0_CC:	.BYTE 0	; (uninited)	; ...
-byte_0_CD:	.BYTE 0	; (uninited)	; ...
+update_p1_p2_gfx:.BYTE 0 ; (uninited)	; ...
 byte_0_CE:	.BYTE 0	; (uninited)	; ...
 byte_0_CF:	.BYTE 0	; (uninited)	; ...
 unkn_cnt4:	.BYTE 0	; (uninited)	; ...
 byte_0_D1:	.BYTE 0	; (uninited)	; ...
 byte_0_D2:	.BYTE 0	; (uninited)	; ...
 byte_0_D3:	.BYTE 0	; (uninited)	; ...
-byte_0_D4:	.BYTE 0	; (uninited)	; ...
-byte_0_D5:	.BYTE 0	; (uninited)	; ...
+bikes_accelerate:.BYTE 0 ; (uninited)	; ...
+bikes_speed:	.BYTE 0	; (uninited)	; ...
 byte_0_D6:	.BYTE 0	; (uninited)	; ...
 byte_0_D7:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
@@ -265,7 +264,7 @@ byte_0_E0:	.BYTE 0	; (uninited)	; ...
 byte_0_E1:	.BYTE 0	; (uninited)	; ...
 byte_0_E2:	.BYTE 0	; (uninited)	; ...
 byte_0_E3:	.BYTE 0	; (uninited)	; ...
-byte_0_E4:	.BYTE 0	; (uninited)	; ...
+stop_scroll_flag:.BYTE 0 ; (uninited)	; ...
 Level_CfgAdr_new:.BYTE 0 ; (uninited)	; ...
 					; адрес	конфига	уровня от чекпоинта
 byte_0_E6:	.BYTE 0	; (uninited)	; ...
@@ -317,7 +316,7 @@ byte_0_107:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-		.BYTE 0	; (uninited)
+byte_0_117:	.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -1317,6 +1316,7 @@ Objects_unk2:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 Objects_HitID:	.BYTE 0	; (uninited)	; ...
+					; номер	движения для запуска
 player2_HitID:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -1965,7 +1965,7 @@ byte_0_740:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_782:	.BYTE 0	; (uninited)	; ...
+ram_code:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -1985,8 +1985,11 @@ byte_0_782:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
-byte_0_796:	.BYTE 0	; (uninited)	; ...
-some_object_memory:.BYTE 0 ; (uninited)	; ...
+ram_code_adrL:	.BYTE 0	; (uninited)	; ...
+					; Суда пишутся оффсеты рома, которые используются в RAM	коде для записи	графики	в ppu,
+					; 1 раз	записывается оффсет, и далее через 6 байт тоже но уже +1,и так 16 раз.
+					; В команду LDY	$8030,X	 записываются 8030.
+ram_code_adrH:	.BYTE 0	; (uninited)	; ...
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
 		.BYTE 0	; (uninited)
@@ -2175,7 +2178,7 @@ ende
 
 
 sub_0_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_0_8000
 
 ; ---------------------------------------------------------------------------
@@ -2205,9 +2208,9 @@ sub_0_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_0_8376
 ; ---------------------------------------------------------------------------
-		JMP	loc_0_87AA
+		JMP	sub_0_87AA
 ; ---------------------------------------------------------------------------
-		JMP	loc_0_8566
+		JMP	restart_on_bike_chk
 ; ---------------------------------------------------------------------------
 		JMP	loc_0_B563
 
@@ -2215,7 +2218,7 @@ sub_0_8000:				; ...
 
 
 sub_0_8033:				; ...
-		LDA	byte_0_2D
+		LDA	previous_bankID
 		PHA
 		LDA	LevelPos_CamPosY_L
 		STA	byte_0_B1
@@ -2239,7 +2242,7 @@ loc_0_804D:				; ...
 
 loc_0_8058:				; ...
 		JSR	level_backg_scroll
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#1
 		BNE	loc_0_807A
 		LDA	byte_0_D1
@@ -2267,14 +2270,27 @@ loc_0_807D:
 		DEC	byte_0_8B
 		BNE	loc_0_804D
 		PLA
-		STA	byte_0_2D
+		STA	previous_bankID
 		RTS
 ; End of function sub_0_8033
 
 ; ---------------------------------------------------------------------------
-byte_0_8085:	.BYTE $A9, $3F,	$8D	; ...
-byte_0_8088:	.BYTE 6, $20, $A2	; ...
-byte_0_808B:	.BYTE 0, $8E, 6, $20, $A9, $F, $8D, 7, $20, $E8, $E0, $10, $D0,	$F8, $60 ; ...
+		LDA	#$3F ; '?'
+		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
+
+loc_0_808A:
+		LDX	#0
+
+loc_0_808C:				; VRAM Address Register	#2 (W2)
+		STX	PPU_ADDRESS
+		LDA	#$F
+
+loc_0_8091:				; ...
+		STA	PPU_DATA	; VRAM I/O Register (RW)
+		INX
+		CPX	#$10
+		BNE	loc_0_8091
+		RTS
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -2311,7 +2327,7 @@ loc_0_809C:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_80D4:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDX	#$FF
 		TXS
@@ -2327,7 +2343,7 @@ loc_0_80D4:				; ...
 
 loc_0_80EE:				; ...
 		ADC	#$26
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	#$82
 		JMP	loc_0_8141
 ; ---------------------------------------------------------------------------
@@ -2336,7 +2352,15 @@ loc_0_80EE:				; ...
 		JSR	wait_
 		RTS
 ; ---------------------------------------------------------------------------
-		.BYTE $22, $22,	$20, $80, $88, $80, $5F, $A8, $A8
+byte_0_80FF:	.BYTE $22		; ...
+		.BYTE $22
+		.BYTE $20
+byte_0_8102:	.BYTE $80		; ...
+		.BYTE $88
+		.BYTE $80
+byte_0_8105:	.BYTE $5F		; ...
+		.BYTE $A8
+		.BYTE $A8
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -2348,7 +2372,7 @@ sub_0_8108:				; ...
 		BEQ	loc_0_80D4
 		LDA	#4
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#3
 
 loc_0_8118:				; ...
@@ -2365,24 +2389,24 @@ loc_0_8118:				; ...
 		SBC	#$10
 		AND	#$F8
 		LSR	A
-		STA	byte_0_17
+		STA	tmp_var_17
 		LSR	A
 		LSR	A
 		TAX
 		DEX
 		TXS
-		LDA	byte_0_17
+		LDA	tmp_var_17
 
 loc_0_813A:				; ...
 		CLC
 		ADC	#$2E
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	#$82
 
 loc_0_8141:				; ...
 		ADC	#0
-		STA	word_0_1F+1
-		JMP	(word_0_1F)
+		STA	tmp_var_20
+		JMP	(tmp_var_1f)
 ; End of function sub_0_8108
 
 ; ---------------------------------------------------------------------------
@@ -2390,7 +2414,7 @@ loc_0_8141:				; ...
 loc_0_8148:				; ...
 		DEY
 		BEQ	loc_0_8195
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		BPL	loc_0_8152
 		JMP	loc_0_8226
 ; ---------------------------------------------------------------------------
@@ -2437,17 +2461,17 @@ loc_0_818B:				; ...
 		TXS
 		LDA	#$78
 		SEC
-		SBC	byte_0_17
+		SBC	tmp_var_17
 		BCS	loc_0_813A
 
 loc_0_8195:				; ...
 		LDA	#$10
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		BMI	loc_0_81BC
 		LDY	#2
 		LDA	unkn_flag
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$84
 		BCS	loc_0_8211
 		CMP	#$81
@@ -2469,12 +2493,12 @@ loc_0_81BC:				; ...
 
 loc_0_81C0:				; ...
 		TAY
-		LDA	byte_0_8085 - 7,Y
+		LDA	byte_0_80FF - $81,Y
 		EOR	byte_0_96
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
-		LDA	byte_0_8088 - 7,Y
+		LDA	byte_0_8102 - $81,Y
 		STA	unkn_flag
-		LDX	byte_0_808B - 7,Y
+		LDX	byte_0_8105 - $81,Y
 		LDA	#$62
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDA	#$10
@@ -2495,7 +2519,7 @@ loc_0_81E4:				; ...
 		LDY	#$10
 
 loc_0_81F0:				; ...
-		LDA	byte_0_55,X
+		LDA	palette,X
 		SEC
 		SBC	byte_0_C9
 		BCS	loc_0_81FB
@@ -2600,12 +2624,14 @@ loc_0_8236:				; ...
 		PLA
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		JMP	loc_0_8148
-; ---------------------------------------------------------------------------
 
-loc_0_82A9:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+RESET_0:				; ...
 		LDA	#0
 
-loc_0_82AB:				; ...
+RESET__:				; ...
 		STA	byte_0_FF
 		SEI
 		CLD
@@ -2625,13 +2651,10 @@ loc_0_82BF:				; ...
 		LDA	#0
 		LDX	#$17
 
-; =============== S U B	R O U T	I N E =======================================
-
-
-sub_0_82C8:				; ...
+loc_0_82C8:				; ...
 		STA	SND_SQUARE1_REG,X ; pAPU Pulse #1 Control Register (W)
 		DEX
-		BPL	sub_0_82C8
+		BPL	loc_0_82C8
 		LDX	#$C0
 		STX	SND_DELTA_REG	; pAPU Delta Modulation	Control	Register (W)
 		LDX	#$80
@@ -2644,7 +2667,7 @@ sub_0_82C8:				; ...
 clear_memory:				; ...
 		CPX	#$FD
 		BCS	loc_0_82E6
-		STA	tmp_var_00,X
+		STA	0,X
 
 loc_0_82E6:				; ...
 		STA	$100,X
@@ -2657,7 +2680,7 @@ loc_0_82E6:				; ...
 		INX
 		BNE	clear_memory
 		LDA	#$80
-		STA	JumpTable_ptr_main+1 ; $13
+		STA	JumpTable_ptr_main+1 ; указатель на функцию при	переходе в другой банк
 		LDA	#$28
 		CMP	byte_0_FD
 		BNE	loc_0_830A
@@ -2668,7 +2691,7 @@ loc_0_830A:				; ...
 		STA	Continues_Player1
 		STA	Continues_Player2
 		JMP	start_first_jump
-; End of function sub_0_82C8
+; End of function RESET_0
 
 ; ---------------------------------------------------------------------------
 
@@ -2692,7 +2715,9 @@ loc_0_831F:				; ...
 		LDA	#0
 		STA	Level_tmp
 		JMP	loc_0_D50C
-; ---------------------------------------------------------------------------
+
+; =============== S U B	R O U T	I N E =======================================
+
 
 set_game_end:				; ...
 		LDA	game_end_caller_var
@@ -2707,7 +2732,7 @@ loc_0_8330:				; ...
 		STA	Continues_Player2
 
 loc_0_8336:				; ...
-		JSR	sub_0_876B
+		JSR	clear_ram
 
 loc_0_8339:				; ...
 		LDX	#0
@@ -2742,30 +2767,32 @@ loc_0_8368:				; ...
 		JSR	jump_other_bank
 		LDX	#$A4
 		LDY	#$83
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
+; End of function set_game_end
+
 ; ---------------------------------------------------------------------------
 
 loc_0_8376:				; ...
 		JSR	loc_0_8385
 		LDA	#2
-		STA	byte_0_2D
+		STA	previous_bankID
 		RTS
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 set_level_music:			; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 
 set_music_by_level_id:			; ...
 		LDA	Level_MusicID,Y
 
 set_music_track:			; ...
-		STA	music_var32
+		STA	music_id
 
 loc_0_8385:				; ...
 		LDY	#3
-		LDX	#3
+		LDX	#3		; start_play_music
 		JSR	jump_other_bank
 
 loc_0_838C:				; ...
@@ -2773,18 +2800,20 @@ loc_0_838C:				; ...
 
 loc_0_838F:
 		LDA	#0
-		JMP	sub_0_FF84
+		JMP	jump_from_bank0
 ; End of function set_level_music
 
 ; ---------------------------------------------------------------------------
 Level_MusicID:	.BYTE 3, 3, 4, 1, $E, $C, $F, 8, 9, $11, $13, $D, $D, $B, $B, $14 ; ...
-; ---------------------------------------------------------------------------
+
+; =============== S U B	R O U T	I N E =======================================
+
 
 level_nextframe:
 		JSR	sub_0_8108
 		JSR	some_with_ppu
 		LDA	#$10
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDX	#$4B
@@ -2859,18 +2888,18 @@ loc_0_842B:				; ...
 		JSR	level_cfg_read
 		LDA	#0
 		STA	unkn_cnt2
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#8
 		BEQ	loc_0_8454
 		LDA	byte_0_E3
 		BNE	loc_0_8454
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BNE	loc_0_8451
 		LDA	LevelPos_CamPosX_H
 		CMP	#$E
 		BCS	loc_0_8454
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		CMP	#5
 		BCS	loc_0_8454
 
@@ -2882,7 +2911,7 @@ loc_0_8454:				; ...
 		LDY	#3
 		JSR	jump_other_bank	; background_vs_sprites_pos
 		JSR	objects_functions
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#8
 		BNE	loc_0_8467
 		JSR	level_backg_scroll
@@ -2909,10 +2938,10 @@ loc_0_8467:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8490:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BNE	loc_0_84A5
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		ORA	byte_0_C8
 		BNE	loc_0_84A5
 		LDY	#1
@@ -2934,18 +2963,20 @@ loc_0_84AE:				; ...
 
 loc_0_84B6:				; ...
 		LDA	byte_0_8506 - 4,Y
-		BNE	loc_0_84E8
+		BNE	sub_0_84E8
 		LDX	byte_0_8507 - 4,Y
 		LDA	byte_0_8508 - 4,Y
 		JSR	some_sounds
 		JMP	loc_0_8500
+; End of function level_nextframe
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 update_c8_cb:				; ...
 		LDA	#3
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	locret_0_84E0
 		LDA	byte_0_C9
 		CMP	#0
@@ -2967,21 +2998,23 @@ locret_0_84E0:				; ...
 
 
 some_sounds:				; ...
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDY	#3
 		JMP	jump_other_bank
 ; End of function some_sounds
 
-; ---------------------------------------------------------------------------
 
-loc_0_84E8:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_84E8:				; ...
 		STA	byte_0_40
 		LDA	byte_0_8506 - 3,Y
 		STA	byte_0_3F
 		LDA	byte_0_8507 - 3,Y
-		STA	byte_0_42
+		STA	music_id__
 		LDA	byte_0_8508 - 3,Y
-		STA	byte_0_4F
+		STA	music_id_
 		LDY	#3
 		LDX	#9
 		JSR	jump_other_bank
@@ -2989,6 +3022,8 @@ loc_0_84E8:				; ...
 loc_0_8500:				; ...
 		JSR	update_frame_counters
 		JMP	loc_0_8716
+; End of function sub_0_84E8
+
 ; ---------------------------------------------------------------------------
 byte_0_8506:	.BYTE 0			; ...
 byte_0_8507:	.BYTE $15		; ...
@@ -3000,7 +3035,7 @@ byte_0_8508:	.BYTE 4, 0, $81, 1, $60, $1C, $81, 1, $70, $28,	$84, 1,	0, $1C,	$81
 
 
 levels_3_and_6_scroll?:			; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#6
 		BEQ	loc_0_8544
 		CPY	#3
@@ -3014,7 +3049,7 @@ loc_0_8544:				; ...
 loc_0_854B:				; ...
 		BIT	PPU_STATUS	; PPU Status Register (R)
 		BEQ	loc_0_854B
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CPY	#6
 		BEQ	loc_0_855D
 		LDY	#1
@@ -3030,10 +3065,12 @@ locret_0_8565:				; ...
 		RTS
 ; End of function levels_3_and_6_scroll?
 
-; ---------------------------------------------------------------------------
 
-loc_0_8566:				; ...
-		LDX	#$39		; ?
+; =============== S U B	R O U T	I N E =======================================
+
+
+restart_on_bike_chk:			; ...
+		LDX	#$39		; func id / 3
 		BNE	loc_0_856F
 
 loc_0_856A:				; ...
@@ -3041,13 +3078,17 @@ loc_0_856A:				; ...
 		LDX	#$3C
 
 loc_0_856F:				; ...
-		LDY	#3
-		JSR	jump_other_bank	; jump pointer
+		LDY	#3		; restart_on_bikes
+		JSR	jump_other_bank
 		JSR	sub_0_8033
 		JMP	loc_0_8368
-; ---------------------------------------------------------------------------
+; End of function restart_on_bike_chk
 
-loc_0_857A:				; ...
+
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_857A:				; ...
 		LDX	#9
 		LDY	#7
 		JSR	jump_other_bank
@@ -3062,7 +3103,7 @@ loc_0_8588:				; ...
 loc_0_858D:				; ...
 		CMP	#$80
 		BNE	loc_0_85AB
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BEQ	loc_0_8588
 		CMP	#8
@@ -3084,6 +3125,8 @@ loc_0_85AB:				; ...
 		JSR	byte_0_6F0
 		JSR	wait__0
 		BEQ	loc_0_85CD
+; End of function sub_0_857A
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -3093,7 +3136,9 @@ some_with_ppu:				; ...
 		BNE	loc_0_858D
 
 loc_0_85B9:				; ...
-		LDA	byte_0_796
+		LDA	ram_code_adrL	; Суда пишутся оффсеты рома, которые используются в RAM	коде для записи	графики	в ppu,
+					; 1 раз	записывается оффсет, и далее через 6 байт тоже но уже +1,и так 16 раз.
+					; В команду LDY	$8030,X	 записываются 8030.
 		CLC
 
 loc_0_85BD:				; ...
@@ -3109,7 +3154,7 @@ loc_0_85C5:
 ; ---------------------------------------------------------------------------
 
 loc_0_85CA:				; ...
-		JSR	byte_0_782
+		JSR	ram_code	; write_gfx
 
 loc_0_85CD:				; ...
 		LDA	byte_0_96
@@ -3133,10 +3178,10 @@ loc_0_85E4:				; ...
 		TAX
 		ROL	A
 		AND	#$30
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		TXA
 		AND	#3
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_85
 		TYA
 		AND	#$E0
@@ -3144,7 +3189,7 @@ loc_0_85E4:				; ...
 		LDA	#$18
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		LDX	#$4E
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BEQ	loc_0_8612
 		CMP	#3
@@ -3160,7 +3205,7 @@ loc_0_8619:				; ...
 		LDA	pause_flag
 		BNE	loc_0_8622
 		LDA	#$10
-		JSR	sub_0_FF84
+		JSR	jump_from_bank0
 
 loc_0_8622:				; ...
 		LDA	byte_0_84
@@ -3204,7 +3249,7 @@ loc_0_865A:				; ...
 		LDA	LevelPos_CamPosX_L
 		CLC
 		ADC	byte_0_D3
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#6
 		BEQ	loc_0_866B
 		CPY	#3
@@ -3223,12 +3268,12 @@ loc_0_8674:				; ...
 		LDY	#1
 		JSR	wait_
 		STX	banks_ids	; prevent 'bus conflict'
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		BPL	loc_0_86AF
 		JSR	joypads_reading
 
 loc_0_8686:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		LDA	level_flag_xz7 - 1,Y ; для змей	$80
 		STA	byte_0_CC
 		TYA
@@ -3243,7 +3288,7 @@ loc_0_8694:				; ...
 loc_0_8699:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	LevelPos_CamPosX_L
-		LDY	nmi_flags
+		LDY	nmi_flags	;  > $80  кадр завершен
 		BPL	loc_0_86A7
 		LDY	pause_flag
 		BNE	loc_0_86A7
@@ -3254,7 +3299,7 @@ loc_0_86A7:				; ...
 
 loc_0_86AA:				; ...
 		LDA	#0
-		JMP	sub_0_FF84
+		JMP	jump_from_bank0
 ; ---------------------------------------------------------------------------
 
 loc_0_86AF:				; ...
@@ -3277,7 +3322,7 @@ loc_0_86C7:				; ...
 		BCC	loc_0_8694
 		LDA	LevelPos_CamPosX_L
 		LSR	A
-		STA	byte_0_17
+		STA	tmp_var_17
 		JSR	sub_0_FEDA
 		JMP	loc_0_8699
 ; ---------------------------------------------------------------------------
@@ -3292,55 +3337,63 @@ locret_0_86ED:				; ...
 		RTS
 ; End of function some_with_ppu
 
-; ---------------------------------------------------------------------------
 
-loc_0_86EE:				; ...
-		STX	jump_ptr_nmi
-		STY	jump_ptr_nmi+1
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_86EE:				; ...
+		STX	jump_ptr_nmi	; поинтер на функцию во	время nmi
+		STY	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 		LDA	tmp_var_0A
 		ORA	#$18
 		STA	tmp_var_0A
 		LDA	#0
-		STA	FrameCounter	; $B
-		STA	FrameCounter_Even
+		STA	FrameCounter
+		STA	FrameCounter_Even ; счетчик каждого второго кадра
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#$90
 		BNE	loc_0_871A
+; End of function sub_0_86EE
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 update_frame_counters:			; ...
-		INC	FrameCounter	; $B
-		LDA	FrameCounter	; $B
+		INC	FrameCounter
+		LDA	FrameCounter
 		AND	#1
 		BNE	locret_0_870F
-		INC	FrameCounter_Even
+		INC	FrameCounter_Even ; счетчик каждого второго кадра
 
 locret_0_870F:				; ...
 		RTS
 ; End of function update_frame_counters
 
-; ---------------------------------------------------------------------------
 
-loc_0_8710:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_8710:				; ...
 		JSR	update_frame_counters
 
 loc_0_8713:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 
 loc_0_8716:				; ...
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80
 
 loc_0_871A:				; ...
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 
 random_cycle:				; ...
 		JSR	change_random_values
 		JSR	random
 		JMP	random_cycle
+; End of function sub_0_8710
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -3349,15 +3402,15 @@ change_random_values:			; ...
 		LDX	#3
 
 loc_0_872A:				; ...
-		LDA	RandomValue_1,X	; $25
-		ADC	FrameCounter	; $B
+		LDA	RandomValue_1,X
+		ADC	FrameCounter
 		SBC	Objects_Xpos_L
 		EOR	Objects_Y_sub
-		EOR	RandomValue_2,X	; $26
-		SBC	jump_ptr_nmi+1,X
+		EOR	RandomValue_2,X
+		SBC	jump_ptr_nmi+1,X ; поинтер на функцию во время nmi
 		ADC	Objects_Ypos_L,X
-		ADC	FrameCounter	; $B
-		STA	RandomValue_1,X	; $25
+		ADC	FrameCounter
+		STA	RandomValue_1,X
 		DEX
 		BPL	loc_0_872A
 		RTS
@@ -3368,16 +3421,16 @@ loc_0_872A:				; ...
 
 
 random:					; ...
-		LDA	RandomValue_1	; $25
-		EOR	RandomValue_4	; $28
-		ADC	RandomValue_3	; $27
-		STA	RandomValue_2	; $26
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_1
+		EOR	RandomValue_4
+		ADC	RandomValue_3
+		STA	RandomValue_2
+		LDA	RandomValue_3
 		ROL	A
-		SBC	RandomValue_4	; $28
-		STA	RandomValue_3	; $27
-		EOR	RandomValue_2	; $26
-		STA	RandomValue_1	; $25
+		SBC	RandomValue_4
+		STA	RandomValue_3
+		EOR	RandomValue_2
+		STA	RandomValue_1
 		RTS
 ; End of function random
 
@@ -3396,7 +3449,7 @@ level_backg_scroll:			; ...
 
 
 sub_0_875E:				; ...
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		STA	tmp_var_16
 		LDX	#9
 		LDY	#5
@@ -3410,28 +3463,26 @@ sub_0_875E:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_876B:				; ...
+clear_ram:				; ...
 		SEI
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#0
 		STA	SND_MASTERCTRL_REG ; pAPU Sound/Vertical Clock Signal Register (R)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		LDX	#$15
 
 clear_zero_page:			; ...
-		STA	tmp_var_00,X
+		STA	0,X
 		INX
 		CPX	#$FC
 		BNE	clear_zero_page
 		LDX	#0
 
-loc_0_8787:				; ...
+clear_mem:				; ...
 		STA	$100,X
 		STA	$200,X
-
-loc_0_878D:
 		STA	$300,X
 		STA	$400,X
 		CPX	#$F4
@@ -3441,9 +3492,9 @@ loc_0_878D:
 loc_0_879A:				; ...
 		STA	$600,X
 		INX
-		BNE	loc_0_8787
+		BNE	clear_mem
 		JMP	loc_0_8339
-; End of function sub_0_876B
+; End of function clear_ram
 
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -3455,9 +3506,11 @@ level_camera_moving:			; ...
 		JMP	jump_other_bank
 ; End of function level_camera_moving
 
-; ---------------------------------------------------------------------------
 
-loc_0_87AA:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_87AA:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		JSR	sub_0_91F2
@@ -3467,6 +3520,8 @@ loc_0_87AA:				; ...
 		JSR	set_music_track
 		JSR	loc_0_838C
 		JMP	loc_0_DA24
+; End of function sub_0_87AA
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -3505,7 +3560,7 @@ loc_0_87D3:				; ...
 		LDA	Objects_TypeID,X
 		BEQ	deleted_object
 		ASL	Objects_Flags,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_0_8809
 		JMP	loc_0_884E
@@ -3520,7 +3575,7 @@ loc_0_8809:				; ...
 		LDX	#$18
 		LDY	#2
 		JSR	jump_other_bank
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		CPY	#$38
 		BCS	loc_0_888D
 		LDA	Objects_Flags,X
@@ -3561,11 +3616,11 @@ loc_0_884E:				; ...
 		BNE	loc_0_887D
 		LDA	Objects_Xpos_L,X
 		SBC	#6
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Xpos_H,X
 		SBC	#0
 		STA	tmp_var_16
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		SEC
 		SBC	LevelPos_CamPosX_L
 		STA	Objects_X_shadow,X
@@ -3588,7 +3643,7 @@ loc_0_888D:				; ...
 		LDA	Objects_Ypos_L,X
 		SEC
 		SBC	Objects_Zpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Ypos_H,X
 		SBC	Objects_Zpos_H,X
 		STA	tmp_var_16
@@ -3596,13 +3651,13 @@ loc_0_888D:				; ...
 		BEQ	loc_0_88AD
 		EOR	#$FF
 		SEC
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_0_88AD
 		INC	tmp_var_16
 
 loc_0_88AD:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	Objects_Z_floor,X
 		BCC	loc_0_88B7
@@ -3666,12 +3721,12 @@ sub_0_88EF:				; ...
 		DEY
 
 loc_0_88F3:				; ...
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Obj_anims_timer,Y
 		BEQ	loc_0_893D
 		CPY	#2
 		BCS	loc_0_892D
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#$B
 		BNE	loc_0_890C
 		STA	Objects_various_flags,X	; для пушек ID прицепленного объекта
@@ -3719,7 +3774,7 @@ loc_0_893D:				; ...
 		STA	Objects_Flags,X
 		LDA	player1_obj_wanted_frame,Y
 		TAY
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		LDA	byte_0_8961 - $38,Y
 		BCC	loc_0_895D
@@ -3742,7 +3797,7 @@ loc_0_8978:				; ...
 		STA	Objects_dir,X
 		JSR	sub_0_CF66
 		JSR	sub_0_E4AD
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#3
 		TAY
 		JMP	loc_0_8A4C
@@ -3837,7 +3892,7 @@ loc_0_8A28:				; ...
 		JSR	can_make_game_end?
 
 loc_0_8A33:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	locret_0_8A52
 		LDA	Objects_Z_speed,X
 		BEQ	loc_0_8A46
@@ -3876,14 +3931,14 @@ loc_0_8A59:				; ...
 		LDA	#3
 		JSR	sub_0_8AFB
 		BMI	locret_0_8A52
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#$B
 		BNE	loc_0_8A70
-		STA	Objects_HitID,Y
+		STA	Objects_HitID,Y	; номер	движения для запуска
 		BEQ	loc_0_8A73
 
 loc_0_8A70:				; ...
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 
 loc_0_8A73:				; ...
 		ORA	Obj_anims_timer,Y
@@ -3918,7 +3973,7 @@ loc_0_8A99:				; ...
 		STA	byte_0_E0
 		LDA	byte_0_8AE8,Y
 		STA	byte_0_E1
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		LDA	Objects_state,Y	; бит 5	($20) -	наличие	стика
 		AND	#$40
 		CMP	#$40
@@ -3968,7 +4023,7 @@ sub_0_8AF7:				; ...
 
 
 sub_0_8AFB:				; ...
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	#$FF
 		BCC	loc_0_8B05
 		LDY	#0
@@ -3978,7 +4033,7 @@ loc_0_8B05:				; ...
 		STA	byte_0_8E
 
 loc_0_8B07:				; ...
-		STY	byte_0_21
+		STY	tmp_var_21
 		LDA	Objects_TypeID,Y
 		BEQ	loc_0_8B2C
 		LDA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
@@ -3990,14 +4045,14 @@ loc_0_8B07:				; ...
 		LDA	Objects_TypeID,Y
 		TAY
 		LDA	objects_unk_dat3,Y
-		AND	word_0_1F
+		AND	tmp_var_1f
 		BEQ	loc_0_8B2C
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		JMP	loc_0_8B4B
 ; ---------------------------------------------------------------------------
 
 loc_0_8B2C:				; ...
-		LDA	byte_0_21
+		LDA	tmp_var_21
 		CLC
 		ADC	byte_0_8E
 		TAY
@@ -4027,16 +4082,16 @@ loc_0_8B48:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8B4B:				; ...
-		STA	word_0_1F+1
+		STA	tmp_var_20
 		AND	#8
 		BNE	loc_0_8B45
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		AND	#4
 		BNE	loc_0_8B48
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		AND	#$40
 		BEQ	loc_0_8BDC
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$24
 		BEQ	loc_0_8BDC
 		LDA	byte_0_DE
@@ -4055,7 +4110,7 @@ loc_0_8B79:				; ...
 
 loc_0_8B7B:				; ...
 		LDA	#3
-		STA	word_0_1F+1
+		STA	tmp_var_20
 		JMP	loc_0_8C1D
 ; ---------------------------------------------------------------------------
 
@@ -4071,7 +4126,7 @@ loc_0_8B82:				; ...
 		LDA	tmp_var_1B
 		EOR	Objects_dir,X
 		BPL	loc_0_8B2C
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		AND	#3
 		BNE	loc_0_8BB8
 
@@ -4091,16 +4146,16 @@ loc_0_8BB8:				; ...
 		ORA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		AND	#$40
 		BNE	loc_0_8BD6
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_8BD6
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$1A
 		BNE	loc_0_8BDC
-		LDA	byte_0_22
+		LDA	tmp_var_22
 		CLC
 		ADC	#$10
-		STA	byte_0_22
+		STA	tmp_var_22
 
 loc_0_8BD6:				; ...
 		LDA	#0
@@ -4131,10 +4186,10 @@ loc_0_8BEE:				; ...
 loc_0_8BFA:				; ...
 		LDA	Objects_Y_shad,Y
 		SBC	Objects_Z_floor,Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Y_shad,X
 		SBC	Objects_Z_floor,X
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#$20
 		CMP	#$40
 		BCS	loc_0_8C13
@@ -4170,7 +4225,7 @@ loc_0_8C22:				; ...
 		BCS	loc_0_8C4E
 		CPX	#2
 		BCC	loc_0_8C4E
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 		CMP	#1
 		LDA	#$C
 		BCC	loc_0_8C52
@@ -4188,7 +4243,7 @@ loc_0_8C52:				; ...
 loc_0_8C57:				; ...
 		JSR	test_checkpoint_pos
 		BNE	loc_0_8CCA
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$5E
 		BEQ	loc_0_8CA3
 		LDA	tmp_var_1B
@@ -4204,7 +4259,7 @@ loc_0_8C72:				; ...
 		ADC	#$12
 		CMP	#$24
 		BCS	loc_0_8C94
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		AND	#2
 		BEQ	loc_0_8C94
 		CPX	#2
@@ -4221,7 +4276,7 @@ loc_0_8C91:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8C94:				; ...
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		ROR	A
 		BCC	loc_0_8CCA
 		LDA	Objects_TypeID,Y
@@ -4326,7 +4381,7 @@ locret_0_8D29:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8D2A:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	locret_0_8D29
 		LDA	byte_0_8F
@@ -4363,7 +4418,7 @@ sub_0_8D4D:				; ...
 		STA	tmp_var_1B
 		LDA	Objects_Zpos_H,X
 		SBC	Objects_Zpos_H,Y
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		STA	byte_0_8F
 		BNE	loc_0_8D6B
 		LDA	tmp_var_1C
@@ -4399,17 +4454,17 @@ joypads_reading:			; ...
 loc_0_8D83:				; ...
 		LDA	JOYPAD_PORT1	; Joypad #1 (RW)
 		ROR	A
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDA	JOYPAD_PORT2	; Joypad #2/SOFTCLK (RW)
 		ROR	A
 		ROL	tmp_var_16
 		DEX
 		BNE	loc_0_8D83
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		TAX
 		EOR	InputHold_P1	; данные первого джойстика на зажатие
 		STX	InputHold_P1	; данные первого джойстика на зажатие
-		AND	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		AND	tmp_var_15	;  / Object Counter / various tmp
 		STA	InputTap_P1	; данные первого джойстика на нажатие
 		LDA	tmp_var_16
 		TAX
@@ -4434,7 +4489,7 @@ loc_0_8DB5:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8DBA:				; ...
-		LDA	byte_0_39
+		LDA	tmp_var_39
 		LDX	#2
 		JMP	sub_0_8E7A
 
@@ -4442,7 +4497,7 @@ loc_0_8DBA:				; ...
 
 
 sub_0_8DC1:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#2
 		BNE	loc_0_8E42
 		LDY	objects_some_anim,X
@@ -4453,7 +4508,7 @@ sub_0_8DC1:				; ...
 loc_0_8DCF:				; ...
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		AND	#$C
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Ypos_L,X
 		SEC
 		SBC	Objects_Zpos_L,X
@@ -4474,7 +4529,7 @@ loc_0_8DCF:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8DF6:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CPY	#$E0
 		BCC	loc_0_8E08
 		LDA	#0
@@ -4516,14 +4571,14 @@ loc_0_8E23:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_8E42:				; ...
-		LDY	Objects_HitID,X
+		LDY	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_8E4A
 		ROL	A
 		BCS	sub_0_8E52
 
 loc_0_8E4A:				; ...
 		LDA	#$B0
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#$D8
 		BNE	loc_0_8E5A
 ; End of function sub_0_8DC1
@@ -4534,12 +4589,12 @@ loc_0_8E4A:				; ...
 
 sub_0_8E52:				; ...
 		LDA	#$D8
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDY	Level_ID	; $10
+		STA	tmp_var_15	;  / Object Counter / various tmp
+		LDY	Level_ID
 		LDA	#$F9
 
 loc_0_8E5A:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#6
 		BEQ	loc_0_8E68
 		CPY	#$C
@@ -4563,7 +4618,7 @@ loc_0_8E68:				; ...
 
 
 sub_0_8E7A:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_8E7C:				; ...
 		LDY	Objects_TypeID,X
@@ -4582,25 +4637,25 @@ loc_0_8E7C:				; ...
 		BPL	loc_0_8EA8
 
 loc_0_8E9E:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		LSR	A
 		LSR	A
 		ORA	#$C0
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#2
 
 loc_0_8EA8:				; ...
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	Objects_Z_floor,X
 		STA	byte_0_AF
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$80
 		BCS	loc_0_8ECA
 		ADC	Objects_unk1,X
 		STA	Objects_unk1,X
 		BCC	loc_0_8EE4
 		LDA	Objects_Z_speed,X
-		EOR	word_0_1F
+		EOR	tmp_var_1f
 		BEQ	loc_0_8ED9
 		INC	Objects_Z_speed,X
 		JMP	loc_0_8EE1
@@ -4610,7 +4665,7 @@ loc_0_8ECA:				; ...
 		ADC	Objects_unk1,X
 		STA	Objects_unk1,X
 		BCS	loc_0_8EE4
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		ADC	Objects_Z_speed,X
 		BNE	loc_0_8EDE
 
@@ -4636,12 +4691,12 @@ loc_0_8EE4:				; ...
 
 
 sub_0_8EEE:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	Objects_Zpos_L,X
 		STA	Objects_Zpos_L,X
 		PHP
 		LDA	#$80
-		CMP	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		CMP	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#0
 		SBC	#0
 		PLP
@@ -4666,7 +4721,7 @@ loc_0_8F1B:				; ...
 		CPX	#2
 		BCS	loc_0_8F29
 		ORA	player1_endLvL_timer,X
-		ORA	byte_0_E4
+		ORA	stop_scroll_flag
 
 loc_0_8F29:				; ...
 		ORA	timer_end_music
@@ -4704,27 +4759,27 @@ sub_0_8F4C:				; ...
 loc_0_8F4F:				; ...
 		AND	#$F0
 		BEQ	locret_0_8F96
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_dir,X
 		LSR	A
 		LSR	A
 		AND	#$F
-		STA	byte_0_17
+		STA	tmp_var_17
 		BEQ	loc_0_8F66
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 		LDA	loc_0_9039,Y
 
 loc_0_8F66:				; ...
 		TAY
 		AND	#7
-		STA	byte_0_21
+		STA	tmp_var_21
 		TYA
 		AND	#$F8
-		STA	byte_0_22
-		LDA	byte_0_17
+		STA	tmp_var_22
+		LDA	tmp_var_17
 		EOR	#$F
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 		LDA	byte_0_904A - $10,Y
 		TAY
@@ -4750,10 +4805,10 @@ locret_0_8F96:				; ...
 loc_0_8F97:				; ...
 		LDA	Objects_X_sub,X
 		CLC
-		ADC	byte_0_22
+		ADC	tmp_var_22
 		STA	Objects_X_sub,X
 		LDA	Objects_Xpos_L,X
-		ADC	byte_0_21
+		ADC	tmp_var_21
 		STA	Objects_Xpos_L,X
 		BCC	loc_0_8FAD
 		INC	Objects_Xpos_H,X
@@ -4786,10 +4841,10 @@ loc_0_8FC4:				; ...
 loc_0_8FD9:				; ...
 		LDA	Objects_Y_sub,X
 		CLC
-		ADC	byte_0_22
+		ADC	tmp_var_22
 		STA	Objects_Y_sub,X
 		LDA	Objects_Ypos_L,X
-		ADC	byte_0_21
+		ADC	tmp_var_21
 		STA	Objects_Ypos_L,X
 		BCC	locret_0_8FEF
 		INC	Objects_Ypos_H,X
@@ -4812,10 +4867,10 @@ loc_0_8FF0:				; ...
 loc_0_9006:				; ...
 		LDA	Objects_Y_sub,X
 		SEC
-		SBC	byte_0_22
+		SBC	tmp_var_22
 		STA	Objects_Y_sub,X
 		LDA	Objects_Ypos_L,X
-		SBC	byte_0_21
+		SBC	tmp_var_21
 		STA	Objects_Ypos_L,X
 		BCS	locret_0_901C
 		DEC	Objects_Ypos_H,X
@@ -4827,10 +4882,10 @@ locret_0_901C:				; ...
 loc_0_901D:				; ...
 		LDA	Objects_X_sub,X
 		SEC
-		SBC	byte_0_22
+		SBC	tmp_var_22
 		STA	Objects_X_sub,X
 		LDA	Objects_Xpos_L,X
-		SBC	byte_0_21
+		SBC	tmp_var_21
 		STA	Objects_Xpos_L,X
 		BCS	loc_0_9034
 		DEC	Objects_Xpos_H,X
@@ -4940,7 +4995,7 @@ sub_0_918F:				; ...
 
 loc_0_9191:				; ...
 		LDY	Object_RamSlotID_tmp
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		LDA	#$2C
 		BCS	loc_0_91A6
@@ -4951,7 +5006,7 @@ loc_0_9191:				; ...
 		LDA	#$2E
 
 loc_0_91A6:				; ...
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		STY	checkit_81
 		STX	Object_RamSlotID_tmp
 		JSR	sub_0_93FE
@@ -4991,7 +5046,7 @@ loc_0_91DF:				; ...
 loc_0_91E6:				; ...
 		LDY	#6
 		JSR	jump_other_bank
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_91EE:				; ...
@@ -5004,7 +5059,7 @@ loc_0_91EE:				; ...
 sub_0_91F2:				; ...
 		LDA	#$10
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		JSR	sub_0_DAD7
+		JSR	check_ppu_status
 		LDY	#0
 		STY	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		RTS
@@ -5186,7 +5241,7 @@ sub_0_92FD:				; ...
 ; ---------------------------------------------------------------------------
 
 object_level1_boss:			; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		BNE	loc_0_9312
 		LDA	#$40
 		STA	byte_0_E9
@@ -5201,7 +5256,7 @@ loc_0_9318:				; ...
 		BEQ	loc_0_9337
 		DEC	Objects_death_timer,X
 		BEQ	loc_0_9334
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_0_932E
 		LDA	LevelPos_CamPosX_L
@@ -5236,7 +5291,7 @@ loc_0_934C:				; ...
 		INC	Objects_unk2,X
 
 loc_0_9356:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$7F
 		BEQ	loc_0_9365
 
@@ -5283,7 +5338,7 @@ object_level1_boss_bullet:		; ...
 		LSR	A
 		LSR	A
 		LSR	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	#$13
 		STA	Obj_anim_frame,X
@@ -5294,7 +5349,7 @@ object_level1_boss_bullet:		; ...
 		STA	Objects_Flags,X
 		LDA	#$7D ; '}'
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	Obj_anim_frame,X
 
 locret_0_93C7:				; ...
@@ -5303,8 +5358,8 @@ locret_0_93C7:				; ...
 
 loc_0_93C8:				; ...
 		LDA	#$6E ; 'n'
-		JSR	clear_states
-		JSR	sub_0_DAFD
+		JSR	write_obj_Hit_ID
+		JSR	read_anim_seq_by_HitID
 		LDA	Objects_Life,X
 		BEQ	loc_0_93FB
 		LDX	Object_RamSlotID_tmp
@@ -5339,7 +5394,7 @@ sub_0_93FE:				; ...
 		JSR	loc_0_9EA8
 
 loc_0_940A:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_9413
 		JMP	sub_0_95CE
@@ -5393,11 +5448,11 @@ loc_0_945D:				; ...
 		JSR	sub_0_8F4C
 		LDA	Obj_anims_timer,X
 		BEQ	loc_0_94B6
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_9485
 		LDA	Objects_death_timer,X
 		BEQ	loc_0_9485
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		JSR	sub_0_942B
 		LDA	#$30 ; '0'
 		JSR	sub_0_8EEE
@@ -5451,7 +5506,7 @@ loc_0_94B6:				; ...
 loc_0_94C1:				; ...
 		LDA	#$FC ; '№'
 		JSR	sub_0_D06A
-		LDY	Objects_HitID,X
+		LDY	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_94EE
 		LDA	#0
 		JSR	sub_0_DAF6
@@ -5459,7 +5514,7 @@ loc_0_94C1:				; ...
 		SEC
 		SBC	#$18
 		JSR	sub_0_95BA
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		EOR	#$3C ; '<'
 		BEQ	loc_0_94E7
 		DEY
@@ -5489,12 +5544,12 @@ loc_0_94FF:				; ...
 		LDA	tmp_var_1A
 		BNE	loc_0_94F9
 		LDA	tmp_var_19
-		ORA	byte_0_17
+		ORA	tmp_var_17
 		BNE	loc_0_9558
 		LDA	tmp_var_16
 		ADC	#$60 ; '`'
 		TAY
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#0
 		BNE	loc_0_9558
 		CPY	#$80 ; 'А'
@@ -5505,7 +5560,7 @@ loc_0_94FF:				; ...
 		SBC	#$50 ; 'P'
 		CMP	#$20 ; ' '
 		BCS	loc_0_952F
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	#$80 ; 'А'
 		AND	#$80 ; 'А'
 		STA	Objects_dir,X
@@ -5522,7 +5577,7 @@ loc_0_952F:				; ...
 		LDA	#$3C ; '<'
 
 loc_0_953F:				; ...
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 		LDA	#0
 		STA	Objects_unk_cnt,X
 		BEQ	loc_0_95A0
@@ -5530,7 +5585,7 @@ loc_0_953F:				; ...
 loc_0_9549:				; ...
 		CPY	#$C0 ; '└'
 		BCS	loc_0_9558
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$F
 		BNE	loc_0_9558
 		LDA	#$40 ; '@'
@@ -5684,7 +5739,7 @@ loc_0_9631:				; ...
 
 
 sub_0_9636:				; ...
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	locret_0_9642
 		LDA	Objects_Flags,X
 		EOR	#$40 ; '@'
@@ -5813,7 +5868,7 @@ loc_0_96F4:				; ...
 
 
 sub_0_96F7:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_0_9701
 		LDA	#$1E
@@ -5875,7 +5930,7 @@ loc_0_9754:				; ...
 
 loc_0_9767:				; ...
 		LDA	#$10
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#5
 		BNE	loc_0_9771
 		LDA	#$30 ; '0'
@@ -5897,7 +5952,7 @@ loc_0_9777:				; ...
 		CMP	#$5E ; '^'
 		BEQ	loc_0_9796
 		TXA
-		ADC	RandomValue_1	; $25
+		ADC	RandomValue_1
 		AND	#$1F
 		BEQ	loc_0_9796
 
@@ -5910,10 +5965,10 @@ loc_0_9796:				; ...
 		LDY	Objects_TargetID,X
 		LDA	Objects_death_timer,Y
 		BMI	locret_0_9795
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 		CMP	#$2C ; ','
 		BEQ	locret_0_9795
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BNE	loc_0_97BA
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
@@ -5940,7 +5995,7 @@ loc_0_97C4:				; ...
 
 loc_0_97D8:				; ...
 		JSR	sub_0_8F4C
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_983A
 		LDA	Objects_TypeID,X
 		CMP	#$5D ; ']'
@@ -5984,7 +6039,7 @@ loc_0_982C:				; ...
 		LDA	#$30 ; '0'
 
 loc_0_9837:				; ...
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_983A:				; ...
 		LDY	Objects_TargetID,X
@@ -5997,7 +6052,7 @@ loc_0_983A:				; ...
 		AND	#$1F
 		TAY
 		DEY
-		STY	byte_0_21
+		STY	tmp_var_21
 		LDA	checkit_81
 		AND	#8
 		BEQ	loc_0_9876
@@ -6029,12 +6084,12 @@ loc_0_9876:				; ...
 		AND	#$80 ; 'А'
 		STA	Objects_dir,X
 		EOR	#$80 ; 'А'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		JSR	sub_0_E3C0
 		LDA	checkit_81
 		AND	#8
 		BEQ	loc_0_98A4
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		LDA	#0
 		STA	Objects_Z_speed,Y
 		BEQ	loc_0_9906
@@ -6088,7 +6143,7 @@ loc_0_98E4:				; ...
 loc_0_98E6:				; ...
 		JSR	sub_0_8E7A
 		JSR	sub_0_E4AD
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_9923
 		BEQ	loc_0_9928
 
@@ -6105,7 +6160,7 @@ loc_0_98F3:				; ...
 loc_0_9906:				; ...
 		LDA	#0
 		STA	objects_some_anim,X
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 
 loc_0_990E:				; ...
 		LDA	Objects_Z_speed,X
@@ -6115,8 +6170,8 @@ loc_0_990E:				; ...
 
 loc_0_9918:				; ...
 		JSR	sub_0_E4AD
-		JSR	sub_0_9936
-		LDA	Objects_HitID,X
+		JSR	obj_inc_Xspeed_by_4
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_992C
 
 loc_0_9923:				; ...
@@ -6148,7 +6203,7 @@ loc_0_9932:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_9936:				; ...
+obj_inc_Xspeed_by_4:			; ...
 		LDA	#4
 		CLC
 		ADC	Objects_X_speed,X
@@ -6157,7 +6212,7 @@ sub_0_9936:				; ...
 
 locret_0_9941:				; ...
 		RTS
-; End of function sub_0_9936
+; End of function obj_inc_Xspeed_by_4
 
 ; ---------------------------------------------------------------------------
 byte_0_9942:	.BYTE $1C, $1D,	$1E, $1D ; ...
@@ -6170,15 +6225,15 @@ byte_0_994A:	.BYTE $26, $27,	$28, $27 ; ...
 sub_0_994E:				; ...
 		JSR	get_obj_slot_type_by_ID
 		BNE	locret_0_9941
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_TypeID,Y
 		SEC
 		SBC	#6
 		TAY
 		LDA	Objects_death_timer,Y
 		BNE	locret_0_99CF
-		STY	byte_0_21
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_21
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Y_shad,X
 		CMP	Objects_Y_shad,Y
 		BCS	locret_0_99CF
@@ -6258,7 +6313,7 @@ loc_0_99E9:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_99F5:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$28 ; '('
 		BCC	loc_0_9A40
 		LDA	Objects_Flags,X
@@ -6292,7 +6347,7 @@ loc_0_99F5:				; ...
 
 loc_0_9A40:				; ...
 		JSR	sub_0_9B68
-		INC	Objects_HitID,X
+		INC	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_99D0
 		LDA	Objects_death_timer,X
 		BNE	loc_0_9A80
@@ -6396,7 +6451,7 @@ loc_0_9B03:				; ...
 		BEQ	loc_0_9B64
 
 loc_0_9B05:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#7
 		BCS	loc_0_9B12
 		DEC	objects_some_anim,X
@@ -6457,7 +6512,7 @@ loc_0_9B64:				; ...
 
 
 sub_0_9B68:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		STA	Objects_Flags,X
 		RTS
@@ -6473,7 +6528,7 @@ byte_0_9B70:	.BYTE $12		; ...
 sub_0_9B72:				; ...
 		LDA	Objects_Life,Y
 		AND	#$38 ; '8'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	byte_0_9B70,Y
 		LDY	Objects_TypeID,X
@@ -6651,7 +6706,7 @@ can_make_game_end?:			; ...
 		TAY
 		CPY	#$1A
 		BCS	loc_0_9E26
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		LDA	level_flag_xz6 - 1,X
 		STA	byte_0_B2
 		LDX	Object_RamSlotID_tmp
@@ -6755,7 +6810,7 @@ locret_0_9EAE:				; ...
 ; End of function sub_0_9E59
 
 ; ---------------------------------------------------------------------------
-byte_0_9EAF:	.BYTE $FF, 0, $80, $40,	$C0, $E4, $9C, $C0, $40, $1C, $64, $40,	0, 0, $80, 0 ; ...
+mov_dir_table:	.BYTE $FF, 0, $80, $40,	$C0, $E4, $9C, $C0, $40, $1C, $64, $40,	0, 0, $80, 0 ; ...
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -6773,9 +6828,11 @@ locret_0_9ED1:				; ...
 		RTS
 ; End of function sub_0_9EBF
 
-; ---------------------------------------------------------------------------
 
-loc_0_9ED2:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_9ED2:				; ...
 		LDA	#$FD ; '¤'
 		STA	Objects_Z_speed,X
 		LDA	#$80 ; 'А'
@@ -6783,7 +6840,7 @@ loc_0_9ED2:				; ...
 		LDA	#0
 		JSR	sub_0_8E7A
 		JSR	sub_0_E4AD
-		LDA	#$24 ; '$'
+		LDA	#$24		; frame	ID while on a rope
 		STA	player1_obj_wanted_frame,X
 		LDA	byte_0_C8
 		CLC
@@ -6806,18 +6863,22 @@ loc_0_9F07:				; ...
 		LDY	#$80 ; 'А'
 		LDA	#$C
 		JMP	loc_0_A866
+; End of function sub_0_9ED2
+
 ; ---------------------------------------------------------------------------
-Level_CanMove_by_Y:.BYTE $F, $F, 3, $F,	3, 3, $F, 3, 3,	3, 3, 3, $F, 3 ; ...
-					; возможность двигаться	по Y
+Level_CanMove_Dir:.BYTE	$F, $F,	3, $F, 3, 3, $F, 3, 3, 3, 3, 3,	$F, 3 ;	...
+					; возможность ходьбы в направлении (udlr)
 Level_CarryObjSpeed:.BYTE $80, $80, $C0, $80, $80, $80,	$80, $80, $90, $80, $80, $80, $80, $80 ; ...
 					; скорость при взятом объекте
 ; ---------------------------------------------------------------------------
 
 loc_0_9F2A:				; ...
-		JMP	loc_0_87AA
-; ---------------------------------------------------------------------------
+		JMP	sub_0_87AA
 
-loc_0_9F2D:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_9F2D:				; ...
 		DEC	player1_endLvL_timer,X
 		BEQ	loc_0_9F2A
 		LDA	player1_endLvL_timer,X
@@ -6850,32 +6911,38 @@ loc_0_9F61:				; ...
 		LDA	#1
 
 loc_0_9F63:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		AND	#$30 ; '0'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	InputHold_P1,X	; данные первого джойстика на зажатие
 		LDA	InputTap_P1,X	; данные первого джойстика на нажатие
 		AND	#$30 ; '0'
 		STA	InputTap_P1,X	; данные первого джойстика на нажатие
 		JMP	loc_0_A733
+; End of function sub_0_9F2D
+
 ; ---------------------------------------------------------------------------
 		LDA	#1
 		JMP	sub_0_DAF6
-; ---------------------------------------------------------------------------
 
-loc_0_9F7B:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_9F7B:				; ...
 		JSR	sub_0_9F8E
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_9F89
 		LDA	#$35 ; '5'
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_9F89:				; ...
 		LDA	#$2F ; '/'
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
+; End of function sub_0_9F7B
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -6887,20 +6954,22 @@ sub_0_9F8E:				; ...
 		JMP	loc_0_B06B
 ; End of function sub_0_9F8E
 
-; ---------------------------------------------------------------------------
 
-loc_0_9F99:				; ...
-		JMP	loc_0_9ED2
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_0_9F99:				; ...
+		JMP	sub_0_9ED2
 ; ---------------------------------------------------------------------------
 		JMP	loc_0_A119
 ; ---------------------------------------------------------------------------
 
 loc_0_9F9F:				; ...
-		JMP	loc_0_9F2D
+		JMP	sub_0_9F2D
 ; ---------------------------------------------------------------------------
 
 loc_0_9FA2:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BEQ	loc_0_9F9F
 		LDA	#$77 ; 'w'
@@ -6922,7 +6991,7 @@ loc_0_9FBE:				; ...
 		DEC	player1_endLvL_timer,X
 		BNE	locret_0_9FCE
 		INC	rest_point_id
-		JMP	loc_0_857A
+		JMP	sub_0_857A
 ; ---------------------------------------------------------------------------
 
 locret_0_9FCE:				; ...
@@ -6945,7 +7014,7 @@ object_player:				; ...
 		DEC	byte_0_EC,X
 
 loc_0_9FE3:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		LDA	levels_flag_unk	- 1,Y
 		BNE	loc_0_9FED
 		JMP	loc_0_A092
@@ -6955,11 +7024,11 @@ loc_0_9FED:				; ...
 		LDA	Objects_Ypos_L,X
 		SEC
 		SBC	Objects_Zpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Ypos_H,X
 		SBC	Objects_Zpos_H,X
 		STA	tmp_var_16
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		SEC
 		SBC	LevelPos_CamPosY_L
 		LDA	tmp_var_16
@@ -6977,6 +7046,8 @@ loc_0_A00D:				; ...
 
 loc_0_A019:
 		JMP	loc_0_A036
+; End of function sub_0_9F99
+
 ; ---------------------------------------------------------------------------
 levels_flag_unk:.BYTE 0, 0, 0, $FC, 4, 0, 4, $FC, 4, 0,	$FC, 0 ; ...
 
@@ -7047,7 +7118,7 @@ loc_0_A08F:				; ...
 loc_0_A092:				; ...
 		LDA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
 		BEQ	loc_0_A09A
-		JMP	loc_0_9F7B
+		JMP	sub_0_9F7B
 ; ---------------------------------------------------------------------------
 
 loc_0_A09A:				; ...
@@ -7055,7 +7126,7 @@ loc_0_A09A:				; ...
 		LDY	players_obj_unk17,X
 		BMI	loc_0_A0B5
 		LDA	#$FC ; '№'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#4
 		BNE	loc_0_A0B5
 		LDY	players_obj_unk10,X
@@ -7070,11 +7141,11 @@ loc_0_A0B5:				; ...
 		JSR	sub_0_D06A
 		LDA	byte_0_C8
 		BEQ	loc_0_A0BF
-		JMP	loc_0_9F99
+		JMP	sub_0_9F99
 ; ---------------------------------------------------------------------------
 
 loc_0_A0BF:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BNE	loc_0_A119
 		LDA	byte_0_E9,X
@@ -7093,7 +7164,7 @@ loc_0_A0BF:				; ...
 loc_0_A0E0:				; ...
 		INC	byte_0_E9,X
 		LDA	#2
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_A0E6:				; ...
 		JSR	get_free_obj_slot_IDX
@@ -7104,16 +7175,16 @@ loc_0_A0E6:				; ...
 		LDA	#$59 ; 'Y'
 		STA	Obj_anim_frame,X
 		LDA	#$30 ; '0'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_unk_cnt2,X
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_A18E,Y
 		STA	Objects_Z_speed,X
 		LDA	byte_0_A191,Y
 		STA	Objects_dir,X
 		LDA	byte_0_A194,Y
 		STA	Objects_X_speed,X
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BPL	loc_0_A0E6
 		LDX	Object_RamSlotID_tmp
 
@@ -7130,13 +7201,13 @@ loc_0_A121:				; ...
 
 loc_0_A129:				; ...
 		JSR	loc_0_A8A1
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_0_A135
 		JSR	can_make_game_end?
 
 loc_0_A135:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_A148
 		LDA	Objects_death_timer,X
@@ -7162,7 +7233,7 @@ loc_0_A158:				; ...
 loc_0_A15D:				; ...
 		LDA	#0
 		STA	Objects_Z_floor,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_0_A16C
 		CMP	#$C
@@ -7173,21 +7244,22 @@ loc_0_A16C:				; ...
 		ROL	A
 		LDA	#$13
 		ADC	#0
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_A177:				; ...
 		LDA	Objects_X_speed,X
 		BEQ	loc_0_A181
 		LDA	#$3B ; ';'
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_A181:				; ...
 		LDA	#$41 ; 'A'
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
-		.BYTE 8, 8, 8, $48, $56, $55, $56, $55
+byte_0_A186:	.BYTE 8, 8, 8, $48	; ...
+byte_0_A18A:	.BYTE $56, $55,	$56, $55 ; ...
 byte_0_A18E:	.BYTE 5, 5, 4		; ...
 byte_0_A191:	.BYTE 0, $80, 0		; ...
 byte_0_A194:	.BYTE $40, $40,	0	; ...
@@ -7218,7 +7290,7 @@ loc_0_A1A6:				; ...
 		LSR	A
 		ADC	#$E
 		TAY
-		STY	byte_0_8D
+		STY	tmp_var_8d
 		LDA	InputTap_P1,X	; данные первого джойстика на нажатие
 		BEQ	loc_0_A1E8
 		LDY	players_obj_unk15,X
@@ -7238,14 +7310,14 @@ loc_0_A1A6:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A1E8:				; ...
-		LDY	byte_0_8D
-		JMP	loc_0_A363
+		LDY	tmp_var_8d
+		JMP	write_pl_wanted_frameY
 ; ---------------------------------------------------------------------------
 
 loc_0_A1ED:				; ...
 		LDY	players_obj_unk12,X
 		BNE	loc_0_A200
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#2
 		BNE	loc_0_A269
 		CMP	#$20 ; ' '
@@ -7256,7 +7328,7 @@ loc_0_A1ED:				; ...
 loc_0_A200:				; ...
 		LDY	players_obj_unk12,X
 		BEQ	loc_0_A24B
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_0_A213
 		LDA	#4
@@ -7268,69 +7340,69 @@ loc_0_A213:				; ...
 		CPY	#$20 ; ' '
 		BCS	loc_0_A226
 		LDY	#$35 ; '5'
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
-		BEQ	loc_0_A248
+		BEQ	write_pl_wanted_frameY_
 		LDY	#$13
-		BNE	loc_0_A248
+		BNE	write_pl_wanted_frameY_
 
 loc_0_A226:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#2
 		BEQ	loc_0_A244
 		LDY	#$5D ; ']'
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
-		BEQ	loc_0_A248
+		BEQ	write_pl_wanted_frameY_
 		CMP	#$A
-		BEQ	loc_0_A248
+		BEQ	write_pl_wanted_frameY_
 		CMP	#9
-		BEQ	loc_0_A248
+		BEQ	write_pl_wanted_frameY_
 		CMP	#$B
-		BEQ	loc_0_A248
+		BEQ	write_pl_wanted_frameY_
 		LDY	#$42 ; 'B'
-		BNE	loc_0_A248
+		BNE	write_pl_wanted_frameY_
 
 loc_0_A244:				; ...
 		TAY
 		STA	Obj_anim_frame,X
 
-loc_0_A248:				; ...
-		JMP	loc_0_A363
+write_pl_wanted_frameY_:		; ...
+		JMP	write_pl_wanted_frameY
 ; ---------------------------------------------------------------------------
 
 loc_0_A24B:				; ...
 		JSR	sub_0_9636
-		LDY	#$35 ; '5'
-		BNE	loc_0_A248
-		LDA	FrameCounter	; $B
+		LDY	#$35
+		BNE	write_pl_wanted_frameY_
+		LDA	FrameCounter
 		AND	#4
 		EOR	Objects_Xpos_L,X
 		STA	Objects_Xpos_L,X
 		DEC	players_obj_unk,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#2
-		BEQ	loc_0_A248
-		LDY	#$42 ; 'B'
-		BNE	loc_0_A248
+		BEQ	write_pl_wanted_frameY_
+		LDY	#$42
+		BNE	write_pl_wanted_frameY_
 
 loc_0_A269:				; ...
-		LDY	#2
+		LDY	#2		; frame	while stunned
 		CMP	#$18
-		BCC	loc_0_A248
+		BCC	write_pl_wanted_frameY_
 		LDA	Objects_Flags,X
 		ASL	A
 		EOR	Objects_dir,X
-		LDY	#$29 ; ')'
+		LDY	#$29		; frame	id when	get damage
 		ROL	A
-		BCS	loc_0_A248
+		BCS	write_pl_wanted_frameY_
 		LDY	#$16
-		BNE	loc_0_A248
+		BNE	write_pl_wanted_frameY_
 
 loc_0_A27F:				; ...
 		JSR	sub_0_93FE
 		LDA	Obj_anims_timer,X
-		CMP	#$50 ; 'P'
+		CMP	#$50
 		BNE	loc_0_A298
 		LDA	#1
 		STA	Obj_anims_timer,X
@@ -7361,7 +7433,7 @@ loc_0_A2C0:				; ...
 		LDA	#0
 		STA	Objects_Z_floor,X
 		LDY	#$5B ; '['
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#2
 		BNE	loc_0_A32E
 		INY
@@ -7383,13 +7455,13 @@ loc_0_A2E8:				; ...
 		LDA	#0
 		STA	Objects_Z_floor,X
 		LDY	#$5A ; 'Z'
-		BNE	loc_0_A363
+		BNE	write_pl_wanted_frameY
 
 loc_0_A2F1:				; ...
 		LDA	players_obj_unk10,X
 		BEQ	loc_0_A2FA
 		LDY	#$54 ; 'T'
-		BNE	loc_0_A363
+		BNE	write_pl_wanted_frameY
 
 loc_0_A2FA:				; ...
 		LDA	players_obj_unk11,X
@@ -7416,13 +7488,13 @@ loc_0_A31A:				; ...
 		STA	Objects_X_speed,X
 
 loc_0_A324:				; ...
-		LDA	$A186,Y
+		LDA	byte_0_A186,Y
 		STA	Objects_Flags,X
-		LDA	$A18A,Y
+		LDA	byte_0_A18A,Y
 		TAY
 
 loc_0_A32E:				; ...
-		JMP	loc_0_A363
+		JMP	write_pl_wanted_frameY
 ; ---------------------------------------------------------------------------
 
 loc_0_A331:				; ...
@@ -7447,17 +7519,17 @@ loc_0_A348:				; ...
 loc_0_A350:				; ...
 		LDY	#$15
 		LDA	Objects_death_timer,X
-		BNE	loc_0_A363
+		BNE	write_pl_wanted_frameY
 		LDY	#$30
-		BNE	loc_0_A363
+		BNE	write_pl_wanted_frameY
 
 loc_0_A35B:				; ...
 		LDY	#$13
 		LDA	Objects_Z_speed,X
-		BPL	loc_0_A363
+		BPL	write_pl_wanted_frameY
 		INY
 
-loc_0_A363:				; ...
+write_pl_wanted_frameY:			; ...
 		TYA
 		STA	player1_obj_wanted_frame,X
 		JMP	sub_0_9E59
@@ -7498,7 +7570,7 @@ is_dead?:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A3AC:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_A3DD
 		LDA	#$80 ; 'А'
@@ -7521,11 +7593,11 @@ loc_0_A3CF:				; ...
 		BEQ	loc_0_A435
 		LDA	timer_end_music
 		BNE	loc_0_A435
-		JMP	sub_0_876B
+		JMP	clear_ram
 ; ---------------------------------------------------------------------------
 
 loc_0_A3DD:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_0_A3CF
 		CMP	#1
@@ -7541,7 +7613,7 @@ loc_0_A3F3:				; ...
 		LDA	Objects_LinkedObj_ID,X ; x=1,  value $43
 		AND	#$40
 		BEQ	loc_0_A405
-		JMP	loc_0_8566
+		JMP	restart_on_bike_chk
 ; ---------------------------------------------------------------------------
 
 loc_0_A3FD:				; ...
@@ -7572,14 +7644,14 @@ loc_0_A41F:				; ...
 loc_0_A422:				; ...
 		CMP	#8
 		BNE	loc_0_A429
-		JMP	loc_0_857A
+		JMP	sub_0_857A
 ; ---------------------------------------------------------------------------
 
 loc_0_A429:				; ...
 		LDA	Objects_Zpos_H,X
 		BPL	loc_0_A435
 		LDX	#$15
-		LDY	#5
+		LDY	#5		; BANK5:B309
 		JSR	jump_other_bank
 
 loc_0_A435:				; ...
@@ -7594,7 +7666,7 @@ loc_0_A444:				; ...
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		AND	#$40 ; '@'
 		BEQ	loc_0_A475
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_0_A45E
 		LDA	Objects_Xpos_H,X
@@ -7608,7 +7680,7 @@ loc_0_A45E:				; ...
 		LDA	InputTap_P1,X	; данные первого джойстика на нажатие
 		AND	#$40 ; '@'
 		BNE	loc_0_A478
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_A475
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		BPL	loc_0_A475
@@ -7626,9 +7698,9 @@ loc_0_A478:				; ...
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		AND	#$40 ; '@'
 		BEQ	loc_0_A4EA
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_A4F6
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_0_A4F6
 		CMP	#6
@@ -7638,7 +7710,7 @@ loc_0_A478:				; ...
 		CMP	#$B
 		BNE	loc_0_A49F
 		LDA	#$82 ; 'В'
-		JMP	set_anim_frame
+		JMP	write_obj_Hit_ID_
 ; ---------------------------------------------------------------------------
 
 loc_0_A49F:				; ...
@@ -7649,7 +7721,7 @@ loc_0_A49F:				; ...
 		LDA	#$C
 		JSR	loc_0_DD27
 		BMI	loc_0_A4D8
-		LDX	byte_0_1D
+		LDX	tmp_var_1d
 		LDY	Object_RamSlotID_tmp
 		LDA	Objects_Flags,Y
 		AND	#$40 ; '@'
@@ -7682,7 +7754,7 @@ loc_0_A4E3:				; ...
 		BNE	loc_0_A4F6
 
 loc_0_A4EA:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_A4F9
 		LDA	Objects_Flags,X
 		AND	#4
@@ -7700,7 +7772,7 @@ loc_0_A4F9:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A503:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_A521
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
@@ -7727,12 +7799,12 @@ loc_0_A521:				; ...
 		BMI	loc_0_A51E
 		AND	#$40 ; '@'
 		BEQ	loc_0_A530
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_0_A54E
 
 loc_0_A530:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_A51B
 		LDA	player1_obj_wanted_frame,X
@@ -7759,7 +7831,7 @@ loc_0_A54E:				; ...
 		BNE	loc_0_A55D
 
 loc_0_A55D:				; ...
-		JMP	set_anim_frame
+		JMP	write_obj_Hit_ID_
 ; ---------------------------------------------------------------------------
 
 loc_0_A560:				; ...
@@ -7774,7 +7846,7 @@ loc_0_A560:				; ...
 		CMP	#$20 ; ' '
 		LDA	#$4E ; 'N'
 		BCC	loc_0_A55D
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#2
 		ORA	#$50 ; 'P'
 		BNE	loc_0_A55D
@@ -7811,7 +7883,7 @@ loc_0_A5AC:				; ...
 		LDA	byte_0_D1
 		BEQ	loc_0_A5B5
 		LDA	#$70 ; 'p'
-		JMP	set_anim_frame
+		JMP	write_obj_Hit_ID_
 ; ---------------------------------------------------------------------------
 
 loc_0_A5B5:				; ...
@@ -7846,7 +7918,7 @@ loc_0_A5D3:				; ...
 		LDA	#$10
 		STA	Objects_unk_cnt,Y
 		LDA	#$7A ; 'z'
-		JMP	set_anim_frame
+		JMP	write_obj_Hit_ID_
 ; ---------------------------------------------------------------------------
 
 loc_0_A5F0:				; ...
@@ -7855,7 +7927,7 @@ loc_0_A5F0:				; ...
 		CMP	#$72 ; 'r'
 		BCS	loc_0_A5FD
 		LDA	#$78 ; 'x'
-		JMP	set_anim_frame
+		JMP	write_obj_Hit_ID_
 ; ---------------------------------------------------------------------------
 
 loc_0_A5FD:				; ...
@@ -7864,15 +7936,15 @@ loc_0_A5FD:				; ...
 		BEQ	loc_0_A618
 		LDA	Objects_TypeID,Y
 		EOR	#$33 ; '3'
-		BEQ	loc_0_A670
+		BEQ	toads_simple_punch
 		LDA	Objects_Life,Y
 		CMP	#8
 		LDA	#$12
-		BCS	set_anim_frame
+		BCS	write_obj_Hit_ID_
 
 loc_0_A614:				; ...
 		LDA	#$14
-		BNE	set_anim_frame
+		BNE	write_obj_Hit_ID_
 
 loc_0_A618:				; ...
 		LDA	Objects_TypeID,Y
@@ -7887,7 +7959,7 @@ loc_0_A618:				; ...
 		LDA	Objects_Life,Y
 		CMP	#4
 		BCS	loc_0_A64E
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BNE	loc_0_A64A
 		CPY	#2
@@ -7896,19 +7968,19 @@ loc_0_A618:				; ...
 loc_0_A63D:				; ...
 		LDA	#0
 		STA	Objects_X_speed,Y
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#6
 		ADC	#$71 ; 'q'      ; super-udari (4raznix)
-		BNE	set_anim_frame
+		BNE	write_obj_Hit_ID_
 
 loc_0_A64A:				; ...
 		LDA	#$E
-		BNE	set_anim_frame
+		BNE	write_obj_Hit_ID_
 
 loc_0_A64E:				; ...
 		AND	#$F
 		CMP	#4
-		BCS	loc_0_A670
+		BCS	toads_simple_punch
 		LDA	Objects_TypeID,Y
 		CMP	#$47 ; 'G'
 		BEQ	loc_0_A65F
@@ -7918,23 +7990,23 @@ loc_0_A64E:				; ...
 loc_0_A65F:				; ...
 		LSR	Objects_X_speed,X
 		LDA	#$36 ; '6'
-		BNE	set_anim_frame
+		BNE	write_obj_Hit_ID_
 
 loc_0_A666:				; ...
 		LDA	#6
-		BNE	set_anim_frame
+		BNE	write_obj_Hit_ID_
 
 loc_0_A66A:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
-		BNE	loc_0_A670
+		BNE	toads_simple_punch ; ???
 
-loc_0_A670:				; ...
-		LDA	RandomValue_1,X	; $25
+toads_simple_punch:			; ...
+		LDA	RandomValue_1,X
 		AND	#2
 		CLC
-		ADC	#2
-		BNE	set_anim_frame
+		ADC	#2		; 2 or 4
+		BNE	write_obj_Hit_ID_
 
 loc_0_A679:				; ...
 		LDA	Objects_Flags,X
@@ -7952,8 +8024,8 @@ loc_0_A680:				; ...
 loc_0_A68E:				; ...
 		LDA	#$16
 
-set_anim_frame:				; ...
-		JSR	clear_states
+write_obj_Hit_ID_:			; ...
+		JSR	write_obj_Hit_ID
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		AND	#3
 		BEQ	loc_0_A6AF
@@ -7964,22 +8036,22 @@ set_anim_frame:				; ...
 loc_0_A69F:				; ...
 		STA	Objects_dir,X
 		LSR	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Flags,X
 		AND	#$BF ; '┐'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Flags,X
 
 loc_0_A6AF:				; ...
-		LDA	Objects_HitID,X
-		BEQ	loc_0_A6BC
+		LDA	Objects_HitID,X	; номер	движения для запуска
+		BEQ	clinger_winger
 		LDA	#1
 		JSR	sub_0_DAF6
 		JMP	loc_0_A89B
 ; ---------------------------------------------------------------------------
 
-loc_0_A6BC:				; ...
-		LDA	Level_ID	; $10
+clinger_winger:				; ...
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_0_A717
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
@@ -7994,7 +8066,7 @@ loc_0_A6BC:				; ...
 loc_0_A6D4:				; ...
 		LDA	Objects_TargetID,X
 		BNE	loc_0_A6F5
-		INC	Objects_Z_sub,X
+		INC	Objects_Z_sub,X	; timer...
 		LDA	Objects_Z_sub,X
 		SBC	#$20 ; ' '
 		BCC	loc_0_A70F
@@ -8015,7 +8087,7 @@ loc_0_A6F5:				; ...
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		AND	#$F
 		TAY
-		LDA	byte_0_9EAF,Y
+		LDA	mov_dir_table,Y
 		CMP	Objects_dir,X
 		BNE	loc_0_A70C
 		LDA	#$F0 ; 'Ё'
@@ -8069,7 +8141,7 @@ loc_0_A733:				; ...
 		BCS	loc_0_A762
 		AND	#$40 ; '@'
 		BEQ	loc_0_A762
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_0_A767
 		CMP	#6
@@ -8095,7 +8167,7 @@ loc_0_A76F:				; ...
 loc_0_A77A:				; ...
 		LDA	players_obj_unk3,X
 		BMI	loc_0_A794
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#6
 		BNE	loc_0_A78D
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
@@ -8104,17 +8176,17 @@ loc_0_A77A:				; ...
 		LDY	#2
 
 loc_0_A78D:				; ...
-		LDA	Level_CanMove_by_Y,Y ; возможность двигаться по	Y
+		LDA	Level_CanMove_Dir,Y ; возможность ходьбы в направлении (udlr)
 		AND	InputHold_P1,X	; данные первого джойстика на зажатие
-		BNE	loc_0_A797
+		BNE	moving_dirs
 
 loc_0_A794:				; ...
 		JMP	loc_0_A89B
 ; ---------------------------------------------------------------------------
 
-loc_0_A797:				; ...
+moving_dirs:				; ...
 		TAY
-		LDA	byte_0_9EAF,Y
+		LDA	mov_dir_table,Y
 		SEC
 		SBC	Objects_dir,X
 		BEQ	loc_0_A7D3
@@ -8131,17 +8203,17 @@ loc_0_A797:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A7B8:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_X_speed,X
 		BNE	loc_0_A7C5
 
 loc_0_A7BF:				; ...
-		LDA	byte_0_9EAF,Y
+		LDA	mov_dir_table,Y
 		JMP	loc_0_A7D0
 ; ---------------------------------------------------------------------------
 
 loc_0_A7C5:				; ...
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#8
 		BCC	loc_0_A7CD
 		SBC	#$10
@@ -8177,7 +8249,7 @@ loc_0_A7F0:				; ...
 		SBC	#$21 ; '!'
 		CMP	#$3D ; '='
 		BCC	loc_0_A804
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		LDA	Level_CarryObjSpeed,Y ;	скорость при взятом объекте
 		TAY
 
@@ -8187,7 +8259,7 @@ loc_0_A804:				; ...
 		BCC	loc_0_A841
 		AND	#$40 ; '@'
 		BEQ	loc_0_A839
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_0_A841
 		CMP	#6
@@ -8216,9 +8288,9 @@ loc_0_A835:				; ...
 loc_0_A839:				; ...
 		TYA
 		LSR	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LSR	A
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 
 loc_0_A841:				; ...
@@ -8237,7 +8309,7 @@ loc_0_A84F:				; ...
 		BNE	loc_0_A866
 
 loc_0_A85A:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		BNE	loc_0_A864
 		LDA	#8
@@ -8261,7 +8333,7 @@ loc_0_A876:				; ...
 		LDA	Objects_X_speed,X
 		CMP	#$80 ; 'А'
 		BCC	loc_0_A89B
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BNE	loc_0_A89B
 		LDA	byte_0_F3
@@ -8285,10 +8357,10 @@ loc_0_A89B:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_A8A1:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		BNE	loc_0_A90F
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_A8B8
 		LDA	players_obj_unk9,X
 		BEQ	loc_0_A8B8
@@ -8305,31 +8377,31 @@ loc_0_A8B8:				; ...
 		SBC	players_obj_unk9,X
 
 loc_0_A8C5:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_dir,X
 		PHA
 		EOR	players_obj_unk9,X
 		BPL	loc_0_A8E9
 		LDA	Objects_X_speed,X
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		BCS	loc_0_A8F3
 		LDA	Objects_dir,X
 		EOR	#$80 ; 'А'
 		STA	Objects_dir,X
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#$F
 		SBC	Objects_X_speed,X
 		BCS	loc_0_A8F3
 
 loc_0_A8E9:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	Objects_X_speed,X
 		BCS	loc_0_A8F3
 		LDA	Objects_X_speed,X
 
 loc_0_A8F3:				; ...
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		JSR	loc_0_8F4F
 		PLA
 		STA	Objects_dir,X
@@ -8359,13 +8431,13 @@ loc_0_A912:				; ...
 loc_0_A915:				; ...
 		LDA	timer_end_music
 		BNE	loc_0_A922
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_0_A922
 		JSR	can_make_game_end?
 
 loc_0_A922:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_A912
 		LDA	InputTap_P1,X	; данные первого джойстика на нажатие
@@ -8386,7 +8458,7 @@ loc_0_A93E:				; ...
 		AND	#$40 ; '@'
 		BEQ	loc_0_A994
 		LDY	#3
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_0_A976
 		CMP	#6
@@ -8425,14 +8497,14 @@ loc_0_A976:				; ...
 loc_0_A994:				; ...
 		LDY	#4
 		LDA	Objects_Z_floor,X
-		ORA	Objects_HitID,X
+		ORA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_A9CB
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		BPL	loc_0_A9A4
 		DEY
 
 loc_0_A9A4:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_0_A9B0
 		EOR	#3
@@ -8467,7 +8539,7 @@ loc_0_A9CB:				; ...
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		AND	#$40 ; '@'
 		BEQ	loc_0_AA0C
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_0_AA0F
 		JSR	sub_0_93FE
@@ -8476,7 +8548,7 @@ loc_0_A9CB:				; ...
 		STA	players_obj_un3,X
 		LDA	#1
 		STA	Objects_Z_speed,X
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		STA	Objects_unk1,X
 		LDA	Objects_Zpos_L,X
 		AND	#8
@@ -8550,7 +8622,7 @@ loc_0_AA5F:				; ...
 
 loc_0_AA71:				; ...
 		LDA	#3
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		JSR	loc_0_8EA8
 
 loc_0_AA78:				; ...
@@ -8564,7 +8636,7 @@ loc_0_AA7E:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_AA81:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BNE	loc_0_AAC9
 		LDA	#0
@@ -8652,12 +8724,12 @@ loc_0_AAFF:				; ...
 
 loc_0_AB03:				; ...
 		LDA	#1
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		JMP	loc_0_8EA8
 ; ---------------------------------------------------------------------------
 
 loc_0_AB0A:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_AB14
 		LDA	players_obj_unk17,X
 		BMI	loc_0_AB23
@@ -8674,7 +8746,7 @@ loc_0_AB20:				; ...
 
 loc_0_AB23:				; ...
 		JSR	sub_0_E471
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_AB2F
 
@@ -8682,10 +8754,10 @@ loc_0_AB2C:				; ...
 		JSR	sub_0_CF66
 
 loc_0_AB2F:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		ORA	byte_0_C8
 		BNE	locret_0_ABA2
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BNE	loc_0_AB4E
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
@@ -8723,10 +8795,10 @@ loc_0_AB61:				; ...
 		BCC	loc_0_AB97
 		LDA	players_obj_un5,X
 		BNE	loc_0_AB93
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$10
 		BEQ	loc_0_AB93
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$F
 		BNE	loc_0_AB8F
 		LDA	#$66 ; 'f'
@@ -8748,7 +8820,7 @@ loc_0_AB97:				; ...
 		ADC	#0
 
 loc_0_AB9F:				; ...
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 locret_0_ABA2:				; ...
@@ -8771,7 +8843,7 @@ loc_0_ABB9:				; ...
 		LDA	#$1F
 
 loc_0_ABBB:				; ...
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	loc_0_ABC2
 		INC	Objects_unk_cnt,X
 
@@ -8779,11 +8851,11 @@ loc_0_ABC2:				; ...
 		LDA	Objects_unk_cnt,X
 		AND	#1
 		ORA	#$62 ; 'b'
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_ABCC:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#8
 		BNE	loc_0_ABEC
 		LDA	players_obj_unk3,X
@@ -8791,12 +8863,12 @@ loc_0_ABCC:				; ...
 		BMI	loc_0_ABEC
 		DEC	players_obj_unk3,X
 		LDA	#$3A ; ':'
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		LSR	A
 		LSR	A
 		AND	#1
 		ORA	#$58 ; 'X'
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_ABE9:				; ...
@@ -8807,7 +8879,7 @@ loc_0_ABEC:				; ...
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		AND	#$40 ; '@'
 		BEQ	loc_0_ABE9
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#3
 		BEQ	loc_0_AC2C
 		CPY	#6
@@ -8818,7 +8890,7 @@ loc_0_ABEC:				; ...
 		AND	#$BF ; '┐'
 		STA	Objects_Flags,X
 		TXA
-		EOR	FrameCounter	; $B
+		EOR	FrameCounter
 		ROR	A
 		BCC	loc_0_AC10
 		RTS
@@ -8835,7 +8907,7 @@ loc_0_AC10:				; ...
 loc_0_AC1F:				; ...
 		LDY	Objects_TargetID,X
 		LDA	byte_0_AC28,Y
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 byte_0_AC28:	.BYTE $45, $46,	$4A, $4B ; ...
 ; ---------------------------------------------------------------------------
@@ -8847,15 +8919,15 @@ loc_0_AC2C:				; ...
 		LDA	players_obj_un2,X
 		CMP	#1
 		LDA	#$3A ; ':'
-		BCC	loc_0_AC82
+		BCC	write_pl_wanted_frame_
 		CPY	#6
-		BEQ	loc_0_AC82
+		BEQ	write_pl_wanted_frame_
 		LDA	#$3C ; '<'
 		LDY	Objects_Z_speed,X
 		DEY
-		BPL	loc_0_AC82
+		BPL	write_pl_wanted_frame_
 		LDA	#$3B ; ';'
-		BNE	loc_0_AC82
+		BNE	write_pl_wanted_frame_
 
 loc_0_AC4D:				; ...
 		LDY	Objects_Z_floor,X
@@ -8863,7 +8935,7 @@ loc_0_AC4D:				; ...
 		BEQ	loc_0_AC5C
 		DEC	Objects_Hit_timer,X
 		LDA	#$3E ; '>'
-		BNE	loc_0_AC82
+		BNE	write_pl_wanted_frame_
 
 loc_0_AC5C:				; ...
 		CPY	#$30 ; '0'
@@ -8872,8 +8944,8 @@ loc_0_AC5C:				; ...
 		BPL	loc_0_AC6E
 		LDA	#$3D ; '='
 		LDY	Objects_Z_speed,X
-		BEQ	loc_0_AC82
-		BMI	loc_0_AC82
+		BEQ	write_pl_wanted_frame_
+		BMI	write_pl_wanted_frame_
 
 loc_0_AC6E:				; ...
 		CPY	#$10
@@ -8881,16 +8953,16 @@ loc_0_AC6E:				; ...
 		LDA	Objects_Z_speed,X
 		CMP	#$80 ; 'А'
 		LDA	#$38 ; '8'
-		BCS	loc_0_AC82
+		BCS	write_pl_wanted_frame_
 
 loc_0_AC7B:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#2
 		LSR	A
 		ADC	#$38 ; '8'
 
-loc_0_AC82:				; ...
-		JMP	loc_0_AD88
+write_pl_wanted_frame_:			; ...
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_AC85:				; ...
@@ -8902,17 +8974,17 @@ loc_0_AC85:				; ...
 		CLC
 		ADC	#2
 		CMP	#5
-		LDA	#$2D ; '-'
-		BCC	loc_0_AC82
+		LDA	#$2D ; '-'      ; jump and fall frames
+		BCC	write_pl_wanted_frame_
 		LDA	#5
-		BNE	loc_0_AC82
+		BNE	write_pl_wanted_frame_
 
 loc_0_AC9F:				; ...
 		LDA	#$2E ; '.'
-		BNE	loc_0_AC82
+		BNE	write_pl_wanted_frame_
 
 loc_0_ACA3:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		BNE	loc_0_AD0C
 		LDA	byte_0_D9
@@ -8924,12 +8996,12 @@ loc_0_ACA3:				; ...
 		BEQ	loc_0_ACC2
 		LDA	#$4B ; 'K'
 		LDY	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
-		BPL	loc_0_AC82
+		BPL	write_pl_wanted_frame_
 		LDA	#$E
-		BNE	loc_0_AC82
+		BNE	write_pl_wanted_frame_
 
 loc_0_ACC2:				; ...
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		CMP	#8
 		BCC	loc_0_AD2F
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
@@ -8939,12 +9011,12 @@ loc_0_ACC2:				; ...
 		BCS	loc_0_AD35
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		BMI	loc_0_ACF2
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		CMP	#$40 ; '@'
 		LDA	#$45 ; 'E'
-		BCC	loc_0_AC82
+		BCC	write_pl_wanted_frame_
 		LDA	#$51 ; 'Q'
-		BNE	loc_0_AC82
+		BNE	write_pl_wanted_frame_
 
 loc_0_ACE3:				; ...
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
@@ -8957,7 +9029,7 @@ loc_0_ACE3:				; ...
 
 loc_0_ACF2:				; ...
 		LDA	#$12
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_ACF7:				; ...
@@ -8973,11 +9045,11 @@ loc_0_ACF7:				; ...
 		LDA	#$50 ; 'P'
 
 loc_0_AD09:				; ...
-		JMP	loc_0_AD88
+		JMP	write_pl_wanted_frame
 ; ---------------------------------------------------------------------------
 
 loc_0_AD0C:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_0_AD1F
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
@@ -8987,10 +9059,10 @@ loc_0_AD0C:				; ...
 
 loc_0_AD1B:				; ...
 		LDA	#$4B ; 'K'
-		BNE	loc_0_AD88
+		BNE	write_pl_wanted_frame
 
 loc_0_AD1F:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		LDA	level_flags_sit_and_xz,Y
 		AND	#4
 		AND	InputHold_P1,X	; данные первого джойстика на зажатие
@@ -9021,20 +9093,20 @@ loc_0_AD35:				; ...
 		AND	#$7F ; ''
 		CMP	#$40 ; '@'
 		BNE	loc_0_AD60
-		LDA	FrameCounter_Even
-		ADC	FrameCounter	; $B
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
+		ADC	FrameCounter
 		LSR	A
 		LSR	A
 		LSR	A
 		AND	#3
 		TAY
-		LDA	byte_0_CFA4,Y
-		BNE	loc_0_AD88
+		LDA	rash_move_UD_frames,Y
+		BNE	write_pl_wanted_frame
 
 loc_0_AD60:				; ...
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		LDA	level_flags_sit_and_xz,X
-		AND	#$80 ; 'А'
+		AND	#$80
 		LDX	Object_RamSlotID_tmp
 		ORA	Objects_Z_floor
 		ORA	player2_Z_floor
@@ -9045,30 +9117,30 @@ loc_0_AD60:				; ...
 		LDA	Objects_Flags,X
 		AND	#$10
 		BEQ	loc_0_AD85
-		LDA	byte_0_CF98,Y
-		BNE	loc_0_AD88
+		LDA	rash_walk_frames2,Y
+		BNE	write_pl_wanted_frame
 
 loc_0_AD85:				; ...
-		LDA	byte_0_CF90,Y
+		LDA	rash_walk_frames,Y
 
-loc_0_AD88:				; ...
+write_pl_wanted_frame:			; ...
 		STA	player1_obj_wanted_frame,X
 		RTS
 ; ---------------------------------------------------------------------------
 
 loc_0_AD8C:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		LSR	A
 		LSR	A
 		AND	#3
 		TAY
 		LDA	byte_0_CFA0,Y
-		BNE	loc_0_AD88
+		BNE	write_pl_wanted_frame
 
 loc_0_AD98:				; ...
 		LDA	#$11
 		LDY	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
-		BMI	loc_0_AD88
+		BMI	write_pl_wanted_frame
 		LDA	#$C0 ; '└'
 		STA	Objects_unk_cnt,X
 
@@ -9077,10 +9149,10 @@ object_default_frame:
 		STA	player1_obj_wanted_frame,X
 		LDA	players_obj_unk2,X
 		BNE	loc_0_ADBE
-		LDA	RandomValue_1,X	; $25
+		LDA	RandomValue_1,X
 		AND	#$3F ; '?'
 		BNE	locret_0_ADC4
-		LDA	RandomValue_2,X	; $26
+		LDA	RandomValue_2,X
 		AND	#$F
 		CLC
 		ADC	#4
@@ -9121,7 +9193,7 @@ object_WARP:				; ...
 		BNE	loc_0_ADFC
 
 loc_0_ADF7:				; ...
-		DEC	Objects_HitID,X
+		DEC	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_ADD4
 
 loc_0_ADFC:				; ...
@@ -9136,7 +9208,7 @@ loc_0_ADFC:				; ...
 		BCS	loc_0_AE30
 
 loc_0_AE11:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_0_AE1B
 		LDA	#$1E
@@ -9167,12 +9239,12 @@ loc_0_AE30:				; ...
 		STA	Objects_TypeID,X
 		LDA	#$E8 ; 'ш'
 		JSR	sub_0_8EEE
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_0_AE64
 		LDA	#$40 ; '@'
 		STA	Objects_Hit_timer,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_0_AE61
 		DEC	Objects_TypeID,X
@@ -9216,10 +9288,10 @@ loc_0_AE88:				; ...
 		LSR	A
 		LSR	A
 		LSR	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#$7D ; '}'
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	Obj_anim_frame,X
 		RTS
 ; ---------------------------------------------------------------------------
@@ -9260,7 +9332,7 @@ object_level1_boss_ball:		; ...
 		JSR	sub_0_92D6
 		LDA	#$F
 		JSR	get_obj_slot_type_by_ID
-		STY	byte_0_1E
+		STY	tmp_var_1e
 		LDA	Objects_Life,Y
 		SEC
 		SBC	#$10
@@ -9353,7 +9425,7 @@ loc_0_AF8C:				; ...
 		JSR	sub_0_E4AD
 
 loc_0_AF8F:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		BEQ	locret_0_AFB5
 		JSR	loc_0_B024
@@ -9391,7 +9463,7 @@ object_hodulya_palka:			; ...
 		JSR	sub_0_8F4C
 		LDA	#0
 		STA	Objects_Z_floor,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BEQ	loc_0_AFED
 		JSR	sub_0_E4AD
@@ -9406,7 +9478,7 @@ loc_0_AFE5:				; ...
 		BEQ	loc_0_B001
 
 loc_0_AFED:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#1
 		CLC
 		ADC	Objects_unk_cnt,X
@@ -9475,7 +9547,7 @@ loc_0_B057:				; ...
 loc_0_B05F:				; ...
 		LDY	#3
 		LDX	#$15
-		STA	byte_0_39
+		STA	tmp_var_39
 		JSR	jump_other_bank
 		LDX	Object_RamSlotID_tmp
 		RTS
@@ -9491,7 +9563,7 @@ loc_0_B075:				; ...
 		AND	#$1F
 		TAY
 		DEY
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_0_B0CA
 		CPX	#2
@@ -9499,7 +9571,7 @@ loc_0_B075:				; ...
 		CPY	#2
 		BCC	loc_0_B0CA
 		JSR	copy_objects_XYZ
-		STY	word_0_1F
+		STY	tmp_var_1f
 		LDA	#8
 		ORA	Objects_Flags,X
 		STA	Objects_Flags,X
@@ -9514,7 +9586,7 @@ loc_0_B075:				; ...
 
 loc_0_B0A3:				; ...
 		STA	player1_obj_wanted_frame,X
-		LDY	word_0_1F
+		LDY	tmp_var_1f
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		AND	#4
 		STA	Objects_unk_cnt,X
@@ -9545,7 +9617,7 @@ loc_0_B0D2:				; ...
 		LDA	Objects_TypeID,Y
 		EOR	#$17
 		BEQ	loc_0_B0FE
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_B0FE
 		LDA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
@@ -9578,7 +9650,7 @@ loc_0_B10D:				; ...
 ; ---------------------------------------------------------------------------
 
 object_rope:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_B123
 		LDA	#$70 ; 'p'
@@ -9591,7 +9663,7 @@ object_rope:				; ...
 loc_0_B123:				; ...
 		LDA	byte_0_C8
 		BNE	loc_0_B13B
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		LSR	A
 		CMP	#1
 		BEQ	loc_0_B13B
@@ -9609,10 +9681,10 @@ loc_0_B13B:				; ...
 		SEC
 		SBC	#6
 		TAY
-		STY	byte_0_22
+		STY	tmp_var_22
 		LDA	Objects_TypeID,Y
 		BEQ	loc_0_B10D
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_0_B12E
 		LDA	Objects_death_timer,Y
@@ -9671,7 +9743,7 @@ loc_0_B1A2:				; ...
 		ROL	A
 		ROL	A
 		AND	#3
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	Objects_TargetID,X
 		BEQ	loc_0_B1C8
 		INC	Objects_various_flags,X	; для пушек ID прицепленного объекта
@@ -9679,19 +9751,19 @@ loc_0_B1A2:				; ...
 		EOR	#3
 		BNE	loc_0_B1C8
 		STA	Objects_various_flags,X	; для пушек ID прицепленного объекта
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_TargetID,X
 
 loc_0_B1C8:				; ...
 		LDA	Objects_TargetID,X
 		TAX
 		LDA	byte_0_B19E,X
-		AND	FrameCounter_Even
+		AND	FrameCounter_Even ; счетчик каждого второго кадра
 		EOR	Objects_X_shadow,Y
 		STA	Objects_X_shadow,Y
 		LDA	byte_0_B19E,X
 		EOR	#1
-		AND	FrameCounter_Even
+		AND	FrameCounter_Even ; счетчик каждого второго кадра
 		EOR	Objects_Y_shad,Y
 		STA	Objects_Y_shad,Y
 		LDA	byte_0_B192,X
@@ -9702,7 +9774,7 @@ loc_0_B1C8:				; ...
 		STA	Objects_Flags,Y
 		LDA	Objects_TargetID,Y
 		BNE	loc_0_B208
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		SBC	#$64 ; 'd'
 		JSR	loc_0_E2DC
 		LDA	Objects_unk_cnt,X
@@ -9713,7 +9785,7 @@ loc_0_B1C8:				; ...
 loc_0_B208:				; ...
 		LDA	Objects_X_speed,Y
 		CMP	#$F0 ; 'Ё'
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		BCS	loc_0_B212
 		ROR	A
 
@@ -9721,14 +9793,14 @@ loc_0_B212:				; ...
 		ROR	A
 
 loc_0_B213:				; ...
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_B19A,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_B196,X
 		ADC	#0
 		LDX	Object_RamSlotID_tmp
 		STA	Obj_anim_frame,X
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Flags,X
 		RTS
 ; ---------------------------------------------------------------------------
@@ -9739,12 +9811,12 @@ loc_0_B22A:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_B230:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$F
 		BNE	locret_0_B241
 		LDA	#0
 		JSR	add_scores
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDX	Object_RamSlotID_tmp
 		INC	unkn_cnt4
 
@@ -9757,43 +9829,43 @@ loc_0_B242:				; ...
 		CMP	#$2C ; ','
 		BNE	loc_0_B25B
 		LDA	#2
-		AND	FrameCounter_Even
+		AND	FrameCounter_Even ; счетчик каждого второго кадра
 		LDY	byte_0_E3
 		BNE	loc_0_B252
 		LSR	A
 
 loc_0_B252:				; ...
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	Objects_Z_floor,Y
 		STA	Objects_Z_floor,Y
 
 loc_0_B25B:				; ...
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDA	Level_ID	; $10
+		LDY	tmp_var_15	;  / Object Counter / various tmp
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_0_B22A
-		LDA	byte_0_D5
-		ORA	byte_0_D4
+		LDA	bikes_speed
+		ORA	bikes_accelerate
 		BEQ	loc_0_B26E
 		JSR	loc_0_B230
 		LDA	#1
 
 loc_0_B26E:				; ...
-		ORA	byte_0_E4
+		ORA	stop_scroll_flag
 		BNE	loc_0_B285
 		LDA	Objects_Xpos_L,X
 		SEC
 		SBC	LevelPos_CamPosX_L
 		CMP	#$60 ; '`'
 		BCS	loc_0_B285
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#$60 ; '`'
 		JSR	sub_0_92FC
 		LDX	Object_RamSlotID_tmp
 
 loc_0_B285:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	locret_0_B2C9
 		STA	byte_0_EC,Y
@@ -9853,7 +9925,7 @@ object_bike:				; ...
 		BEQ	loc_0_B2FD
 		LDA	Objects_Flags,X
 		BMI	loc_0_B322
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_0_B331
 		LDA	#4
@@ -9865,12 +9937,12 @@ loc_0_B2FD:				; ...
 		CMP	#$40 ; '@'
 		BCS	loc_0_B2E3
 		LDA	#$5E ; '^'
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		LDA	#1
 		JSR	loc_0_8A59
 		LDA	#0
-		STA	Objects_HitID,X
-		LDA	Level_ID	; $10
+		STA	Objects_HitID,X	; номер	движения для запуска
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_0_B331
 		CMP	#$C
@@ -9892,7 +9964,7 @@ loc_0_B325:				; ...
 
 loc_0_B331:				; ...
 		LDA	#$2A ; '*'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#3
 		BEQ	loc_0_B347
 		LDA	#$D2 ; '╥'
@@ -9931,10 +10003,10 @@ loc_0_B368:				; ...
 		JSR	loc_0_B3E1
 		LDA	objects_some_anim,X
 		STA	byte_0_DD
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#8
 		STA	Objects_Zpos_L,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_0_B398
 		ROL	byte_0_DD
@@ -9985,7 +10057,7 @@ loc_0_B3D2:				; ...
 		JSR	reset_some_vars
 
 loc_0_B3D5:				; ...
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_B3D7:				; ...
 		TYA
@@ -10039,7 +10111,7 @@ loc_0_B414:				; ...
 		BNE	loc_0_B422
 
 loc_0_B422:				; ...
-		STA	byte_0_55,Y
+		STA	palette,Y
 		CPY	#$11
 		BCC	loc_0_B436
 		LDA	byte_0_650,Y
@@ -10048,7 +10120,7 @@ loc_0_B422:				; ...
 		LDA	#$F
 
 loc_0_B433:				; ...
-		STA	byte_0_55,Y
+		STA	palette,Y
 
 loc_0_B436:				; ...
 		DEY
@@ -10080,11 +10152,11 @@ object_rat_race_palette_fade:		; ...
 ; ---------------------------------------------------------------------------
 
 object_infernorace_animation:		; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		ORA	byte_0_C9
 		BNE	loc_0_B495
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BNE	loc_0_B482
 		LDA	unkn_flag
@@ -10101,7 +10173,7 @@ loc_0_B482:				; ...
 		DEC	Objects_unk_cnt2,X
 
 loc_0_B48A:				; ...
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$1F
 		BNE	loc_0_B495
 		LDA	#9
@@ -10166,14 +10238,14 @@ loc_0_B4F0:				; ...
 		ADC	Objects_dir,X
 		STA	Objects_dir,X
 		JSR	sub_0_CF66
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		JSR	sub_0_8E7A
 		LDA	Objects_Life,X
 		BMI	loc_0_B511
 		JSR	sub_0_E4AD
 
 loc_0_B511:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#2
 		LSR	A
 		ADC	#$D
@@ -10195,7 +10267,7 @@ loc_0_B521:				; ...
 		AND	#7
 		TAY
 		LDA	byte_0_B51C,Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#$C
 		LDY	#5
 		JSR	jump_other_bank
@@ -10229,7 +10301,7 @@ loc_0_B563:				; ...
 		LDX	Object_RamSlotID_tmp
 		JSR	loc_0_B571
 		LDA	#3
-		STA	byte_0_2D
+		STA	previous_bankID
 		RTS
 ; ---------------------------------------------------------------------------
 
@@ -10257,7 +10329,7 @@ loc_0_B57E:				; ...
 loc_0_B594:				; ...
 		LDA	byte_0_9A
 		STA	byte_0_178,Y
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_17C,Y
 		CPY	#1
 		BNE	loc_0_B5AA
@@ -10269,17 +10341,17 @@ loc_0_B594:				; ...
 loc_0_B5AA:				; ...
 		CLC
 		ADC	#$20 ; ' '
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_9A
 		ADC	#0
 		STA	byte_0_9A
 		CMP	#$23 ; '#'
 		BNE	loc_0_B5C7
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$C0 ; '└'
 		BCC	loc_0_B5C7
 		AND	#$1F
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#$20 ; ' '
 		STA	byte_0_9A
 
@@ -10309,7 +10381,7 @@ loc_0_B5E5:				; ...
 		LDA	#0
 		STA	Obj_anim_frame,X
 		STA	Objects_Z_floor,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		ROR	A
 		BCC	loc_0_B5F5
 		JMP	locret_0_B562
@@ -10334,7 +10406,7 @@ object_psyko_Pig_ambush:		; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_B610:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_0_B619
 		INC	Objects_unk_cnt2,X
@@ -10359,7 +10431,7 @@ object_fireball:			; ...
 		LDA	Objects_Flags,X
 		ORA	Objects_death_timer,X
 		BMI	loc_0_B698
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#6
 		BEQ	loc_0_B655
 		JSR	loc_0_8EE1
@@ -10377,7 +10449,7 @@ loc_0_B655:				; ...
 		LDA	byte_0_B690,Y
 		ADC	Objects_Xpos_H,X
 		STA	Objects_Xpos_H,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BEQ	loc_0_B67F
 		JSR	sub_0_E4AD
@@ -10392,7 +10464,7 @@ loc_0_B67A:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_B67F:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BEQ	loc_0_B68A
 		JSR	sub_0_FB04
@@ -10480,7 +10552,7 @@ loc_0_B705:				; ...
 		LSR	A
 		LSR	A
 		LSR	A
-		ADC	byte_0_D5
+		ADC	bikes_speed
 		ADC	Objects_Xpos_L,X
 		STA	Objects_Xpos_L,X
 		BCC	loc_0_B71F
@@ -10492,7 +10564,7 @@ loc_0_B71F:				; ...
 		JSR	loc_0_B778
 
 loc_0_B727:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#$C
 		BNE	loc_0_B73B
 		STA	Objects_Z_floor,X
@@ -10516,7 +10588,7 @@ loc_0_B748:				; ...
 loc_0_B74B:				; ...
 		LDY	Objects_TypeID,X
 		LDA	byte_0_B769 - $23,Y
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CMP	#$4E ; 'N'
 		BNE	loc_0_B75D
 		CPY	#6
@@ -10547,36 +10619,36 @@ loc_0_B775:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_B778:				; ...
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_B772
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BNE	loc_0_B772
 		LDA	Objects_death_timer,Y
 		BMI	loc_0_B772
 		LDA	Objects_TypeID,X
 		CMP	#$24 ; '$'
 		BEQ	loc_0_B775
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 		LDA	byte_0_B8E4 - $23,Y
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	byte_0_B8ED - $23,Y
-		STA	word_0_1F+1
+		STA	tmp_var_20
 		LDA	byte_0_B8F6 - $23,Y
-		STA	byte_0_21
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDA	byte_0_E4
+		STA	tmp_var_21
+		LDY	tmp_var_15	;  / Object Counter / various tmp
+		LDA	stop_scroll_flag
 		BNE	loc_0_B772
-		LDA	byte_0_21
+		LDA	tmp_var_21
 		JSR	test_checkpoint_pos
 		BNE	loc_0_B772
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		JSR	sub_0_8D39
 		BNE	loc_0_B772
 		LDA	Objects_Zpos_L,Y
 		SEC
 		SBC	Objects_Zpos_L,X
-		CMP	word_0_1F
+		CMP	tmp_var_1f
 		BCS	loc_0_B772
 		LDA	Objects_TypeID,X
 		CMP	#$26 ; '&'
@@ -10588,11 +10660,11 @@ loc_0_B778:				; ...
 		STA	Objects_X_speed,X
 		LDA	#4
 		STA	Objects_Z_speed,X
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		CMP	#4
 		BCC	loc_0_B7E0
 		LDA	#2
-		STA	byte_0_D5
+		STA	bikes_speed
 
 loc_0_B7E0:				; ...
 		LDA	LevelCfgAdr_L	; текущий адрес	рома для чтения	объектов уровня
@@ -10603,7 +10675,7 @@ loc_0_B7E0:				; ...
 		SBC	#0
 		STA	byte_0_E6
 		LDA	#6
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		JSR	sub_0_BC57
 
 loc_0_B7F4:				; ...
@@ -10633,8 +10705,10 @@ loc_0_B802:				; ...
 		TAX
 		JSR	sub_0_B8D9
 		LDA	#0
-		STA	byte_0_D4
-		STA	byte_0_D5
+		STA	bikes_accelerate
+
+reset_bikes_speed:
+		STA	bikes_speed
 		LDA	Objects_TypeID,X
 		CMP	#$2B ; '+'
 		BNE	locret_0_B88E
@@ -10669,9 +10743,9 @@ loc_0_B829:				; ...
 		LSR	A
 		LSR	A
 		AND	#$1E
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LSR	A
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		TAX
 		LDA	byte_0_B88F,X
 		STA	Objects_Z_speed,Y
@@ -10718,8 +10792,10 @@ loc_0_B8BF:
 
 loc_0_B8D1:
 		JSR	sub_0_A028
+
+stop_bikes_scroll:
 		LDA	#$80 ; 'А'
-		STA	byte_0_E4
+		STA	stop_scroll_flag
 		RTS
 ; End of function sub_0_B8AD
 
@@ -10733,7 +10809,7 @@ sub_0_B8D9:				; ...
 loc_0_B8DC:				; ...
 		LDA	#$A
 		JSR	sub_0_9148
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		RTS
 ; End of function sub_0_B8D9
 
@@ -10853,7 +10929,7 @@ loc_0_B9AB:				; ...
 ; ---------------------------------------------------------------------------
 
 object_turbo_tunnel_balls:		; ...
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		JSR	sub_0_B920
 		JSR	sub_0_8F4C
 		LDA	#$D0 ; '╨'
@@ -10896,12 +10972,12 @@ loc_0_B9F2:				; ...
 		BMI	loc_0_B9AB
 		LDA	Objects_unk_cnt2,X
 		SBC	Objects_Xpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#$32 ; '2'
 		CMP	#$64 ; 'd'
 		BCS	loc_0_BA1E
 		DEC	Objects_unk_cnt2,X
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_0_BA2C
 		INC	Objects_unk_cnt2,X
 		INC	Objects_unk_cnt2,X
@@ -10909,7 +10985,7 @@ loc_0_B9F2:				; ...
 
 loc_0_BA1E:				; ...
 		LDA	#$30 ; '0'
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_0_BA26
 		LDA	#$CF ; '╧'
 
@@ -10973,16 +11049,16 @@ loc_0_BA7D:				; ...
 		BEQ	loc_0_BA9E
 		JSR	random
 		AND	#$F
-		ORA	Objects_HitID,X
+		ORA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_BAC7
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		AND	#2
 		ORA	#$54 ; 'T'
 		TAY
 		BNE	loc_0_BAA5
 
 loc_0_BA9E:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_BAC7
 		LDY	#$4C ; 'L'
 
@@ -10999,7 +11075,7 @@ loc_0_BAA5:				; ...
 
 loc_0_BAB8:				; ...
 		TYA
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 		LDA	Objects_Flags,X
 		AND	#$BF ; '┐'
 		STA	Objects_Flags,X
@@ -11011,7 +11087,7 @@ loc_0_BAC7:				; ...
 		BPL	loc_0_BA7D
 		LDA	tmp_var_1B
 		SBC	#$10
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		SBC	#0
 		BPL	loc_0_BAE0
 		LDA	Objects_Zpos_L,X
@@ -11037,16 +11113,16 @@ loc_0_BAF1:				; ...
 		JSR	sub_0_8EEE
 
 loc_0_BAF6:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_BB17
 		LDA	#1
 		JSR	sub_0_DAF6
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_BB0F
 		LDA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		BEQ	loc_0_BB0F
 		LDA	#$44 ; 'D'
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_BB0F:				; ...
 		LDA	#$FF
@@ -11168,12 +11244,12 @@ sub_0_BBB4:				; ...
 loc_0_BBDF:				; ...
 		STA	Objects_Life,Y
 		LDA	#0
-		STA	Objects_HitID,Y
+		STA	Objects_HitID,Y	; номер	движения для запуска
 		STA	Objects_Hit_timer,Y
 		INC	unkn_cnt4
 		LDA	Objects_death_timer,Y
 		BPL	loc_0_BC0A
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_0_BC03
 		CMP	#$A
@@ -11247,11 +11323,11 @@ sub_0_BC57:				; ...
 		STY	byte_0_91
 
 loc_0_BC59:				; ...
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		PHA
 		JSR	get_free_obj_slot_IDX
 		BNE	loc_0_BC7A
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		JSR	copy_objects_XYZ
 		LDA	#$30 ; '0'
 		STA	Objects_TypeID,X
@@ -11267,7 +11343,7 @@ loc_0_BC7A:				; ...
 		LDY	byte_0_91
 		PLA
 		JSR	add_scores
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDX	Object_RamSlotID_tmp
 		RTS
 ; End of function sub_0_BC57
@@ -11293,7 +11369,7 @@ objects_power_ups:			; ...
 		STA	Obj_anim_frame,X
 		JSR	sub_0_E4AD
 		LDA	#$5E ; '^'
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		JSR	sub_0_F739
 		BMI	locret_0_BCCC
 		LDA	#0
@@ -11301,7 +11377,7 @@ objects_power_ups:			; ...
 		STA	Objects_Z_floor,X
 		LDA	#$50 ; 'P'
 		STA	Objects_unk_cnt2,X
-		STX	byte_0_18
+		STX	tmp_var_18
 		LDA	Obj_anim_frame,X
 		JMP	loc_0_BCC3
 ; ---------------------------------------------------------------------------
@@ -11313,7 +11389,7 @@ locret_0_BCC2:				; ...
 loc_0_BCC3:				; ...
 		STY	Object_RamSlotID_tmp
 		JSR	sub_0_BCCD
-		LDX	byte_0_18
+		LDX	tmp_var_18
 		STX	Object_RamSlotID_tmp
 
 locret_0_BCCC:				; ...
@@ -11363,7 +11439,7 @@ loc_0_BCE8:				; ...
 
 loc_0_BCFE:				; ...
 		LDA	Scores_tmp,Y
-		STA	byte_0_90
+		STA	for_spr_unk_90	; смещение?
 
 loc_0_BD03:				; ...
 		LDA	scores_table,X
@@ -11378,7 +11454,7 @@ loc_0_BD0F:				; ...
 		DEY
 		DEC	byte_0_91
 		BNE	loc_0_BD03
-		CMP	byte_0_90
+		CMP	for_spr_unk_90	; смещение?
 		BEQ	locret_0_BD35
 		CMP	#1
 		BCS	loc_0_BCD7
@@ -11476,7 +11552,7 @@ loc_0_BDC6:				; ...
 		LDA	#1
 		JSR	sub_0_8D4D
 		LDY	#0
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		ROL	A
 		BCS	loc_0_BDEC
 		INY
@@ -11502,12 +11578,12 @@ loc_0_BE03:				; ...
 		STA	Objects_Flags,X
 
 loc_0_BE0B:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_BE21
 		JSR	sub_0_B976
 		LDA	#3
 		JSR	sub_0_DAF6
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	locret_0_BE61
 
 loc_0_BE1D:				; ...
@@ -11541,7 +11617,7 @@ loc_0_BE29:				; ...
 		JSR	sub_0_8D4D
 		BNE	loc_0_BE5C
 		LDA	#$4A ; 'J'
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_BE5C:				; ...
 		LDA	#$61 ; 'a'
@@ -11601,7 +11677,7 @@ loc_0_BE87:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_BEB5:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#2
 		LSR	A
 		ADC	#$B7 ; '╖'
@@ -11626,7 +11702,7 @@ loc_0_BEC9:				; ...
 		INC	Obj_anim_frame,X
 		LDA	#0
 		STA	Objects_X_speed,X
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 		LDA	#$C0 ; '└'
 		STA	Objects_unk_cnt2,X
 
@@ -11674,7 +11750,7 @@ loc_0_BF22:				; ...
 		LDA	Obj_anim_frame,X
 		BEQ	loc_0_BF31
 		TXA
-		EOR	RandomValue_1	; $25
+		EOR	RandomValue_1
 		BNE	loc_0_BF34
 
 loc_0_BF31:				; ...
@@ -11682,16 +11758,16 @@ loc_0_BF31:				; ...
 
 loc_0_BF34:				; ...
 		TXA
-		EOR	FrameCounter	; $B
+		EOR	FrameCounter
 		AND	#7
-		ORA	Objects_HitID,X
+		ORA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_BF46
 		LDA	Objects_X_speed,X
 		BMI	loc_0_BF46
 		JSR	sub_0_BE62
 
 loc_0_BF46:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_BEE9
 		LDA	Objects_Ypos_L,X
 		CMP	#$D6 ; '╓'
@@ -11709,7 +11785,7 @@ loc_0_BF46:				; ...
 		BEQ	loc_0_BF75
 
 loc_0_BF6C:				; ...
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		ADC	Objects_Xpos_L,X
 		AND	#7
 		BNE	loc_0_BFA0
@@ -11735,7 +11811,7 @@ loc_0_BF89:				; ...
 
 loc_0_BF99:				; ...
 		TYA
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 		JMP	loc_0_BEE9
 ; ---------------------------------------------------------------------------
 
@@ -11768,7 +11844,7 @@ loc_0_BFCB:				; ...
 		LDA	Objects_unk_cnt2,X
 		CMP	#$30 ; '0'
 		BNE	loc_0_BFE3
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$80 ; 'А'
 		STA	Objects_dir,X
 
@@ -11803,9 +11879,9 @@ loc_0_C015:				; ...
 		LDY	#$30 ; '0'
 
 loc_0_C027:				; ...
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_various_flags,X	; для пушек ID прицепленного объекта
-		CMP	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		CMP	tmp_var_15	;  / Object Counter / various tmp
 		BCS	loc_0_C039
 		AND	#8
 		BEQ	locret_0_C043
@@ -11850,19 +11926,19 @@ loc_0_C06F:				; ...
 		LDA	#2
 
 loc_0_C071:				; ...
-		LDY	byte_0_D5
+		LDY	bikes_speed
 		CPY	#8
 		BCC	loc_0_C078
 		ASL	A
 
 loc_0_C078:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	objects_some_anim,X
 		BEQ	loc_0_C097
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	objects_some_anim,X
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$80 ; 'А'
 		ROR	A
 		ADC	Objects_Zpos_L,X
@@ -11873,9 +11949,9 @@ loc_0_C078:				; ...
 
 loc_0_C097:				; ...
 		INC	Objects_TargetID,X
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	locret_0_C0C3
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BNE	locret_0_C0C3
 		LDA	Objects_death_timer,Y
 		BMI	locret_0_C0C3
@@ -11902,7 +11978,7 @@ loc_0_C0C4:				; ...
 ; ---------------------------------------------------------------------------
 
 object_level5_watermine_p1:		; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BEQ	loc_0_C0D7
 		LDA	LevelPos_CamPosX_H
@@ -11917,7 +11993,7 @@ loc_0_C0D7:				; ...
 		LDA	Objects_Xpos_H,X
 		STA	objects_some_anim,X
 		INC	Objects_various_flags,X	; для пушек ID прицепленного объекта
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_0_C111
 		LDA	LevelPos_CamPosX_H
@@ -11960,11 +12036,11 @@ loc_0_C111:				; ...
 		STA	Objects_Xpos_H,X
 		LDA	Objects_Ypos_H,Y
 		BNE	loc_0_C14D
-		STX	byte_0_18
+		STX	tmp_var_18
 		LDA	#$92 ; 'Т'
 		LDX	#$C
 		JSR	some_sounds
-		LDX	byte_0_18
+		LDX	tmp_var_18
 		JMP	loc_0_C19C
 ; ---------------------------------------------------------------------------
 
@@ -11979,7 +12055,7 @@ loc_0_C14D:				; ...
 		STA	Objects_Zpos_L,X
 		LDA	#$78 ; 'x'
 		STA	Objects_TypeID,X
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		AND	#$7F ; ''
 		ADC	#$30 ; '0'
 		STA	Objects_X_speed,X
@@ -12017,10 +12093,10 @@ loc_0_C19C:				; ...
 		STA	objects_some_anim,X
 		JSR	random
 		AND	#$7F ; ''
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		JSR	random
 		AND	#$3F ; '?'
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_C1AF:				; ...
 		STA	Objects_Zpos_L,X
@@ -12032,7 +12108,7 @@ loc_0_C1B3:				; ...
 ; ---------------------------------------------------------------------------
 
 object_level7_fires:			; ...
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BEQ	loc_0_C1BF
 		LDA	#8
 		STA	objects_some_anim,X
@@ -12048,20 +12124,20 @@ loc_0_C1BF:				; ...
 		DEC	Objects_Xpos_H,X
 
 loc_0_C1D3:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#1
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ASL	A
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#$CB ; '╦'
 		STA	Obj_anim_frame,X
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BNE	locret_0_C216
 
 loc_0_C1E5:				; ...
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	locret_0_C216
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BNE	locret_0_C216
 		LDA	Objects_death_timer,Y
 		BMI	locret_0_C216
@@ -12077,8 +12153,8 @@ loc_0_C1E5:				; ...
 		CMP	#$1A
 		BCS	locret_0_C216
 		LDA	#0
-		STA	byte_0_D4
-		STA	byte_0_D5
+		STA	bikes_accelerate
+		STA	bikes_speed
 		JMP	loc_0_C0BE
 ; ---------------------------------------------------------------------------
 
@@ -12121,7 +12197,7 @@ loc_0_C241:				; ...
 loc_0_C246:				; ...
 		LDA	Objects_unk_cnt2,X
 		JSR	sub_0_8E7A
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		JSR	sub_0_B920
 		JMP	loc_0_C1E5
 ; ---------------------------------------------------------------------------
@@ -12193,8 +12269,8 @@ loc_0_C2B9:				; ...
 		JSR	test_checkpoint_pos
 		BNE	loc_0_C2D8
 		LDA	#$6E ; 'n'
-		JSR	clear_states
-		JSR	sub_0_DAFD
+		JSR	write_obj_Hit_ID
+		JSR	read_anim_seq_by_HitID
 
 loc_0_C2D8:				; ...
 		JSR	sub_0_CF66
@@ -12260,8 +12336,8 @@ loc_0_C336:				; ...
 		BNE	loc_0_C388
 		LDA	Objects_various_flags,X	; для пушек ID прицепленного объекта
 		BNE	loc_0_C377
-		JSR	sub_0_C9ED
-		LDA	FrameCounter	; $B
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
+		LDA	FrameCounter
 		BEQ	loc_0_C3BB
 		LDA	#$70 ; 'p'
 		JSR	sub_0_8D4D
@@ -12270,7 +12346,7 @@ loc_0_C336:				; ...
 		ADC	#$40 ; '@'
 		CMP	#$80 ; 'А'
 		BCC	loc_0_C3BB
-		LSR	byte_0_8D
+		LSR	tmp_var_8d
 		LDA	#$54 ; 'T'
 		JSR	test_checkpoint_pos
 		BNE	loc_0_C3BB
@@ -12280,7 +12356,7 @@ loc_0_C336:				; ...
 		BCC	loc_0_C3BB
 		LDA	byte_0_8F
 		AND	#$80 ; 'А'
-		ORA	byte_0_8D
+		ORA	tmp_var_8d
 		EOR	Objects_Life,X
 		AND	#$C0 ; '└'
 		BNE	loc_0_C3BB
@@ -12352,12 +12428,12 @@ locret_0_C3DB:				; ...
 
 
 sub_0_C3DC:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		JSR	sub_0_C9ED
+		STA	tmp_var_15	;  / Object Counter / various tmp
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_C3ED
 		LDA	Objects_death_timer,Y
 		BNE	loc_0_C3ED
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		JMP	test_checkpoint_pos
 ; ---------------------------------------------------------------------------
 
@@ -12411,7 +12487,7 @@ object_water_hit:			; ...
 		JSR	copy_objects_XYZ
 		LDA	#2
 		STA	Objects_Z_speed,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#$C
 		BNE	loc_0_C43A
 		STA	Objects_Zpos_H,X
@@ -12576,12 +12652,12 @@ loc_0_C544:				; ...
 		JSR	test_checkpoint_pos
 		LDA	Objects_Flags,X
 		AND	#$23 ; '#'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_8F
 		LSR	A
 		AND	#$40 ; '@'
 		EOR	#$40 ; '@'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Flags,X
 
 locret_0_C569:				; ...
@@ -12596,10 +12672,10 @@ sub_0_C56A:				; ...
 		JSR	sub_0_E4AD
 
 loc_0_C56D:				; ...
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	locret_0_C5B0
 		LDA	Objects_death_timer,Y
-		ORA	byte_0_E4
+		ORA	stop_scroll_flag
 		BNE	locret_0_C5B0
 		LDA	#$A
 		JSR	sub_0_8D39
@@ -12610,7 +12686,7 @@ loc_0_C56D:				; ...
 		LDA	#$18
 		JSR	sub_0_8D4D
 		BNE	locret_0_C5B0
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_0_C59C
 		JSR	sub_0_CA6A
@@ -12651,7 +12727,7 @@ loc_0_C5B4:				; ...
 		STA	Objects_Flags,X
 
 loc_0_C5C7:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BNE	loc_0_C5D8
 		DEC	Objects_TargetID,X
@@ -12702,16 +12778,16 @@ loc_0_C613:				; ...
 		STA	Objects_Z_floor,X
 		LDA	Objects_death_timer,X
 		BNE	loc_0_C5B4
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_C653
 		TXA
-		EOR	FrameCounter	; $B
+		EOR	FrameCounter
 		ROR	A
 		BCS	loc_0_C648
 		JSR	sub_0_F739
 		BMI	loc_0_C648
 		LDA	#$80 ; 'А'
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_C648:				; ...
 		LDA	#$20 ; ' '
@@ -12730,7 +12806,7 @@ object_electrofish:			; ...
 		BNE	loc_0_C674
 		LDA	#$C0 ; '└'
 		STA	Objects_X_speed,X
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		STA	Objects_dir,X
 		LDA	Objects_Flags,X
 		AND	#3
@@ -12786,9 +12862,9 @@ loc_0_C6AC:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_C6BC:				; ...
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_C708
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 		ORA	Objects_death_timer,Y
 		ORA	Obj_anims_timer,Y
 		BNE	loc_0_C708
@@ -12798,15 +12874,15 @@ loc_0_C6BC:				; ...
 		LDA	#$40 ; '@'
 		JSR	sub_0_8D4D
 		BNE	loc_0_C708
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		LSR	A
 		AND	#1
 		ORA	#$E4 ; 'ф'
 		STA	Obj_anim_frame,X
-		STY	byte_0_18
+		STY	tmp_var_18
 		LDA	#$98 ; 'Ш'
 		JSR	loc_0_B7FD
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		LDA	tmp_var_1B
 		ADC	#$10
 		CMP	#$20 ; ' '
@@ -12841,29 +12917,29 @@ object_hammerfish:			; ...
 		LDA	Objects_various_flags,X	; для пушек ID прицепленного объекта
 		BNE	loc_0_C754
 		JSR	sub_0_C78B
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_C735
 		LDA	byte_0_8F
 		AND	#$80 ; 'А'
 		EOR	#$80 ; 'А'
 		STA	Objects_dir,X
 		LDA	#$7E ; '~'
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_C735:				; ...
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$3F ; '?'
 		ADC	#$20 ; ' '
 		LDA	#$20 ; ' '
 		STA	Objects_various_flags,X	; для пушек ID прицепленного объекта
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		AND	#1
 		BNE	loc_0_C748
 		LDA	#$FF
 
 loc_0_C748:				; ...
 		STA	Objects_unk_cnt2,X
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_3
 		AND	#$3F ; '?'
 		ADC	#$20 ; ' '
 		STA	Objects_X_speed,X
@@ -12889,7 +12965,7 @@ loc_0_C76D:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_C775:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_C7AC
 		DEC	Objects_various_flags,X	; для пушек ID прицепленного объекта
 
@@ -12917,7 +12993,7 @@ sub_0_C78B:				; ...
 		CMP	#$34 ; '4'
 		BCS	locret_0_C7AB
 		LDA	#$7C ; '|'
-		JMP	clear_states
+		JMP	write_obj_Hit_ID
 ; ---------------------------------------------------------------------------
 
 locret_0_C7AB:				; ...
@@ -12950,7 +13026,7 @@ loc_0_C7B9:				; ...
 		AND	#$80 ; 'А'
 		EOR	#$98 ; 'Ш'
 		STA	Objects_dir,X
-		EOR	byte_0_8D
+		EOR	tmp_var_8d
 		BMI	locret_0_C7CE
 		LDA	Objects_dir,X
 		SBC	#$30 ; '0'
@@ -12992,7 +13068,7 @@ loc_0_C7FA:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_C802:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_C7AC
 		DEC	Objects_various_flags,X	; для пушек ID прицепленного объекта
 
@@ -13033,7 +13109,7 @@ loc_0_C83F:				; ...
 		JSR	loc_0_88F3
 		LDA	Objects_unk_cnt2,X
 		BMI	loc_0_C86E
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#0
 		STA	Objects_TargetID,Y
 		TYA
@@ -13086,7 +13162,7 @@ object_verevka_s_propellerom:		; ...
 		CLC
 		JSR	sub_0_8EEE
 		LDA	#3
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	loc_0_C8B1
 
 loc_0_C8AE:				; ...
@@ -13121,7 +13197,7 @@ object_terra_tubes_xz:			; ...
 		STA	Objects_Ypos_H,X
 
 loc_0_C8E4:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		BNE	loc_0_C925
 		LDA	Objects_unk_cnt2,X
@@ -13137,10 +13213,10 @@ loc_0_C8E4:				; ...
 		BCC	locret_0_C914
 
 loc_0_C904:				; ...
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		STY	Object_RamSlotID_tmp
 		JSR	reset_some_vars
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		STX	Object_RamSlotID_tmp
 
 loc_0_C90F:				; ...
@@ -13163,23 +13239,23 @@ loc_0_C918:				; ...
 loc_0_C925:				; ...
 		LDA	#$FB ; '√'
 		STA	Obj_anim_frame,X
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		EOR	Objects_Xpos_L,X
 		AND	#$7F ; ''
 		BNE	locret_0_C963
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#2
 
 loc_0_C937:				; ...
 		LDA	Objects_TypeID,Y
 		BEQ	loc_0_C93E
-		INC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		INC	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_C93E:				; ...
 		INY
 		CPY	#$F
 		BNE	loc_0_C937
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#7
 		BCS	locret_0_C963
 
@@ -13197,11 +13273,11 @@ loc_0_C949:				; ...
 locret_0_C963:				; ...
 		RTS
 ; ---------------------------------------------------------------------------
-		LDA	byte_0_D4
+		LDA	bikes_accelerate
 		CLC
 		ADC	Objects_X_sub,X
 		STA	Objects_X_sub,X
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		JMP	sub_0_B920
 ; ---------------------------------------------------------------------------
 
@@ -13224,7 +13300,7 @@ loc_0_C98B:				; ...
 		JSR	sub_0_C9D5
 		BEQ	locret_0_C9CF
 		LDA	Objects_death_timer,Y
-		ORA	byte_0_E4
+		ORA	stop_scroll_flag
 		BNE	locret_0_C9CF
 		LDA	#$10
 		JSR	test_checkpoint_pos
@@ -13237,13 +13313,13 @@ loc_0_C98B:				; ...
 		LDY	Object_RamSlotID_tmp
 		JSR	copy_objects_XYZ_and_dir
 		LDA	Objects_Life,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		SEC
 		SBC	#1
 		BCC	loc_0_C9D0
 		BEQ	loc_0_C9D0
 		STA	Objects_Life,X
-		EOR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		EOR	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$F8 ; '°'
 		BEQ	loc_0_C9CA
 		INC	unkn_cnt4
@@ -13281,14 +13357,15 @@ loc_0_C9DC:				; ...
 
 ; =============== S U B	R O U T	I N E =======================================
 
+; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 
-sub_0_C9ED:				; ...
-		LDA	FrameCounter	; $B
+load_PL_1_or_2:				; ...
+		LDA	FrameCounter
 		AND	#1
 		TAY
 		LDA	Objects_TypeID,Y
 		RTS
-; End of function sub_0_C9ED
+; End of function load_PL_1_or_2
 
 ; ---------------------------------------------------------------------------
 
@@ -13322,7 +13399,7 @@ loc_0_CA21:				; ...
 		JSR	loc_0_C9DC
 		BEQ	loc_0_CA79
 		LDA	Objects_death_timer,Y
-		ORA	byte_0_E4
+		ORA	stop_scroll_flag
 		BNE	loc_0_CA79
 		LDA	#$C
 		JSR	test_checkpoint_pos
@@ -13377,16 +13454,16 @@ locret_0_CA7E:				; ...
 
 
 sub_0_CA7F:				; ...
-		STY	byte_0_18
+		STY	tmp_var_18
 		LDX	#$25 ; '%'
 		JSR	sub_0_B8AD
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		LDA	#4
 		STA	Objects_Z_speed,Y
 		LDA	#0
 		STA	Objects_unk1,Y
-		STA	byte_0_D4
-		STA	byte_0_D5
+		STA	bikes_accelerate
+		STA	bikes_speed
 		LDA	#$80 ; 'А'
 		STA	Objects_X_speed,Y
 		LDA	#$D0 ; '╨'
@@ -13406,12 +13483,12 @@ object_level5_watermine_p2:		; ...
 		JSR	sub_0_E4AD
 		LDA	Objects_Flags,X
 		AND	#8
-		ORA	byte_0_E4
+		ORA	stop_scroll_flag
 		BNE	loc_0_CAA1
 		STA	Objects_Z_floor,X
 
 loc_0_CAB8:				; ...
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		BEQ	loc_0_CACB
 		SEC
 		SBC	#4
@@ -13442,13 +13519,13 @@ sub_0_CADC:				; ...
 		LDY	Objects_TargetID,X
 		LDA	Objects_Ypos_L,Y
 		SBC	Objects_Ypos_L,X
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		LDA	#$50 ; 'P'
 		JSR	test_checkpoint_pos
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_0_CAFA
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		ADC	#6
 		CMP	#$C
 		BCS	loc_0_CB04
@@ -13474,7 +13551,7 @@ sub_0_CB07:				; ...
 		BEQ	loc_0_CB26
 		LDA	Objects_Flags,X
 		BPL	loc_0_CB26
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_0_CB1B
 		CMP	#$A
@@ -13500,7 +13577,7 @@ loc_0_CB26:				; ...
 		BEQ	loc_0_CB54
 		JSR	loc_0_9E99
 		LDA	#0
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		JSR	sub_0_9142
 		LDA	#$F
 		STA	Objects_various_flags,X	; для пушек ID прицепленного объекта
@@ -13508,7 +13585,7 @@ loc_0_CB26:				; ...
 		STA	byte_0_DC
 
 loc_0_CB54:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#2
 		LSR	A
 		ADC	#$EF ; 'я'
@@ -13564,7 +13641,7 @@ loc_0_CB8F:				; ...
 loc_0_CB9A:				; ...
 		LDA	Objects_dir,X
 		PHA
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		ASL	A
 		ASL	A
 		ASL	A
@@ -13578,7 +13655,7 @@ loc_0_CB9A:				; ...
 		STA	Objects_X_speed,X
 		LDA	#1
 		JSR	sub_0_D6DE
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		ORA	Objects_Zpos_H,X
 		BNE	loc_0_CBC8
@@ -13627,7 +13704,7 @@ loc_0_CBEE:				; ...
 
 sub_0_CC03:				; ...
 		JSR	can_make_game_end?
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#$A
 		BEQ	loc_0_CC0E
 		LDA	#$1E
@@ -13636,16 +13713,16 @@ loc_0_CC0E:				; ...
 		STA	byte_0_B2
 		LDA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
 		BMI	sub_0_CBDE
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		ORA	Objects_death_timer,X
 		BNE	loc_0_CC30
-		STA	byte_0_D4
-		STA	byte_0_D5
+		STA	bikes_accelerate
+		STA	bikes_speed
 		LDA	Objects_Z_speed,X
 		CMP	#$F8 ; '°'
 		BNE	loc_0_CC2D
 		LDA	#$5E ; '^'
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 
 loc_0_CC2D:				; ...
 		JSR	sub_0_CCE7
@@ -13662,7 +13739,7 @@ loc_0_CC3B:				; ...
 		BEQ	loc_0_CCA0
 		CMP	#$30 ; '0'
 		BCC	loc_0_CC58
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_0_CC54
 		LDA	#1
@@ -13680,7 +13757,7 @@ loc_0_CC58:				; ...
 		JSR	sub_0_E2E9
 		JSR	sub_0_CADC
 		JSR	loc_0_CF72
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_0_CC71
 		LDA	Objects_unk_cnt,X
@@ -13698,7 +13775,7 @@ loc_0_CC71:				; ...
 		LDA	#3
 
 loc_0_CC85:				; ...
-		AND	RandomValue_2	; $26
+		AND	RandomValue_2
 		BNE	loc_0_CC92
 		LDA	#$40 ; '@'
 		STA	Objects_unk2,X
@@ -13708,7 +13785,7 @@ loc_0_CC85:				; ...
 loc_0_CC92:				; ...
 		LDA	#0
 		STA	Objects_unk2,X
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#4
 		ADC	#2
 
@@ -13745,7 +13822,7 @@ loc_0_CCCD:				; ...
 
 loc_0_CCD8:				; ...
 		STA	Obj_anim_frame,X
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	locret_0_CCE6
 		JSR	loc_0_CF72
 		JMP	sub_0_C7B1
@@ -13775,7 +13852,7 @@ loc_0_CCFA:				; ...
 		LDA	byte_0_92
 		STA	Objects_dir,X
 		LDA	#0
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		PLP
 		BMI	locret_0_CD6B
 		LDA	Objects_Xpos_L,X
@@ -13783,7 +13860,7 @@ loc_0_CCFA:				; ...
 		ADC	#$10
 		CMP	#$20 ; ' '
 		BCS	loc_0_CD3C
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_0_CD22
 		LDA	Objects_Life,X
@@ -13805,13 +13882,13 @@ loc_0_CD22:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_CD3C:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BEQ	locret_0_CD6B
 		CMP	#$A
 		BNE	loc_0_CD60
 		LDA	players_obj_unk12,Y
-		ORA	Objects_HitID,Y
+		ORA	Objects_HitID,Y	; номер	движения для запуска
 		BNE	locret_0_CD6B
 		LDA	Objects_Z_speed,X
 		BPL	locret_0_CD6B
@@ -13829,7 +13906,7 @@ loc_0_CD60:				; ...
 		LDA	#$86 ; 'Ж'
 
 loc_0_CD68:				; ...
-		JMP	clear_states
+		JMP	write_obj_Hit_ID
 ; ---------------------------------------------------------------------------
 
 locret_0_CD6B:				; ...
@@ -13917,7 +13994,7 @@ loc_0_CDC2:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_CDE6:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_CDEE
 		JSR	sub_0_CCE7
 
@@ -13931,7 +14008,7 @@ loc_0_CDF8:				; ...
 		LDA	objects_some_anim,X
 		STA	Objects_X_speed,X
 		JSR	sub_0_8F4C
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_CE34
 		JSR	sub_0_C7B1
 		JMP	loc_0_CE34
@@ -13985,7 +14062,7 @@ loc_0_CE34:				; ...
 
 loc_0_CE5A:				; ...
 		LDA	#0
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -14043,13 +14120,13 @@ loc_0_CEA2:				; ...
 		LDA	#$40 ; '@'
 		STA	Objects_unk2,X
 		LDA	#$20 ; ' '
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#4
 		LDX	#3
 		JSR	jump_other_bank
 		LDY	#$E
 		JSR	set_music_by_level_id
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_CEC7:				; ...
@@ -14063,7 +14140,7 @@ loc_0_CECF:				; ...
 		JSR	sub_0_CD70
 		JSR	sub_0_CB5E
 		JSR	sub_0_CE5F
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_CEE8
 		JSR	sub_0_CCE7
 		LDX	Object_RamSlotID_tmp
@@ -14087,10 +14164,10 @@ loc_0_CEE8:				; ...
 		LDA	Objects_unk_cnt2,X
 		BPL	loc_0_CF14
 		LDA	#$88 ; 'И'
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_CF14:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_CF21
 		LDA	#$70 ; 'p'
 		JSR	sub_0_9148
@@ -14101,11 +14178,11 @@ loc_0_CF21:				; ...
 		BCS	loc_0_CF44
 		LDA	#0
 		STA	Objects_unk_cnt,X
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		AND	#2
 		ORA	#5
 		STA	Objects_Z_speed,X
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_3
 		AND	#$80 ; 'А'
 		STA	Objects_dir,X
 		LDA	objects_some_anim,X
@@ -14160,7 +14237,7 @@ loc_0_CF72:				; ...
 		LDA	Objects_Flags,X
 		AND	#$BF ; '┐'
 		STA	Objects_Flags,X
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$2C ; ','
 		BEQ	locret_0_CF8F
 
@@ -14177,10 +14254,10 @@ locret_0_CF8F:				; ...
 ; End of function sub_0_CF66
 
 ; ---------------------------------------------------------------------------
-byte_0_CF90:	.BYTE 4, 5, 4, 8, 6, 7,	6, 3 ; ...
-byte_0_CF98:	.BYTE 5, 5, 8, 8, 7, 7,	3, 3 ; ...
+rash_walk_frames:.BYTE 4, 5, 4,	8, 6, 7, 6, 3 ;	...
+rash_walk_frames2:.BYTE	5, 5, 8, 8, 7, 7, 3, 3 ; ...
 byte_0_CFA0:	.BYTE $11, $12,	$11, $10 ; ...
-byte_0_CFA4:	.BYTE 1, 9, 1, $A	; ...
+rash_move_UD_frames:.BYTE 1, 9,	1, $A	; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_CFA8:				; ...
@@ -14203,7 +14280,7 @@ loc_0_CFC1:				; ...
 
 loc_0_CFC6:				; ...
 		LDA	#0
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 		LDX	Object_RamSlotID_tmp
 
 loc_0_CFCD:				; ...
@@ -14276,11 +14353,11 @@ loc_0_D011:				; ...
 		BNE	loc_0_D05E
 
 loc_0_D04D:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CLC
 		ADC	Objects_Hit_timer,X
 		BMI	loc_0_D067
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		CMP	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		BCC	locret_0_D066
 
@@ -14300,11 +14377,11 @@ loc_0_D067:				; ...
 
 
 sub_0_D06A:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_X_speed,X
 		CMP	#$FF
 		BEQ	loc_0_D07D
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		BCS	loc_0_D079
 		LDA	#0
 
@@ -14378,7 +14455,7 @@ loc_0_D0C5:				; ...
 		BNE	loc_0_D0E3
 
 loc_0_D0D7:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#4
 		LSR	A
 		LSR	A
@@ -14401,7 +14478,7 @@ loc_0_D0E3:				; ...
 loc_0_D0F9:				; ...
 		LDY	#$E8 ; 'ш'
 		JSR	loc_0_B978
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CLC
 		ADC	#9
 		AND	#$10
@@ -14432,7 +14509,7 @@ object_palka_v_stene:			; ...
 		BCS	loc_0_D11B
 		LDA	Objects_unk_cnt,X
 		BNE	loc_0_D11B
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_D176
 		LDA	Objects_death_timer,Y
 		AND	#$80 ; 'А'
@@ -14626,7 +14703,7 @@ loc_0_D26E:				; ...
 		STA	Objects_X_speed,X
 		LDA	Objects_unk_cnt2,X
 		BNE	loc_0_D2CD
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$1F
 		BNE	loc_0_D286
 		LDA	objects_some_anim,X
@@ -14634,7 +14711,7 @@ loc_0_D26E:				; ...
 		DEC	objects_some_anim,X
 
 loc_0_D286:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#4
 		BNE	loc_0_D28F
 		INC	Obj_anim_frame,X
@@ -14655,7 +14732,7 @@ loc_0_D29F:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_D2A6:				; ...
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		ADC	Objects_Xpos_L,X
 		AND	#$7F ; ''
 		BNE	loc_0_D2FF
@@ -14667,7 +14744,7 @@ loc_0_D2A6:				; ...
 		STA	Objects_Z_speed,X
 		LDA	#6
 		STA	Objects_various_flags,X	; для пушек ID прицепленного объекта
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#3
 		BNE	loc_0_D2CD
 		LSR	Objects_various_flags,X	; для пушек ID прицепленного объекта
@@ -14693,7 +14770,7 @@ loc_0_D2E7:				; ...
 		LDA	Objects_unk_cnt2,X
 		CMP	#$2C ; ','
 		BCC	loc_0_D2FF
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$F
 		BNE	loc_0_D2FF
 		LDA	objects_some_anim,X
@@ -14715,7 +14792,7 @@ loc_0_D30A:				; ...
 		LDA	#0
 
 loc_0_D314:				; ...
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		CMP	#1
 		LDA	#$BC ; '╝'
 		ADC	#0
@@ -14740,7 +14817,7 @@ loc_0_D336:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_D33C:				; ...
-		JMP	loc_0_87AA
+		JMP	sub_0_87AA
 ; ---------------------------------------------------------------------------
 
 object_angelica_ili_pimpl:		; ...
@@ -14829,13 +14906,13 @@ loc_0_D3B9:				; ...
 		JSR	sub_0_CF59
 		JSR	sub_0_CB5E
 		JSR	sub_0_CF66
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_D3DB
 		LDA	#$E
 		JSR	sub_0_F739
 		BMI	loc_0_D3DE
 		LDA	#$8A ; 'К'
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_D3DB:				; ...
 		JMP	sub_0_C7B1
@@ -14855,7 +14932,7 @@ loc_0_D3DE:				; ...
 		INC	Objects_various_flags,X	; для пушек ID прицепленного объекта
 		LDA	#1
 		STA	Objects_X_speed,X
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_3
 		STA	Objects_dir,X
 		JSR	sub_0_D4DA
 
@@ -14866,7 +14943,7 @@ locret_0_D405:				; ...
 
 
 sub_0_D406:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		ROR	A
 		BCC	locret_0_D40E
 		INC	Objects_various_flags,X	; для пушек ID прицепленного объекта
@@ -14943,7 +15020,7 @@ loc_0_D488:				; ...
 		BCC	loc_0_D499
 		CMP	#$90 ; 'Р'
 		BCS	loc_0_D499
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		ROR	A
 
 loc_0_D499:				; ...
@@ -14983,11 +15060,11 @@ byte_0_D4D6:	.BYTE $A, $A, $4A, $4A	; ...
 
 
 sub_0_D4DA:				; ...
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#7
 		SBC	#3
 		STA	Objects_unk_cnt2,X
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		AND	#$3F ; '?'
 		ADC	#$20 ; ' '
 		STA	Objects_unk2,X
@@ -15025,7 +15102,7 @@ loc_0_D512:				; ...
 
 loc_0_D515:				; ...
 		STA	byte_0_BD
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#3
 
 loc_0_D51B:				; ...
@@ -15033,7 +15110,7 @@ loc_0_D51B:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		TAX
 
 loc_0_D528:				; ...
@@ -15044,7 +15121,7 @@ loc_0_D528:				; ...
 		TXS
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	#$F8 ; '°'
 		STA	LevelPos_CamPosX_L
 		LDX	#$33 ; '3'
@@ -15052,7 +15129,7 @@ loc_0_D528:				; ...
 		JSR	jump_other_bank
 		LDX	#$4E ; 'N'
 		LDY	#$D5 ; '╒'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -15113,7 +15190,7 @@ loc_0_D58F:				; ...
 		BNE	loc_0_D58F
 		LDA	Level_tmp
 		BNE	loc_0_D5A0
-		JSR	sub_0_E5E7
+		JSR	set_players_lifes ; continue
 
 loc_0_D5A0:				; ...
 		JMP	loc_0_E571
@@ -15151,18 +15228,18 @@ loc_0_D5D9:				; ...
 		JSR	loc_0_B7F6
 		LDY	Level_tmp
 		LDA	Level_ID_Table,Y
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	PPU_STATUS	; PPU Status Register (R)
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		LDA	level_planA_pic,Y
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		JSR	sub_0_91F2
 		LDX	#$39 ; '9'
 		LDY	#6
 		JSR	jump_other_bank
 		LDX	#$11
 		LDY	#$D6 ; '╓'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 level_unk12:	.BYTE $FC, $FC,	$E4, $E8, $F0, $DC, $F0, 0, $FC, $E4, $DC, $F4,	$F4, $E4 ; ...
 ; ---------------------------------------------------------------------------
@@ -15176,7 +15253,7 @@ level_unk12:	.BYTE $FC, $FC,	$E4, $E8, $F0, $DC, $F0, 0, $FC, $E4, $DC, $F4,	$F4
 		LDX	#$A0 ; 'а'
 		LDY	#$13
 		JSR	wait_
-		STX	nmi_flags
+		STX	nmi_flags	;  > $80  кадр завершен
 		STX	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDY	Level_tmp
 		LDA	level_unk12,Y
@@ -15192,8 +15269,8 @@ loc_0_D639:				; ...
 loc_0_D641:				; ...
 		DEX
 		BPL	loc_0_D639
-		JSR	sub_0_E5E7
-		LDA	FrameCounter	; $B
+		JSR	set_players_lifes ; continue
+		LDA	FrameCounter
 		CMP	#$D7 ; '╫'
 		BEQ	loc_0_D650
 		JMP	loc_0_E576
@@ -15201,7 +15278,7 @@ loc_0_D641:				; ...
 
 loc_0_D650:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		BNE	loc_0_D65F
 		INC	Level_ID	; level	00->01
 		JSR	some_with_sound
@@ -15263,8 +15340,8 @@ loc_0_D699:				; ...
 
 
 sub_0_D69F:				; ...
-		LDA	FrameCounter	; $B
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	FrameCounter
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$7F ; ''
 		CMP	#$40 ; '@'
 		BCC	loc_0_D6AB
@@ -15272,7 +15349,7 @@ sub_0_D69F:				; ...
 
 loc_0_D6AB:				; ...
 		ADC	#8
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_0_D6B3
 		EOR	#$FF
 
@@ -15329,7 +15406,7 @@ sub_0_D6E9:				; ...
 loc_0_D6EF:				; ...
 		INC	Objects_unk2,X
 		BMI	loc_0_D706
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#4
 		BNE	loc_0_D703
 		STA	Objects_Z_speed,X
@@ -15368,7 +15445,7 @@ loc_0_D71D:				; ...
 loc_0_D738:				; ...
 		CMP	#$F0 ; 'Ё'
 		BNE	loc_0_D74D
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#7
 		BNE	loc_0_D750
 		LDA	#$40 ; '@'
@@ -15395,7 +15472,7 @@ sub_0_D753:				; ...
 		BEQ	loc_0_D767
 		LDA	#$D5 ; '╒'
 		STA	Objects_X_speed,X
-		INC	byte_0_33
+		INC	music_info
 
 loc_0_D767:				; ...
 		LDA	#$E
@@ -15429,7 +15506,7 @@ loc_0_D78C:				; ...
 		JSR	jump_other_bank
 		LDX	#$9D ; 'Э'
 		LDY	#$D7 ; '╫'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 
 loc_0_D79A:				; ...
@@ -15442,10 +15519,10 @@ loc_0_D79A:				; ...
 		LDA	InputHold_P1	; данные первого джойстика на зажатие
 		ORA	InputHold_P2	; данные второго джойстика на зажатие
 		BNE	loc_0_D79A
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		ROR	A
 		BCC	loc_0_D7D3
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$60 ; '`'
 		BCS	loc_0_D7C2
 		LDA	#$3A ; ':'
@@ -15465,7 +15542,7 @@ loc_0_D7C2:				; ...
 
 loc_0_D7D3:				; ...
 		LDA	#0
-		JSR	sub_0_FF84
+		JSR	jump_from_bank0
 		LDA	#0
 		STA	byte_0_40
 		LDA	object2_some_anim
@@ -15483,7 +15560,7 @@ loc_0_D7E7:				; ...
 		JSR	jump_other_bank
 		LDX	#$F8 ; '°'
 		LDY	#$D7 ; '╫'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 
 loc_0_D7F5:				; ...
@@ -15492,7 +15569,7 @@ loc_0_D7F5:				; ...
 		LDX	#$27 ; '''
 		LDY	#6
 		JSR	jump_other_bank
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$10
 		BNE	loc_0_D80A
 		LDA	object_3_Zpos_L
@@ -15504,7 +15581,7 @@ loc_0_D80A:				; ...
 		ORA	InputHold_P2	; данные второго джойстика на зажатие
 		BNE	loc_0_D7F5
 		LDA	#0
-		JSR	sub_0_FF84
+		JSR	jump_from_bank0
 		LDA	#0
 		STA	byte_0_40
 		JMP	loc_0_E571
@@ -15518,7 +15595,7 @@ loc_0_D81F:				; ...
 		JSR	sub_0_9148
 		LDX	#$32 ; '2'
 		LDY	#$D8 ; '╪'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#$F0 ; 'Ё'
@@ -15530,7 +15607,7 @@ loc_0_D81F:				; ...
 		LDA	InputHold_P1	; данные первого джойстика на зажатие
 		ORA	InputHold_P2	; данные второго джойстика на зажатие
 		BNE	loc_0_D856
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$64 ; 'd'
 		BCC	loc_0_D853
 		JMP	loc_0_D78C
@@ -15573,7 +15650,7 @@ loc_0_D866:				; ...
 		JSR	sub_0_9148
 		LDX	#$7D ; '}'
 		LDY	#$D8 ; '╪'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		LDA	game_end_caller_var
 		BEQ	loc_0_D888
@@ -15593,11 +15670,11 @@ loc_0_D888:				; ...
 		BNE	loc_0_D856
 		LDA	#0
 		STA	byte_0_40
-		LDA	jump_ptr_nmi+1
+		LDA	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 		BEQ	loc_0_D8A7
 
 loc_0_D8A4:				; ...
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_D8A7:				; ...
@@ -15624,7 +15701,7 @@ loc_0_D8C1:				; ...
 loc_0_D8C4:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		TAX
 
@@ -15639,7 +15716,7 @@ loc_0_D8CF:				; ...
 		JSR	jump_other_bank
 		LDX	#$E6 ; 'ц'
 		LDY	#$D8 ; '╪'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 
 loc_0_D8E3:				; ...
@@ -15656,7 +15733,7 @@ loc_0_D8E3:				; ...
 		ORA	InputHold_P2	; данные второго джойстика на зажатие
 		BNE	loc_0_D8E3
 		LDX	#$4E ; 'N'
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$C0 ; '└'
 		BEQ	loc_0_D90E
 		LDY	#6
@@ -15671,7 +15748,7 @@ loc_0_D911:
 		LDA	#0
 		STA	object3_X_shadow
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		TAX
 
@@ -15690,7 +15767,7 @@ loc_0_D91F:				; ...
 		STA	byte_0_C9
 		LDX	#$46 ; 'F'
 		LDY	#$D9 ; '┘'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 byte_0_D93C:	.BYTE 0, 0, 1, 2, 4, 2,	2, 8, 9, 8 ; ...
 ; ---------------------------------------------------------------------------
@@ -15701,8 +15778,8 @@ byte_0_D93C:	.BYTE 0, 0, 1, 2, 4, 2,	2, 8, 9, 8 ; ...
 
 loc_0_D94E:				; ...
 		LDA	#$18
-		STA	nmi_flags
-		LDA	FrameCounter	; $B
+		STA	nmi_flags	;  > $80  кадр завершен
+		LDA	FrameCounter
 		CMP	#$90 ; 'Р'
 		BCC	loc_0_D95B
 		STA	object3_X_shadow
@@ -15714,7 +15791,7 @@ loc_0_D95B:				; ...
 		LSR	A
 		TAY
 		LDA	byte_0_D93C,Y
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	loc_0_D9D1
 		STA	byte_0_CB
 		JSR	sub_0_E7B2
@@ -15735,7 +15812,7 @@ loc_0_D978:				; ...
 		STX	PPU_SCROLL_REG	; VRAM Address Register	#1 (W2)
 		STX	LevelPos_CamPosX_L
 		LDA	#$10
-		JSR	sub_0_FF84
+		JSR	jump_from_bank0
 		LDX	#$30 ; '0'
 
 loc_0_D995:				; ...
@@ -15747,7 +15824,7 @@ loc_0_D995:				; ...
 		LDA	InputHold_P1	; данные первого джойстика на зажатие
 		ORA	InputHold_P2	; данные второго джойстика на зажатие
 		BNE	loc_0_D9CE
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_0_D9B6
 		LDA	byte_0_C9
@@ -15761,7 +15838,7 @@ loc_0_D9B6:				; ...
 		BNE	loc_0_D9C7
 		LDA	#$52 ; 'R'
 		LDX	#$15
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDA	#$10
 		LDY	#$13
 		JSR	loc_0_FFCD
@@ -15809,7 +15886,7 @@ loc_0_D9D1:				; ...
 
 loc_0_DA15:				; ...
 		LDA	#0
-		JSR	sub_0_FF84
+		JSR	jump_from_bank0
 		LDA	#0
 		STA	byte_0_40
 		JMP	loc_0_E576
@@ -15821,7 +15898,7 @@ loc_0_DA21:				; ...
 loc_0_DA24:				; ...
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		TAX
 
@@ -15836,7 +15913,7 @@ loc_0_DA2F:				; ...
 		LDA	Level_tmp
 		CMP	#$D
 		BNE	loc_0_DA44
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JMP	loc_0_8336
 ; ---------------------------------------------------------------------------
 
@@ -15846,7 +15923,7 @@ loc_0_DA44:				; ...
 		JSR	jump_other_bank
 		LDX	#$55 ; 'U'
 		LDY	#$DA ; '┌'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 
 loc_0_DA52:				; ...
@@ -15883,7 +15960,7 @@ loc_0_DA8A:				; ...
 		BNE	loc_0_DA52
 
 loc_0_DA90:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$F0 ; 'Ё'
 		BEQ	loc_0_DAA0
 
@@ -15900,7 +15977,7 @@ loc_0_DAA0:				; ...
 
 loc_0_DAA5:				; ...
 		LDA	#1
-		JMP	loc_0_82AB
+		JMP	RESET__
 ; ---------------------------------------------------------------------------
 
 loc_0_DAAA:				; ...
@@ -15910,7 +15987,7 @@ loc_0_DAAA:				; ...
 		BEQ	loc_0_DABD
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDA	#$D
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JMP	loc_0_8339
 ; ---------------------------------------------------------------------------
 
@@ -15941,18 +16018,18 @@ loc_0_DAC4:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_DAD7:				; ...
+check_ppu_status:			; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
-		BPL	sub_0_DAD7
+		BPL	check_ppu_status
 		RTS
-; End of function sub_0_DAD7
+; End of function check_ppu_status
 
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
-clear_states:				; ...
-		STA	Objects_HitID,X
+write_obj_Hit_ID:			; ...
+		STA	Objects_HitID,X	; номер	движения для запуска
 		LDA	#0
 		STA	Objects_Hit_timer,X
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
@@ -15962,15 +16039,15 @@ clear_states:				; ...
 		AND	#$EB ; 'ы'
 		STA	Objects_Flags,X
 		RTS
-; End of function clear_states
+; End of function write_obj_Hit_ID
 
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_0_DAF6:				; ...
-		AND	FrameCounter	; $B
-		BNE	sub_0_DAFD
+		AND	FrameCounter
+		BNE	read_anim_seq_by_HitID
 		INC	Objects_Hit_timer,X
 ; End of function sub_0_DAF6
 
@@ -15978,30 +16055,30 @@ sub_0_DAF6:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_DAFD:				; ...
-		LDY	Objects_HitID,X
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDY	#$FF
+read_anim_seq_by_HitID:			; ...
+		LDY	Objects_HitID,X	; номер	движения для запуска
+		STY	tmp_var_15	;  / Object Counter / various tmp
+		LDY	#$FF		; flag - no pointer (read ID from $15)
 
-loc_0_DB04:				; ...
+read_anim_sequence:			; ...
 		LDA	#3
-		JSR	sub_0_FF6E
+		JSR	read_anims_dat
 		LDA	Obj_Amindata1_tmp
-		BEQ	clear_states
-		CMP	#$E0 ; 'р'
+		BEQ	write_obj_Hit_ID
+		CMP	#$E0		; >$E0 anim is not frame, it's action code ID
 		BCC	set_object_animation
-		AND	#$1F
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		AND	#$1F		; 32 actions (really 22)
+		STX	tmp_var_15	; save slot id
 		ASL	A
 		TAX
 		LDA	obj_moves_code_ptr,X
 		STA	tmp_var_1B
 		LDA	obj_moves_code_ptr+1,X
 		STA	tmp_var_1C
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	; load slot id
 		INY
-		STY	byte_0_22
-		JMP	(tmp_var_1B)
+		STY	tmp_var_22
+		JMP	(tmp_var_1B)	; jump to action ($DB68)
 ; ---------------------------------------------------------------------------
 
 set_object_animation:			; ...
@@ -16017,16 +16094,17 @@ loc_0_DB35:				; ...
 		TYA
 		STA	Objects_Hit_timer,X
 		RTS
-; End of function sub_0_DAFD
+; End of function read_anim_seq_by_HitID
 
 ; ---------------------------------------------------------------------------
-obj_moves_code_ptr:.WORD loc_0_DB68	; ...
-		.WORD loc_0_DBEF
-		.WORD loc_0_DC20
+obj_moves_code_ptr:.WORD anim_write_X_speed ; ...
+					; Записать X скорость персонажу
+		.WORD anim_write_X_speed_and_clear_unk1
+		.WORD anim_make_hit
 		.WORD loc_0_DDAD
 		.WORD loc_0_DDFB
 		.WORD loc_0_DE3D
-		.WORD loc_0_DECC
+		.WORD anim_set_flag_4	; flags	bit #03
 		.WORD loc_0_DBA4
 		.WORD loc_0_DBB0
 		.WORD loc_0_DBB8
@@ -16043,10 +16121,13 @@ obj_moves_code_ptr:.WORD loc_0_DB68	; ...
 		.WORD loc_0_DFEF
 		.WORD loc_0_DFE6
 		.WORD loc_0_DB9C
-; ---------------------------------------------------------------------------
 
-loc_0_DB68:				; ...
-		LDA	Level_ID	; $10
+; =============== S U B	R O U T	I N E =======================================
+
+; Записать X скорость персонажу
+
+anim_write_X_speed:			; ...
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_DB7D
 		CMP	#5
@@ -16069,11 +16150,13 @@ loc_0_DB82:				; ...
 		INY
 		LDA	Objects_Flags,X
 		ASL	A
-		AND	#$80 ; 'А'
+		AND	#$80
 
 loc_0_DB89:				; ...
 		STA	Objects_dir,X
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
+; End of function anim_write_X_speed
+
 ; ---------------------------------------------------------------------------
 
 loc_0_DB8F:				; ...
@@ -16113,13 +16196,13 @@ loc_0_DBB8:				; ...
 		JSR	get_free_obj_slot_IDX
 		PLA
 		STA	Objects_dir,X
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
 		LDA	#$40 ; '@'
 		STA	Objects_LinkedObj_ID,X ; флаг/id присоединённого объекта
 		LDA	#0
 		STA	Obj_anims_timer,X
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		STA	Objects_Z_floor,X
 		LDA	#6
 		STA	Objects_Hit_timer,X
@@ -16128,12 +16211,14 @@ loc_0_DBB8:				; ...
 		STA	Objects_Y_shad,X
 		LDA	#$FF
 		STA	Objects_X_speed,X
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		JMP	loc_0_DB04
-; ---------------------------------------------------------------------------
+		LDX	tmp_var_15	;  / Object Counter / various tmp
+		JMP	read_anim_sequence
 
-loc_0_DBEF:				; ...
-		LDA	Level_ID	; $10
+; =============== S U B	R O U T	I N E =======================================
+
+
+anim_write_X_speed_and_clear_unk1:	; ...
+		LDA	Level_ID
 		CMP	#2
 		BEQ	loc_0_DBFC
 		LDA	Objects_Z_floor,X
@@ -16148,7 +16233,9 @@ loc_0_DBFC:				; ...
 
 loc_0_DC06:				; ...
 		INY
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
+; End of function anim_write_X_speed_and_clear_unk1
+
 ; ---------------------------------------------------------------------------
 
 loc_0_DC0A:				; ...
@@ -16164,11 +16251,13 @@ loc_0_DC13:				; ...
 		STA	Objects_X_speed,X
 
 loc_0_DC1D:				; ...
-		JMP	loc_0_DB04
-; ---------------------------------------------------------------------------
+		JMP	read_anim_sequence
 
-loc_0_DC20:				; ...
-		INC	byte_0_22
+; =============== S U B	R O U T	I N E =======================================
+
+
+anim_make_hit:				; ...
+		INC	tmp_var_22
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		BMI	loc_0_DC3F
 		LDA	Obj_Amindata2_tmp
@@ -16178,7 +16267,7 @@ loc_0_DC20:				; ...
 		AND	#3
 		STA	byte_0_DE
 		LDA	Obj_Amindata2_tmp
-		AND	#$3F ; '?'
+		AND	#$3F
 		STA	byte_0_8C
 		ASL	A
 		ASL	A
@@ -16187,16 +16276,18 @@ loc_0_DC20:				; ...
 		JSR	sub_0_DC45
 
 loc_0_DC3F:				; ...
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		INY
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
+; End of function anim_make_hit
+
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_0_DC45:				; ...
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
-		AND	#$20 ; ' '
+		AND	#$20
 		ASL	A
 		ORA	#3
 		JSR	sub_0_8AF7
@@ -16205,11 +16296,11 @@ sub_0_DC45:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_DC53:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	sub_0_DC61
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
-		ORA	#$80 ; 'А'
+		ORA	#$80
 		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 ; End of function sub_0_DC45
 
@@ -16219,12 +16310,12 @@ loc_0_DC53:				; ...
 
 sub_0_DC61:				; ...
 		LDA	#0
-		STA	Objects_HitID,Y
+		STA	Objects_HitID,Y	; номер	движения для запуска
 		STA	Objects_Hit_timer,Y
 		LDA	Objects_Life,Y
 		CMP	#$10
 		BCS	loc_0_DC83
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$16
 		BNE	loc_0_DC83
 		LDA	#$F
@@ -16232,11 +16323,11 @@ sub_0_DC61:				; ...
 		LDA	#$36 ; '6'
 		STA	Obj_Amindata3_tmp
 		LDA	#$36 ; '6'
-		STA	byte_0_22
+		STA	tmp_var_22
 
 loc_0_DC83:				; ...
 		LDA	byte_0_8C
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		CPY	#2
 		BCS	loc_0_DC8D
 		ADC	#$5A ; 'Z'
@@ -16269,13 +16360,13 @@ loc_0_DCB5:				; ...
 		BEQ	locret_0_DD1C
 		LDA	#8
 		STA	byte_0_DC
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		LDA	Obj_Amindata3_tmp
 		AND	#$F0 ; 'Ё'
 		LSR	A
 		LSR	A
 		STA	byte_0_DC
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		LDA	Objects_TypeID,Y
 		CMP	#$38 ; '8'
 		BEQ	locret_0_DD1C
@@ -16317,7 +16408,7 @@ loc_0_DD0C:				; ...
 
 loc_0_DD12:				; ...
 		LDY	Object_RamSlotID_tmp
-		LDX	byte_0_21
+		LDX	tmp_var_21
 		SEC
 		SBC	#1
 		JSR	sub_0_BC57
@@ -16342,15 +16433,15 @@ sub_0_DD22:				; ...
 		ASL	A
 
 loc_0_DD27:				; ...
-		STA	byte_0_1E
+		STA	tmp_var_1e
 		JSR	get_free_obj_slot_IDX
 		BNE	loc_0_DD1D
 		LDY	Object_RamSlotID_tmp
 		JSR	copy_objects_XYZ_and_dir
-		STX	byte_0_1D
+		STX	tmp_var_1d
 		LDA	Objects_Flags,Y
 		AND	#$40 ; '@'
-		LDY	byte_0_1E
+		LDY	tmp_var_1e
 		CPY	#8
 		BNE	loc_0_DD42
 		EOR	#$40 ; '@'
@@ -16417,7 +16508,7 @@ loc_0_DDAD:				; ...
 		LDA	#$24 ; '$'
 		JSR	sub_0_8AF7
 		BMI	loc_0_DDF6
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		AND	#$20 ; ' '
 		BEQ	loc_0_DDCB
 		ORA	Objects_state,X	; бит 5	($20) -	наличие	стика
@@ -16458,8 +16549,8 @@ loc_0_DDED:				; ...
 		STA	Objects_X_speed,Y
 
 loc_0_DDF6:				; ...
-		LDY	byte_0_22
-		JMP	loc_0_DB04
+		LDY	tmp_var_22
+		JMP	read_anim_sequence
 ; ---------------------------------------------------------------------------
 
 loc_0_DDFB:				; ...
@@ -16468,17 +16559,17 @@ loc_0_DDFB:				; ...
 		JSR	sub_0_8AF7
 		BMI	loc_0_DDF6
 		LDA	#0
-		STA	Objects_HitID,Y
+		STA	Objects_HitID,Y	; номер	движения для запуска
 		LDA	Objects_TypeID,X
 		EOR	#$17
 		BNE	loc_0_DE19
 		STA	objects_some_anim,X
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		JMP	loc_0_DDD5
 ; ---------------------------------------------------------------------------
 
 loc_0_DE19:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#2
 		BNE	loc_0_DE22
 		JMP	loc_0_DDD5
@@ -16512,7 +16603,7 @@ sub_0_DE47:				; ...
 		AND	#$1F
 		TAY
 		DEY
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_DE5C
 		LDA	#$7D ; '}'
@@ -16544,7 +16635,7 @@ loc_0_DE82:				; ...
 		STA	Objects_dir,Y
 
 loc_0_DE85:				; ...
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$1F
 		SBC	#$10
 		ADC	Objects_dir,Y
@@ -16592,13 +16683,18 @@ sub_0_DEC3:				; ...
 		RTS
 ; End of function sub_0_DEC3
 
-; ---------------------------------------------------------------------------
 
-loc_0_DECC:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+; flags	bit #03
+
+anim_set_flag_4:			; ...
 		LDA	Objects_Flags,X
 		ORA	#4
 		STA	Objects_Flags,X
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
+; End of function anim_set_flag_4
+
 ; ---------------------------------------------------------------------------
 
 loc_0_DED7:				; ...
@@ -16619,23 +16715,23 @@ loc_0_DEE3:				; ...
 		LDA	#4
 		STA	Objects_unk_cnt2,X
 		LDA	#$C
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		STA	Objects_TypeID,X
 		LDX	Object_RamSlotID_tmp
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
 ; ---------------------------------------------------------------------------
 
 loc_0_DF02:				; ...
 		JSR	sub_0_DF37
 		LDX	Object_RamSlotID_tmp
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
 ; ---------------------------------------------------------------------------
 
 loc_0_DF0A:				; ...
 		LDA	Obj_Amindata2_tmp
 		STA	byte_0_DC
 		INY
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
 ; ---------------------------------------------------------------------------
 
 loc_0_DF12:				; ...
@@ -16644,11 +16740,11 @@ loc_0_DF12:				; ...
 		INY
 		LDA	Obj_Amindata3_tmp
 		JSR	some_sounds
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		INY
 		INY
 		LDX	Object_RamSlotID_tmp
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
 ; ---------------------------------------------------------------------------
 
 loc_0_DF24:				; ...
@@ -16661,7 +16757,7 @@ loc_0_DF24:				; ...
 
 loc_0_DF31:				; ...
 		JSR	sub_0_8EEE
-		JMP	loc_0_DB04
+		JMP	read_anim_sequence
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -16686,7 +16782,7 @@ loc_0_DF4F:				; ...
 		STA	Objects_Flags,X
 		LDA	#$F6 ; 'Ў'
 		JSR	sub_0_8EEE
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		LDA	Obj_Amindata2_tmp
 		STA	Objects_X_speed,X
 		INY
@@ -16712,8 +16808,8 @@ loc_0_DF7B:				; ...
 		JSR	sub_0_DF83
 
 loc_0_DF7E:				; ...
-		LDY	byte_0_22
-		JMP	loc_0_DB04
+		LDY	tmp_var_22
+		JMP	read_anim_sequence
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -16721,7 +16817,7 @@ loc_0_DF7E:				; ...
 sub_0_DF83:				; ...
 		JSR	loc_0_DD27
 		BMI	locret_0_DFE5
-		LDY	byte_0_1D
+		LDY	tmp_var_1d
 		LDA	#$3A ; ':'
 		STA	Objects_TypeID,Y
 		CPX	#2
@@ -16749,7 +16845,7 @@ loc_0_DFA5:				; ...
 		STA	Objects_X_speed,Y
 		TXA
 		STA	Objects_TargetID,Y
-		INC	byte_0_22
+		INC	tmp_var_22
 		LDA	tmp_var_1B
 		BPL	locret_0_DFE5
 		LDA	#$FF
@@ -16794,7 +16890,7 @@ loc_0_DFEF:				; ...
 
 
 sub_0_DFFF:				; ...
-		STY	byte_0_21
+		STY	tmp_var_21
 
 loc_0_E001:				; ...
 		TAY
@@ -16802,20 +16898,20 @@ loc_0_E001:				; ...
 		AND	#$F
 		STA	byte_0_8B
 		LDA	Objects_X_speed,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_E0D1,Y
 		AND	#$F0 ; 'Ё'
 		BEQ	loc_0_E018
 		STA	Objects_X_speed,X
 
 loc_0_E018:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_E02C
 		LDA	Objects_dir,X
 		PHA
 		TXA
-		LDX	byte_0_21
+		LDX	tmp_var_21
 		STA	Objects_TargetID,X
 		PLA
 		JMP	loc_0_E041
@@ -16824,7 +16920,7 @@ loc_0_E018:				; ...
 loc_0_E02C:				; ...
 		LDA	Obj_anims_timer,X
 		BEQ	loc_0_E036
-		LDX	byte_0_21
+		LDX	tmp_var_21
 		JMP	loc_0_E044
 ; ---------------------------------------------------------------------------
 
@@ -16833,7 +16929,7 @@ loc_0_E036:				; ...
 		AND	#$40 ; '@'
 		ASL	A
 		STA	Objects_dir,X
-		LDX	byte_0_21
+		LDX	tmp_var_21
 
 loc_0_E041:				; ...
 		STA	Objects_dir,X
@@ -16844,8 +16940,8 @@ loc_0_E044:				; ...
 		BEQ	loc_0_E056
 		CMP	#1
 		BNE	loc_0_E053
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_E053:				; ...
 		STA	Objects_X_speed,X
@@ -16858,20 +16954,20 @@ loc_0_E056:				; ...
 		LDA	Objects_Life,X
 		SEC
 		SBC	byte_0_E0D2,Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_0_E07B
 		EOR	Objects_Life,X
 		AND	#$F0 ; 'Ё'
 		BEQ	loc_0_E091
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ORA	#$F
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_0_E091
 
 loc_0_E07B:				; ...
 		LDA	#$C0 ; '└'
 		STA	Objects_death_timer,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_0_E08B
 		LDA	#$81 ; 'Б'
@@ -16879,11 +16975,11 @@ loc_0_E07B:				; ...
 
 loc_0_E08B:				; ...
 		LDA	#0
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BEQ	loc_0_E09A
 
 loc_0_E091:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	Objects_Life,X
 		AND	#$38 ; '8'
 		BEQ	loc_0_E0A0
@@ -16894,7 +16990,7 @@ loc_0_E09A:				; ...
 		INC	unkn_cnt4
 
 loc_0_E0A0:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Life,X
 		LDA	Objects_death_timer,X
 		BEQ	loc_0_E0C4
@@ -16918,7 +17014,7 @@ loc_0_E0C4:				; ...
 		STA	Obj_anims_timer,X
 
 loc_0_E0CA:				; ...
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		LDX	Object_RamSlotID_tmp
 		RTS
 ; End of function sub_0_DFFF
@@ -16979,7 +17075,7 @@ sub_0_E1A7:				; ...
 		JSR	sub_0_D06A
 		LDA	#$C8 ; '╚'
 		JSR	sub_0_8E7A
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BEQ	loc_0_E1BB
 		CMP	#5
@@ -17082,7 +17178,7 @@ loc_0_E252:				; ...
 		JSR	sub_0_D06A
 
 loc_0_E257:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_E264
 		JSR	sub_0_CF66
 		LDA	#3
@@ -17204,7 +17300,7 @@ sub_0_E2E9:				; ...
 		INY
 		LDA	Lives_Player1	; кол-во жизней	(сердечек)
 		BMI	loc_0_E305
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#1
 		TAY
 		LDA	Objects_death_timer,Y
@@ -17252,7 +17348,7 @@ sub_0_E317:				; ...
 
 sub_0_E332:				; ...
 		TXA
-		EOR	FrameCounter	; $B
+		EOR	FrameCounter
 		AND	#7
 		STA	tmp_var_19
 		BNE	locret_0_E2E8
@@ -17268,12 +17364,12 @@ sub_0_E33B:				; ...
 		STA	tmp_var_16
 		LDA	Objects_Xpos_H,Y
 		SBC	Objects_Xpos_H,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$80 ; 'А'
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	Objects_Ypos_L,Y
 		SBC	Objects_Ypos_L,X
-		STA	byte_0_17
+		STA	tmp_var_17
 		ADC	#8
 		CMP	#$10
 		LDA	#0
@@ -17281,22 +17377,22 @@ sub_0_E33B:				; ...
 		LDA	tmp_var_16
 		ADC	#$40 ; '@'
 		BMI	loc_0_E374
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#0
 		BNE	loc_0_E374
 		LDA	Objects_dir,X
 		ADC	#$40 ; '@'
 		AND	#$80 ; 'А'
-		STA	byte_0_18
+		STA	tmp_var_18
 
 loc_0_E374:				; ...
 		LDA	#$20 ; ' '
-		ROL	byte_0_17
+		ROL	tmp_var_17
 		BCC	loc_0_E37C
 		LDA	#$E0 ; 'р'
 
 loc_0_E37C:				; ...
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	Objects_TypeID,X
 		CMP	#$11
 		BEQ	loc_0_E396
@@ -17307,13 +17403,13 @@ loc_0_E37C:				; ...
 		LDA	Objects_dir,X
 		ADC	#$40 ; '@'
 		AND	#$80 ; 'А'
-		STA	byte_0_18
+		STA	tmp_var_18
 
 loc_0_E396:				; ...
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		CMP	#$80 ; 'А'
 		ROR	A
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$B
 
 loc_0_E39F:				; ...
@@ -17327,16 +17423,16 @@ loc_0_E39F:				; ...
 		BNE	sub_0_E3C0
 
 loc_0_E3AF:				; ...
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		ROL	A
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		BCS	loc_0_E3BA
 		SBC	#0
 		EOR	#$FF
 
 loc_0_E3BA:				; ...
 		CLC
-		ADC	byte_0_18
+		ADC	tmp_var_18
 		STA	Objects_dir,X
 ; End of function sub_0_E33B
 
@@ -17348,14 +17444,14 @@ sub_0_E3C0:				; ...
 		LDA	Objects_Flags,X
 		AND	#$BF ; '┐'
 		STA	Objects_Flags,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_0_E3D2
-		ROR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		ROR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROR	tmp_var_15	;  / Object Counter / various tmp
+		ROR	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_E3D2:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		LSR	A
 		AND	#$40 ; '@'
 		ORA	Objects_Flags,X
@@ -17363,7 +17459,7 @@ loc_0_E3D2:				; ...
 		LDA	Objects_TypeID,X
 		CMP	#$B
 		BNE	locret_0_E44E
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		BEQ	loc_0_E3F2
 		LDA	Objects_Flags,X
 		AND	#$10
@@ -17375,7 +17471,7 @@ loc_0_E3F2:				; ...
 		LDA	tmp_var_16
 		ADC	#$40 ; '@'
 		STA	tmp_var_16
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	#0
 		BNE	loc_0_E452
 		LDA	tmp_var_16
@@ -17394,7 +17490,7 @@ loc_0_E411:				; ...
 		SBC	#$2C ; ','
 		CMP	#$28 ; '('
 		BCS	loc_0_E426
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	#$80 ; 'А'
 		AND	#$80 ; 'А'
 		STA	Objects_dir,X
@@ -17412,18 +17508,18 @@ loc_0_E426:				; ...
 		LDA	#$2A ; '*'
 
 loc_0_E438:				; ...
-		JMP	clear_states
+		JMP	write_obj_Hit_ID
 ; ---------------------------------------------------------------------------
 
 loc_0_E43B:				; ...
-		STY	byte_0_8D
+		STY	tmp_var_8d
 		LDA	Objects_Flags,X
 		AND	#3
 		CLC
 		ADC	byte_0_DD
 		TAY
 		LDA	byte_0_E44F,Y
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		STA	Objects_X_speed,X
 
 locret_0_E44E:				; ...
@@ -17438,7 +17534,7 @@ loc_0_E452:				; ...
 		ORA	byte_0_DD
 		BEQ	loc_0_E43B
 		LDA	Objects_Xpos_L,X
-		EOR	RandomValue_1	; $25
+		EOR	RandomValue_1
 		AND	#$1F
 		BNE	loc_0_E43B
 		LDA	Objects_Flags,X
@@ -17454,7 +17550,7 @@ byte_0_E46D:	.BYTE 3, 4, 3, 2	; ...
 
 
 sub_0_E471:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BNE	sub_0_E4AD
 		LDA	timer_end_music
@@ -17473,12 +17569,12 @@ sub_0_E471:				; ...
 		SEC
 		SBC	#$D0 ; '╨'
 		BCC	locret_0_E4AC
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#5
 		BCS	locret_0_E4AC
 		SEC
 		LDA	Objects_Ypos_L,X
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Ypos_L,X
 		BCS	locret_0_E4AC
 		DEC	Objects_Ypos_H,X
@@ -17505,7 +17601,7 @@ start_first_jump:			; ...
 		JSR	jump_other_bank
 		LDX	#$C6 ; '╞'
 		LDY	#$E4 ; 'ф'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		LDX	#$12
 		BNE	loc_0_E4C8
@@ -17514,12 +17610,12 @@ start_first_jump:			; ...
 loc_0_E4C8:				; ...
 		LDY	#6
 		JSR	jump_other_bank
-		LDA	jump_ptr_nmi+1
+		LDA	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 		BEQ	loc_0_E4F4
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDA	byte_0_FF
 		BEQ	loc_0_E4EE
 		JSR	joypads_reading
@@ -17532,7 +17628,7 @@ loc_0_E4C8:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_E4EE:				; ...
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_E4F1:				; ...
@@ -17542,7 +17638,7 @@ loc_0_E4F1:				; ...
 loc_0_E4F4:				; ...
 		LDX	#$C2 ; '┬'
 		LDY	#$E4 ; 'ф'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 
 loc_0_E4FB:				; ...
@@ -17553,37 +17649,37 @@ loc_0_E4FB:				; ...
 		JSR	jump_other_bank
 		LDX	#$D
 		LDY	#$E5 ; 'х'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		LDX	#$18
 		LDY	#6
 		JSR	jump_other_bank
 		LDA	Level_tmp
 		BNE	loc_0_E535
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$48 ; 'H'
 		BNE	loc_0_E532
 		LDA	#$10
 		JSR	set_music_track
 		JSR	loc_0_838C
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	#$5A ; 'Z'
-		STA	jump_ptr_nmi
+		STA	jump_ptr_nmi	; поинтер на функцию во	время nmi
 		LDA	#$E5 ; 'х'
-		STA	jump_ptr_nmi+1
+		STA	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 
 loc_0_E532:				; ...
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_E535:				; ...
 		JSR	loc_0_86AA
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$98 ; 'Ш'
 		BNE	loc_0_E532
 		INC	Level_tmp
-		JMP	loc_0_87AA
+		JMP	sub_0_87AA
 
 ; =============== S U B	R O U T	I N E =======================================
 
@@ -17611,13 +17707,13 @@ sub_0_E54D:				; ...
 
 sub_0_E555:				; ...
 		LDA	#0
-		JMP	sub_0_FF84
+		JMP	jump_from_bank0
 ; End of function sub_0_E555
 
 ; ---------------------------------------------------------------------------
 		JSR	sub_0_E543
 		JSR	joypads_reading
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$99 ; 'Щ'
 		BEQ	loc_0_E58F
 		LDA	byte_0_301
@@ -17635,29 +17731,29 @@ loc_0_E576:				; ...
 		BPL	loc_0_E58C
 
 loc_0_E57A:				; ...
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		AND	#$7F ; ''
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDX	#$1B
 		LDY	#3
 		JSR	jump_other_bank
 
 loc_0_E58C:				; ...
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_E58F:				; ...
 		LDA	#$FE ; '■'
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		AND	#$7F ; ''
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDA	#$FF
 		STA	Lives_Player1	; кол-во жизней	(сердечек)
 		STA	Lives_Player2	; кол-во жизней	(сердечек)
@@ -17665,14 +17761,14 @@ loc_0_E58F:				; ...
 		LDY	#6
 		JSR	jump_other_bank
 		LDA	#$C0 ; '└'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#$42 ; 'B'
 		LDY	#3
 		JSR	jump_other_bank
-		INC	Level_ID	; $10
+		INC	Level_ID
 		LDX	#$C4 ; '─'
 		LDY	#$E5 ; 'х'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		JSR	sub_0_E543
 		JSR	joypads_reading
@@ -17680,7 +17776,7 @@ loc_0_E58F:				; ...
 		ORA	InputTap_P2	; данные второго джойстика на нажатие
 		AND	#$10
 		BNE	loc_0_E5DE
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$90 ; 'Р'
 		BEQ	loc_0_E5DB
 		JMP	loc_0_E571
@@ -17692,17 +17788,18 @@ loc_0_E5DB:				; ...
 
 loc_0_E5DE:				; ...
 		JSR	some_with_sound
-		JSR	sub_0_E5E7
+		JSR	set_players_lifes ; continue
 		JMP	loc_0_831F
 
 ; =============== S U B	R O U T	I N E =======================================
 
+; continue
 
-sub_0_E5E7:				; ...
+set_players_lifes:			; ...
 		LDX	#1
 
 loc_0_E5E9:				; ...
-		STX	byte_0_8D
+		STX	tmp_var_8d
 		LDA	InputTap_P1,X	; данные первого джойстика на нажатие
 		AND	#$10
 		BEQ	loc_0_E622
@@ -17721,21 +17818,21 @@ loc_0_E5E9:				; ...
 		JSR	some_sounds
 		LDA	#$60 ; '`'
 		STA	checkit_81
-		LDX	byte_0_8D
+		LDX	tmp_var_8d
 		LDA	InputHold_P1,X	; данные первого джойстика на зажатие
 		CMP	#$D4 ; '╘'
 		BNE	loc_0_E622
-		LDA	#5
+		LDA	#5		; extra	lives cheat
 		STA	Lives_Player1,X	; кол-во жизней	(сердечек)
 		LDA	#$B
 		JSR	sub_0_9148
-		LDX	byte_0_8D
+		LDX	tmp_var_8d
 
 loc_0_E622:				; ...
 		DEX
 		BPL	loc_0_E5E9
 		RTS
-; End of function sub_0_E5E7
+; End of function set_players_lifes
 
 ; ---------------------------------------------------------------------------
 byte_0_E626:	.BYTE $30, $32		; ...
@@ -17772,7 +17869,7 @@ loc_0_E646:				; ...
 		JSR	jump_other_bank
 		LDX	#$72 ; 'r'
 		LDY	#$E6 ; 'ц'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		JMP	loc_0_E75C
 ; ---------------------------------------------------------------------------
@@ -17802,7 +17899,7 @@ loc_0_E685:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_E688:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$3E ; '>'
 		BEQ	loc_0_E696
 		CMP	#$5E ; '^'
@@ -17816,7 +17913,7 @@ loc_0_E696:				; ...
 		JSR	some_sounds
 
 loc_0_E69D:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$A0 ; 'а'
 		BEQ	loc_0_E6AB
 		CMP	#$C0 ; '└'
@@ -17830,16 +17927,16 @@ loc_0_E6AB:				; ...
 
 loc_0_E6B0:				; ...
 		LDA	#0
-		JSR	sub_0_FF84
+		JSR	jump_from_bank0
 		LDA	#0
 		STA	byte_0_40
-		JMP	loc_0_8710
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_E6BC:				; ...
 		LDX	#$5B ; '['
 		LDY	#$E6 ; 'ц'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 
 loc_0_E6C3:				; ...
@@ -17858,17 +17955,17 @@ loc_0_E6D8:				; ...
 		JSR	sub_0_9148
 		LDX	#$E4 ; 'ф'
 		LDY	#$E6 ; 'ц'
-		JMP	loc_0_86EE
+		JMP	sub_0_86EE
 ; ---------------------------------------------------------------------------
 		LDX	#$27 ; '''
 		LDY	#6
 		JSR	jump_other_bank
 		LDA	game_end_caller_var
 		BNE	loc_0_E70D
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		ROR	A
 		BCC	loc_0_E707
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$90 ; 'Р'
 		BNE	loc_0_E707
 		LDX	#$C
@@ -17882,7 +17979,7 @@ loc_0_E702:				; ...
 
 loc_0_E707:				; ...
 		JSR	joypads_reading
-		JSR	sub_0_E5E7
+		JSR	set_players_lifes ; continue
 
 loc_0_E70D:				; ...
 		LDA	sound_id_D
@@ -17892,8 +17989,8 @@ loc_0_E70D:				; ...
 
 loc_0_E717:				; ...
 		LDA	#0
-		JSR	sub_0_FF84
-		JMP	loc_0_8710
+		JSR	jump_from_bank0
+		JMP	sub_0_8710
 ; ---------------------------------------------------------------------------
 
 loc_0_E71F:				; ...
@@ -17903,7 +18000,7 @@ loc_0_E71F:				; ...
 		JSR	sub_0_91F2
 		LDA	#0
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		JSR	some_with_sound
 		LDX	#0
 
@@ -17941,7 +18038,7 @@ loc_0_E75C:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		JSR	sub_0_E543
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	checkit_81
 		BEQ	loc_0_E78E
 		DEC	checkit_81
@@ -17950,7 +18047,7 @@ loc_0_E75C:				; ...
 
 loc_0_E77F:				; ...
 		LDA	Level_tmp
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	#$19
 		LDY	byte_0_FE
 		CPY	#2
@@ -17978,7 +18075,7 @@ loc_0_E79A:				; ...
 
 loc_0_E7A9:				; ...
 		JSR	joypads_reading
-		JSR	sub_0_E5E7
+		JSR	set_players_lifes ; continue
 
 loc_0_E7AF:				; ...
 		JMP	loc_0_E571
@@ -18004,7 +18101,7 @@ loc_0_E7DA:				; ...
 object_prujina:				; ...
 		JSR	sub_0_E860
 		JSR	sub_0_E926
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BNE	sub_0_E7FD
 		JSR	sub_0_E7FD
@@ -18139,7 +18236,7 @@ loc_0_E89F:				; ...
 		LDA	#$67 ; 'g'
 
 loc_0_E8AE:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#4
 		BNE	loc_0_E8BF
 		JSR	sub_0_E4AD
@@ -18163,10 +18260,10 @@ object_level4_moving_platform:		; ...
 
 loc_0_E8D2:				; ...
 		LDA	#$80 ; 'А'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#6
 		BNE	loc_0_E8EA
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$F
 		BNE	loc_0_E8E8
 		LDA	Objects_Ypos_L,X
@@ -18269,7 +18366,7 @@ object_platform_last_level:		; ...
 		LDA	objects_some_anim,X
 		BEQ	sub_0_E988
 		CLC
-		ADC	FrameCounter	; $B
+		ADC	FrameCounter
 		CMP	#$28 ; '('
 		BCC	loc_0_E97D
 		CMP	#$80 ; 'А'
@@ -18322,14 +18419,14 @@ loc_0_E98D:				; ...
 
 
 sub_0_E98F:				; ...
-		STA	byte_0_22
+		STA	tmp_var_22
 		LDY	#1
 
 loc_0_E993:				; ...
 		LDA	Lives_Player1,Y	; кол-во жизней	(сердечек)
 		ORA	Objects_death_timer,Y
 		BMI	loc_0_E97A
-		LDA	byte_0_22
+		LDA	tmp_var_22
 		BEQ	loc_0_E9A4
 		LDA	Objects_Z_speed,Y
 		BPL	loc_0_E97A
@@ -18338,14 +18435,14 @@ loc_0_E9A4:				; ...
 		LDA	Objects_Zpos_L,Y
 		SEC
 		SBC	Objects_Zpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Zpos_H,Y
 		SBC	Objects_Zpos_H,X
 		BNE	loc_0_E97A
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#6
 		BCS	loc_0_E97A
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#4
 		BNE	loc_0_E9C5
 		LDA	#$16
@@ -18370,7 +18467,7 @@ loc_0_E9C7:				; ...
 		AND	#3
 		CMP	#3
 		BNE	loc_0_EA33
-		STY	byte_0_8D
+		STY	tmp_var_8d
 		LDA	Objects_TypeID,X
 		CMP	#$34 ; '4'
 		BEQ	loc_0_EA02
@@ -18391,7 +18488,7 @@ loc_0_EA02:				; ...
 		LDY	#2
 		JSR	jump_other_bank
 		LDX	Object_RamSlotID_tmp
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 
 loc_0_EA18:				; ...
 		LDA	Objects_Xpos_L,X
@@ -18406,7 +18503,7 @@ loc_0_EA18:				; ...
 		TYA
 		TAX
 		JSR	sub_0_E933
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		LDX	Object_RamSlotID_tmp
 
 loc_0_EA33:				; ...
@@ -18499,13 +18596,13 @@ loc_0_EAD2:				; ...
 		LDA	Objects_TypeID,X
 		CMP	#$3E ; '>'
 		BNE	loc_0_EAF3
-		STY	byte_0_8D
+		STY	tmp_var_8d
 		LDA	#1
 		LDY	Objects_dir,X
-		LDX	byte_0_8D
+		LDX	tmp_var_8d
 		CPY	#0
 		JSR	sub_0_E90E
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		LDX	Object_RamSlotID_tmp
 
 loc_0_EAF3:				; ...
@@ -18570,7 +18667,7 @@ loc_0_EB49:				; ...
 		PHA
 		LDA	#0
 		STA	Objects_Z_floor,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$D
 		LDA	#$84 ; 'Д'
 		BCS	loc_0_EB6E
@@ -18634,7 +18731,7 @@ loc_0_EBCD:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_EBD2:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_0_EBDE
 		LDA	LevelPos_CamPosX_L
@@ -18647,7 +18744,7 @@ loc_0_EBDE:				; ...
 		PLA
 		LDA	Objects_death_timer,X
 		BEQ	loc_0_EC10
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$D
 		BNE	loc_0_EC0C
 		LDA	#$80 ; 'А'
@@ -18691,18 +18788,18 @@ loc_0_EC20:				; ...
 		LDA	Objects_Life,X
 		ORA	#$F0 ; 'Ё'
 		STA	Objects_Life,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$F
 		BNE	loc_0_EC41
-		INC	byte_0_33
+		INC	music_info
 		BNE	loc_0_EC41
-		DEC	byte_0_33
+		DEC	music_info
 
 loc_0_EC41:				; ...
 		LDA	Objects_dir,X
 		LSR	A
 		STA	Objects_Flags,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$C0 ; '└'
 		CMP	#$C0 ; '└'
 		BEQ	loc_0_EC52
@@ -18826,7 +18923,7 @@ loc_0_ED14:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_ED18:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#6
 		BNE	loc_0_ED23
 		LDA	#0
@@ -18845,7 +18942,7 @@ loc_0_ED2F:				; ...
 		JSR	sub_0_E2E9
 
 loc_0_ED37:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_ED49
 		LDA	#$FE ; '■'
 		JSR	sub_0_D06A
@@ -18856,7 +18953,7 @@ loc_0_ED37:				; ...
 
 loc_0_ED49:				; ...
 		TXA
-		EOR	FrameCounter	; $B
+		EOR	FrameCounter
 		AND	#$F
 		ORA	Objects_Z_floor,X
 		BNE	loc_0_ED98
@@ -18881,7 +18978,7 @@ loc_0_ED5E:				; ...
 		LDA	#$68 ; 'h'
 
 loc_0_ED78:				; ...
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_ED7B:				; ...
 		LDA	objects_some_anim,X
@@ -18955,18 +19052,18 @@ loc_0_EDD5:				; ...
 
 loc_0_EDE7:				; ...
 		LDA	#0
-		STA	Objects_HitID
+		STA	Objects_HitID	; номер	движения для запуска
 		STA	player2_HitID
 		STA	Objects_dir
 		STA	player2_dir
 		LDA	#$A0 ; 'а'
-		STA	byte_0_33
+		STA	music_info
 		INC	byte_0_EE
 		JMP	reset_some_vars
 ; ---------------------------------------------------------------------------
 
 object_turbo_tunnel_warning_sprite:	; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BEQ	loc_0_EE09
 		DEC	objects_some_anim,X
@@ -19005,7 +19102,7 @@ sub_0_EE1E:				; ...
 
 object_elevator_platform:		; ...
 		JSR	sub_0_EE1E
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#7
 		BEQ	loc_0_EE39
 		CMP	#$28 ; '('
@@ -19018,12 +19115,12 @@ loc_0_EE39:				; ...
 		LDX	#$33 ; '3'
 		LDY	#3
 		JSR	jump_other_bank
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_EE4C
 		JSR	sub_0_EE61
 
 loc_0_EE4C:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BNE	locret_0_EEB6
 		LDY	byte_0_F3
@@ -19081,11 +19178,11 @@ loc_0_EE94:				; ...
 sub_0_EEA0:				; ...
 		LDA	players_obj_unk12,Y
 		BNE	locret_0_EEB6
-		STY	byte_0_8D
+		STY	tmp_var_8d
 		TYA
 		TAX
 		JSR	sub_0_93FE
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		LDA	#1
 		STA	Objects_Z_speed,Y
 		JMP	sub_0_BBB4
@@ -19137,7 +19234,7 @@ object_snake_pit_unk:			; ...
 
 
 sub_0_EEE3:				; ...
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	locret_0_EF31
 		LDA	player1_endLvL_timer,Y
 		ORA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
@@ -19207,11 +19304,11 @@ object_sentry_drone:			; ...
 		SEC
 
 loc_0_EF64:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		BCC	loc_0_EF6F
 		LDA	#0
 		STA	Objects_Flags,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 
 loc_0_EF6F:				; ...
 		AND	#2
@@ -19267,7 +19364,7 @@ loc_0_EFC4:				; ...
 		LDA	#$9F ; 'Я'
 		DEC	Objects_unk_cnt2,X
 		BNE	loc_0_F016
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$80 ; 'А'
 		STA	Objects_dir,X
 		LDA	#$40 ; '@'
@@ -19320,7 +19417,7 @@ loc_0_F022:				; ...
 
 
 sub_0_F025:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#1
 		CLC
 		ADC	#$A3 ; 'г'
@@ -19384,7 +19481,7 @@ locret_0_F07B:				; ...
 
 object_gas:				; ...
 		JSR	sub_0_CF66
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_0_F0AB
 		LDA	Objects_Ypos_L,X
@@ -19430,7 +19527,7 @@ loc_0_F0C1:				; ...
 		STA	Obj_anim_frame,X
 		CMP	#$A9 ; 'й'
 		BCC	loc_0_F0D6
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#4
 		BEQ	loc_0_F0D6
 		LDA	Objects_Flags,X
@@ -19451,8 +19548,8 @@ object_ventilyator:			; ...
 		JSR	sub_0_F025
 		LDA	Objects_Flags,X
 		BMI	loc_0_F0E6
-		LDA	FrameCounter	; $B
-		LDY	Level_ID	; $10
+		LDA	FrameCounter
+		LDY	Level_ID
 		CPY	#7
 		BEQ	loc_0_F0FC
 		LDA	objects_some_anim,X
@@ -19475,7 +19572,7 @@ loc_0_F10C:				; ...
 
 
 sub_0_F10E:				; ...
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BEQ	loc_0_F115
 		JMP	loc_0_F1B8
 ; ---------------------------------------------------------------------------
@@ -19500,9 +19597,9 @@ loc_0_F132:				; ...
 		STA	Objects_X_speed,X
 		LDA	#$FC ; '№'
 		STA	objects_some_anim,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
-		LDA	RandomValue_1	; $25
+		LDA	RandomValue_1
 		AND	#$F
 		BCS	loc_0_F14C
 		LSR	A
@@ -19540,7 +19637,7 @@ loc_0_F179:				; ...
 		ADC	Objects_Xpos_H,X
 		STA	Objects_Xpos_H,X
 		LDA	#7
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#5
 		BEQ	loc_0_F190
 		LDA	#4
@@ -19559,9 +19656,9 @@ loc_0_F19D:				; ...
 		LDA	objects_some_anim,X
 		CMP	#$80 ; 'А'
 		ROR	objects_some_anim,X
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_3
 		STA	Objects_unk1,X
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		AND	#7
 		SEC
 		SBC	#3
@@ -19578,7 +19675,7 @@ loc_0_F1BA:				; ...
 		BEQ	loc_0_F228
 		LDA	Objects_death_timer,Y
 		BNE	loc_0_F228
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_0_F1CD
 		JMP	loc_0_F260
@@ -19600,12 +19697,12 @@ loc_0_F1D7:				; ...
 		LDA	#$FF
 
 loc_0_F1E3:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	tmp_var_16
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	tmp_var_16
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	tmp_var_16
 		LDA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
 		BPL	loc_0_F22B
@@ -19619,7 +19716,7 @@ loc_0_F1E3:				; ...
 		ORA	#8
 		STA	Objects_Flags,Y
 		LDA	tmp_var_16
-		AND	RandomValue_1	; $25
+		AND	RandomValue_1
 		LSR	A
 		LSR	A
 		EOR	Objects_Y_shad,Y
@@ -19682,60 +19779,60 @@ loc_0_F267:				; ...
 		LDA	Objects_Xpos_L,Y
 		SEC
 		SBC	Objects_Xpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	Objects_dir,X
 		BMI	loc_0_F254
 		LDA	#0
 		STA	tmp_var_16
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		BPL	loc_0_F284
 		SEC
 		SBC	#1
 		EOR	#$FF
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_F284:				; ...
 		LSR	A
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	byte_0_17
+		ADC	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_17
 		CMP	#$C
 		BCS	loc_0_F2A1
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_0_F2A1
 		LDA	Objects_TypeID,X
 		CMP	#$54 ; 'T'
 		BEQ	loc_0_F2A1
 		JSR	sub_0_F319
-		LDY	byte_0_21
+		LDY	tmp_var_21
 
 loc_0_F2A1:				; ...
 		LDA	#$C0 ; '└'
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		ASL	A
 		ROL	tmp_var_16
 		ASL	A
 		ROL	tmp_var_16
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_TypeID,X
 		CMP	#$58 ; 'X'
 		BCC	loc_0_F2D8
-		STY	byte_0_18
-		STX	byte_0_21
-		LDX	byte_0_18
+		STY	tmp_var_18
+		STX	tmp_var_21
+		LDX	tmp_var_18
 		LDY	#2
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		LSR	A
 		JSR	loc_0_8A99
 		LDX	Object_RamSlotID_tmp
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		BCC	loc_0_F312
 		LDA	Objects_TypeID,X
 		CMP	#$5E ; '^'
 		BCC	loc_0_F2DA
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		CMP	#6
 		BCC	sub_0_F319
 		BCS	loc_0_F2DA
@@ -19747,7 +19844,7 @@ loc_0_F2DA:				; ...
 		ROR	A
 		EOR	Objects_dir,X
 		BMI	loc_0_F2F9
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	Objects_X_sub,Y
 		STA	Objects_X_sub,Y
@@ -19762,7 +19859,7 @@ loc_0_F2DA:				; ...
 loc_0_F2F9:				; ...
 		LDA	Objects_X_sub,Y
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_X_sub,Y
 		LDA	Objects_Xpos_L,Y
 		SBC	tmp_var_16
@@ -19800,13 +19897,13 @@ sub_0_F319:				; ...
 		STA	Objects_Flags,Y
 		LDA	Objects_Linker_ID,Y ; флаг/id какой объект меня	прицепил
 		BPL	loc_0_F343
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$1F
 		TAY
 		DEY
 		LDA	#0
 		STA	Objects_LinkedObj_ID,Y ; флаг/id присоединённого объекта
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 
 loc_0_F343:				; ...
 		TYA
@@ -19830,9 +19927,9 @@ object_veter:				; ...
 loc_0_F356:				; ...
 		STA	Obj_anim_frame,X
 		LDA	Objects_Xpos_L,X
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		JSR	sub_0_8F4C
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BEQ	loc_0_F397
 		LDA	Objects_dir,X
 		PHA
@@ -19851,7 +19948,7 @@ loc_0_F37F:				; ...
 		JSR	sub_0_8F4C
 		LDA	Objects_Hit_timer,X
 		CLC
-		ADC	Objects_HitID,X
+		ADC	Objects_HitID,X	; номер	движения для запуска
 		STA	Objects_Hit_timer,X
 		PLA
 		STA	Objects_X_speed,X
@@ -19860,7 +19957,7 @@ loc_0_F37F:				; ...
 
 loc_0_F397:				; ...
 		TXA
-		ADC	RandomValue_1	; $25
+		ADC	RandomValue_1
 		ADC	Objects_Xpos_L,X
 		LDY	Objects_TypeID,X
 		CPY	#$61 ; 'a'
@@ -19870,17 +19967,17 @@ loc_0_F397:				; ...
 loc_0_F3A6:				; ...
 		AND	#$3F ; '?'
 		BNE	loc_0_F3B6
-		LDA	RandomValue_2	; $26
+		LDA	RandomValue_2
 		ROL	A
 		LDA	#$10
 		BCC	loc_0_F3B3
 		LDA	#$F0 ; 'Ё'
 
 loc_0_F3B3:				; ...
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 
 loc_0_F3B6:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_0_F3F2
 		LDA	Objects_TypeID,X
@@ -19892,7 +19989,7 @@ loc_0_F3B6:				; ...
 		STA	Objects_unk1,X
 		LDA	Objects_Xpos_L,X
 		SEC
-		SBC	byte_0_8D
+		SBC	tmp_var_8d
 		CMP	#$80 ; 'А'
 		BCC	loc_0_F3DB
 		SBC	#1
@@ -19987,7 +20084,7 @@ loc_0_F46B:				; ...
 		LDY	Objects_unk_cnt2,X
 		CPY	#4
 		BCS	loc_0_F47F
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_0_F487
 		CPY	#3
@@ -20062,7 +20159,7 @@ loc_0_F4DB:				; ...
 		STA	Objects_death_timer,X
 
 object_l10_xz:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#3
 		STA	Objects_Flags,X
 		LDA	Obj_anims_timer,X
@@ -20153,13 +20250,13 @@ sub_0_F560:				; ...
 		LDY	#$1F
 
 loc_0_F579:				; ...
-		LDA	byte_0_55,Y
+		LDA	palette,Y
 		STA	byte_0_650,Y
 		LDA	#$30 ; '0'
-		STA	byte_0_55,Y
+		STA	palette,Y
 		DEY
 		BPL	loc_0_F579
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BEQ	locret_0_F5DC
 		LDY	#0
@@ -20236,7 +20333,7 @@ object_retro_blaster_shoot:		; ...
 		LDA	Objects_Flags,X
 		BMI	loc_0_F608
 		JSR	sub_0_8F4C
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BEQ	loc_0_F621
 		LDA	Objects_Flags,X
@@ -20329,8 +20426,8 @@ loc_0_F69B:				; ...
 		LDA	Objects_unk_cnt,X
 		STA	objects_some_anim,X
 		LDA	#$5E ; '^'
-		JSR	clear_states
-		JMP	sub_0_DAFD
+		JSR	write_obj_Hit_ID
+		JMP	read_anim_seq_by_HitID
 ; ---------------------------------------------------------------------------
 
 loc_0_F6B5:				; ...
@@ -20373,7 +20470,7 @@ loc_0_F6F7:				; ...
 		STA	Objects_unk_cnt2,X
 
 loc_0_F6FA:				; ...
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_0_F72E
 		DEC	Objects_unk_cnt2,X
 		BNE	loc_0_F733
@@ -20381,7 +20478,7 @@ loc_0_F6FA:				; ...
 
 loc_0_F707:				; ...
 		LDA	byte_0_F772,Y
-		STA	byte_0_22
+		STA	tmp_var_22
 		LDA	byte_0_F75B,Y
 		STA	Objects_unk_cnt2,X
 		BNE	loc_0_F71B
@@ -20400,10 +20497,10 @@ loc_0_F71B:				; ...
 		BNE	loc_0_F72B
 
 loc_0_F729:				; ...
-		LDA	byte_0_22
+		LDA	tmp_var_22
 
 loc_0_F72B:				; ...
-		JSR	clear_states
+		JSR	write_obj_Hit_ID
 
 loc_0_F72E:				; ...
 		LDA	#3
@@ -20585,7 +20682,7 @@ loc_0_F84D:				; ...
 		TAX
 		LDA	#$28 ; '('
 		JSR	sub_0_FBF9
-		LDX	byte_0_21
+		LDX	tmp_var_21
 		LDA	#0
 		STA	Objects_Z_speed,X
 
@@ -20618,7 +20715,7 @@ loc_0_F86F:				; ...
 		ADC	#$81 ; 'Б'
 		STA	Objects_LinkedObj_ID,Y ; флаг/id присоединённого объекта
 		LDA	#0
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		TYA
 		ADC	#$81 ; 'Б'
 		STA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
@@ -20670,7 +20767,7 @@ loc_0_F8E2:				; ...
 		BNE	loc_0_F8F1
 
 loc_0_F8E6:				; ...
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 		BNE	locret_0_F8F0
 		STA	byte_0_DF
 		JMP	loc_0_F928
@@ -20681,7 +20778,7 @@ locret_0_F8F0:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_0_F8F1:				; ...
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 		BEQ	loc_0_F921
 		LDA	Objects_Flags,Y
 		ASL	A
@@ -20858,7 +20955,7 @@ sub_0_FA27:				; ...
 object_sosulka:				; ...
 		LDA	Objects_unk_cnt2,X
 		BNE	loc_0_FA45
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_FA8D
 		LDA	#$30 ; '0'
 		JSR	test_checkpoint_pos
@@ -20869,7 +20966,7 @@ loc_0_FA45:				; ...
 		LDA	#$E0 ; 'р'
 		JSR	sub_0_8E7A
 		JSR	sub_0_E4AD
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		TAX
 		LDA	Lives_Player1,X	; кол-во жизней	(сердечек)
@@ -20877,7 +20974,7 @@ loc_0_FA45:				; ...
 		LDA	Objects_death_timer,X
 		BNE	loc_0_FA78
 		LDY	Object_RamSlotID_tmp
-		STY	byte_0_21
+		STY	tmp_var_21
 		LDA	#$A
 		JSR	test_checkpoint_pos
 		BNE	loc_0_FA78
@@ -21003,7 +21100,7 @@ loc_0_FB01:				; ...
 sub_0_FB04:				; ...
 		JSR	sub_0_FBD2
 		TXA
-		EOR	FrameCounter	; $B
+		EOR	FrameCounter
 		AND	#3
 		BEQ	loc_0_FB0F
 		RTS
@@ -21011,9 +21108,9 @@ sub_0_FB04:				; ...
 
 loc_0_FB0F:				; ...
 		LDY	Object_RamSlotID_tmp
-		STY	byte_0_21
+		STY	tmp_var_21
 		LDX	#$E
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BNE	loc_0_FB24
 		LDA	Objects_TypeID,Y
@@ -21024,7 +21121,7 @@ loc_0_FB0F:				; ...
 loc_0_FB24:				; ...
 		LDA	Objects_death_timer,X
 		BNE	loc_0_FB36
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BEQ	loc_0_FB39
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
@@ -21056,12 +21153,12 @@ loc_0_FB56:				; ...
 		STA	byte_0_DE
 
 loc_0_FB5A:				; ...
-		CPX	byte_0_21
+		CPX	tmp_var_21
 		BEQ	loc_0_FBCB
 		LDA	#$10
 		JSR	test_checkpoint_pos
 		BNE	loc_0_FBCB
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BCS	loc_0_FB72
 		LDA	#$10
@@ -21089,7 +21186,7 @@ loc_0_FB7F:				; ...
 		BEQ	loc_0_FBF2
 		LDA	#$1C
 		STA	byte_0_DC
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BNE	loc_0_FBA4
 		LDA	#$4B ; 'K'
@@ -21111,7 +21208,7 @@ loc_0_FBB2:				; ...
 		LDA	#8
 		STA	Objects_unk_cnt2,X
 		LDA	#$F
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#7
 		BEQ	loc_0_FBEE
 		LDA	#$76 ; 'v'
@@ -21133,7 +21230,7 @@ locret_0_FBD1:				; ...
 
 sub_0_FBD2:				; ...
 		LDA	#$B2 ; '▓'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#9
 		BEQ	loc_0_FBEE
 		CPY	#7
@@ -21166,16 +21263,16 @@ loc_0_FBF2:				; ...
 
 
 sub_0_FBF9:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_state,X	; бит 5	($20) -	наличие	стика
 		ORA	#$40 ; '@'
 		STA	Objects_state,X	; бит 5	($20) -	наличие	стика
 
 loc_0_FC03:				; ...
 		LDA	#0
-		STA	Objects_HitID,X
-		STX	byte_0_21
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	Objects_HitID,X	; номер	движения для запуска
+		STX	tmp_var_21
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CPX	#2
 		BCS	loc_0_FC12
 		ADC	#$5A ; 'Z'
@@ -21194,9 +21291,9 @@ object_snow:				; ...
 ; ---------------------------------------------------------------------------
 
 object_level4_sosulka_kamennaya:	; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		TAY
 		LDA	InputHold_P1,Y	; данные первого джойстика на зажатие
 		AND	#4
@@ -21230,13 +21327,13 @@ loc_0_FC40:				; ...
 		STA	Objects_unk1,X
 
 object_leve4_wall:			; ...
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_FCAA
 		LDA	#$28 ; '('
 		JSR	sub_0_8D4D
 		BNE	loc_0_FCAA
 		LDA	tmp_var_1B
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		LDA	#$E
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -21249,7 +21346,7 @@ sub_0_FC6C:				; ...
 		STA	Objects_unk_cnt,Y
 		LDA	Objects_Z_speed,X
 		BPL	loc_0_FC85
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		SBC	#$20 ; ' '
 		BMI	loc_0_FC85
 		JSR	sub_0_FCFB
@@ -21269,9 +21366,9 @@ loc_0_FC8D:				; ...
 		TAX
 		LDA	players_obj_unk9,X
 		AND	#$80 ; 'А'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#2
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		JSR	sub_0_E90E
 		LDX	Object_RamSlotID_tmp
 
@@ -21317,7 +21414,7 @@ sub_0_FCE0:				; ...
 
 loc_0_FCED:				; ...
 		LDA	#$7E ; '~'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#$B
 		BNE	loc_0_FCF7
 		LDA	#$E6 ; 'ц'
@@ -21339,7 +21436,7 @@ sub_0_FCFB:				; ...
 		LDA	Objects_unk1,X
 		STA	Objects_unk1,Y
 		LDA	#0
-		STA	Objects_HitID,Y
+		STA	Objects_HitID,Y	; номер	движения для запуска
 		STA	Objects_X_speed,Y
 		STA	Objects_Life,Y
 		INC	unkn_cnt4
@@ -21347,10 +21444,10 @@ sub_0_FCFB:				; ...
 		STA	Objects_death_timer,Y
 		LDA	#$C0 ; '└'
 		STA	Obj_anims_timer,Y
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#$1E
 		JSR	loc_0_B7F6
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		RTS
 ; End of function sub_0_FCFB
 
@@ -21362,7 +21459,7 @@ object_large_snowball:			; ...
 		LDA	Obj_anims_timer,X
 		BNE	loc_0_FD44
 		JSR	sub_0_E4AD
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		JSR	sub_0_FCE0
 		LDA	#$78 ; 'x'
 		STA	Obj_anim_frame,X
@@ -21441,14 +21538,14 @@ loc_0_FDA4:				; ...
 ; ---------------------------------------------------------------------------
 
 object_level4_checkpoint:		; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BEQ	loc_0_FDA4
 		CMP	#9
 		BEQ	loc_0_FDA4
 		CMP	#5
 		BEQ	loc_0_FDA4
-		JSR	sub_0_C9ED
+		JSR	load_PL_1_or_2	; Записать в Y id игрока 0 или 1. (четн/нечет кадр)
 		BEQ	loc_0_FE0B
 		LDA	#8
 		JSR	test_checkpoint_pos
@@ -21464,7 +21561,7 @@ object_level4_checkpoint:		; ...
 		JSR	sub_0_8EEE
 		LDA	objects_some_anim,X
 		ASL	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$36 ; '6'
 		BEQ	loc_0_FDF0
 		CMP	#$10
@@ -21484,7 +21581,7 @@ loc_0_FDF4:				; ...
 
 object_restore_point:			; ...
 		LDA	#$C1 ; '┴'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#8
 		BEQ	loc_0_FE0D
 
@@ -21602,12 +21699,12 @@ IRQ_:					; ...
 ; ---------------------------------------------------------------------------
 
 NMI__:					; ...
-		STA	prev_bank_id
+		STA	previous_bankID_NMI
 		STX	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		STX	PPU_SPR_ADDR	; SPR-RAM Address Register (W)
 		LDA	#2
 		STA	SPR_DMA		; Sprite DMA Register (W)
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		BPL	lagged_frame	; if lag or pcm	played
 		AND	#$7F ; ''
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
@@ -21619,7 +21716,7 @@ NMI__:					; ...
 
 lagged_frame:				; ...
 		STY	NMI_Yreg_saver	; if lag or pcm	played
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		BMI	not_a_level	; other	screens
 		AND	#$7F ; ''
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
@@ -21629,7 +21726,7 @@ lagged_frame:				; ...
 		JSR	some_with_ppu
 
 loc_0_FEA9:				; ...
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		JMP	return_from_nmi
@@ -21666,26 +21763,26 @@ loc_0_FED0:				; ...
 sub_0_FEDA:				; ...
 		LDX	byte_0_D7
 		LDA	#$21 ; '!'
-		STA	byte_0_18
+		STA	tmp_var_18
 
 loc_0_FEE0:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	byte_0_700,X
 		CLC
-		ADC	byte_0_17
+		ADC	tmp_var_17
 		STA	tmp_var_16
 		AND	#$F8 ; '°'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	PPU_SCROLL_REG	; VRAM Address Register	#1 (W2)
 		LDA	tmp_var_16
 		AND	#7
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#9
 
 loc_0_FEFA:				; ...
 		DEY
 		BNE	loc_0_FEFA
-		LDA	byte_0_90
+		LDA	for_spr_unk_90	; смещение?
 		NOP
 		INX
 		CPX	#$4C ; 'L'
@@ -21698,13 +21795,13 @@ loc_0_FF09:				; ...
 		NOP
 
 loc_0_FF0B:				; ...
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		AND	#7
 		CMP	#5
 		BCC	loc_0_FF13
 
 loc_0_FF13:
-		DEC	byte_0_18
+		DEC	tmp_var_18
 		BNE	loc_0_FEE0
 		RTS
 ; End of function sub_0_FEDA
@@ -21766,12 +21863,12 @@ loc_0_FF6A:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_FF6E:				; ...
+read_anims_dat:				; ...
 		STA	banks_ids_
-		JSR	sub_0_FF6E
+		JSR	read_anims_dat	; BANK3:E07A
 		STA	banks_ids	; prevent 'bus conflict'
 		RTS
-; End of function sub_0_FF6E
+; End of function read_anims_dat
 
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -21789,18 +21886,18 @@ sub_0_FF78:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_0_FF84:				; ...
-		STA	byte_0_3E
+jump_from_bank0:			; ...
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	banks_ids,Y	; prevent 'bus conflict'
 		JSR	tmp_var_06
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	banks_ids,Y	; prevent 'bus conflict'
 		RTS
-; End of function sub_0_FF84
+; End of function jump_from_bank0
 
 ; ---------------------------------------------------------------------------
 
@@ -21815,7 +21912,7 @@ NMI_:					; ...
 
 return_from_nmi:			; ...
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	banks_ids,Y	; prevent 'bus conflict'
 		LDY	NMI_Yreg_saver
@@ -21835,16 +21932,16 @@ jump_other_bank:			; ...
 
 loc_0_FFCD:				; ...
 		ORA	#0		; save bank ID?
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	banks_ids,Y	; change bank
 		STA	banks_ids,Y	; prevent 'bus conflict'
 		JSR	sub_0_8000
-		LDY	byte_0_2D	; load bank ID
+		LDY	previous_bankID	; load bank ID
 		PLA			; load old jumptable ptr
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	banks_ids,Y	; change bank
 		STA	banks_ids,Y	; prevent 'bus conflict'
 		RTS
@@ -21862,12 +21959,16 @@ wait_:					; ...
 		RTS
 ; End of function wait_
 
-; ---------------------------------------------------------------------------
+
+; =============== S U B	R O U T	I N E =======================================
+
 
 RESET_:					; ...
 		LDA	#0
 		STA	banks_ids	; prevent 'bus conflict'
-		JMP	loc_0_82A9
+		JMP	RESET_0
+; End of function RESET_
+
 ; ---------------------------------------------------------------------------
 		.WORD NMI_		; Non-Maskable Interrupt Vector
 		.WORD RESET_		; RESET	Interrupt Vector
@@ -21884,7 +21985,7 @@ RESET_:					; ...
 
 
 sub_1000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_1000_8000
 
 ; ---------------------------------------------------------------------------
@@ -21980,7 +22081,7 @@ loc_1000_8026:				; ...
 ; ---------------------------------------------------------------------------
 
 unpack_objects_gfx:			; ...
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#1
 		STA	tmp_var_00
 		LDA	PPU_STATUS	; PPU Status Register (R)
@@ -22046,10 +22147,10 @@ set_vram_adr:				; ...
 sub_1000_810E:				; ...
 		TAX
 		LDA	off_1000_8121,X
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	off_1000_8121+1,X
-		STA	word_0_1F+1
-		JMP	(word_0_1F)
+		STA	tmp_var_20
+		JMP	(tmp_var_1f)
 ; End of function sub_1000_810E
 
 ; ---------------------------------------------------------------------------
@@ -22604,7 +22705,7 @@ loc_1000_858E:				; ...
 		TAX
 		TYA
 		STA	Sprites_Attrib,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#8
 		BNE	loc_1000_85A1
 		LDA	Lives_Player1,Y	; кол-во жизней	(сердечек)
@@ -22629,28 +22730,28 @@ loc_1000_85D2:				; ...
 		LDY	#2
 		JSR	sub_1000_FFCB
 		LDX	Object_RamSlotID_tmp
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		LSR	A
 		LSR	A
 		LDY	Objects_unk_cnt,X
 		BPL	loc_1000_85EB
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	#$40 ; '@'
 		SEC
-		SBC	word_0_1F
+		SBC	tmp_var_1f
 
 loc_1000_85EB:				; ...
 		LDY	#0
-		STY	byte_0_2D
+		STY	previous_bankID
 		STY	tmp_var_16
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		SEC
 		SBC	#2
 		BCS	loc_1000_85FA
 		LDA	#0
 
 loc_1000_85FA:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		SEC
 		SBC	players_obj_un5,Y
 		BCS	loc_1000_8604
@@ -22663,7 +22764,7 @@ loc_1000_8604:				; ...
 		LDA	tmp_var_16
 		ADC	Objects_Zpos_H,Y
 		STA	Objects_Zpos_H,Y
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	players_obj_un5,Y
 		RTS
 ; ---------------------------------------------------------------------------
@@ -22779,10 +22880,10 @@ loc_1000_8EFD:				; ...
 		CLC
 		ADC	Objects_Hit_timer,X
 		STA	Objects_Hit_timer,X
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		ADC	#0
 		AND	#3
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		STA	byte_0_700,Y
 		CMP	#2
 		LDA	Objects_Hit_timer,X
@@ -22797,17 +22898,17 @@ loc_1000_8EFD:				; ...
 loc_1000_8F2C:				; ...
 		STA	byte_0_701,Y
 		AND	#7
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_701,Y
 		ASL	A
 		AND	#$F0 ; 'Ё'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_701,Y
 		LDA	byte_0_700,Y
 		ROL	A
 		ORA	#$10
 		STA	byte_0_700,Y
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_701,Y
 		CLC
 		ADC	#$E9 ; 'щ'
@@ -22816,7 +22917,7 @@ loc_1000_8F2C:				; ...
 		AND	#$F
 		ADC	#$8F ; 'П'
 		STA	tmp_var_1A
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#2
 		BNE	loc_1000_8F78
 		LDA	Objects_Hit_timer,X
@@ -22866,7 +22967,7 @@ loc_1000_8F9F:				; ...
 		LDA	(tmp_var_19),Y
 		AND	byte_1000_8FE5,X
 		ORA	tmp_var_16
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_702,Y
 		PLA
 		STA	byte_0_703,Y
@@ -22904,13 +23005,13 @@ word_1000_FF66:	.WORD $FFFF, $FFFF, $FFFF, $FFFF, $FFFF, $FFFF,	$FFFF, $FFFF, $F
 		STA	byte_1000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_1000_FFB3,Y
 		JSR	word_1000_FF66
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_1000_FFB3,Y
 		RTS
@@ -22925,7 +23026,7 @@ loc_1000_FF98:				; ...
 		JMP	locret_1000_FF65
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_1000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -22941,16 +23042,16 @@ byte_1000_FFB6:	.BYTE 3, 4, 5, 6, 7, 8,	9, $A, $B, $C, $D, $E, $F, $10,	$11, $12
 sub_1000_FFCB:				; ...
 		LDA	#0
 		ORA	#1
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_1000_FFB3,Y
 		STA	byte_1000_FFB3,Y
 		JSR	sub_1000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_1000_FFB3,Y
 		STA	byte_1000_FFB3,Y
 		RTS
@@ -22986,7 +23087,7 @@ loc_1000_FFF2:				; ...
 
 
 sub_2000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_2000_8000
 
 ; ---------------------------------------------------------------------------
@@ -23004,7 +23105,7 @@ sub_2000_8000:				; ...
 ; ---------------------------------------------------------------------------
 		JMP	loc_2000_F7C9
 ; ---------------------------------------------------------------------------
-		JMP	loc_2000_C958
+		JMP	sub_2000_C958
 ; ---------------------------------------------------------------------------
 		JMP	loc_2000_FF23
 ; ---------------------------------------------------------------------------
@@ -23014,18 +23115,14 @@ sub_2000_8000:				; ...
 loc_2000_8021:
 		JMP	loc_2000_C9A2
 ; ---------------------------------------------------------------------------
-include	parts\bank2_8024.asm
-; byte_2000_8024
-byte_2000_C8A0:	.BYTE $14,$13,$13,$12,$11,$11,$10,$10, $F, $E, $E, $D, $D, $C, $B, $B, $A, $A,	9,  9,	8,  8,	7,  7,	7,  6,	6,  5 ;	...
-		.BYTE	5,  5,	4,  4,	4,  3,	3,  3,	2,  2,	2,  2,	2,  1,	1,  1,	1,  1,	1,  0,	0,  0,	0,  0,	0,  0,	0,  0
-		.BYTE	0,  0,	0,  0,	0,  0,	0,  0,	0,  1,	1,  1,	1,  1,	1,  2,	2,  2,	2,  2,	3,  3,	3,  4,	4,  4,	5,  5
-		.BYTE	5,  6,	6,  7,	7,  7,	8,  8,	9,  9, $A, $A, $B, $B, $C, $D, $D, $E, $E, $F,$10,$10,$11,$11,$12,$13,$13,$14
-		.BYTE $15,$16,$16,$17,$18,$19,$19,$1A,$1B,$1C,$1D,$1D,$1E,$1F,$20,$21,$22,$23,$23,$24,$25,$26,$27,$28,$29,$2A,$2B,$2C
-		.BYTE $2D,$2E,$2F,$30,$31,$32,$33,$34,$35,$36,$37,$38,$39,$3A,$3B,$3C,$3D,$3E,$3F,$40,$41,$42,$43,$45,$46,$47,$48,$49
-		.BYTE $4A,$4B,$4C,$4D,$4F,$50,$51,$52,$53,$54,$55,$56,$57,$59,$5A,$5B
-; ---------------------------------------------------------------------------
+unknown_:	.BYTE $10, $10,	$30, $20, $10, 0, 0, 0,	0, 0, $FF, $FF ; ...
+ include parts\rash_gfx.asm
+; rash_gfx
 
-loc_2000_C958:				; ...
+; =============== S U B	R O U T	I N E =======================================
+
+
+sub_2000_C958:				; ...
 		LDX	Object_RamSlotID_tmp
 		LDA	Objects_Flags,X
 		AND	#$BF ; '┐'
@@ -23066,8 +23163,10 @@ loc_2000_C990:				; ...
 
 loc_2000_C99C:				; ...
 		STA	Objects_X_shadow,X
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		RTS
+; End of function sub_2000_C958
+
 ; ---------------------------------------------------------------------------
 
 loc_2000_C9A2:				; ...
@@ -23078,7 +23177,7 @@ loc_2000_C9A2:				; ...
 		LDA	objects_some_anim,X
 		SEC
 		SBC	Objects_Xpos_L,X
-		STA	word_0_1F
+		STA	tmp_var_1f
 		BEQ	loc_2000_C9C2
 		DEC	objects_some_anim,X
 		BCS	loc_2000_C9C2
@@ -23087,7 +23186,7 @@ loc_2000_C9A2:				; ...
 		INC	objects_some_anim,X
 
 loc_2000_C9C2:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		LSR	A
 		ROR	Objects_unk_cnt2,X
 		LSR	A
@@ -23123,7 +23222,7 @@ loc_2000_CA09:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_CA0E:				; ...
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#1
 		STA	tmp_var_00
 		LDA	PPU_STATUS	; PPU Status Register (R)
@@ -23286,7 +23385,7 @@ include	parts\bank2_cc85.asm
 sub_2000_ECAD:				; ...
 		JSR	sub_2000_FFCB
 		LDA	#0
-		STA	byte_0_2D
+		STA	previous_bankID
 		LDX	Object_RamSlotID_tmp
 		RTS
 ; End of function sub_2000_ECAD
@@ -23296,7 +23395,7 @@ sub_2000_ECAD:				; ...
 
 
 sub_2000_ECB7:				; ...
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDY	#3
 		JMP	sub_2000_ECAD
 ; End of function sub_2000_ECB7
@@ -23783,7 +23882,7 @@ loc_2000_EEE9:				; ...
 		JSR	sub_2000_F1CE
 
 loc_2000_EEF6:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BNE	loc_2000_EF0D
 		DEC	objects_some_anim,X
@@ -23798,7 +23897,7 @@ loc_2000_EEF6:				; ...
 loc_2000_EF0D:				; ...
 		LDA	#$98 ; 'Ш'
 		STA	Obj_anim_frame,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#4
 		ORA	#$D8 ; '╪'
 		STA	Objects_Ypos_L,X
@@ -23864,7 +23963,7 @@ loc_2000_EF6E:				; ...
 		LDA	rest_point_id
 		ASL	A
 		ADC	#$12
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#$24 ; '$'
 		LDY	#3
 		JSR	sub_2000_ECAD
@@ -23908,21 +24007,21 @@ loc_2000_EFA6:				; ...
 		AND	#$40 ; '@'
 		BNE	loc_2000_EFE1
 		LDA	#$1C
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_dir,X
 		BNE	loc_2000_EFD2
 		LDA	#4
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_X_speed,X
 		EOR	#$F0 ; 'Ё'
 		BNE	loc_2000_EFD2
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 
 loc_2000_EFD2:				; ...
 		LDA	Objects_Xpos_L,X
 		AND	#$E0 ; 'р'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Xpos_L,X
 		EOR	#$8F ; 'П'
 		JMP	loc_2000_F011
@@ -23930,11 +24029,11 @@ loc_2000_EFD2:				; ...
 
 loc_2000_EFE1:				; ...
 		LDA	#$14
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_dir,X
 		BPL	loc_2000_EFFC
 		LDA	#$1E
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Zpos_L,X
 		SEC
 		SBC	#$20 ; ' '
@@ -23945,11 +24044,11 @@ loc_2000_EFE1:				; ...
 loc_2000_EFFC:				; ...
 		LDA	Objects_Zpos_L,X
 		AND	#$E0 ; 'р'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Zpos_L,X
 		LDA	#$AF ; 'п'
 		SBC	Objects_Zpos_L,X
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		LDA	Objects_Xpos_L,X
 
 loc_2000_F011:				; ...
@@ -23995,7 +24094,7 @@ loc_2000_F046:				; ...
 		LDA	#$D8 ; '╪'
 		SEC
 		SBC	Objects_Zpos_L,X
-		EOR	Objects_HitID,X
+		EOR	Objects_HitID,X	; номер	движения для запуска
 		AND	#$F8 ; '°'
 		BEQ	loc_2000_F066
 		ORA	#1
@@ -24012,10 +24111,10 @@ loc_2000_F06C:				; ...
 		LDA	#$D8 ; '╪'
 		SEC
 		SBC	Objects_Zpos_L,X
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$1F
 		SBC	Objects_Zpos_H,X
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	Objects_TypeID,X
 		CMP	#$4C ; 'L'
 		BEQ	loc_2000_F09D
@@ -24036,11 +24135,11 @@ loc_2000_F08E:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F09D:				; ...
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		SEC
 		SBC	LevelPos_CamPosY_L
 		STA	tmp_var_19
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		SBC	LevelPos_CamPosY_H
 		BEQ	loc_2000_F0C1
 		CMP	#1
@@ -24099,7 +24198,7 @@ loc_2000_F0FC:				; ...
 		LDA	#0
 		STA	byte_0_5E2
 		STA	byte_0_5E4
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		AND	#$F8 ; '°'
 		SEC
 		SBC	LevelPos_CamPosY_L
@@ -24152,23 +24251,23 @@ loc_2000_F158:				; ...
 		LDA	Objects_Xpos_L,X
 		EOR	Objects_unk_cnt2,X
 		AND	#$E0 ; 'р'
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	#$D8 ; '╪'
 		SEC
 		SBC	Objects_Zpos_L,X
-		EOR	Objects_HitID,X
-		ORA	word_0_1F
+		EOR	Objects_HitID,X	; номер	движения для запуска
+		ORA	tmp_var_1f
 		AND	#$E0 ; 'р'
 		BEQ	sub_2000_F1CE
-		LSR	byte_0_18
-		LDA	byte_0_17
+		LSR	tmp_var_18
+		LDA	tmp_var_17
 		ROR	A
 		AND	#$F0 ; 'Ё'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	Objects_Xpos_H,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Xpos_L,X
-		LSR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LSR	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
 		LSR	A
 		LSR	A
@@ -24178,9 +24277,9 @@ loc_2000_F158:				; ...
 		BCS	sub_2000_F1CE
 		CMP	#2
 		BCC	sub_2000_F1CE
-		ORA	byte_0_17
+		ORA	tmp_var_17
 		STA	tmp_var_19
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		ORA	#6
 		STA	tmp_var_1A
 		LDY	#0
@@ -24200,7 +24299,7 @@ loc_2000_F158:				; ...
 		LDY	#0
 		LDA	(tmp_var_19),Y
 		STA	byte_0_5CD
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		LDX	Object_RamSlotID_tmp
 		BNE	loc_2000_F1CC
 
@@ -24219,7 +24318,7 @@ sub_2000_F1CE:				; ...
 		LDA	#$D8 ; '╪'
 		SEC
 		SBC	Objects_Zpos_L,X
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		LDA	Objects_dir,X
 		ROL	A
 		ROL	A
@@ -24298,7 +24397,7 @@ level_moving:				; ...
 		DEC	byte_0_D3
 
 loc_2000_F250:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_2000_F284
 		LDA	byte_0_B2
@@ -24359,9 +24458,9 @@ loc_2000_F292:				; ...
 loc_2000_F29E:				; ...
 		DEY
 		BPL	loc_2000_F292
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BEQ	loc_2000_F2B1
-		LDX	byte_0_D5
+		LDX	bikes_speed
 		JMP	loc_2000_F345
 ; ---------------------------------------------------------------------------
 		LDX	#$2D ; '-'
@@ -24370,22 +24469,22 @@ loc_2000_F29E:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F2B1:				; ...
-		LDA	byte_0_D4
-		ORA	byte_0_D5
+		LDA	bikes_accelerate
+		ORA	bikes_speed
 		BNE	loc_2000_F2CC
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#$C
 		BEQ	loc_2000_F2CC
 		CPY	#4
 		LDA	#5
 		ADC	#0
-		STA	music_var32
+		STA	music_id
 		LDX	#$27 ; '''
 		LDY	#0
 		JSR	sub_2000_ECAD
 
 loc_2000_F2CC:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#3
 		BEQ	loc_2000_F2FF
 		CPY	#$C
@@ -24431,15 +24530,15 @@ loc_2000_F309:				; ...
 		BEQ	loc_2000_F31D
 
 loc_2000_F30D:				; ...
-		LDA	byte_0_33
+		LDA	music_info
 		CMP	#$B0 ; '░'
 		BEQ	loc_2000_F31D
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#4
 		LSR	A
 		LSR	A
-		ADC	byte_0_33
-		STA	byte_0_33
+		ADC	music_info
+		STA	music_info
 
 loc_2000_F31D:				; ...
 		LDX	#1
@@ -24449,16 +24548,16 @@ loc_2000_F31D:				; ...
 		CLC
 
 loc_2000_F326:				; ...
-		ADC	byte_0_D4
-		STA	byte_0_D4
-		LDA	byte_0_D5
+		ADC	bikes_accelerate
+		STA	bikes_accelerate
+		LDA	bikes_speed
 		ADC	#0
-		STA	byte_0_D5
+		STA	bikes_speed
 		TAX
-		EOR	$F36C,Y
+		EOR	unk_2000_F36C,Y
 		BNE	loc_2000_F345
-		STA	byte_0_D4
-		LDA	$F36C,Y
+		STA	bikes_accelerate
+		LDA	unk_2000_F36C,Y
 		CMP	#8
 		BNE	loc_2000_F345
 		LDA	LevelPos_CamPosX_L
@@ -24471,7 +24570,7 @@ loc_2000_F345:				; ...
 loc_2000_F347:				; ...
 		LDA	Objects_X_sub -	1,Y
 		CLC
-		ADC	byte_0_D4
+		ADC	bikes_accelerate
 		STA	Objects_X_sub -	1,Y
 		TXA
 		ADC	Object14_Xpos_H,Y
@@ -24481,13 +24580,13 @@ loc_2000_F347:				; ...
 		STA	Object15_unk_cnt,Y
 		DEY
 		BNE	loc_2000_F347
-		LDA	byte_0_D4
+		LDA	bikes_accelerate
 		CLC
 		ADC	byte_0_D6
 		STA	byte_0_D6
-		JMP	loc_2000_F525
+		JMP	bikes_camera_move
 ; ---------------------------------------------------------------------------
-		.BYTE	8
+unk_2000_F36C:	.BYTE	8		; ...
 		.BYTE  $C
 		.BYTE	4
 		.BYTE	5
@@ -24564,18 +24663,18 @@ loc_2000_F3C8:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F3CB:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_2000_F40F
 		JSR	sub_2000_F5FF
 		LDA	Objects_X_shadow
 		LDY	player2_TypeID
 		BEQ	loc_2000_F3E9
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	player2_X_shadow
 		LDY	Objects_TypeID
 		BEQ	loc_2000_F3E9
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
 
 loc_2000_F3E9:				; ...
@@ -24622,7 +24721,7 @@ loc_2000_F419:				; ...
 		LDA	Objects_X_shadow
 		LDX	player2_TypeID
 		BEQ	loc_2000_F44E
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#4
 		BEQ	loc_2000_F434
 		CPX	#$B
@@ -24631,9 +24730,9 @@ loc_2000_F419:				; ...
 		BNE	loc_2000_F43F
 
 loc_2000_F434:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	player2_X_shadow
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
 		JMP	loc_2000_F44E
 ; ---------------------------------------------------------------------------
@@ -24652,7 +24751,7 @@ loc_2000_F44B:				; ...
 
 loc_2000_F44E:				; ...
 		LDX	#3
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#$D
 		BEQ	loc_2000_F471
 		CPY	#$A
@@ -24672,7 +24771,7 @@ loc_2000_F44E:				; ...
 
 loc_2000_F471:				; ...
 		PHA
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	timer_end_music
 		BEQ	loc_2000_F48F
 		PLA
@@ -24692,7 +24791,7 @@ loc_2000_F47B:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F48F:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$D
 		BEQ	loc_2000_F4A2
 		CMP	#$A
@@ -24735,7 +24834,7 @@ loc_2000_F4CF:				; ...
 		BEQ	loc_2000_F4ED
 		CMP	#$C
 		BEQ	loc_2000_F4F0
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$90 ; 'Р'
 		BCC	loc_2000_F4ED
 		LDA	LevelPos_CamPosX_H
@@ -24791,7 +24890,7 @@ loc_2000_F522:				; ...
 loc_2000_F524:				; ...
 		CLC
 
-loc_2000_F525:				; ...
+bikes_camera_move:			; ...
 		TXA
 		ADC	LevelPos_CamPosX_L
 		STA	LevelPos_CamPosX_L
@@ -24809,7 +24908,7 @@ loc_2000_F539:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F53C:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CMP	level_flags_xz2,Y
 		BCC	loc_2000_F539
 		CPY	#$C
@@ -24847,9 +24946,9 @@ loc_2000_F56C:				; ...
 		BNE	loc_2000_F59F
 
 loc_2000_F574:				; ...
-		LDA	byte_0_E4
+		LDA	stop_scroll_flag
 		BNE	loc_2000_F5D3
-		LDA	byte_0_D5
+		LDA	bikes_speed
 		CMP	#7
 		BCS	loc_2000_F5D3
 		LDX	#1
@@ -24878,7 +24977,7 @@ loc_2000_F59F:				; ...
 		STA	LevelPos_CamPosX_H
 		LDA	#0
 		STA	LevelPos_CamPosX_L
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#8
 		BEQ	loc_2000_F5D3
 
@@ -24894,15 +24993,15 @@ loc_2000_F5B4:				; ...
 		BNE	loc_2000_F5D3	; 1-1=0	; end lvl
 		LDX	#$2A ; '*'
 		LDY	#0
-		STY	byte_0_D4
-		STY	byte_0_D5
+		STY	bikes_accelerate
+		STY	bikes_speed
 		JMP	sub_2000_FFCB	; BANK0:87AA
 ; ---------------------------------------------------------------------------
 level_flags_xz2:.BYTE 0, $A, 0,	$FC, 6,	2, $FD,	0, 1, 0, 6, 5, $59 ; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F5D3:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BEQ	locret_2000_F5FB
 		CMP	#5
@@ -24945,7 +25044,7 @@ sub_2000_F5FF:				; ...
 		SEC
 		SBC	Objects_Z_floor
 		BCC	locret_2000_F5FE
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		STA	tmp_var_16
 		LDA	Lives_Player2	; кол-во жизней	(сердечек)
 		ORA	pl2_death_timer
@@ -24972,17 +25071,17 @@ loc_2000_F626:				; ...
 		BNE	loc_2000_F64F
 		LDY	Objects_Flags
 		BMI	locret_2000_F5FE
-		CMP	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		CMP	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_2000_F64F
 		DEX
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_2000_F64F:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		STA	tmp_var_16
 
 loc_2000_F653:				; ...
-		STX	byte_0_17
+		STX	tmp_var_17
 		TXA
 		EOR	#1
 		TAX
@@ -25000,7 +25099,7 @@ loc_2000_F66E:				; ...
 		STA	tmp_var_16
 
 loc_2000_F670:				; ...
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#4
 		BEQ	loc_2000_F67E
 		CPY	#8
@@ -25009,7 +25108,7 @@ loc_2000_F670:				; ...
 		BNE	loc_2000_F691
 
 loc_2000_F67E:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	tmp_var_16
 		BEQ	loc_2000_F691
 		ADC	tmp_var_16
@@ -25019,16 +25118,16 @@ loc_2000_F67E:				; ...
 		ADC	#$30 ; '0'
 
 loc_2000_F68D:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		STA	tmp_var_16
 
 loc_2000_F691:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_2000_F6A1
 		LDX	byte_0_5BC
 		LDA	Objects_Y_shad,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		STA	tmp_var_16
 
 loc_2000_F6A1:				; ...
@@ -25054,11 +25153,11 @@ locret_2000_F6BC:			; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_F6BD:				; ...
-		LDX	byte_0_17
-		LDA	Level_ID	; $10
+		LDX	tmp_var_17
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_2000_F6FB
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$70 ; 'p'
 		BCS	loc_2000_F6FB
 		LDY	LevelPos_CamPosY_H
@@ -25069,7 +25168,7 @@ loc_2000_F6BD:				; ...
 
 loc_2000_F6D5:				; ...
 		LDY	#$FF
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#$A
 		BNE	loc_2000_F6E7
 		LDX	#$FC ; '№'
@@ -25094,7 +25193,7 @@ loc_2000_F6F8:				; ...
 		JSR	sub_2000_F7CD
 
 loc_2000_F6FB:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_2000_F718
 		LDA	LevelPos_CamPosY_H
@@ -25128,7 +25227,7 @@ loc_2000_F718:				; ...
 loc_2000_F72C:				; ...
 		CMP	#9
 		BNE	loc_2000_F74A
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	tmp_var_16
 		BCC	loc_2000_F738
 		STA	tmp_var_16
@@ -25184,7 +25283,7 @@ loc_2000_F767:				; ...
 
 sub_2000_F76F:				; ...
 		LDY	byte_0_B0
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BEQ	loc_2000_F767
 		CMP	#2
@@ -25304,10 +25403,10 @@ sub_2000_F7F1:				; ...
 loc_2000_F7F3:				; ...
 		LDA	players_obj_unk5,X
 		EOR	Objects_Xpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	players_obj_unk6,X
 		EOR	Objects_Ypos_L,X
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$E0 ; 'р'
 		BEQ	loc_2000_F80F
 		INC	players_obj_unk7,X
@@ -25325,12 +25424,12 @@ loc_2000_F80F:				; ...
 		LDA	players_obj_unk7
 		SEC
 		SBC	byte_0_5B9
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	players_obj_unk8
 		SBC	byte_0_5BB
 		BCC	loc_2000_F83B
 		DEY
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#1
 		BCS	loc_2000_F83B
 		LDY	byte_0_5BC
@@ -25350,7 +25449,7 @@ loc_2000_F83F:				; ...
 
 loc_2000_F845:				; ...
 		LDX	Object_RamSlotID_tmp
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#7
 		BNE	locret_2000_F880
 		LDA	unkn_flag
@@ -25358,8 +25457,8 @@ loc_2000_F845:				; ...
 		BNE	locret_2000_F880
 		INC	Objects_unk_cnt2,X
 		LDY	Objects_unk_cnt2,X
-		LDA	byte_2000_8024 - 1,Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	unknown_ - 1,Y
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BMI	loc_2000_F83F
 		CPY	#3
 		BCS	loc_2000_F881
@@ -25368,14 +25467,14 @@ loc_2000_F864:				; ...
 		LDY	#$B
 
 loc_2000_F866:				; ...
-		LDA	byte_0_55,Y
+		LDA	palette,Y
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		BCS	loc_2000_F870
 		LDA	#$F
 
 loc_2000_F870:				; ...
-		STA	byte_0_55,Y
+		STA	palette,Y
 		DEY
 		BNE	loc_2000_F866
 		LDA	#$84 ; 'Д'
@@ -25394,7 +25493,7 @@ loc_2000_F881:				; ...
 
 loc_2000_F886:				; ...
 		LDA	byte_2000_F891,Y
-		STA	byte_0_55,X
+		STA	palette,X
 		DEY
 		DEX
 		BPL	loc_2000_F886
@@ -25416,7 +25515,7 @@ byte_2000_F891:	.BYTE $F, 6, $26, $36, $F, 7, 5, $15, $F, 6, 0,	$10, $F, 4, $14,
 		.BYTE $B1, $97,	$E3, $CD, $F0, $61, $FE, $AE, $1F, $E, $F0, $B8, $7F, $3D, $C0,	$70, $FF, $3D, $C0, $70, $FF, $3D, $C0
 		.BYTE $70, $FF,	$7A, $81, $E0, $FF, $EB, 7, $E,	$F0, $E7, $78, $AB, $1C, $A8, $10
 byte_2000_F9F1:	.BYTE  $F9, $F9, $F9, $F9, $F9,	$F9, $F8, $F8 ;	...
-byte_2000_F9F9:	.BYTE  $C9, $A1, $79, $51, $29,	  1, $D9, $B1 ;	...
+byte_2000_F9F9:	.BYTE $C9, $A1,	$79, $51, $29, 1, $D9, $B1 ; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_FA01:				; ...
@@ -25466,7 +25565,7 @@ byte_2000_FACE:	.BYTE 0, 3, $3F, $23, $23, $23,	$7F, $7F, 0, $7D, $7D, $79, $79,
 
 sub_2000_FAEE:				; ...
 		LDA	#8
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_2000_FAF2:				; ...
 		LDA	byte_2000_FA6E,Y
@@ -25475,7 +25574,7 @@ loc_2000_FAF2:				; ...
 		STA	byte_0_6B8,X
 		INX
 		INY
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_2000_FAF2
 		TXA
 		CLC
@@ -25498,7 +25597,7 @@ byte_2000_FB16:	.BYTE $18, 0, 8		; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_FB19:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		ORA	byte_0_DC
 		BEQ	loc_2000_FB9D
@@ -25507,19 +25606,19 @@ loc_2000_FB19:				; ...
 		SBC	LevelPos_CamPosY_L
 		AND	#$FC ; '№'
 		BEQ	loc_2000_FB76
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_67E
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_67E
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		LSR	A
 		LSR	A
 		ADC	byte_0_67F
 		AND	#$1F
 		CMP	#$18
 		BCC	loc_2000_FB48
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		SBC	byte_2000_FB16 - 7,Y
 
 loc_2000_FB48:				; ...
@@ -25529,7 +25628,7 @@ loc_2000_FB48:				; ...
 
 loc_2000_FB4E:				; ...
 		LDA	#8
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_2000_FB52:				; ...
 		LDA	byte_2000_FA2E,Y
@@ -25538,7 +25637,7 @@ loc_2000_FB52:				; ...
 		STA	byte_0_688,X
 		INY
 		INX
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_2000_FB52
 		TYA
 		SEC
@@ -25556,9 +25655,9 @@ loc_2000_FB6C:				; ...
 		BNE	loc_2000_FB4E
 
 loc_2000_FB76:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#7
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#9
 		BNE	loc_2000_FB82
 		EOR	#7
@@ -25571,11 +25670,11 @@ loc_2000_FB82:				; ...
 
 loc_2000_FB8A:				; ...
 		TYA
-		ADC	RandomValue_1	; $25
-		SBC	RandomValue_2	; $26
+		ADC	RandomValue_1
+		SBC	RandomValue_2
 		ROL	A
-		EOR	RandomValue_2	; $26
-		STA	RandomValue_1	; $25
+		EOR	RandomValue_2
+		STA	RandomValue_1
 		STA	byte_0_740,Y
 		DEY
 		BPL	loc_2000_FB8A
@@ -25651,7 +25750,7 @@ loc_2000_FC0C:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_FC11:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#2
 		BNE	loc_2000_FC91
 
@@ -25684,7 +25783,7 @@ loc_2000_FC37:				; ...
 		INX
 		CPX	#$10
 		BNE	loc_2000_FC37
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#4
 		TAX
 		BEQ	loc_2000_FC5F
@@ -25706,10 +25805,10 @@ loc_2000_FC61:				; ...
 
 loc_2000_FC72:				; ...
 		LDX	#0
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BEQ	loc_2000_FC94
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_2000_FC11
 		LDA	LevelPos_CamPosX_L
@@ -25732,7 +25831,7 @@ loc_2000_FC91:				; ...
 loc_2000_FC94:				; ...
 		LDA	byte_0_DC
 		BNE	loc_2000_FC91
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_2000_FC91
 		CMP	#$D
@@ -25755,7 +25854,7 @@ loc_2000_FCB5:				; ...
 		LDX	#$C7 ; '╟'
 
 loc_2000_FCB7:				; ...
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	LevelPos_CamPosY_L
 		STA	byte_0_CF
 		LDY	#4
@@ -25771,7 +25870,7 @@ loc_2000_FCBF:				; ...
 		TAX
 		DEY
 		BNE	loc_2000_FCBF
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		BPL	loc_2000_FD1C
 		LDX	#$CF ; '╧'
 
@@ -25844,7 +25943,7 @@ loc_2000_FD1E:				; ...
 		BNE	loc_2000_FD1C
 
 loc_2000_FD5F:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	#$F7 ; 'ў'
 		TAX
 		LDY	#4
@@ -25914,7 +26013,7 @@ loc_2000_FDA2:				; ...
 loc_2000_FDC0:				; ...
 		LDX	#$16
 		LDA	#$C0 ; '└'
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#4
 		BEQ	loc_2000_FDCC
 		LDA	#$80 ; 'А'
@@ -25932,8 +26031,8 @@ loc_2000_FDD3:				; ...
 ; ---------------------------------------------------------------------------
 
 players_gfx:				; ...
-		LDX	Level_ID	; $10
-		LDA	#$80 ; 'А'
+		LDX	Level_ID
+		LDA	#$80
 		CPX	#5
 		BEQ	loc_2000_FE00
 		CPX	#4
@@ -25950,7 +26049,7 @@ players_gfx:				; ...
 		BEQ	loc_2000_FDD3
 		CPX	#2
 		BNE	loc_2000_FE08
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BEQ	loc_2000_FE08
 
@@ -25962,7 +26061,7 @@ loc_2000_FE00:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_2000_FE08:				; ...
-		INC	byte_0_CD
+		INC	update_p1_p2_gfx
 		LDX	#0
 		LDA	player2_obj_wanted_frame
 		CMP	player2_anim_frame
@@ -25971,7 +26070,7 @@ loc_2000_FE08:				; ...
 		LDA	player1_obj_wanted_frame
 		CMP	Obj_anim_frame
 		BEQ	write_obj_wanted_frame
-		LDA	byte_0_CD
+		LDA	update_p1_p2_gfx
 		AND	#1
 		TAX
 
@@ -25987,20 +26086,22 @@ loc_2000_FE2E:				; ...
 		LDA	#$10
 
 loc_2000_FE30:				; ...
-		STX	byte_0_9C
-		STA	byte_0_9D
-		LDA	byte_2000_FE53 - 1,Y
-		STA	ObjCounter_tmp_var_15 ;	80
-		LDA	byte_2000_FE53 - 2,Y
+		STX	obj_slotID_tmp2
+		STA	ptr_adr?	; 10
+		LDA	gfx_ptrs - 1,Y
+		STA	tmp_var_15	; 80
+		LDA	gfx_ptrs - 2,Y
 		TAY
 		LDX	#0
 
 loc_2000_FE3F:				; ...
 		TYA
-		STA	byte_0_796,X
+		STA	ram_code_adrL,X	; Суда пишутся оффсеты рома, которые используются в RAM	коде для записи	графики	в ppu,
+					; 1 раз	записывается оффсет, и далее через 6 байт тоже но уже +1,и так 16 раз.
+					; В команду LDY	$8030,X	 записываются 8030.
 		INY
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	some_object_memory,X ; write 80
+		LDA	tmp_var_15	;  / Object Counter / various tmp
+		STA	ram_code_adrH,X	; write	80
 		TXA
 		CLC
 		ADC	#6
@@ -26011,22 +26112,116 @@ loc_2000_FE3F:				; ...
 locret_2000_FE52:			; ...
 		RTS
 ; ---------------------------------------------------------------------------
-byte_2000_FE53:	.BYTE $30, $80,	$30, $80, $20, $81, $E0, $81, $C0, $82,	$90, $83, $50, $84, $10, $85, $D0, $85,	$C0, $86, $B0, $87, $80	; ...
-		.BYTE $88, $80,	$88, $20, $89, $10, $8A, $E0, $8A, $C0,	$8B, $90, $8C, $80, $8D, $50, $8E, $20,	$8F, $E0, $8F, 0, $A0
-		.BYTE $C0, $90,	$B0, $91, $90, $92, $90, $93, $50, $94,	$50, $95, $20, $96, $20, $97, $20, $98,	0, $99,	$F0, $99, $C0
-		.BYTE $9A, $B0,	$9B, $90, $9C, $90, $9D, $80, $9E, $50,	$9F, 0,	$A0, $F0, $A0, $C0, $A1, $B0, $A2, $80,	$A3, $80, $A4
-		.BYTE $80, $A5,	$50, $A6, $20, $A7, $20, $A8, 0, $A9, 0, $AA, $B0, $AA,	$A0, $AB, $80, $AC, $60, $AD, $D0, $AD,	$50
-		.BYTE $AE, $E0,	$AE, $50, $AE, $60, $AD, $60, $AD, $60,	$AD, $D0, $AD, $90, $AF, $20, $B0, $10,	$B1, $D0, $B1, $A0, $B2
-		.BYTE $60, $B5,	$90, $B3, $90, $B3, $90, $B3, $90, $B3,	$60, $B4, $60, $B6, $60, $B7, $80, $B8,	$80, $B8, $80, $B9, $70
-		.BYTE $BA, $70,	$BB, $70, $BC, $50, $BD, $50, $BD, $D0,	$BD, $20, $BE, $10, $BF, $D0, $BF, $80,	$C0, $60, $C1, $C0, $C1
-		.BYTE $20, $C2,	$C0, $C2, $C0, $C3, $B0, $C4, $80, $C5,	$80, $C6, $30, $C7, $E0, $AE, $E0, $C7,	$E0, $C7, $E0, $AE, $80
-		.BYTE 6
+gfx_ptrs:	.WORD rash_gfx		; ...
+		.WORD rash_gfx
+		.WORD byte_2000_8120
+		.WORD byte_2000_81E0
+		.WORD byte_2000_82C0
+		.WORD byte_2000_8390
+		.WORD byte_2000_8450
+		.WORD byte_2000_8510
+		.WORD byte_2000_85D0
+		.WORD byte_2000_86C0
+		.WORD byte_2000_87B0
+		.WORD byte_2000_8880
+		.WORD byte_2000_8880
+		.WORD byte_2000_8920
+		.WORD byte_2000_8A10
+		.WORD byte_2000_8AE0
+		.WORD byte_2000_8BC0
+		.WORD byte_2000_8C90
+		.WORD byte_2000_8D80
+		.WORD byte_2000_8E50
+		.WORD byte_2000_8F20
+		.WORD byte_2000_8FE0
+		.WORD byte_2000_A000
+		.WORD byte_2000_90C0
+		.WORD byte_2000_91B0
+		.WORD byte_2000_9290
+		.WORD byte_2000_9390
+		.WORD byte_2000_9450
+		.WORD byte_2000_9550
+		.WORD byte_2000_9620
+		.WORD byte_2000_9720
+		.WORD byte_2000_9820
+		.WORD byte_2000_9900
+		.WORD byte_2000_99F0
+		.WORD byte_2000_9AC0
+		.WORD byte_2000_9BB0
+		.WORD byte_2000_9C90
+		.WORD byte_2000_9D90
+		.WORD byte_2000_9E80
+		.WORD byte_2000_9F50
+		.WORD byte_2000_A000
+		.WORD byte_2000_A0F0
+		.WORD byte_2000_A1C0
+		.WORD byte_2000_A2B0
+		.WORD byte_2000_A380
+		.WORD byte_2000_A480
+		.WORD byte_2000_A580
+		.WORD byte_2000_A650
+		.WORD byte_2000_A720
+		.WORD byte_2000_A820
+		.WORD byte_2000_A900
+		.WORD byte_2000_AA00
+		.WORD byte_2000_AAB0
+		.WORD byte_2000_ABA0
+		.WORD byte_2000_AC80
+		.WORD byte_2000_AD60
+		.WORD byte_2000_ADD0
+		.WORD byte_2000_AE50
+		.WORD byte_2000_AEE0
+		.WORD byte_2000_AE50
+		.WORD byte_2000_AD60
+		.WORD byte_2000_AD60
+		.WORD byte_2000_AD60
+		.WORD byte_2000_ADD0
+		.WORD byte_2000_AF90
+		.WORD byte_2000_B020
+		.WORD byte_2000_B110
+		.WORD byte_2000_B1D0
+		.WORD byte_2000_B2A0
+		.WORD byte_2000_B560
+		.WORD byte_2000_B390
+		.WORD byte_2000_B390
+		.WORD byte_2000_B390
+		.WORD byte_2000_B390
+		.WORD byte_2000_B460
+		.WORD byte_2000_B660
+		.WORD byte_2000_B760
+		.WORD byte_2000_B880
+		.WORD byte_2000_B880
+		.WORD byte_2000_B980
+		.WORD byte_2000_BA70
+		.WORD byte_2000_BB70
+		.WORD byte_2000_BC70
+		.WORD byte_2000_BD50
+		.WORD byte_2000_BD50
+		.WORD byte_2000_BDD0
+		.WORD byte_2000_BE20
+		.WORD byte_2000_BF10
+		.WORD byte_2000_BFD0
+		.WORD byte_2000_C080
+		.WORD byte_2000_C160
+		.WORD byte_2000_C1C0
+		.WORD byte_2000_C220
+		.WORD byte_2000_C2C0
+		.WORD byte_2000_C3C0
+		.WORD byte_2000_C4B0
+		.WORD byte_2000_C580
+		.WORD byte_2000_C680
+		.WORD byte_2000_C730
+		.WORD byte_2000_AEE0
+		.WORD byte_2000_C7E0
+		.WORD byte_2000_C7E0
+		.WORD byte_2000_AEE0
+		.WORD $680		; ram
 ; ---------------------------------------------------------------------------
 
 loc_2000_FF23:				; ...
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDX	#0
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		CPY	#$B
 		BNE	loc_2000_FF57
 		LDA	#$1A
@@ -26086,13 +26281,13 @@ loc_2000_FF78:				; ...
 		STA	byte_2000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_2000_FFB3,Y
 		JSR	loc_2000_FF78+1
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_2000_FFB3,Y
 		RTS
@@ -26107,7 +26302,7 @@ loc_2000_FF98:				; ...
 		JMP	loc_2000_FF78
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_2000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -26123,16 +26318,16 @@ byte_2000_FFB6:	.BYTE 3, 4, 5, 6, 7, 8,	9, $A, $B, $C, $D, $E, $F, $10,	$11, $12
 sub_2000_FFCB:				; ...
 		LDA	#0
 		ORA	#2
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_2000_FFB3,Y
 		STA	byte_2000_FFB3,Y
 		JSR	sub_2000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_2000_FFB3,Y
 		STA	byte_2000_FFB3,Y
 		RTS
@@ -26168,7 +26363,7 @@ loc_2000_FFF2:				; ...
 
 
 sub_3000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_3000_8000
 
 ; ---------------------------------------------------------------------------
@@ -26235,7 +26430,7 @@ sub_3000_8054:				; ...
 		LDA	#$E1 ; 'с'
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDA	#2
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_F1
 		ASL	A
 		ASL	A
@@ -26371,7 +26566,7 @@ loc_3000_8068:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		LDA	byte_3000_8309,Y
 		STA	PPU_DATA	; VRAM I/O Register (RW)
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BEQ	loc_3000_81F7
 		LDA	#$1E
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
@@ -26390,7 +26585,7 @@ loc_3000_81F7:				; ...
 		TAX
 		LDY	byte_3000_8500,X
 		LDA	byte_3000_84F0,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_3000_84E0,X
 		TAX
 
@@ -26474,7 +26669,7 @@ loc_3000_820D:				; ...
 		TYA
 		ADC	#$70 ; 'p'
 		TAY
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		JMP	loc_3000_820D
 ; ---------------------------------------------------------------------------
 
@@ -26553,7 +26748,7 @@ loc_3000_853B:				; ...
 
 loc_3000_8541:				; ...
 		TAY
-		LDA	byte_0_4F
+		LDA	music_id_
 		STA	byte_0_50
 		LDA	byte_3000_855A - 1,Y
 		STA	byte_0_41
@@ -26604,7 +26799,7 @@ play_pcm:				; ...
 loc_3000_8575:				; ...
 		DEX
 		BNE	loc_3000_8575
-		INC	RandomValue_4	; $28
+		INC	RandomValue_4
 		LDA	byte_0_51
 		BEQ	locret_3000_8580
 		STX	byte_0_51
@@ -26717,7 +26912,7 @@ loc_3000_8721:				; ...
 		ROL	byte_0_4A
 		STA	byte_0_49
 		LDA	byte_0_44
-		ADC	byte_0_42
+		ADC	music_id__
 		STA	byte_0_44
 		BCC	play_pcm_cycle?
 		INC	byte_0_43
@@ -26854,16 +27049,16 @@ loc_3000_87F7:				; ...
 
 
 random_:				; ...
-		LDA	RandomValue_1	; $25
-		EOR	RandomValue_4	; $28
-		ADC	RandomValue_3	; $27
-		STA	RandomValue_2	; $26
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_1
+		EOR	RandomValue_4
+		ADC	RandomValue_3
+		STA	RandomValue_2
+		LDA	RandomValue_3
 		ROL	A
-		SBC	RandomValue_4	; $28
-		STA	RandomValue_3	; $27
-		EOR	RandomValue_2	; $26
-		STA	RandomValue_1	; $25
+		SBC	RandomValue_4
+		STA	RandomValue_3
+		EOR	RandomValue_2
+		STA	RandomValue_1
 		RTS
 ; End of function random_
 
@@ -26872,28 +27067,28 @@ random_:				; ...
 
 
 start_play_music:			; ...
-		LDA	music_var32
+		LDA	music_id
 		TAY
 		ASL	A
 		ASL	A
 		ASL	A
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDX	#0
-		STX	music_var32
-		STX	byte_0_4F
-		STX	byte_0_42
-		LDA	byte_3000_959E,Y
-		STA	byte_0_33
+		STX	music_id
+		STX	music_id_
+		STX	music_id__
+		LDA	music_info_tbl,Y
+		STA	music_info
 		LDA	#3
 		JSR	set_pcm_ptr
 
 loc_3000_8828:				; ...
 		TYA
 		STA	byte_0_301,X
-		LDY	byte_0_39
-		LDA	unk_3000_95B3,Y
+		LDY	tmp_var_39
+		LDA	music_dat_ptrs,Y
 		STA	byte_0_303,X
-		LDA	word_3000_95B4,Y
+		LDA	music_dat_ptrs+1,Y
 		STA	byte_0_304,X
 		LDA	#1
 		STA	byte_0_302,X
@@ -26905,10 +27100,10 @@ loc_3000_8828:				; ...
 		STA	byte_0_3A2,X
 		STA	byte_0_3A3,X
 		STA	byte_0_3A4,X
-		LDY	byte_0_39
+		LDY	tmp_var_39
 		INY
 		INY
-		STY	byte_0_39
+		STY	tmp_var_39
 		INX
 		INX
 		INX
@@ -26923,12 +27118,12 @@ loc_3000_8828:				; ...
 
 
 sub_3000_8865:				; ...
-		LDA	music_var32
+		LDA	music_id
 		CLC
-		ADC	byte_0_33
-		STA	music_var32
+		ADC	music_info
+		STA	music_id
 		ROR	A
-		STA	checkit_34
+		STA	music_id_ror
 		LDX	#0
 
 loc_3000_8871:				; ...
@@ -26958,7 +27153,7 @@ locret_3000_8889:			; ...
 
 
 sub_3000_888A:				; ...
-		LDA	checkit_34
+		LDA	music_id_ror
 		BMI	loc_3000_8891
 		JMP	loc_3000_8948
 ; ---------------------------------------------------------------------------
@@ -26989,9 +27184,9 @@ loc_3000_88B0:				; ...
 
 loc_3000_88C5:				; ...
 		LDA	byte_0_303,X
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	byte_0_304,X
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 
 loc_3000_88CF:				; ...
 		LDY	#$FF
@@ -27000,7 +27195,7 @@ loc_3000_88D1:				; ...
 		INY
 
 loc_3000_88D2:				; ...
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		BMI	loc_3000_88D9
 		JMP	loc_3000_8B68
 ; ---------------------------------------------------------------------------
@@ -27013,7 +27208,7 @@ loc_3000_88D9:				; ...
 
 loc_3000_88E1:				; ...
 		ASL	A
-		STY	byte_0_39
+		STY	tmp_var_39
 		TAY
 		LDA	byte_0_361,X
 		LSR	A
@@ -27039,10 +27234,10 @@ loc_3000_890A:				; ...
 		STA	byte_0_324,X
 		LDA	byte_0_3A2,X
 		BPL	loc_3000_8923
-		LDY	byte_0_39
+		LDY	tmp_var_39
 		INY
-		STY	byte_0_39
-		LDA	(checkit_37),Y
+		STY	tmp_var_39
+		LDA	(jump_ptr_unk_0),Y
 		ORA	#$10
 		JSR	sub_3000_8C08
 		LDA	#0
@@ -27054,20 +27249,20 @@ loc_3000_8923:				; ...
 		JSR	sub_3000_8A55
 
 loc_3000_892B:				; ...
-		LDY	byte_0_39
+		LDY	tmp_var_39
 		LDA	byte_0_351,X
 		BNE	loc_3000_8935
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 
 loc_3000_8935:				; ...
 		STA	byte_0_302,X
 		INY
 		TYA
 		CLC
-		ADC	checkit_37
+		ADC	jump_ptr_unk_0
 		STA	byte_0_303,X
-		LDA	checkit_38
+		LDA	jump_ptr_unk_0+1
 		ADC	#0
 		STA	byte_0_304,X
 		RTS
@@ -27075,7 +27270,7 @@ loc_3000_8935:				; ...
 
 loc_3000_8948:				; ...
 		LDA	byte_0_324,X
-		STA	word_0_3A
+		STA	jump_ptr_unk1
 		LDA	byte_0_3A1,X
 		BEQ	loc_3000_899A
 		LDA	byte_0_382,X
@@ -27174,10 +27369,10 @@ loc_3000_89F5:				; ...
 		LDA	byte_0_352,X
 		CLC
 		ADC	byte_0_391,X
-		STA	word_0_3A+1
+		STA	jump_ptr_unk1+1
 		AND	#$10
 		BEQ	loc_3000_8A19
-		LDA	word_0_3A+1
+		LDA	jump_ptr_unk1+1
 		STA	byte_0_352,X
 
 loc_3000_8A19:				; ...
@@ -27221,7 +27416,7 @@ loc_3000_8A4F:				; ...
 
 sub_3000_8A55:				; ...
 		LDA	#$FF
-		STA	word_0_3A
+		STA	jump_ptr_unk1
 		LDA	byte_0_322,X
 		STA	pAPU_Pulse1_Ramp_Control_Reg,X ; pAPU Pulse #1 Ramp Control Register (W)
 
@@ -27233,7 +27428,7 @@ loc_3000_8A5F:				; ...
 		LDA	byte_0_323,X
 		STA	pAPU_Pulse1__FT__Reg,X ; pAPU Pulse #1 Fine Tune (FT) Register (W)
 		LDA	byte_0_324,X
-		CMP	word_0_3A
+		CMP	jump_ptr_unk1
 		BEQ	locret_3000_8A7A
 		STA	pAPU_Pulse1__CT__Reg,X ; pAPU Pulse #1 Coarse Tune (CT)	Register (W)
 
@@ -27275,7 +27470,7 @@ loc_3000_8A89:				; ...
 		AND	#$FE ; '■'
 		CMP	#$7A ; 'z'
 		BEQ	locret_3000_8AA3
-		LDA	byte_0_39
+		LDA	tmp_var_39
 		CMP	sounds_ids,X
 		BEQ	locret_3000_8A7A
 		PHA
@@ -27295,23 +27490,23 @@ loc_3000_8AA4:				; ...
 		AND	#$FE ; '■'
 		TAY
 		LDA	off_3000_8E9A,Y
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	off_3000_8E9A+1,Y
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 		LDY	#0
 		TYA
 		STA	byte_0_361,X
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		AND	#$F
 		STA	byte_0_312,X
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		AND	#$F0 ; 'Ё'
 		STA	byte_0_331,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_332,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_334,X
 		JMP	loc_3000_8B59
 
@@ -27335,17 +27530,17 @@ loc_3000_8AEA:				; ...
 		ASL	A
 		ASL	A
 		ASL	A
-		STA	byte_0_39
+		STA	tmp_var_39
 		ORA	byte_0_312,X
 		STA	byte_0_312,X
 		LDA	byte_0_313,X
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	byte_0_314,X
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 		LDY	#0
 
 loc_3000_8B02:				; ...
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		BNE	loc_3000_8B17
 		STA	sounds_ids,X
 		LDA	byte_0_301,X
@@ -27368,54 +27563,54 @@ loc_3000_8B17:				; ...
 		LSR	A
 		LSR	A
 		LSR	A
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDA	byte_0_331,X
 		AND	#$F0 ; 'Ё'
-		ORA	byte_0_39
+		ORA	tmp_var_39
 		STA	byte_0_331,X
 		STA	SND_SQUARE1_REG,X ; pAPU Pulse #1 Control Register (W)
 		LDA	byte_0_332,X
 		STA	pAPU_Pulse1_Ramp_Control_Reg,X ; pAPU Pulse #1 Ramp Control Register (W)
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		AND	#7
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDA	byte_0_334,X
 		AND	#7
-		CMP	byte_0_39
+		CMP	tmp_var_39
 		BEQ	loc_3000_8B50
 		LDA	byte_0_334,X
 		AND	#$F8 ; '°'
-		ORA	byte_0_39
+		ORA	tmp_var_39
 		STA	byte_0_334,X
 		STA	pAPU_Pulse1__CT__Reg,X ; pAPU Pulse #1 Coarse Tune (CT)	Register (W)
 
 loc_3000_8B50:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_333,X
 		STA	pAPU_Pulse1__FT__Reg,X ; pAPU Pulse #1 Fine Tune (FT) Register (W)
 
 loc_3000_8B59:				; ...
 		TYA
 		SEC
-		ADC	checkit_37
+		ADC	jump_ptr_unk_0
 		STA	byte_0_313,X
-		LDA	checkit_38
+		LDA	jump_ptr_unk_0+1
 		ADC	#0
 		STA	byte_0_314,X
 		RTS
 ; ---------------------------------------------------------------------------
 
 loc_3000_8B68:				; ...
-		STX	byte_0_39
+		STX	tmp_var_39
 		ASL	A
 		TAX
 		LDA	off_3000_8B7B,X
-		STA	word_0_3A
+		STA	jump_ptr_unk1
 		LDA	off_3000_8B7B+1,X
-		STA	word_0_3A+1
-		LDX	byte_0_39
-		JMP	(word_0_3A)
+		STA	jump_ptr_unk1+1
+		LDX	tmp_var_39
+		JMP	(jump_ptr_unk1)
 ; End of function sub_3000_8AD7
 
 ; ---------------------------------------------------------------------------
@@ -27482,22 +27677,22 @@ loc_3000_8BDD:				; ...
 
 loc_3000_8BE5:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_351,X
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
 
 loc_3000_8BEE:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_321,X
 		AND	#$1F
 		JSR	sub_3000_8C08
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_322,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_324,X
 		JMP	loc_3000_88D1
 
@@ -27520,13 +27715,13 @@ locret_3000_8C18:			; ...
 
 loc_3000_8C19:				; ...
 		INY
-		LDA	(checkit_37),Y
-		STA	byte_0_39
+		LDA	(jump_ptr_unk_0),Y
+		STA	tmp_var_39
 		INY
-		LDA	(checkit_37),Y
-		STA	checkit_38
-		LDA	byte_0_39
-		STA	checkit_37
+		LDA	(jump_ptr_unk_0),Y
+		STA	jump_ptr_unk_0+1
+		LDA	tmp_var_39
+		STA	jump_ptr_unk_0
 		JMP	loc_3000_88CF
 ; ---------------------------------------------------------------------------
 
@@ -27534,9 +27729,9 @@ loc_3000_8C2A:				; ...
 		INY
 		TYA
 		CLC
-		ADC	checkit_37
+		ADC	jump_ptr_unk_0
 		STA	byte_0_3A4
-		LDA	checkit_38
+		LDA	jump_ptr_unk_0+1
 		ADC	#0
 		STA	byte_0_3A8
 		BNE	loc_3000_8C7F
@@ -27545,52 +27740,52 @@ loc_3000_8C3B:				; ...
 		INY
 		TYA
 		CLC
-		ADC	checkit_37
+		ADC	jump_ptr_unk_0
 		STA	byte_0_3AC
-		LDA	checkit_38
+		LDA	jump_ptr_unk_0+1
 		ADC	#0
 		STA	byte_0_3B0
 		BNE	loc_3000_8C7F
 
 loc_3000_8C4C:				; ...
 		LDA	byte_0_3A4
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	byte_0_3A8
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 		LDY	#2
 		JMP	loc_3000_88D2
 ; ---------------------------------------------------------------------------
 
 loc_3000_8C5B:				; ...
 		LDA	byte_0_3AC
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	byte_0_3B0
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 		LDY	#2
 		JMP	loc_3000_88D2
 ; ---------------------------------------------------------------------------
 
 loc_3000_8C6A:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_343,X
 		INY
 		TYA
 		CLC
-		ADC	checkit_37
+		ADC	jump_ptr_unk_0
 		STA	byte_0_341,X
-		LDA	checkit_38
+		LDA	jump_ptr_unk_0+1
 		ADC	#0
 		STA	byte_0_342,X
 
 loc_3000_8C7F:				; ...
-		LDA	(checkit_37),Y
-		STA	byte_0_39
+		LDA	(jump_ptr_unk_0),Y
+		STA	tmp_var_39
 		INY
-		LDA	(checkit_37),Y
-		STA	checkit_38
-		LDA	byte_0_39
-		STA	checkit_37
+		LDA	(jump_ptr_unk_0),Y
+		STA	jump_ptr_unk_0+1
+		LDA	tmp_var_39
+		STA	jump_ptr_unk_0
 		JMP	loc_3000_88CF
 ; ---------------------------------------------------------------------------
 
@@ -27598,18 +27793,18 @@ loc_3000_8C8F:				; ...
 		DEC	byte_0_343,X
 		BEQ	loc_3000_8CA3
 		LDA	byte_0_341,X
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	byte_0_342,X
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 		LDY	#0
 		JMP	loc_3000_8C7F
 ; ---------------------------------------------------------------------------
 
 loc_3000_8CA3:				; ...
 		LDA	byte_0_341,X
-		STA	checkit_37
+		STA	jump_ptr_unk_0
 		LDA	byte_0_342,X
-		STA	checkit_38
+		STA	jump_ptr_unk_0+1
 		LDY	#2
 		JMP	loc_3000_88D2
 ; ---------------------------------------------------------------------------
@@ -27617,7 +27812,7 @@ loc_3000_8CA3:				; ...
 loc_3000_8CB2:				; ...
 		JSR	sub_3000_8CC4
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_364,X
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
@@ -27631,18 +27826,18 @@ loc_3000_8CBE:				; ...
 
 sub_3000_8CC4:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_361,X
 		LSR	A
 		STA	byte_0_362,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		CLC
 		ADC	#1
 		STA	byte_0_363,X
 		STA	byte_0_364,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		SEC
 		SBC	#1
 		EOR	#$FF
@@ -27672,7 +27867,7 @@ loc_3000_8CF4:				; ...
 loc_3000_8CFC:				; ...
 		STA	byte_0_383,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_384,X
 		JMP	loc_3000_88D1
 
@@ -27681,19 +27876,19 @@ loc_3000_8CFC:				; ...
 
 sub_3000_8D08:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_382,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		CLC
 		ADC	#1
 		STA	byte_0_3A1,X
 		STA	byte_0_374,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_381,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		RTS
 ; End of function sub_3000_8D08
 
@@ -27718,10 +27913,10 @@ loc_3000_8D31:				; ...
 
 loc_3000_8D37:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_3A2,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		ORA	#$10
 		STA	byte_0_3A3,X
 		DEY
@@ -27730,7 +27925,7 @@ loc_3000_8D46:				; ...
 		LDA	#0
 		STA	byte_0_393,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 
 loc_3000_8D4E:				; ...
 		ORA	#$10
@@ -27753,19 +27948,19 @@ loc_3000_8D66:				; ...
 		LDA	#1
 		STA	byte_0_393,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		CLC
 		ADC	#1
 		STA	byte_0_353,X
 		STA	byte_0_392,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		CLC
 		ADC	#1
 		STA	byte_0_394,X
 		STA	byte_0_373,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		ORA	#$10
 		STA	byte_0_391,X
 
@@ -27778,18 +27973,18 @@ loc_3000_8D91:				; ...
 		LDA	#2
 		STA	byte_0_393,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_353,X
 		LSR	A
 		STA	byte_0_392,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		CLC
 		ADC	#1
 		STA	byte_0_394,X
 		STA	byte_0_373,X
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_391,X
 		JMP	loc_3000_8D8B
 ; ---------------------------------------------------------------------------
@@ -27806,13 +28001,13 @@ loc_3000_8DBD:				; ...
 loc_3000_8DBF:				; ...
 		INY
 		CLC
-		ADC	(checkit_37),Y
-		STA	byte_0_33
+		ADC	(jump_ptr_unk_0),Y
+		STA	music_info
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
 
 loc_3000_8DC8:				; ...
-		LDA	byte_0_33
+		LDA	music_info
 		JMP	loc_3000_8DBF
 ; ---------------------------------------------------------------------------
 
@@ -27822,7 +28017,7 @@ loc_3000_8DCD:				; ...
 loc_3000_8DCF:				; ...
 		INY
 		CLC
-		ADC	(checkit_37),Y
+		ADC	(jump_ptr_unk_0),Y
 		STA	byte_0_354,X
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
@@ -27834,7 +28029,7 @@ loc_3000_8DD9:				; ...
 
 loc_3000_8DDF:				; ...
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_354
 		STA	byte_0_358
 		STA	byte_0_35C
@@ -27848,7 +28043,7 @@ loc_3000_8DF1:				; ...
 loc_3000_8DF3:				; ...
 		STA	byte_0_40
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		STA	byte_0_3F
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
@@ -27871,13 +28066,13 @@ loc_3000_8E09:				; ...
 
 loc_3000_8E0D:				; ...
 		INY
-		LDA	(checkit_37),Y
-		STA	byte_0_42
+		LDA	(jump_ptr_unk_0),Y
+		STA	music_id__
 		INY
-		LDA	(checkit_37),Y
-		STA	byte_0_4F
+		LDA	(jump_ptr_unk_0),Y
+		STA	music_id_
 		INY
-		LDA	(checkit_37),Y
+		LDA	(jump_ptr_unk_0),Y
 		JSR	set_pcm_ptr
 		JMP	loc_3000_88D1
 ; ---------------------------------------------------------------------------
@@ -28081,23 +28276,36 @@ byte_3000_955A:	.BYTE $B8, $8B,	7, $26,	0, $35,	$FF, $46, 0, $55, $FF, $66, 0, $
 		.BYTE $D5, 0, $E4, 0, $F3, 0, 0
 byte_3000_957A:	.BYTE $72, 1, 7, 2, $34, 0, $84, $10, $C4, 0, $84, $10,	$44, 0,	0 ; ...
 byte_3000_9589:	.BYTE $B2, 1, 7, 2, $84, 0, $10, 0, $10, 0, $10, 0, $B4, 0, $83, $F0, $53, $E0,	$23, $D0, 0 ; ...
-byte_3000_959E:	.BYTE $80, $8A,	$8A, $7A, $57, $8A, $8A, $8A, $8A, $8A,	$80, $88, $8A, $8A, $7A, $8A, $B8, $A0,	$52, $8A, $81 ;	...
-unk_3000_95B3:	.BYTE	4		; ...
- include parts\bank3_95b4.asm
-; word_3000_95B4
-byte_3000_CCE5:	.BYTE $C0		; ...
-byte_3000_CCE6:	.BYTE 2, 0, 3, $40, 2, 0, 6, $C0, 7, $80, 4, $40, 2, $80, 3, $C0, 2, $FF, 0, 2,	$C0, 7,	0, 2, $C0, 6, $80, 2, $C0, 3 ; ...
-		.BYTE 0, 5, $40, 2, 0, 9, $FF, $C0, 2, $80, 5, $40, 3, 0, 2, $40, 1, 0,	1, $40,	2, 0, 3, $C0, 2, 0, 7, $40, 3, $80, 4
-		.BYTE $40, 3, 0, 3, $40, 3, $80, 4, $40, 3, 0, 6, $C0, 2, $FF, $80, 2, $C0, $A,	0, 2, $C0, 4, $80, 4, $C0, 1, $80, 3
-		.BYTE $C0, 5, 0, 5, $40, 2, 0, 2, $C0, 6, $80, 2, $40, 1, $80, 3, $C0, 5, 0, 3,	$C0, 3,	$FF, 0,	1, $C0,	5, 0, 3, $C0
-		.BYTE 3, $80, 4, $C0, 3, 0, 4, $C0, 3, $80, 1, $FF, 0, 2, $80, 1, $C0, 7, 0, $A, $40, 4, 0, 3, $C0, 8, $80, 5, $C0, 2
-		.BYTE $80, 4, $40, 2, $80, 5, $C0, 5, 0, 3, $C0, 7, 0, 4, $40, 7, 0, 6,	$FF
+music_info_tbl:	.BYTE $80, $8A,	$8A, $7A, $57, $8A, $8A, $8A, $8A, $8A,	$80, $88, $8A, $8A, $7A, $8A, $B8, $A0,	$52, $8A, $81 ;	...
+music_dat_ptrs:	.WORD byte_3000_C704, byte_3000_C704, byte_3000_C704, byte_3000_C704 ; ...
+		.WORD byte_3000_A068, byte_3000_A0B6, byte_3000_A104, byte_3000_A132
+		.WORD byte_3000_A47E, byte_3000_A675, byte_3000_A865, byte_3000_A93B
+		.WORD byte_3000_AAD0, byte_3000_AC94, byte_3000_AD8C, byte_3000_AE6C
+		.WORD byte_3000_A15E, byte_3000_A2CF, byte_3000_A364, byte_3000_A408
+		.WORD byte_3000_A489, byte_3000_A696, byte_3000_A870, byte_3000_A948
+		.WORD byte_3000_AEC8, byte_3000_B04B, byte_3000_B167, byte_3000_B248
+		.WORD hidden_track_p1, hidden_track_p2,	hidden_track_p3, hidden_track_p4
+		.WORD byte_3000_B568, byte_3000_B66C, byte_3000_B76B, byte_3000_B806
+		.WORD byte_3000_BD6B, byte_3000_BEC7, byte_3000_BF6A, byte_3000_C05D
+		.WORD byte_3000_A9C8, byte_3000_AA1D, byte_3000_AA75, byte_3000_AAAF
+		.WORD byte_3000_9F03, byte_3000_9F6E, byte_3000_9FDB, byte_3000_A026
+		.WORD byte_3000_B8E3, byte_3000_BA5A, byte_3000_BBCC, byte_3000_BCD4
+		.WORD byte_3000_C123, byte_3000_C342, byte_3000_C540, byte_3000_C63F
+		.WORD byte_3000_965B, byte_3000_97BF, byte_3000_983B, byte_3000_98B2
+		.WORD byte_3000_98ED, byte_3000_994E, byte_3000_999F, byte_3000_99C3
+		.WORD byte_3000_C705, byte_3000_C89D, byte_3000_C9A5, byte_3000_CAC0
+		.WORD byte_3000_99D9, byte_3000_9AAB, byte_3000_9B90, byte_3000_9C16
+		.WORD byte_3000_B863, byte_3000_B870, byte_3000_B8B0, byte_3000_B8D1
+		.WORD byte_3000_9D93, byte_3000_9E0C, byte_3000_9E8C, byte_3000_9EBC
+		.WORD byte_3000_9C8A, byte_3000_9CB2, byte_3000_9CDA, byte_3000_9D13
+ include parts\music.asm
+; byte_3000_965B
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_3000_CD8F:				; ...
-		STA	byte_0_39
+		STA	tmp_var_39
 		JSR	sub_3000_8A7F
 		LDX	Object_RamSlotID_tmp
 		RTS
@@ -28114,7 +28322,7 @@ loc_3000_CD97:				; ...
 		CMP	#$FF
 		BNE	loc_3000_CDB3
 		LDA	#$B
-		STA	byte_0_39
+		STA	tmp_var_39
 		JSR	some_sounds_
 		LDX	Object_RamSlotID_tmp
 		RTS
@@ -28136,7 +28344,7 @@ loc_3000_CDB3:				; ...
 
 loc_3000_CDC4:				; ...
 		JSR	background_vs_sprites_pos
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$D
 		BEQ	loc_3000_CDD9
 		CMP	#$A
@@ -28153,10 +28361,10 @@ loc_3000_CDD9:				; ...
 
 loc_3000_CDE0:				; ...
 		LDA	#0
-		STA	byte_0_2D
+		STA	previous_bankID
 		STA	byte_0_96
 		JSR	update_UI
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BNE	loc_3000_CDF7
 		LDA	#$98 ; 'Ш'
@@ -28179,13 +28387,13 @@ loc_3000_CE45:				; ...
 		LDX	Object_RamSlotID_tmp
 		LDA	#$90 ; 'Р'
 		STA	Obj_anim_frame,X
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$82 ; 'В'
 		BNE	loc_3000_CE6D
 		LDA	Objects_Flags,X
 		AND	#3
 		BEQ	loc_3000_CE6D
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$7F ; ''
 		CMP	#$30 ; '0'
 		LDA	#$FA ; '·'
@@ -28201,7 +28409,7 @@ loc_3000_CE6D:				; ...
 		LDA	Objects_unk2,X
 		BNE	loc_3000_CEA6
 		LDA	Objects_Xpos_L,X
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	objects_some_anim,X
 		STA	Objects_Xpos_L,X
@@ -28216,13 +28424,13 @@ loc_3000_CE86:				; ...
 		EOR	#$FF
 		STA	objects_some_anim,X
 		LDA	#$79 ; 'y'
-		STA	byte_0_39
+		STA	tmp_var_39
 		JSR	sub_3000_8A7B
 		LDX	Object_RamSlotID_tmp
 
 loc_3000_CE9A:				; ...
 		LDA	Objects_Xpos_L,X
-		EOR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		EOR	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$F8 ; '°'
 		BEQ	locret_3000_CF16
 		INC	Objects_unk2,X
@@ -28240,10 +28448,10 @@ loc_3000_CEA6:				; ...
 		LDY	#0
 		JSR	sub_3000_FFCB
 		LDA	#0
-		STA	byte_0_2D
+		STA	previous_bankID
 		LDY	#$17
 		LDX	#$2F ; '/'
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$1F
 		CMP	#6
 		BEQ	loc_3000_CED7
@@ -28262,9 +28470,9 @@ loc_3000_CED7:				; ...
 		LDX	Object_RamSlotID_tmp
 		ROL	A
 		BCC	locret_3000_CF16
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$1F
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$18
 		BCS	loc_3000_CEFB
 		BNE	locret_3000_CF16
@@ -28275,7 +28483,7 @@ loc_3000_CED7:				; ...
 
 loc_3000_CEFB:				; ...
 		LDA	#$1D
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 		LDA	#4
 		CPY	#5
@@ -28303,7 +28511,7 @@ loc_3000_CF17:				; ...
 
 sub_3000_CF1E:				; ...
 		LDX	#0
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		BMI	loc_3000_CF3F
 		LDX	#2
 		BNE	loc_3000_CF3F
@@ -28322,11 +28530,11 @@ non_pl_obj_work:			; ...
 
 
 objects_work:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#0
 		STA	PPU_CTRL_REG2	; PPU Control Register #2 (W)
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		SEI
 		LDA	#$F
@@ -28335,7 +28543,7 @@ objects_work:				; ...
 loc_3000_CF3F:				; ...
 		STX	Object_RamSlotID_tmp
 		LDA	Objects_TypeID,X
-		CMP	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		CMP	tmp_var_15	;  / Object Counter / various tmp
 		BEQ	loc_3000_CF59
 		CMP	#$1A
 		BEQ	loc_3000_CF59
@@ -28353,7 +28561,7 @@ loc_3000_CF59:				; ...
 		LDA	#0
 
 loc_3000_CF60:				; ...
-		STA	byte_0_2D	; clr
+		STA	previous_bankID	; clr
 		RTS
 ; End of function objects_work
 
@@ -28363,7 +28571,7 @@ loc_3000_CF60:				; ...
 
 restart_on_bikes:			; ...
 		LDA	#0
-		STA	byte_0_E4
+		STA	stop_scroll_flag
 		LDA	#$18		; object=18
 		JSR	non_pl_obj_work
 		LDA	Level_CfgAdr_new ; адрес конфига уровня	от чекпоинта
@@ -28390,7 +28598,7 @@ restart_on_bikes:			; ...
 		LDA	#$DC ; '▄'
 		STA	player2_Ypos_L
 		LDA	#$50 ; 'P'
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#3
 		BEQ	loc_3000_CFAF
 		LDA	#$70 ; 'p'
@@ -28417,7 +28625,7 @@ loc_3000_CFD8:				; ...
 
 loc_3000_CFDA:				; ...
 		TXA
-		STA	byte_0_D4,Y
+		STA	bikes_accelerate,Y
 		STA	byte_0_E9,Y
 		STA	players_obj_unk17,Y
 		STA	Objects_Flags,Y
@@ -28447,7 +28655,7 @@ loc_3000_D00A:				; ...
 		JSR	background_vs_sprites_pos
 		INC	unkn_cnt4
 		LDA	#0
-		STA	byte_0_2D
+		STA	previous_bankID
 		RTS
 ; End of function restart_on_bikes
 
@@ -28479,9 +28687,9 @@ loc_3000_D04B:				; ...
 		BPL	loc_3000_D036
 		LDA	objects_some_anim,Y
 		ASL	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		TAX
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		EOR	#5
 		BNE	loc_3000_D06E
 		STA	LevelPos_CamPosX_H
@@ -28577,7 +28785,7 @@ level_backgn_Y_pos:.BYTE $23, $23, $23,	$23, $30, $23, $23, $32, $23, $23, $23,	
 
 
 background_vs_sprites_pos:		; ...
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		LDA	unkn_cnt1
 		BEQ	loc_3000_D14C
 		INC	unkn_cnt1
@@ -28746,7 +28954,7 @@ byte_3000_D22F:	.BYTE 1, 9, $11, $19, $21, $29 ; ...
 
 
 load_lvl_obj_config:			; ...
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		LDA	level_cfg_ptrl,X
 		STA	LevelCfgAdr_L	; текущий адрес	рома для чтения	объектов уровня
 		LDA	level_cfg_ptrh,X
@@ -28764,7 +28972,7 @@ level_cfg_ptrh:	.DH  #level1_cfg,#level1_cfg,#level2_cfg,#level3_cfg,#level4_cfg
 
 
 sub_3000_D263:				; ...
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	levels_sub_ptr,Y
 		STA	LevelCfgAdr_L	; текущий адрес	рома для чтения	объектов уровня
 		LDA	levels_sub_ptr+1,Y
@@ -28843,7 +29051,7 @@ loc_3000_D2D3:				; ...
 		CMP	#$FE
 		BEQ	stop_read_cfg
 		LDY	#2
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_3000_D2E3
 		CMP	#4
@@ -29312,10 +29520,10 @@ level13_cfg:	.BYTE	 1,   0,   0,	0, $1C,	  2, $90,   0, $9C,   0, $20
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_3000_E07A:				; ...
+read_anims_data:			; ...
 		CPY	#$FF
 		BNE	loc_3000_E08D
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	animations_ptrs	- 2,Y
 		STA	tmp_var_19
 		LDA	animations_ptrs+1 - 2,Y
@@ -29333,11 +29541,9 @@ loc_3000_E08D:				; ...
 		STA	Obj_Amindata3_tmp
 		DEY
 		DEY
-
-loc_3000_E09D:
-		LDA	#0
+		LDA	#0		; return to bank 0
 		RTS
-; End of function sub_3000_E07A
+; End of function read_anims_data
 
 ; ---------------------------------------------------------------------------
 animations_ptrs:.WORD udar_small_punch	; ...
@@ -30063,7 +30269,7 @@ level6_cfg:	.BYTE	 1,   0,   0,	0, $60,	  0, $C8,   0, $40,   0, $20
 
 
 get_object_free_mem:			; ...
-		LDX	#tmp_var_02
+		LDX	#2
 
 loc_3000_FF3A:				; ...
 		LDA	Objects_TypeID,X
@@ -30085,7 +30291,7 @@ word_3000_FF46:	.WORD $FFFF, $FFFF, $FFFF, $FFFF ; ...
 		.WORD $FFFF, $FFFF, $FFFF, $FFFF
 ; ---------------------------------------------------------------------------
 		STA	byte_3000_FFB6
-		JSR	sub_3000_E07A
+		JSR	read_anims_data
 		STA	byte_3000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
@@ -30095,13 +30301,13 @@ word_3000_FF46:	.WORD $FFFF, $FFFF, $FFFF, $FFFF ; ...
 		STA	byte_3000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_3000_FFB3,Y
 		JSR	sub_3000_8865
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_3000_FFB3,Y
 		RTS
@@ -30116,7 +30322,7 @@ loc_3000_FF98:				; ...
 		JMP	word_3000_FF46
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_3000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -30132,18 +30338,18 @@ byte_3000_FFB6:	.BYTE 3, 4, 5, 6, 7, 8,	9, $A, $B, $C, $D, $E, $F, $10,	$11, $12
 sub_3000_FFCB:				; ...
 		LDA	#0
 		ORA	#3
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_3000_FFB3,Y
 		STA	byte_3000_FFB3,Y
 		JSR	sub_3000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 
 loc_3000_FFE1:				; ...
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_3000_FFB3,Y
 		STA	byte_3000_FFB3,Y
 		RTS
@@ -30179,7 +30385,7 @@ loc_3000_FFF2:				; ...
 
 
 sub_4000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_4000_8000
 
 ; ---------------------------------------------------------------------------
@@ -30191,7 +30397,7 @@ locret_4000_8006:			; ...
 ; ---------------------------------------------------------------------------
 
 unpack_backg_gfx?:			; ...
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	off_4000_80A5,X
 		STA	tmp_var_01
@@ -30432,13 +30638,13 @@ word_4000_FF72:	.WORD $FFFF		; ...
 		STA	byte_4000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_4000_FFB3,Y
 		JSR	word_4000_FF72
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_4000_FFB3,Y
 		RTS
@@ -30453,7 +30659,7 @@ loc_4000_FF98:				; ...
 		JMP	locret_4000_FF71
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_4000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -30465,16 +30671,16 @@ byte_4000_FFB6:	.BYTE 3, 4, 5, 6, 7, 8,	9, $A, $B, $C, $D, $E, $F, $10,	$11, $12
 ; ---------------------------------------------------------------------------
 		LDA	#0
 		ORA	#4
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_4000_FFB3,Y
 		STA	byte_4000_FFB3,Y
 		JSR	sub_4000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_4000_FFB3,Y
 		STA	byte_4000_FFB3,Y
 		RTS
@@ -30508,7 +30714,7 @@ loc_4000_FFF2:				; ...
 
 
 sub_5000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_5000_8000
 
 ; ---------------------------------------------------------------------------
@@ -30569,14 +30775,14 @@ byte_5000_82FF:	.BYTE 1, 1, 2, 3, 2, 3,	$A, $A,	3, 2, 4, $B, $D, 2, 4, 6, 6, 8,	
 
 
 sub_5000_8335:				; ...
-		STA	byte_0_39
+		STA	tmp_var_39
 		STY	byte_0_80
-		LDA	byte_0_2D
+		LDA	previous_bankID
 		PHA
 		LDY	#3
 		JSR	sub_5000_FFCB
 		PLA
-		STA	byte_0_2D
+		STA	previous_bankID
 		LDY	byte_0_80
 		LDX	Object_RamSlotID_tmp
 		RTS
@@ -30651,8 +30857,8 @@ loc_5000_83B3:				; ...
 		LDA	LevelPos_CamPosX_H
 		ADC	byte_0_5D5,Y
 		STA	tmp_var_1A
-		STX	byte_0_21
-		LDA	Level_ID	; $10
+		STX	tmp_var_21
+		LDA	Level_ID
 		CMP	#6
 		BNE	loc_5000_83D0
 		LDX	tmp_var_1A
@@ -30686,10 +30892,10 @@ loc_5000_83E7:				; ...
 		LDA	LevelPos_CamPosY_L
 		CLC
 		ADC	byte_0_5D3,Y
-		STA	byte_0_1D
+		STA	tmp_var_1d
 		LDA	LevelPos_CamPosY_H
 		ADC	#0
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#9
 		BNE	loc_5000_8400
 		TAX
@@ -30704,25 +30910,25 @@ loc_5000_8400:				; ...
 		LDA	byte_5000_82E2,X
 
 loc_5000_8408:				; ...
-		STA	byte_0_1E
-		LDX	byte_0_21
+		STA	tmp_var_1e
+		LDX	tmp_var_21
 		LDA	level_struct
-		STA	byte_0_21
+		STA	tmp_var_21
 		LDA	byte_0_5D4,Y
 		STA	byte_0_30
 		BNE	loc_5000_844D
 		LDA	#1
-		STA	byte_0_21
-		LDA	byte_0_1D
+		STA	tmp_var_21
+		LDA	tmp_var_1d
 		LSR	A
 		AND	#$C
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ORA	#1
 		STA	tmp_var_16
 		EOR	#3
-		STA	byte_0_17
+		STA	tmp_var_17
 		ORA	#1
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDX	#$FF
 		LDA	byte_0_5D3,Y
 		JSR	sub_5000_86DC
@@ -30731,7 +30937,7 @@ loc_5000_8408:				; ...
 		STA	byte_0_97
 		LDX	#$1F
 		LDY	#$F
-		LDA	byte_0_1D
+		LDA	tmp_var_1d
 		AND	#$10
 		BEQ	loc_5000_8448
 		LDY	#$F0 ; 'Ё'
@@ -30751,24 +30957,24 @@ loc_5000_844D:				; ...
 		LSR	A
 		STA	byte_0_98
 		AND	#3
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ORA	#4
 		STA	tmp_var_16
 		EOR	#$C
-		STA	byte_0_17
+		STA	tmp_var_17
 		ORA	#4
-		STA	byte_0_18
-		LDA	byte_0_1D
+		STA	tmp_var_18
+		LDA	tmp_var_1d
 
 loc_5000_846A:				; ...
 		AND	#$18
-		STA	word_0_1F+1
-		STY	word_0_1F
+		STA	tmp_var_20
+		STY	tmp_var_1f
 		STX	byte_0_1A4
 		JSR	level_map3
 		LDX	byte_0_1A4
 		TXS
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_5000_8485
 		LDA	#6
@@ -30783,7 +30989,7 @@ loc_5000_8489:				; ...
 		LDX	#8
 		LDA	byte_0_1A0
 		STA	byte_0_1A8
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		BEQ	loc_5000_84B7
 		LDY	byte_0_30
 		BEQ	loc_5000_84A0
@@ -30798,12 +31004,12 @@ loc_5000_84A0:				; ...
 		BEQ	loc_5000_84AD
 
 loc_5000_84A8:				; ...
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		LDA	(tmp_var_19),Y
 		PHA
 
 loc_5000_84AD:				; ...
-		LDY	byte_0_17
+		LDY	tmp_var_17
 		LDA	(tmp_var_19),Y
 		PHA
 
@@ -30813,12 +31019,12 @@ loc_5000_84B2:				; ...
 		PHA
 
 loc_5000_84B7:				; ...
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	(tmp_var_19),Y
 		PHA
 		LDA	tmp_var_1B
 		SEC
-		SBC	byte_0_21
+		SBC	tmp_var_21
 		STA	tmp_var_1B
 		BCS	loc_5000_84C7
 		DEC	tmp_var_1C
@@ -30843,7 +31049,7 @@ loc_5000_84C7:				; ...
 		LDA	(tmp_var_1B),Y
 		TAY
 		LDA	(level_map1_adrL),Y
-		AND	word_0_1F
+		AND	tmp_var_1f
 		STA	byte_0_19F,X
 		DEX
 		BNE	loc_5000_84A8
@@ -30851,12 +31057,12 @@ loc_5000_84C7:				; ...
 		BMI	loc_5000_8514
 		CPX	#$10
 		BCS	loc_5000_8489
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		LDA	(tmp_var_19),Y
 		PHA
 		TSX
 		BMI	loc_5000_8514
-		LDY	byte_0_17
+		LDY	tmp_var_17
 		LDA	(tmp_var_19),Y
 		PHA
 		TSX
@@ -30866,7 +31072,7 @@ loc_5000_84C7:				; ...
 		PHA
 		TSX
 		BMI	loc_5000_8514
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	(tmp_var_19),Y
 		PHA
 
@@ -30898,11 +31104,11 @@ loc_5000_8524:				; ...
 		LDA	byte_0_83
 		EOR	LevelPos_CamPosY_L
 		AND	#$10
-		STA	byte_0_21
+		STA	tmp_var_21
 		JSR	sub_5000_854C
-		LDA	byte_0_21
+		LDA	tmp_var_21
 		BNE	loc_5000_858F
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		BEQ	loc_5000_85A7
 		BNE	loc_5000_85C0
 
@@ -30910,7 +31116,7 @@ loc_5000_8524:				; ...
 
 
 sub_5000_854C:				; ...
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		STA	byte_0_FC
 		BNE	loc_5000_855F
 		INC	tmp_var_1B
@@ -30928,7 +31134,7 @@ locret_5000_855E:			; ...
 loc_5000_855F:				; ...
 		CMP	#8
 		BNE	loc_5000_856E
-		LDA	byte_0_21
+		LDA	tmp_var_21
 		BNE	locret_5000_855E
 		TXA
 		ADC	#7
@@ -30945,10 +31151,10 @@ loc_5000_856E:				; ...
 		LSR	A
 		LSR	A
 		LSR	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_1A0
 		AND	#$F0 ; 'Ё'
-		ORA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ORA	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_1A0
 
 locret_5000_8585:			; ...
@@ -30969,7 +31175,7 @@ locret_5000_858E:			; ...
 
 loc_5000_858F:				; ...
 		LDA	byte_0_120,X
-		AND	word_0_1F
+		AND	tmp_var_1f
 		ORA	(tmp_var_1B),Y
 		STA	byte_0_120,X
 		DEY
@@ -30983,7 +31189,7 @@ loc_5000_858F:				; ...
 		BCC	loc_5000_85C0
 
 loc_5000_85A7:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		ORA	#$F
 		AND	byte_0_120,X
 		STA	byte_0_120,X
@@ -30998,7 +31204,7 @@ loc_5000_85A7:				; ...
 		BEQ	locret_5000_858E
 
 loc_5000_85C0:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		ORA	#$F0 ; 'Ё'
 		AND	byte_0_120,X
 		STA	byte_0_120,X
@@ -31045,11 +31251,11 @@ loc_5000_8608:				; ...
 		LDA	#$81 ; 'Б'
 		STA	unkn_cnt2
 		LDA	byte_0_98
-		EOR	word_0_1F
+		EOR	tmp_var_1f
 		AND	#$40 ; '@'
 		BEQ	loc_5000_8636
 		LDX	#8
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		BMI	loc_5000_8629
 
 loc_5000_861A:				; ...
@@ -31078,7 +31284,7 @@ loc_5000_8636:				; ...
 
 loc_5000_8639:				; ...
 		LDA	byte_0_120,X
-		AND	word_0_1F
+		AND	tmp_var_1f
 		ORA	byte_0_1A0,Y
 		STA	byte_0_120,X
 		DEY
@@ -31086,7 +31292,7 @@ loc_5000_8639:				; ...
 		DEX
 		TXA
 		AND	#7
-		ORA	byte_0_22
+		ORA	tmp_var_22
 		TAX
 		JMP	loc_5000_8639
 ; ---------------------------------------------------------------------------
@@ -31106,9 +31312,9 @@ sub_5000_8652:				; ...
 
 
 sub_5000_8654:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		EOR	#$FF
-		STA	word_0_1F
+		STA	tmp_var_1f
 
 loc_5000_865A:				; ...
 		LDA	byte_0_99
@@ -31125,7 +31331,7 @@ loc_5000_865A:				; ...
 		ORA	byte_0_99
 		TAX
 		AND	#$38 ; '8'
-		STA	byte_0_22
+		STA	tmp_var_22
 		LDY	#8
 		RTS
 ; End of function sub_5000_8654
@@ -31142,40 +31348,40 @@ level_map3:				; ...
 		ROL	A
 		ROL	tmp_var_19
 		ROL	A
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		ADC	level_map3_ptrL,X
 		STA	tmp_var_1B
 		LDA	level_map3_ptrH,X
 		ADC	#0
 		STA	tmp_var_1C
-		LDA	byte_0_1E
-		ROL	byte_0_1D
+		LDA	tmp_var_1e
+		ROL	tmp_var_1d
 		ROL	A
-		ROL	byte_0_1D
+		ROL	tmp_var_1d
 		ROL	A
-		ROL	byte_0_1D
+		ROL	tmp_var_1d
 		ROL	A
-		STA	byte_0_1D
-		DEC	byte_0_1D
-		LDA	byte_0_1D
+		STA	tmp_var_1d
+		DEC	tmp_var_1d
+		LDA	tmp_var_1d
 		CMP	#$F0 ; 'Ё'
 		BCS	locret_5000_86C4
 		LDA	level_struct
-		STA	byte_0_1E
+		STA	tmp_var_1e
 		LDA	#0
 		LDX	#8
 
 loc_5000_86AC:				; ...
-		ROR	byte_0_1E
+		ROR	tmp_var_1e
 		BCC	loc_5000_86B2
-		ADC	byte_0_1D
+		ADC	tmp_var_1d
 
 loc_5000_86B2:				; ...
 		ROR	A
 		DEX
 		BNE	loc_5000_86AC
 		TAX
-		LDA	byte_0_1E
+		LDA	tmp_var_1e
 		ROR	A
 		CLC
 		ADC	tmp_var_1B
@@ -31196,15 +31402,15 @@ loc_5000_86C5:				; ...
 		ADC	#8
 		LDX	#$FF
 		JSR	loc_5000_86DF
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		RTS
 ; ---------------------------------------------------------------------------
 
 loc_5000_86D2:				; ...
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	tmp_var_16
 		JSR	sub_5000_86DC
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		RTS
 
 ; =============== S U B	R O U T	I N E =======================================
@@ -31253,16 +31459,16 @@ loc_5000_8707:				; ...
 		STA	byte_0_5D2,Y
 		DEY
 		BPL	loc_5000_8707
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#8
 		BNE	loc_5000_8725
-		LDA	byte_0_2D
+		LDA	previous_bankID
 		PHA
 		LDX	#9
 		LDY	#7
 		JSR	sub_5000_FFCB
 		PLA
-		STA	byte_0_2D
+		STA	previous_bankID
 		LDX	#8
 
 loc_5000_8725:				; ...
@@ -31379,7 +31585,7 @@ byte_5000_B2D1:	.BYTE 0, $E, $C0, $20, $80, $44, $40, $24, $C0,	$43, $80, $10, 0
 ; ---------------------------------------------------------------------------
 
 loc_5000_B2E0:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#0
 		STY	tmp_var_1A
 		ASL	A
@@ -31416,7 +31622,7 @@ loc_5000_B30B:				; ...
 		STA	obj_ZposH_tmp
 		STA	Objects_Z_speed,X
 		STA	Objects_unk1,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_5000_B328
 		INY
@@ -31427,12 +31633,12 @@ loc_5000_B30B:				; ...
 
 loc_5000_B328:				; ...
 		LDA	(tmp_var_19),Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		INY
 		ORA	(tmp_var_19),Y
 		BEQ	loc_5000_B34B
 		JSR	sub_5000_BE02
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		SEC
 		SBC	#6
 		STA	Objects_Ypos_L,X
@@ -31494,7 +31700,7 @@ loc_5000_B397:				; ...
 loc_5000_B39A:				; ...
 		STA	Objects_Zpos_L,X
 		STA	obj_ZposL_tmp
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#1
 		BNE	loc_5000_B3B4
 		LDY	byte_0_D1
@@ -31588,9 +31794,9 @@ loc_5000_B419:				; ...
 
 sub_5000_B422:				; ...
 		LDA	#$C0 ; '└'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	Objects_Xpos_H,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$C
 		BEQ	loc_5000_B419
 		CMP	#3
@@ -31598,28 +31804,28 @@ sub_5000_B422:				; ...
 		CMP	#6
 		BNE	loc_5000_B46E
 		LDA	#$B8 ; '╕'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_5000_B43B:				; ...
 		LDA	Objects_Ypos_L,X
 		BPL	loc_5000_B458
-		CMP	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		CMP	tmp_var_15	;  / Object Counter / various tmp
 		BCS	loc_5000_B449
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_Ypos_L,X
 
 loc_5000_B449:				; ...
 		SEC
 		SBC	#$28 ; '('
-		CMP	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		CMP	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_5000_B458
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CLC
 		ADC	#$27 ; '''
 		STA	Objects_Ypos_L,X
 
 loc_5000_B458:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_5000_B464
 		LDA	byte_5000_826B,Y
@@ -31636,45 +31842,45 @@ loc_5000_B467:				; ...
 		LDY	#0
 
 loc_5000_B46E:				; ...
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Xpos_L,X
 		AND	#$E0 ; 'р'
-		LSR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LSR	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
-		LSR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LSR	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
-		LSR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LSR	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#2
 		STA	tmp_var_1B
 		LDY	#0
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_5000_B4A9
 		CMP	#6
 		BEQ	loc_5000_B4A9
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$C
 		BEQ	loc_5000_B4A9
 		INC	tmp_var_1B
 		LDY	#0
-		LSR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LSR	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_5000_B49F
 		INY
 
 loc_5000_B49F:				; ...
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		ROR	A
-		ADC	byte_0_17
-		STA	byte_0_17
+		ADC	tmp_var_17
+		STA	tmp_var_17
 		BCC	loc_5000_B4A9
 		INY
 
 loc_5000_B4A9:				; ...
 		STY	tmp_var_1A
-		LDY	Level_ID	; $10
-		LDA	byte_0_17
+		LDY	Level_ID
+		LDA	tmp_var_17
 		CLC
 		ADC	level_cfgmap_ptrL - 1,Y
 		STA	tmp_var_19
@@ -31729,7 +31935,7 @@ loc_5000_B50D:				; ...
 loc_5000_B510:				; ...
 		LDA	Objects_Linker_ID,X ; флаг/id какой объект меня	прицепил
 		BNE	loc_5000_B50D
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_5000_B50D
 		LDA	#$81 ; 'Б'
@@ -31754,7 +31960,7 @@ loc_5000_B539:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_B544:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#3
 		BEQ	loc_5000_B54D
 		JMP	loc_5000_BA87
@@ -31793,13 +31999,13 @@ loc_5000_B561:				; ...
 		BEQ	locret_5000_B550
 		CMP	#$5E ; '^'
 		BEQ	locret_5000_B550
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$A
 		BNE	loc_5000_B58F
 		LDA	Objects_Ypos_L,X
 		SEC
 		SBC	#$40 ; '@'
-		STA	byte_0_1D
+		STA	tmp_var_1d
 		LDA	Objects_Ypos_H,X
 		SBC	#0
 		JMP	loc_5000_B59D
@@ -31809,18 +32015,18 @@ loc_5000_B58F:				; ...
 		LDA	#$BF ; '┐'
 		SEC
 		SBC	Objects_Zpos_L,X
-		STA	byte_0_1D
+		STA	tmp_var_1d
 		LDA	Objects_Ypos_H,X
 		SBC	Objects_Zpos_H,X
 
 loc_5000_B59D:				; ...
-		STA	byte_0_1E
+		STA	tmp_var_1e
 		BMI	locret_5000_B5E7
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		CPX	#9
 		BNE	loc_5000_B5B8
 		TAX
-		LDA	byte_0_1D
+		LDA	tmp_var_1d
 		CMP	#$E0 ; 'р'
 		LDA	byte_5000_82FE,X
 		BCC	loc_5000_B5B6
@@ -31828,13 +32034,13 @@ loc_5000_B59D:				; ...
 		SBC	#1
 
 loc_5000_B5B6:				; ...
-		STA	byte_0_1E
+		STA	tmp_var_1e
 
 loc_5000_B5B8:				; ...
 		JSR	level_map3
 		LDX	Object_RamSlotID_tmp
 		LDY	level_struct
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BEQ	loc_5000_B551
 		CMP	#7
@@ -31897,8 +32103,8 @@ loc_5000_B612:				; ...
 loc_5000_B615:				; ...
 		LDA	Objects_Zpos_L,X
 		AND	#$1F
-		STA	word_0_1F+1
-		LDA	Level_ID	; $10
+		STA	tmp_var_20
+		LDA	Level_ID
 		CMP	#8
 		BNE	loc_5000_B65C
 		CPX	#2
@@ -31948,7 +32154,7 @@ loc_5000_B65C:				; ...
 
 loc_5000_B669:				; ...
 		AND	#$7F ; ''
-		CMP	word_0_1F+1
+		CMP	tmp_var_20
 		ROR	A
 		EOR	byte_5000_FE62,Y
 		ROL	A
@@ -32238,7 +32444,7 @@ loc_5000_B823:				; ...
 		LDA	unk_5000_FE61,Y
 		BEQ	loc_5000_B812
 		AND	#$F
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#3
 		BEQ	loc_5000_B815
 		BCC	loc_5000_B83A
@@ -32258,42 +32464,42 @@ loc_5000_B83A:				; ...
 		AND	#$1F
 		CMP	tmp_var_16
 		BCC	loc_5000_B8BD
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	unk_5000_FE61,Y
 		LSR	A
 		LSR	A
 		LSR	A
 		ORA	#1
-		STA	byte_0_17
-		CMP	byte_0_18
+		STA	tmp_var_17
+		CMP	tmp_var_18
 		BCC	loc_5000_B8BD
 		LDA	byte_5000_FE62,Y
 		AND	#$F
 		ASL	A
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	Objects_Zpos_L,X
 		AND	#$1F
-		STA	word_0_1F+1
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_20
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		BEQ	loc_5000_B8C0
 		CMP	#9
 		BEQ	loc_5000_B8C0
-		STA	byte_0_22
+		STA	tmp_var_22
 		CMP	#8
 		BEQ	loc_5000_B892
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		SEC
 		SBC	tmp_var_16
-		ROR	byte_0_22
+		ROR	tmp_var_22
 		BCC	loc_5000_B888
-		LDA	byte_0_17
-		SBC	byte_0_18
+		LDA	tmp_var_17
+		SBC	tmp_var_18
 		CLC
 
 loc_5000_B888:				; ...
-		ADC	word_0_1F
-		STA	word_0_1F
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_1f
+		STA	tmp_var_1f
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#5
 		BCC	loc_5000_B8C0
 
@@ -32305,8 +32511,8 @@ loc_5000_B892:				; ...
 		BNE	loc_5000_B8BD
 
 loc_5000_B89D:				; ...
-		LDA	word_0_1F
-		SBC	word_0_1F+1
+		LDA	tmp_var_1f
+		SBC	tmp_var_20
 		BEQ	loc_5000_B8A5
 		BCS	loc_5000_B8BD
 
@@ -32344,26 +32550,26 @@ loc_5000_B8C9:				; ...
 loc_5000_B8D5:				; ...
 		LDA	tmp_var_19
 		BEQ	loc_5000_B8BD
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#9
 		BNE	loc_5000_B8F9
-		LDA	word_0_1F+1
-		SBC	word_0_1F
+		LDA	tmp_var_20
+		SBC	tmp_var_1f
 		CMP	#5
 		BCS	loc_5000_B8BD
 		LDA	Objects_Z_speed,X
 		BMI	loc_5000_B8BD
 		LDA	Objects_Zpos_L,X
 		AND	#$E0 ; 'р'
-		ORA	word_0_1F
+		ORA	tmp_var_1f
 		STA	Objects_Zpos_L,X
 		JMP	loc_5000_B9B3
 ; ---------------------------------------------------------------------------
 
 loc_5000_B8F9:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		SEC
-		SBC	word_0_1F+1
+		SBC	tmp_var_20
 		BCC	loc_5000_B8BD
 		CMP	#$A
 		BCS	loc_5000_B8BD
@@ -32374,7 +32580,7 @@ loc_5000_B8F9:				; ...
 		INC	Objects_Zpos_H,X
 
 loc_5000_B910:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#9
 		BEQ	loc_5000_B91A
 		CMP	#7
@@ -32383,7 +32589,7 @@ loc_5000_B910:				; ...
 loc_5000_B91A:				; ...
 		CPX	#2
 		BCS	loc_5000_B92D
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		CMP	#$10
 		BEQ	loc_5000_B92A
 		LDA	players_obj_unk13,X
@@ -32394,7 +32600,7 @@ loc_5000_B92A:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_B92D:				; ...
-		STY	byte_0_21
+		STY	tmp_var_21
 		LDY	#2
 
 loc_5000_B931:				; ...
@@ -32428,7 +32634,7 @@ loc_5000_B95B:				; ...
 		STA	Objects_TargetID,X
 
 loc_5000_B967:				; ...
-		LDY	byte_0_21
+		LDY	tmp_var_21
 		LDA	#1
 
 loc_5000_B96B:				; ...
@@ -32474,8 +32680,8 @@ loc_5000_B9A5:				; ...
 		INC	Objects_Xpos_H,X
 
 loc_5000_B9B3:				; ...
-		STY	byte_0_21
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_21
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		STY	byte_0_D9
 		INC	byte_0_D9
 		CPX	#2
@@ -32503,8 +32709,8 @@ loc_5000_B9E0:				; ...
 		STA	players_obj_unk9,X
 
 loc_5000_B9E3:				; ...
-		LDY	byte_0_21
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_21
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	#9
 		BEQ	loc_5000_B9F7
 		LDA	#0
@@ -32583,8 +32789,8 @@ loc_5000_BA44:				; ...
 		LSR	A
 		LSR	A
 		BEQ	loc_5000_BA6E
-		STA	word_0_1F
-		LDA	Level_ID	; $10
+		STA	tmp_var_1f
+		LDA	Level_ID
 		CMP	#8
 		BNE	loc_5000_BA60
 		LDA	Objects_Xpos_L,X
@@ -32600,7 +32806,7 @@ loc_5000_BA60:				; ...
 		LDA	Objects_Xpos_L,X
 		AND	#$1F
 		SEC
-		SBC	word_0_1F
+		SBC	tmp_var_1f
 		CMP	#$FA ; '·'
 		BCC	loc_5000_BA5D
 		BCS	loc_5000_BAAE
@@ -32638,23 +32844,23 @@ loc_5000_BA87:				; ...
 		BCS	loc_5000_BAF0
 
 loc_5000_BA9E:				; ...
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	Objects_Xpos_L,X
 		AND	#$1F
 		SEC
-		SBC	word_0_1F
+		SBC	tmp_var_1f
 		CMP	#6
 		BCS	loc_5000_BAF0
-		DEC	word_0_1F
+		DEC	tmp_var_1f
 
 loc_5000_BAAE:				; ...
 		LDA	Objects_Xpos_L,X
 		AND	#$F0 ; 'Ё'
-		ORA	word_0_1F
+		ORA	tmp_var_1f
 		STA	Objects_Xpos_L,X
 		CPX	#2
 		BCC	loc_5000_BADF
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_5000_BAD5
 		LDA	#$10
@@ -32676,7 +32882,7 @@ loc_5000_BAD5:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_BADF:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ROR	A
 		ROR	A
 		EOR	Objects_dir,X
@@ -32708,7 +32914,7 @@ loc_5000_BB03:				; ...
 loc_5000_BB0D:				; ...
 		CPX	#2
 		BCC	loc_5000_BB34
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$B
 		BEQ	loc_5000_BB2A
 		LDA	#4
@@ -32730,7 +32936,7 @@ loc_5000_BB2A:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_5000_BB34:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#8
 		BEQ	loc_5000_BB54
 		LDA	#0
@@ -32739,7 +32945,7 @@ loc_5000_BB34:				; ...
 
 loc_5000_BB42:				; ...
 		LDY	tmp_var_19
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#7
 		BEQ	loc_5000_BB51
 		CMP	#9
@@ -32779,7 +32985,7 @@ loc_5000_BB75:				; ...
 		STA	Objects_Xpos_L,X
 		CPX	#2
 		BCS	loc_5000_BBA5
-		LDA	Objects_HitID,X
+		LDA	Objects_HitID,X	; номер	движения для запуска
 		BNE	loc_5000_BB86
 		LDA	Obj_anims_timer,X
 		BEQ	loc_5000_BBC4
@@ -32881,7 +33087,7 @@ loc_5000_BBFF:				; ...
 		AND	#$FE ; '■'
 		CMP	#$7C ; '|'
 		BNE	loc_5000_BC0D
-		LDY	Level_ID	; $10
+		LDY	Level_ID
 		JSR	sub_5000_BBDA
 
 loc_5000_BC0D:				; ...
@@ -32940,7 +33146,7 @@ sub_5000_BC39:				; ...
 
 
 sub_5000_BC53:				; ...
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_5000_BCD2
 		CMP	#$C
@@ -33027,28 +33233,28 @@ loc_5000_BCC9:				; ...
 
 loc_5000_BCD2:				; ...
 		JSR	sub_5000_B422
-		STY	word_0_1F
-		LDA	Level_ID	; $10
+		STY	tmp_var_1f
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_5000_BCE0
 		JSR	sub_5000_B3DF
 
 loc_5000_BCE0:				; ...
 		LDA	(tmp_var_19),Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		INY
 		ORA	(tmp_var_19),Y
 		BEQ	loc_5000_BD3F
 		JSR	sub_5000_BE02
 		LDA	Objects_Ypos_L,X
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Ypos_H,X
 		SBC	tmp_var_16
 		BCS	loc_5000_BD3F
-		LDA	word_0_1F
-		STA	word_0_1F+1
-		LDA	Level_ID	; $10
+		LDA	tmp_var_1f
+		STA	tmp_var_20
+		LDA	Level_ID
 		CMP	#$C
 		BNE	loc_5000_BD16
 		LDA	(tmp_var_19),Y
@@ -33060,7 +33266,7 @@ loc_5000_BCE0:				; ...
 
 loc_5000_BD0F:				; ...
 		SBC	#8
-		STA	word_0_1F
+		STA	tmp_var_1f
 		JMP	loc_5000_BD1A
 ; ---------------------------------------------------------------------------
 
@@ -33069,11 +33275,11 @@ loc_5000_BD16:				; ...
 		AND	#$F0 ; 'Ё'
 
 loc_5000_BD1A:				; ...
-		STA	word_0_1F
+		STA	tmp_var_1f
 		SBC	#$A
 		SBC	Objects_Zpos_L,X
 		BCC	loc_5000_BD32
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_5000_BD32
 		LDA	Objects_Zpos_H,X
@@ -33082,23 +33288,23 @@ loc_5000_BD1A:				; ...
 		STA	tmp_var_1B
 
 loc_5000_BD32:				; ...
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	byte_0_17
+		LDA	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_17
 		LDA	tmp_var_16
-		STA	byte_0_18
+		STA	tmp_var_18
 		INY
 		DEC	tmp_var_1B
 		BNE	loc_5000_BCE0
 
 loc_5000_BD3F:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		STA	byte_0_DA
 		BEQ	loc_5000_BD5E
 		CMP	#$F0 ; 'Ё'
 		BEQ	loc_5000_BD6C
 		LDA	Objects_Zpos_L,X
 		SEC
-		SBC	word_0_1F
+		SBC	tmp_var_1f
 		STA	Objects_Z_floor,X
 		LDA	Objects_Zpos_H,X
 		SBC	#0
@@ -33116,20 +33322,20 @@ loc_5000_BD61:				; ...
 		BNE	locret_5000_BDCB
 		LDA	obj_ZposL_tmp
 		SEC
-		SBC	word_0_1F
+		SBC	tmp_var_1f
 		BCS	loc_5000_BDB6
 
 loc_5000_BD6C:				; ...
 		LDA	#$80 ; 'А'
 		STA	byte_0_D9
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_5000_BDCC
 		CMP	#6
 		BEQ	loc_5000_BDCC
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		STA	Objects_Ypos_L,X
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		STA	Objects_Ypos_H,X
 		LDA	Objects_Flags,X
 		AND	#$EF ; 'я'
@@ -33145,20 +33351,20 @@ loc_5000_BD6C:				; ...
 loc_5000_BD9E:				; ...
 		LDY	Objects_Zpos_H,X
 		BNE	loc_5000_BDA9
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		BEQ	loc_5000_BDCC
-		STA	word_0_1F
+		STA	tmp_var_1f
 
 loc_5000_BDA9:				; ...
 		LDA	Objects_Zpos_L,X
 		SEC
-		SBC	word_0_1F+1
+		SBC	tmp_var_20
 		LDY	Objects_Zpos_H,X
 		BNE	loc_5000_BDC8
 		BCS	loc_5000_BDD8
 
 loc_5000_BDB6:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		STA	Objects_Zpos_L,X
 		LDA	Obj_anims_timer,X
 		BNE	loc_5000_BDC6
@@ -33191,7 +33397,7 @@ loc_5000_BDDB:				; ...
 		LDA	obj_ZposL_tmp
 		CMP	#8
 		BCC	locret_5000_BDCB
-		SBC	word_0_1F
+		SBC	tmp_var_1f
 		BCC	loc_5000_BDB6
 		RTS
 ; ---------------------------------------------------------------------------
@@ -33206,9 +33412,9 @@ level_cfgmap_ptrH:
 
 sub_5000_BE02:				; ...
 		LDA	#0
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	A
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	A
 		STA	tmp_var_16
 		LDA	(tmp_var_19),Y
@@ -33229,7 +33435,7 @@ loc_5000_BE22:				; ...
 loc_5000_BE25:				; ...
 		AND	#$1F
 		STA	byte_0_8B
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#6
 		BNE	loc_5000_BE31
 		ASL	byte_0_8B
@@ -33237,8 +33443,8 @@ loc_5000_BE25:				; ...
 loc_5000_BE31:				; ...
 		LDA	byte_0_8B
 		CLC
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BCC	locret_5000_BE3C
 		INC	tmp_var_16
 
@@ -33310,13 +33516,13 @@ loc_5000_FF69:				; ...
 		STA	byte_5000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_5000_FFB3,Y
 		JSR	word_5000_FF3E
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_5000_FFB3,Y
 		RTS
@@ -33331,7 +33537,7 @@ loc_5000_FF98:				; ...
 		JMP	locret_5000_FF3D
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_5000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -33349,16 +33555,16 @@ byte_5000_FFB9:	.BYTE 6, 7, 8, 9, $A, $B, $C, $D, $E, $F, $10, $11, $12, $13, $1
 sub_5000_FFCB:				; ...
 		LDA	#0
 		ORA	#5
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_5000_FFB3,Y
 		STA	byte_5000_FFB3,Y
 		JSR	sub_5000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_5000_FFB3,Y
 		STA	byte_5000_FFB3,Y
 		RTS
@@ -33394,7 +33600,7 @@ loc_5000_FFF2:				; ...
 
 
 sub_6000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_6000_8000
 
 ; ---------------------------------------------------------------------------
@@ -33561,7 +33767,7 @@ loc_6000_854F:				; ...
 		LDX	#8
 		LDA	byte_0_1A0
 		STA	byte_0_1A8
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		BEQ	loc_6000_857D
 		LDY	byte_0_30
 		BEQ	loc_6000_8566
@@ -33576,12 +33782,12 @@ loc_6000_8566:				; ...
 		BEQ	loc_6000_8573
 
 loc_6000_856E:				; ...
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		LDA	(tmp_var_19),Y
 		PHA
 
 loc_6000_8573:				; ...
-		LDY	byte_0_17
+		LDY	tmp_var_17
 		LDA	(tmp_var_19),Y
 		PHA
 
@@ -33591,12 +33797,12 @@ loc_6000_8578:				; ...
 		PHA
 
 loc_6000_857D:				; ...
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	(tmp_var_19),Y
 		PHA
 		LDA	tmp_var_1B
 		SEC
-		SBC	byte_0_21
+		SBC	tmp_var_21
 		STA	tmp_var_1B
 		BCS	loc_6000_858D
 		DEC	tmp_var_1C
@@ -33623,7 +33829,7 @@ loc_6000_8594:				; ...
 		ADC	level_map2_adrH
 		STA	tmp_var_1A
 		LDA	(level_map1_adrL),Y
-		AND	word_0_1F
+		AND	tmp_var_1f
 		STA	byte_0_19F,X
 		DEX
 		BNE	loc_6000_856E
@@ -33631,12 +33837,12 @@ loc_6000_8594:				; ...
 		BMI	loc_6000_85D9
 		CPX	#$10
 		BCS	loc_6000_854F
-		LDY	byte_0_18
+		LDY	tmp_var_18
 		LDA	(tmp_var_19),Y
 		PHA
 		TSX
 		BMI	loc_6000_85D9
-		LDY	byte_0_17
+		LDY	tmp_var_17
 		LDA	(tmp_var_19),Y
 		PHA
 		TSX
@@ -33646,7 +33852,7 @@ loc_6000_8594:				; ...
 		PHA
 		TSX
 		BMI	loc_6000_85D9
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	(tmp_var_19),Y
 		PHA
 
@@ -33660,7 +33866,7 @@ locret_6000_85DE:			; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_85DF:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		ROR	A
 		ROR	A
 		ROR	A
@@ -33711,7 +33917,7 @@ loc_6000_862C:				; ...
 obj_sprites_:				; ...
 		LDX	#$E		; ???
 		LDX	#4
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BEQ	loc_6000_863B
 		LDA	#$E		; count	from E or 0
@@ -33720,12 +33926,12 @@ loc_6000_863B:				; ...
 		TAY			; 0 or E
 
 object_sprites:				; ...
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_RamSlotIDs_tmp,Y
 		TAY
 		LDA	Objects_Flags,Y
 		BMI	loc_6000_8656
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#5
 		BNE	loc_6000_8659
 		LDA	Objects_X_shadow,Y
@@ -33839,18 +34045,18 @@ loc_6000_86D2:				; ...
 		JSR	objects_second_pal ; для спрайтов головы и пуза	Реша - ставит желтую палитру
 
 object_sprites_cycle:			; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BEQ	odd_or_even_frame
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		DEY			; object rotation back
 		BMI	object_sprites_
 		JMP	object_sprites
 ; ---------------------------------------------------------------------------
 
 odd_or_even_frame:			; ...
-		INC	ObjCounter_tmp_var_15 ;	object rotation	forw
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		INC	tmp_var_15	; object rotation forw
+		LDY	tmp_var_15	;  / Object Counter / various tmp
 		CPY	#$F
 		BEQ	object_sprites_
 		JMP	object_sprites
@@ -33863,17 +34069,17 @@ locret_6000_86EE:			; ...
 
 
 objects_second_pal:			; ...
-		LDY	byte_0_8F
+		LDY	byte_0_8F	; player spr id
 		BEQ	locret_6000_86EE
 
 loc_6000_86F3:				; ...
-		LDA	byte_0_8E
-		AND	#3
+		LDA	byte_0_8E	; count	of spr to change pal
+		AND	#3		; count	of next	4 spr
 		BEQ	locret_6000_870B
 		DEC	byte_0_8E
 		LDA	Sprites_Attrib,Y
 		AND	#$FC
-		ORA	#2
+		ORA	#2		; id of	second palette
 		STA	Sprites_Attrib,Y
 		INY
 		INY
@@ -33977,7 +34183,7 @@ locret_6000_8783:			; ...
 sub_6000_8784:				; ...
 		LDA	#0
 		STA	tmp_var_1B
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	Objects_X_shadow,Y
 		SEC
 		SBC	#3
@@ -33995,12 +34201,12 @@ loc_6000_8798:				; ...
 		SBC	#$2F
 		BCC	loc_6000_87E5
 		STA	byte_0_8C
-		LDA	FrameCounter	; $B
-		STA	word_0_1F
+		LDA	FrameCounter
+		STA	tmp_var_1f
 		LDA	byte_0_8C
 		CLC
 		ADC	#8
-		ROR	word_0_1F
+		ROR	tmp_var_1f
 		BCC	loc_6000_87B3
 		STA	byte_0_8C
 		BCS	loc_6000_87CA
@@ -34009,13 +34215,13 @@ loc_6000_87B3:				; ...
 		LDA	Objects_unk_cnt,Y
 		CMP	#$80
 		ROR	A
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	Objects_unk_cnt2,Y
 		ROR	A
 		CLC
-		ADC	byte_0_18
-		STA	byte_0_18
-		LDA	word_0_1F
+		ADC	tmp_var_18
+		STA	tmp_var_18
+		LDA	tmp_var_1f
 		ADC	byte_0_8B
 		STA	byte_0_8B
 
@@ -34063,10 +34269,10 @@ sub_6000_8815:				; ...
 		AND	#$40
 		ORA	#2
 		STA	Sprites_Attrib,X
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		CLC
 		ADC	Objects_unk_cnt2,Y
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	byte_0_8B
 		STA	Sprites_Xpos,X
 		ADC	Objects_unk_cnt,Y
@@ -34127,7 +34333,7 @@ loc_6000_887D:				; ...
 		BEQ	locret_6000_8840
 		LDY	tmp_var_16
 		LDA	Objects_X_shadow,Y
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	Objects_unk_cnt2,Y
 		SEC
 		SBC	LevelPos_CamPosX_L
@@ -34157,25 +34363,25 @@ loc_6000_88A6:				; ...
 		STA	tmp_var_1A
 		LDA	tmp_var_1B
 		STA	tmp_var_19
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		SEC
 		SBC	Objects_X_shadow,Y
 		JSR	sub_6000_8A4F
 		LDA	#3
-		STA	byte_0_18
+		STA	tmp_var_18
 
 loc_6000_88D3:				; ...
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		CLC
 		ADC	tmp_var_1B
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	tmp_var_1C
 		ADC	Objects_X_shadow,Y
 		STA	Objects_X_shadow,Y
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		CLC
 		ADC	tmp_var_19
-		STA	word_0_1F+1
+		STA	tmp_var_20
 		LDA	tmp_var_1A
 		ADC	Objects_Y_shad,Y
 		STA	Objects_Y_shad,Y
@@ -34194,7 +34400,7 @@ loc_6000_88D3:				; ...
 		INX
 		INX
 		BEQ	locret_6000_8917
-		DEC	byte_0_18
+		DEC	tmp_var_18
 		BNE	loc_6000_88D3
 
 loc_6000_8914:				; ...
@@ -34265,7 +34471,7 @@ loc_6000_8990:				; ...
 		LDA	#$C8
 
 loc_6000_899B:				; ...
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		CLC
 		ADC	Objects_Y_shad,Y
 		SEC
@@ -34301,15 +34507,15 @@ loc_6000_89DB:				; ...
 		CLC
 		ADC	Objects_Z_floor,Y
 		SBC	#3
-		SBC	byte_0_8D
+		SBC	tmp_var_8d
 		STA	Objects_Y_shad,Y
 		LDA	Objects_Z_floor,Y
 		STA	Objects_various_flags,Y	; для пушек ID прицепленного объекта
 		SEC
-		SBC	byte_0_21
+		SBC	tmp_var_21
 		SEC
 		SBC	#4
-		SBC	byte_0_8D
+		SBC	tmp_var_8d
 
 level4_stick_bug:			;  if Y	= 3D
 		STA	Objects_Z_floor,Y
@@ -34323,13 +34529,13 @@ locret_6000_89FD:			; ...
 
 
 sub_6000_89FE:				; ...
-		STA	byte_0_22
+		STA	tmp_var_22
 		JSR	sub_6000_8784
 		BCC	locret_6000_8A4A
-		LDA	byte_0_22
+		LDA	tmp_var_22
 		JSR	sub_6000_8A4B
 		JSR	sub_6000_8E67
-		STY	byte_0_21
+		STY	tmp_var_21
 
 loc_6000_8A0F:				; ...
 		LDA	byte_6000_8806,Y
@@ -34338,10 +34544,10 @@ loc_6000_8A0F:				; ...
 		AND	#$40
 		EOR	#$42
 		STA	Sprites_Attrib,X
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		CLC
 		ADC	tmp_var_1B
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	byte_0_8B
 		STA	Sprites_Xpos,X
 		ADC	tmp_var_1C
@@ -34355,7 +34561,7 @@ loc_6000_8A0F:				; ...
 		CLC
 		ADC	#8
 		STA	byte_0_8C
-		DEC	byte_0_22
+		DEC	tmp_var_22
 		BNE	loc_6000_8A0F
 		LDA	#$D3
 		STA	byte_0_1FD,X
@@ -34383,12 +34589,12 @@ sub_6000_8A4B:				; ...
 sub_6000_8A4F:				; ...
 		STA	tmp_var_1C
 		LDA	#4
-		STA	byte_0_22
+		STA	tmp_var_22
 		LDA	Objects_TypeID,Y
 		CMP	#$12
 		LDA	tmp_var_1C
 		BCS	loc_6000_8A63
-		ASL	byte_0_22
+		ASL	tmp_var_22
 		LSR	A
 		ROR	tmp_var_1B
 
@@ -34413,14 +34619,14 @@ byte_6000_8A74:	.BYTE $EA, $15,	9, $F0	; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_8A78:				; ...
-		LDA	Objects_HitID,Y
+		LDA	Objects_HitID,Y	; номер	движения для запуска
 		LSR	A
 		LSR	A
 		LSR	A
-		STA	byte_0_17
-		STX	word_0_1F
+		STA	tmp_var_17
+		STX	tmp_var_1f
 		LDX	#0
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_6000_8A8C
 		LDX	#3
@@ -34434,7 +34640,7 @@ loc_6000_8A8C:				; ...
 		LDA	byte_6000_8A74,X
 
 loc_6000_8A9C:				; ...
-		LDX	word_0_1F
+		LDX	tmp_var_1f
 		BNE	loc_6000_8AA3
 
 loc_6000_8AA0:				; ...
@@ -34474,7 +34680,7 @@ loc_6000_8ADA:				; ...
 		INX
 		INX
 		BEQ	locret_6000_8B31
-		DEC	byte_0_17
+		DEC	tmp_var_17
 		BPL	loc_6000_8AA0
 		TXA
 		BEQ	loc_6000_8AED
@@ -34502,7 +34708,7 @@ loc_6000_8AF8:				; ...
 		LDY	byte_0_8C
 		AND	#8
 		BEQ	loc_6000_8B12
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	loc_6000_8B2B
 
 loc_6000_8B12:				; ...
@@ -34576,19 +34782,19 @@ byte_6000_8B72:	.BYTE 0, $2B, 3, $40, 2, $2A, $43, $50,	0, $2B,	$83, $60, 2, $2C
 
 loc_6000_8B83:				; ...
 		LDA	Objects_unk_cnt2,Y
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	Objects_X_shadow,Y
 		STA	tmp_var_19
 		LDA	Objects_Y_shad,Y
 		STA	tmp_var_1A
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BEQ	loc_6000_8BA3
-		LSR	byte_0_18
-		LDA	byte_0_18
+		LSR	tmp_var_18
+		LDA	tmp_var_18
 		LSR	A
-		ADC	byte_0_18
-		STA	byte_0_18
+		ADC	tmp_var_18
+		STA	tmp_var_18
 		LDA	#$10
 
 loc_6000_8BA3:				; ...
@@ -34599,7 +34805,7 @@ loc_6000_8BA4:				; ...
 		BEQ	loc_6000_8BBF
 		STA	tmp_var_1B
 		ROR	A
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		BCC	loc_6000_8BB1
 		LSR	A
 
@@ -34622,7 +34828,7 @@ loc_6000_8BC3:				; ...
 		BEQ	loc_6000_8BE1
 		STA	tmp_var_1B
 		ROR	A
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		BCC	loc_6000_8BD3
 		LSR	A
 
@@ -34675,7 +34881,7 @@ locret_6000_8C09:			; ...
 
 objects_some_sprites:			; ...
 		LDA	Objects_X_shadow,Y
-		STA	byte_0_17	; x_shadow_ 18
+		STA	tmp_var_17	; x_shadow_ 18
 		LDA	Objects_Y_shad,Y
 		SEC			; a8
 		SBC	Objects_Z_floor,Y ; a8
@@ -34712,13 +34918,13 @@ loc_6000_8C42:				; ...
 
 loc_6000_8C4C:				; ...
 		ADC	#$86
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	Objects_Flags,Y
 		AND	#$63
 		STA	tmp_var_1B
 		AND	#$40
-		STA	byte_0_90
-		JSR	sub_6000_8D03
+		STA	for_spr_unk_90	; смещение?
+		JSR	write_obj_sprites
 		TXA
 		BEQ	locret_6000_8C09
 		BNE	loc_6000_8CBE
@@ -34743,7 +34949,7 @@ loc_6000_8C70:				; ...
 		BEQ	loc_6000_8C87
 		LDA	#$42
 		STA	Sprites_Attrib,X
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		SEC
 		SBC	byte_6000_AE89,Y
 		SEC
@@ -34756,7 +34962,7 @@ loc_6000_8C87:				; ...
 		STA	Sprites_Attrib,X
 		LDA	byte_6000_AE89,Y
 		CLC
-		ADC	byte_0_17
+		ADC	tmp_var_17
 
 loc_6000_8C92:				; ...
 		STA	Sprites_Xpos,X
@@ -34764,7 +34970,7 @@ loc_6000_8C92:				; ...
 		CLC
 		ADC	byte_0_8C
 		STA	Sprites_Ypos,X
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#2
 		BNE	loc_6000_8CAC
 		TYA
@@ -34825,7 +35031,7 @@ locret_6000_8CE9:			; ...
 
 
 sub_6000_8CEA:				; ...
-		STA	byte_0_18	; anim frame tmp
+		STA	tmp_var_18	; anim frame tmp
 		LDA	Objects_Flags,Y	; 40
 ; End of function sub_6000_8CEA
 
@@ -34837,67 +35043,65 @@ sub_6000_8CEF:				; ...
 		AND	#$63
 		STA	tmp_var_1B	; 40
 		AND	#$40
-		STA	byte_0_90	; 40
-		LDA	Level_ID	; $10
+		STA	for_spr_unk_90	; 40
+		LDA	Level_ID
 		CMP	#$A
 		BEQ	loc_6000_8D11
 		CMP	#$D
 		BEQ	loc_6000_8D11
-		CPY	#2
+		CPY	#2		; compare player or object spr
 ; End of function sub_6000_8CEF
 
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_6000_8D03:				; ...
-		LDY	byte_0_18
-		BCC	loc_6000_8D1B
+write_obj_sprites:			; ...
+		LDY	tmp_var_18	; frame	id tmp
+		BCC	load_player_spr_cfg ; расстановка спрайтов жабы
 
 loc_6000_8D07:				; ...
-		LDA	byte_6000_C5B9,Y
+		LDA	obj_sprcfg_ptrH,Y
 		STA	tmp_var_19
-		LDA	word_6000_C73C,Y
-		BNE	loc_6000_8D23
+		LDA	obj_sprcfg_ptrL,Y
+		BNE	loc_6000_8D23	; jump
 
 loc_6000_8D11:				; ...
-		CPY	#2
-		LDY	byte_0_18
-		BCC	loc_6000_8D1B
+		CPY	#2		; compare player or obj	spr
+		LDY	tmp_var_18	; frame	id tmp
+		BCC	load_player_spr_cfg ; расстановка спрайтов жабы
 		CPY	#$F
 		BEQ	loc_6000_8D07
 
-loc_6000_8D1B:				; ...
-		LDA	byte_6000_C532,Y
-		STA	tmp_var_19
-		LDA	byte_6000_C6B5,Y
-; End of function sub_6000_8D03
-
+load_player_spr_cfg:			; ...
+		LDA	rash_sprcfg_ptrH,Y ; расстановка спрайтов жабы
+		STA	tmp_var_19	; pointer tmp H
+		LDA	rash_sprcfg_ptrL,Y
 
 loc_6000_8D23:				; ...
-		STA	tmp_var_1A
+		STA	tmp_var_1A	; pointer tmp L
 		LDY	#0
-		LDA	byte_0_90
+		LDA	for_spr_unk_90	; смещение?
 		BEQ	loc_6000_8D36
 		LDA	(tmp_var_19),Y
 		CLC
-		ADC	byte_0_17
+		ADC	tmp_var_17
 		SEC
 		SBC	#7
 		JMP	loc_6000_8D3B
 ; ---------------------------------------------------------------------------
 
 loc_6000_8D36:				; ...
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		SEC
 		SBC	(tmp_var_19),Y
 
 loc_6000_8D3B:				; ...
 		STA	byte_0_8B
-		EOR	byte_0_17
+		EOR	tmp_var_17
 		BPL	loc_6000_8D48
-		LDA	byte_0_17
-		SBC	#$40
+		LDA	tmp_var_17	; srpite count value?
+		SBC	#64		; 64 sprites max?
 		BPL	loc_6000_8D48
 
 locret_6000_8D47:			; ...
@@ -34916,7 +35120,7 @@ loc_6000_8D48:				; ...
 		INY
 		LDA	(tmp_var_19),Y
 		EOR	tmp_var_1B
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		INY
 
 loc_6000_8D5D:				; ...
@@ -34929,13 +35133,13 @@ loc_6000_8D5D:				; ...
 		STA	byte_0_92
 		CMP	#3
 		BCS	loc_6000_8DA8
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		STA	byte_0_8E
 		AND	#$FC
 		ORA	tmp_var_16
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		STX	byte_0_8F
-		LDA	byte_0_18
+		LDA	tmp_var_18
 		CMP	#$5D
 		BEQ	loc_6000_8D94
 		CMP	#$42
@@ -34943,17 +35147,17 @@ loc_6000_8D5D:				; ...
 		AND	#$FE
 		CMP	#$64
 		BNE	loc_6000_8D9C
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		ORA	#$80
 		STA	tmp_var_1B
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		BNE	loc_6000_8D9C
 
 loc_6000_8D94:				; ...
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		AND	#$FC
 		EOR	#2
-		STA	byte_0_8D
+		STA	tmp_var_8d
 
 loc_6000_8D9C:				; ...
 		DEC	tmp_var_16
@@ -34965,7 +35169,7 @@ loc_6000_8D9C:				; ...
 
 loc_6000_8DA8:				; ...
 		INY
-		LDA	byte_0_90
+		LDA	for_spr_unk_90	; смещение?
 		BNE	loc_6000_8E08
 		BEQ	loc_6000_8DC3
 
@@ -34975,7 +35179,7 @@ loc_6000_8DAF:				; ...
 		INY
 		LDA	#0
 		STA	byte_0_92
-		LDA	byte_0_90
+		LDA	for_spr_unk_90	; смещение?
 		BNE	loc_6000_8E10
 		BEQ	loc_6000_8DCB
 
@@ -35010,7 +35214,7 @@ loc_6000_8DCE:				; ...
 		BCC	loc_6000_8DFB
 		STA	Sprites_Ypos,X
 		INY
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		BPL	loc_6000_8DF0
 		LDA	(tmp_var_19),Y
 		EOR	tmp_var_1B
@@ -35031,7 +35235,7 @@ loc_6000_8DFA:				; ...
 
 loc_6000_8DFB:				; ...
 		INY
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		BPL	loc_6000_8DBF
 		BMI	loc_6000_8DBE
 
@@ -35070,7 +35274,7 @@ loc_6000_8E13:				; ...
 		BCC	loc_6000_8E40
 		STA	Sprites_Ypos,X
 		INY
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		BPL	loc_6000_8E35
 		LDA	(tmp_var_19),Y
 		INY
@@ -35091,9 +35295,11 @@ loc_6000_8E3F:				; ...
 
 loc_6000_8E40:				; ...
 		INY
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		BPL	loc_6000_8E04
 		BMI	loc_6000_8E03
+; End of function write_obj_sprites
+
 ; ---------------------------------------------------------------------------
 byte_6000_8E47:	.BYTE 1			; ...
 byte_6000_8E48:	.BYTE 0, 2, 0, $81, 0, $82, 0, 0, $81, 0, $82, 0, 1, 0,	2, 1, 1, 2, 2, 1, $81, 2, $82, $81, 1, $82, 2, $81, $81, $82 ; ...
@@ -35157,7 +35363,7 @@ loc_6000_8E90:				; ...
 		JSR	sub_6000_8F0D
 		JSR	sub_6000_A228
 		LDA	#$D
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#$51 ; 'Q'
 		LDY	#3
 		JSR	loc_6000_FFCB
@@ -35205,7 +35411,7 @@ loc_6000_8F1B:				; ...
 		JSR	sub_6000_8F0D
 		JSR	sub_6000_A228
 		LDX	#$51 ; 'Q'
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#3
 		JSR	loc_6000_FFCB
 		LDA	#5
@@ -35226,7 +35432,7 @@ loc_6000_8F3A:				; ...
 		STA	Objects_dir,X
 		STA	Objects_death_timer,X
 		STA	Obj_anims_timer,X
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		DEX
 		BPL	loc_6000_8F3A
 		LDA	#5
@@ -35345,12 +35551,12 @@ loc_6000_9020:				; ...
 		LDX	#0
 		JSR	sub_6000_D5FB
 		LDA	#0
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#7
 		LDX	#$12
 		JSR	loc_6000_FFCB
 		LDA	#2
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#7
 		LDX	#$12
 		JSR	loc_6000_FFCB
@@ -35389,7 +35595,7 @@ loc_6000_9056:				; ...
 		STA	byte_0_98
 		LDX	#$3F ; '?'
 		LDA	#1
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_6000_9073:				; ...
 		TXA
@@ -35397,11 +35603,11 @@ loc_6000_9073:				; ...
 		LSR	A
 		LSR	A
 		STA	byte_0_700,X
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_740,X
-		ASL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ASL	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_6000_9085
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 
 loc_6000_9085:				; ...
 		DEX
@@ -35422,7 +35628,7 @@ sub_6000_9089:				; ...
 
 
 sub_6000_908B:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#0
 
 loc_6000_908F:				; ...
@@ -35432,7 +35638,7 @@ loc_6000_908F:				; ...
 		LDA	PPU_DATA	; VRAM I/O Register (RW)
 		BEQ	loc_6000_90A9
 		CLC
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		STX	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		STY	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		STA	PPU_DATA	; VRAM I/O Register (RW)
@@ -35543,7 +35749,7 @@ sub_6000_914B:				; ...
 loc_6000_9154:				; ...
 		LDA	byte_0_C9
 		BEQ	loc_6000_9176
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_6000_9165
 		LDA	byte_0_C9
@@ -35600,9 +35806,9 @@ loc_6000_919B:				; ...
 
 game_end_event_starter:			; ...
 		LDA	#$FE ; '■'
-		STA	Level_ID	; $10
+		STA	Level_ID
 		LDA	#$10
-		STA	nmi_flags	; var helper?
+		STA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		RTS
@@ -35628,7 +35834,7 @@ loc_6000_91BA:				; ...
 
 loc_6000_91DB:				; ...
 		JSR	sub_6000_9146
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$40 ; '@'
 		BEQ	loc_6000_91EC
 		LDY	#5
@@ -35656,11 +35862,11 @@ sub_6000_91EF:				; ...
 		LDA	byte_0_B9
 		SEC
 		SBC	#$10
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_C2
 		CLC
 		ADC	#$10
-		EOR	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		EOR	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$20 ; ' '
 		BNE	loc_6000_9218
 		INY
@@ -35719,38 +35925,38 @@ sub_6000_925B:				; ...
 		STY	tmp_var_1A
 		LDY	#0
 		LDA	(tmp_var_19),Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		SEC
 		SBC	#1
 		EOR	#$1F
 		STA	tmp_var_16
 		INY
 		LDA	(tmp_var_19),Y
-		STA	byte_0_17
+		STA	tmp_var_17
 		INY
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STX	byte_0_18
+		LDX	tmp_var_15	;  / Object Counter / various tmp
+		STX	tmp_var_18
 
 loc_6000_9279:				; ...
 		LDA	#0
-		STA	word_0_1F+1
+		STA	tmp_var_20
 		LDA	(tmp_var_19),Y
 		CMP	#$40 ; '@'
 		BCC	loc_6000_9294
 		AND	#$3F ; '?'
-		STA	word_0_1F
+		STA	tmp_var_1f
 		LDA	(tmp_var_19),Y
 		ROL	A
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		BCS	loc_6000_9292
-		DEC	word_0_1F+1
-		DEC	word_0_1F+1
+		DEC	tmp_var_20
+		DEC	tmp_var_20
 
 loc_6000_9292:				; ...
-		INC	word_0_1F+1
+		INC	tmp_var_20
 
 loc_6000_9294:				; ...
-		STA	word_0_1F
+		STA	tmp_var_1f
 		INY
 
 loc_6000_9297:				; ...
@@ -35760,12 +35966,12 @@ loc_6000_9297:				; ...
 loc_6000_929A:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		CLC
-		ADC	word_0_1F+1
-		DEC	byte_0_18
+		ADC	tmp_var_20
+		DEC	tmp_var_18
 		BNE	loc_6000_92C6
-		DEC	byte_0_17
+		DEC	tmp_var_17
 		BEQ	locret_6000_92D6
-		STA	byte_0_21
+		STA	tmp_var_21
 		TYA
 		CLC
 		ADC	tmp_var_19
@@ -35784,14 +35990,14 @@ loc_6000_92BA:				; ...
 		BNE	loc_6000_92BA
 
 loc_6000_92C0:				; ...
-		LDA	byte_0_21
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STX	byte_0_18
+		LDA	tmp_var_21
+		LDX	tmp_var_15	;  / Object Counter / various tmp
+		STX	tmp_var_18
 
 loc_6000_92C6:				; ...
-		DEC	word_0_1F
+		DEC	tmp_var_1f
 		BEQ	loc_6000_9279
-		LDX	word_0_1F+1
+		LDX	tmp_var_20
 		BEQ	loc_6000_9297
 		BPL	loc_6000_929A
 		CLC
@@ -36079,7 +36285,7 @@ loc_6000_995C:				; ...
 		JSR	sub_6000_9146
 		LDX	Object_RamSlotID_tmp
 		BMI	loc_6000_998E
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$60 ; '`'
 		BNE	loc_6000_998E
 		LDA	#0
@@ -36096,11 +36302,11 @@ loc_6000_995C:				; ...
 		STA	checkit_81
 
 loc_6000_9984:				; ...
-		LDA	jump_ptr_nmi
+		LDA	jump_ptr_nmi	; поинтер на функцию во	время nmi
 		SBC	#3
-		STA	jump_ptr_nmi
+		STA	jump_ptr_nmi	; поинтер на функцию во	время nmi
 		BCS	loc_6000_998E
-		DEC	jump_ptr_nmi+1
+		DEC	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 
 loc_6000_998E:				; ...
 		LDA	byte_0_170
@@ -36179,7 +36385,7 @@ loc_6000_9A17:				; ...
 		LDA	byte_6000_9AD1,Y
 		CLC
 		ADC	byte_0_166,Y
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	byte_0_15E,Y
 		ADC	#0
 		ROR	A
@@ -36203,7 +36409,7 @@ loc_6000_9A2D:				; ...
 		STX	Object_RamSlotID_tmp
 
 loc_6000_9A49:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$A0 ; 'а'
 		BCC	loc_6000_9AC7
 		SBC	#$A0 ; 'а'
@@ -36213,7 +36419,7 @@ loc_6000_9A49:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_9A58:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$90 ; 'Р'
 		BCC	loc_6000_9A7F
 		SBC	#$90 ; 'Р'
@@ -36229,19 +36435,19 @@ loc_6000_9A66:				; ...
 		EOR	#$FF
 
 loc_6000_9A6F:				; ...
-		STA	byte_0_18
+		STA	tmp_var_18
 		CLC
 		ADC	byte_0_8C
 		STA	byte_0_8C
-		ASL	byte_0_18
-		LDA	byte_0_17
+		ASL	tmp_var_18
+		LDA	tmp_var_17
 		SEC
-		SBC	byte_0_18
-		STA	byte_0_17
+		SBC	tmp_var_18
+		STA	tmp_var_17
 
 loc_6000_9A7F:				; ...
 		LDA	byte_6000_9AE3,Y
-		STA	byte_0_18
+		STA	tmp_var_18
 		LDA	#0
 		CPY	#$A
 		BNE	loc_6000_9AAD
@@ -36323,9 +36529,9 @@ loc_6000_9CB9:				; ...
 		JSR	loc_6000_FE88
 		JSR	clear_sprites
 		LDA	#$75
-		STA	RandomValue_1	; $25
-		STA	RandomValue_3	; $27
-		STA	RandomValue_4	; $28
+		STA	RandomValue_1
+		STA	RandomValue_3
+		STA	RandomValue_4
 		LDA	#6
 		LDY	#4
 		JSR	sub_6000_DB94
@@ -36357,9 +36563,9 @@ loc_6000_9CB9:				; ...
 
 loc_6000_9D08:				; ...
 		STA	object2_some_anim
-		STY	RandomValue_1	; $25
-		STY	RandomValue_3	; $27
-		STY	RandomValue_4	; $28
+		STY	RandomValue_1
+		STY	RandomValue_3
+		STY	RandomValue_4
 		LDY	#1
 		JSR	sub_6000_98EA
 
@@ -36502,7 +36708,7 @@ loc_6000_9DF6:				; ...
 loc_6000_9E08:				; ...
 		STA	byte_0_CB
 		JSR	sub_6000_A883
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#7
 		BNE	loc_6000_9E49
 		LDA	byte_0_C9
@@ -36520,7 +36726,7 @@ loc_6000_9E08:				; ...
 
 loc_6000_9E2B:				; ...
 		LDA	byte_6000_A4A9,X
-		STA	byte_0_55,X
+		STA	palette,X
 		DEX
 		BPL	loc_6000_9E2B
 		LDA	#$F
@@ -36549,7 +36755,7 @@ loc_6000_9E53:				; ...
 		LDA	object2_some_anim
 		CMP	#3
 		BNE	loc_6000_9E77
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$E0 ; 'р'
 		BNE	loc_6000_9E68
 		LDA	#$10
@@ -36559,7 +36765,7 @@ loc_6000_9E68:				; ...
 		JSR	sub_6000_9146
 		LDA	#8
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDX	#$B0 ; '░'
 		JMP	loc_6000_A05B
 ; ---------------------------------------------------------------------------
@@ -36608,7 +36814,7 @@ loc_6000_9EBA:				; ...
 
 loc_6000_9EC4:				; ...
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDA	object2_some_anim
 		BNE	loc_6000_9F15
 		LDA	object_2_X_speed
@@ -36655,7 +36861,7 @@ loc_6000_9F1F:				; ...
 		BNE	loc_6000_9F72
 		LDA	object_2_X_speed
 		BEQ	loc_6000_9F51
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$93 ; 'У'
 		BCC	loc_6000_9F44
 		AND	#3
@@ -36669,7 +36875,7 @@ loc_6000_9F1F:				; ...
 		INC	object_3_Zpos_L
 
 loc_6000_9F44:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$B0 ; '░'
 		BNE	loc_6000_9F6F
 		LDA	#$10
@@ -36708,7 +36914,7 @@ loc_6000_9F72:				; ...
 
 loc_6000_9F84:				; ...
 		LDX	#2
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$40 ; '@'
 		CMP	#8
 		LDA	#8
@@ -36736,7 +36942,7 @@ loc_6000_9FA0:				; ...
 		LDA	#$FC ; '№'
 
 loc_6000_9FAD:				; ...
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDX	#$C
 		LDY	#0
 		JSR	loc_6000_FFCB
@@ -36753,13 +36959,13 @@ loc_6000_9FB6:				; ...
 		LDX	#0
 		LDA	object2_some_anim
 		BNE	loc_6000_A005
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#2
 		LSR	A
 		ADC	#5
 		TAY
 		JSR	loc_6000_9A15
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		BMI	loc_6000_A005
 		LDY	game_end_caller_var
 		DEY
@@ -36770,13 +36976,13 @@ loc_6000_9FB6:				; ...
 		LDA	#$40 ; '@'
 
 loc_6000_9FF0:				; ...
-		STA	byte_0_90
+		STA	for_spr_unk_90	; смещение?
 		STA	tmp_var_1B
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		ORA	#$80 ; 'А'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$E8 ; 'ш'
-		SBC	FrameCounter_Even
+		SBC	FrameCounter_Even ; счетчик каждого второго кадра
 		STA	byte_0_8C
 		LDY	#$B
 		JSR	sub_6000_AA3D
@@ -36806,23 +37012,23 @@ loc_6000_A01E:				; ...
 		LDA	object_2_X_speed
 		BNE	loc_6000_A05B
 		LDA	object3_X_shadow
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	object3_Y_shadow
 		STA	byte_0_8C
 		LDX	#$70 ; 'p'
 		LDA	#0
-		STA	byte_0_90
+		STA	for_spr_unk_90	; смещение?
 		STA	tmp_var_1B
 		LDA	#$8D ; 'Н'
 		STA	tmp_var_19
 		LDA	#$DF ; '▀'
 		JSR	loc_6000_8D23
 		LDX	#$B0 ; '░'
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BNE	loc_6000_A05B
 		DEC	object3_X_shadow
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#7
 		BNE	loc_6000_A05B
 		INC	object3_Y_shadow
@@ -36831,7 +37037,7 @@ loc_6000_A05B:				; ...
 		LDA	Sprites_Adress,X
 		AND	#3
 		EOR	#3
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	loc_6000_A073
 		INC	Sprites_Xpos,X
 		LDA	Sprites_Xpos,X
@@ -36848,7 +37054,7 @@ loc_6000_A073:				; ...
 		BEQ	loc_6000_A0DA
 
 loc_6000_A07B:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_6000_A08A
 
@@ -36932,13 +37138,13 @@ loc_6000_A0DA:				; ...
 		BEQ	locret_6000_A169
 
 loc_6000_A0EE:				; ...
-		DEC	FrameCounter	; $B
-		DEC	FrameCounter	; $B
-		DEC	FrameCounter_Even
+		DEC	FrameCounter
+		DEC	FrameCounter
+		DEC	FrameCounter_Even ; счетчик каждого второго кадра
 		LDA	game_end_caller_var
 		CMP	#$B4 ; '┤'
 		BCC	loc_6000_A15D
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$30 ; '0'
 		BCS	loc_6000_A15F
 		CMP	#$20 ; ' '
@@ -36989,17 +37195,17 @@ loc_6000_A141:				; ...
 		BNE	loc_6000_A15F
 
 loc_6000_A14C:				; ...
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		CMP	#$F0 ; 'Ё'
 		BNE	loc_6000_A15F
 		LDA	game_end_caller_var
 		BEQ	loc_6000_A162
 		ROR	A
 		BCC	loc_6000_A15B
-		DEC	FrameCounter	; $B
+		DEC	FrameCounter
 
 loc_6000_A15B:				; ...
-		DEC	FrameCounter_Even
+		DEC	FrameCounter_Even ; счетчик каждого второго кадра
 
 loc_6000_A15D:				; ...
 		INC	game_end_caller_var
@@ -37102,7 +37308,7 @@ loc_6000_A1F4:
 
 
 sub_6000_A1FA:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		STY	tmp_var_16
 
 loc_6000_A1FE:				; ...
@@ -37116,7 +37322,7 @@ loc_6000_A1FE:				; ...
 		ADC	tmp_var_16
 		STA	Sprites_Adress,X
 		JSR	sub_6000_DAD1
-		AND	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		AND	tmp_var_15	;  / Object Counter / various tmp
 		STA	Sprites_Ypos,X
 		JSR	sub_6000_DAD1
 		STA	Sprites_Xpos,X
@@ -37137,14 +37343,14 @@ sub_6000_A228:				; ...
 		CMP	#2
 		BNE	loc_6000_A237
 		LDA	#2
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#$22 ; '"'
 		JMP	loc_6000_A23D
 ; ---------------------------------------------------------------------------
 
 loc_6000_A237:				; ...
 		LDA	#4
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#6
 
 loc_6000_A23D:				; ...
@@ -37168,7 +37374,7 @@ sub_6000_A243:				; ...
 
 
 sub_6000_A249:				; ...
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		STY	tmp_var_16
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		JSR	sub_6000_A243
@@ -37182,8 +37388,8 @@ loc_6000_A258:				; ...
 		LDA	#$3F ; '?'
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		STX	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
-		LDY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		JSR	sub_6000_A267
+		LDY	tmp_var_15	;  / Object Counter / various tmp
+		JSR	load_level_palettes
 		LDY	tmp_var_16
 ; End of function sub_6000_A249
 
@@ -37191,26 +37397,26 @@ loc_6000_A258:				; ...
 ; =============== S U B	R O U T	I N E =======================================
 
 
-sub_6000_A267:				; ...
-		LDA	off_6000_A281,Y
-		STA	byte_0_1D
-		LDA	off_6000_A281+1,Y
-		STA	byte_0_1E
+load_level_palettes:			; ...
+		LDA	levels_pals_ptr,Y
+		STA	tmp_var_1d
+		LDA	levels_pals_ptr+1,Y
+		STA	tmp_var_1e
 		LDY	#0
 
 loc_6000_A273:				; ...
-		LDA	(byte_0_1D),Y
-		STA	byte_0_55,X
+		LDA	(tmp_var_1d),Y
+		STA	palette,X
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		INY
 		INX
 		CPY	#$10
 		BNE	loc_6000_A273
 		RTS
-; End of function sub_6000_A267
+; End of function load_level_palettes
 
 ; ---------------------------------------------------------------------------
-off_6000_A281:	.WORD byte_6000_A2CD	; ...
+levels_pals_ptr:.WORD byte_6000_A2CD	; ...
 		.WORD byte_6000_A2DD
 		.WORD byte_6000_A2ED
 		.WORD byte_6000_A2FD
@@ -37227,7 +37433,7 @@ off_6000_A281:	.WORD byte_6000_A2CD	; ...
 		.WORD byte_6000_A3AD
 		.WORD byte_6000_A3BD
 		.WORD byte_6000_A3CD
-		.WORD byte_6000_A3DD
+		.WORD palette_chars
 		.WORD byte_6000_A3ED
 		.WORD byte_6000_A40D
 		.WORD byte_6000_A411
@@ -37265,7 +37471,7 @@ byte_6000_A39D:	.BYTE $F, 0, $10, $20, $F, 7, 5, $15, $F, $10, 0, $27, $F, 3, $1
 byte_6000_A3AD:	.BYTE $F, $15, $25, $35, $F, 2,	$12, $22, $F, 8, $19, $29, $F, 6, 5, $15 ; ...
 byte_6000_A3BD:	.BYTE $F, 7, $17, $27, $F, 2, $1C, $2C,	$F, 7, 5, $14, $F, 7, $16, $27 ; ...
 byte_6000_A3CD:	.BYTE $F, 0, $10, $20, $F, 4, $14, $24,	$F, $C,	$1C, $F, $F, 2,	$12, $22 ; ...
-byte_6000_A3DD:	.BYTE $F, $F, $A, $1A, $F, $F, $17, $27, $F, $18, $28, $20, $F,	$F, $16, $26 ; ...
+palette_chars:	.BYTE $F, $F, $A, $1A, $F, $F, $17, $27, $F, $18, $28, $20, $F,	$F, $16, $26 ; ...
 byte_6000_A3ED:	.BYTE $F, $19, 9, $28, $F, $1B,	$B, $27, $F, $15, 5, 0,	$F, $20, $10, 0	; ...
 byte_6000_A3FD:	.BYTE $F, $19, 9, $28, $F, $1B,	$B, $27, $F, 0,	$10, $20, $F, 5, $15, $25 ; ...
 byte_6000_A40D:	.BYTE $F, $20, $17, $28	; ...
@@ -37294,7 +37500,7 @@ loc_6000_A4F5:				; ...
 		CMP	#$50 ; 'P'
 		BCC	loc_6000_A514
 		LDA	#$F
-		AND	FrameCounter	; $B
+		AND	FrameCounter
 		BNE	loc_6000_A581
 		LDA	byte_0_66
 		SBC	#$10
@@ -37312,7 +37518,7 @@ loc_6000_A514:				; ...
 		BEQ	loc_6000_A581
 
 loc_6000_A518:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_6000_A55E
 		LDA	Objects_Zpos_L
@@ -37364,7 +37570,7 @@ loc_6000_A564:				; ...
 		STX	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 
 loc_6000_A56C:				; ...
-		LDA	byte_0_55,X
+		LDA	palette,X
 		SEC
 		SBC	byte_0_C9
 		BCS	loc_6000_A575
@@ -37422,10 +37628,10 @@ loc_6000_A5BE:				; ...
 		LDA	Objects_X_speed
 		CMP	#$6C ; 'l'
 		BNE	loc_6000_A600
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		EOR	#$40 ; '@'
 		BNE	loc_6000_A5DC
-		STA	jump_ptr_nmi+1
+		STA	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 
 loc_6000_A5DC:				; ...
 		LDA	#$16
@@ -37488,7 +37694,7 @@ loc_6000_A625:				; ...
 loc_6000_A628:				; ...
 		LDA	Objects_X_speed
 		BNE	loc_6000_A625
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDY	#3
 		LDX	#$64 ; 'd'
 		JSR	sub_6000_FFEB
@@ -37521,7 +37727,7 @@ loc_6000_A669:				; ...
 
 
 sub_6000_A66C:				; ...
-		STA	byte_0_39
+		STA	tmp_var_39
 		LDY	#3
 		JMP	loc_6000_FFCB
 ; End of function sub_6000_A66C
@@ -37539,12 +37745,12 @@ loc_6000_A673:				; ...
 		STA	byte_0_C9
 		STA	byte_0_CB
 		LDA	#0
-		STA	jump_ptr_nmi+1
+		STA	jump_ptr_nmi+1	; поинтер на функцию во	время nmi
 		JMP	loc_6000_A87D
 ; ---------------------------------------------------------------------------
 
 loc_6000_A68E:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#3
 		BNE	loc_6000_A69F
 		LDA	byte_0_C9
@@ -37623,7 +37829,7 @@ loc_6000_A707:				; ...
 		LDA	#0
 
 loc_6000_A713:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#$70 ; 'p'
 
 loc_6000_A717:				; ...
@@ -37646,7 +37852,7 @@ loc_6000_A731:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_A739:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#7
 
 loc_6000_A73D:				; ...
@@ -37658,7 +37864,7 @@ loc_6000_A73F:				; ...
 loc_6000_A742:				; ...
 		LDA	Sprites_Xpos,X
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	Sprites_Xpos,X
 		INX
 		INX
@@ -37688,7 +37894,7 @@ loc_6000_A767:				; ...
 		BEQ	loc_6000_A7A3
 		CLC
 		ADC	#8
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	Objects_Hit_timer
 		BNE	loc_6000_A790
 		INC	Objects_X_speed
@@ -37708,7 +37914,7 @@ loc_6000_A790:				; ...
 		DEC	Objects_Hit_timer
 		LDA	Objects_unk_cnt2
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		STA	Objects_unk_cnt2
 		BCS	loc_6000_A7AE
 		DEC	Objects_unk2
@@ -37756,7 +37962,7 @@ loc_6000_A7F0:				; ...
 		JSR	loc_6000_FFCB
 		LDA	PPU_STATUS	; PPU Status Register (R)
 		LDA	#$10
-		STA	nmi_flags
+		STA	nmi_flags	;  > $80  кадр завершен
 		LDA	#0
 		STA	Objects_Xpos_L
 		JMP	loc_6000_A87D
@@ -37770,10 +37976,10 @@ loc_6000_A80A:				; ...
 		EOR	#$FF
 
 loc_6000_A816:				; ...
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#6
 		JSR	loc_6000_FF84
-		LDA	nmi_flags
+		LDA	nmi_flags	;  > $80  кадр завершен
 		ORA	#$80 ; 'А'
 		STA	PPU_CTRL_REG1	; PPU Control Register #1 (W)
 		LDA	#0
@@ -37781,18 +37987,18 @@ loc_6000_A816:				; ...
 		STX	tmp_var_16
 		TAX
 		TAY
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 
 loc_6000_A82E:				; ...
 		TYA
 		CLC
-		ADC	byte_0_17
+		ADC	tmp_var_17
 		STA	sprite15_Xpos,X
 		STA	Sprites_Xpos,X
 		LDA	#$F8 ; '°'
 		STA	sprite15_Ypos,X
 		BCS	loc_6000_A84B
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ADC	Objects_X_speed
 		ADC	#$50 ; 'P'
 		STA	sprite15_Ypos,X
@@ -37804,9 +38010,9 @@ loc_6000_A84B:				; ...
 		INX
 		INX
 		INX
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		EOR	#8
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#8
 		BNE	loc_6000_A82E
 		TYA
@@ -37824,7 +38030,7 @@ byte_6000_A876:	.BYTE 0, 0, 0, 0, 0, $10, 0 ; ...
 
 loc_6000_A87D:				; ...
 		LDA	#0
-		STA	byte_0_2D
+		STA	previous_bankID
 		RTS
 ; ---------------------------------------------------------------------------
 		RTS
@@ -37914,7 +38120,7 @@ loc_6000_A8ED:				; ...
 		LDX	#$58 ; 'X'
 		JSR	sub_6000_D5FB
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JSR	loc_6000_E584
 		JMP	loc_6000_A87D
 ; ---------------------------------------------------------------------------
@@ -37994,10 +38200,10 @@ loc_6000_A991:				; ...
 loc_6000_A994:				; ...
 		LDX	#0
 		LDA	#$70 ; 'p'
-		STA	byte_0_17
-		LDA	FrameCounter_Even
+		STA	tmp_var_17
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#$40 ; '@'
-		STA	byte_0_90
+		STA	for_spr_unk_90	; смещение?
 		STA	tmp_var_1B
 		LDA	#$A4 ; 'д'
 		STA	byte_0_8C
@@ -38010,7 +38216,7 @@ loc_6000_A994:				; ...
 sub_6000_A9AB:				; ...
 		LDA	checkit_81
 		BNE	locret_6000_A9B8
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		BNE	locret_6000_A9B8
 		JSR	sub_6000_A934
@@ -38031,17 +38237,17 @@ loc_6000_A9BE:				; ...
 		DEX
 		BPL	loc_6000_A9BE
 		LDX	#0
-		STX	byte_0_90
+		STX	for_spr_unk_90	; смещение?
 		STX	tmp_var_1B
 		LDA	byte_0_FE
 		BPL	loc_6000_A9ED
 		LDA	#$50 ; 'P'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$3A ; ':'
 		STA	byte_0_8C
 		LDY	#7
 		JSR	sub_6000_AA3D
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#$58 ; 'X'
 		BNE	loc_6000_A9ED
 		LDY	#$C6 ; '╞'
@@ -38051,10 +38257,10 @@ loc_6000_A9BE:				; ...
 
 loc_6000_A9ED:				; ...
 		LDA	#$9C ; 'Ь'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$64 ; 'd'
 		STA	byte_0_8C
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		LSR	A
 		LSR	A
 		LSR	A
@@ -38064,13 +38270,13 @@ loc_6000_A9ED:				; ...
 		TAY
 		JSR	sub_6000_AA3D
 		LDA	#$84 ; 'Д'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$5C ; '\'
 		STA	byte_0_8C
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#$20 ; ' '
 		BEQ	loc_6000_AA15
-		LDA	FrameCounter_Even
+		LDA	FrameCounter_Even ; счетчик каждого второго кадра
 		AND	#4
 
 loc_6000_AA15:				; ...
@@ -38079,16 +38285,16 @@ loc_6000_AA15:				; ...
 		ADC	#3
 		TAY
 		JSR	sub_6000_AA3D
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		CMP	#$C0 ; '└'
 		BCS	loc_6000_AA3A
 		AND	#$42 ; 'B'
 		BEQ	loc_6000_AA3A
 		LDA	#$5C ; '\'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$8A ; 'К'
 		STA	byte_0_8C
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		AND	#1
 		CLC
 		ADC	#5
@@ -38119,7 +38325,7 @@ loc_6000_AA70:				; ...
 		JSR	clear_sprites
 		LDA	#$44 ; 'D'
 		JSR	sub_6000_DB92
-		LDA	byte_0_8D
+		LDA	tmp_var_8d
 		ASL	A
 		ADC	#8
 		JSR	sub_6000_DB9B
@@ -38127,7 +38333,7 @@ loc_6000_AA70:				; ...
 		JSR	sub_6000_DB9B
 		LDA	#$12
 		JSR	sub_6000_DB9B
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		LDA	#$20 ; ' '
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDX	byte_6000_E196,Y
@@ -38135,7 +38341,7 @@ loc_6000_AA70:				; ...
 		TAY
 		LDA	#$44 ; 'D'
 		JSR	sub_6000_925B
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		CPY	#1
 		BEQ	loc_6000_AAAA
 		CPY	#2
@@ -38151,7 +38357,7 @@ loc_6000_AAAA:				; ...
 		JSR	sub_6000_925B
 
 loc_6000_AABB:				; ...
-		LDY	byte_0_8D
+		LDY	tmp_var_8d
 		LDA	byte_6000_AB2F,Y
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDA	byte_6000_AB33,Y
@@ -38174,7 +38380,7 @@ loc_6000_AABB:				; ...
 		LDA	#1
 
 loc_6000_AAED:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		CMP	#$A
 		BCC	loc_6000_AAFB
 		SBC	#$A
@@ -38189,13 +38395,13 @@ loc_6000_AAFB:				; ...
 		LDA	#$D
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		LDA	PPU_DATA	; VRAM I/O Register (RW)
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ASL	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ASL	A
 		ASL	A
 		ASL	A
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		SBC	#$11
 		TAY
 		LDA	#$A0 ; 'а'
@@ -38203,7 +38409,7 @@ loc_6000_AAFB:				; ...
 		LDA	#0
 		STA	tmp_var_19
 		LDA	#1
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#7
 		STA	tmp_var_1A
 		JSR	loc_6000_D781
@@ -38313,7 +38519,7 @@ loc_6000_ABE5:				; ...
 		LDA	#1
 		JSR	sub_6000_D765
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JMP	loc_6000_A87D
 ; ---------------------------------------------------------------------------
 
@@ -38361,9 +38567,9 @@ loc_6000_AC24:				; ...
 		LDA	#$84 ; 'Д'
 		STA	Objects_Hit_timer
 		LDA	#3
-		STA	RandomValue_1	; $25
-		STA	RandomValue_3	; $27
-		STA	RandomValue_4	; $28
+		STA	RandomValue_1
+		STA	RandomValue_3
+		STA	RandomValue_4
 		JSR	sub_6000_A1D2
 		LDA	#$C
 		JSR	sub_6000_9047
@@ -38413,7 +38619,7 @@ continue_game_end:			; ...
 		STA	byte_0_CE
 		JSR	loc_6000_E584
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JMP	loc_6000_A87D
 ; ---------------------------------------------------------------------------
 
@@ -38430,7 +38636,7 @@ loc_6000_ACF7:				; ...
 		LDA	#0
 		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
 		LDA	#2
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#$40 ; '@'
 
 loc_6000_AD1A:				; ...
@@ -38442,7 +38648,7 @@ loc_6000_AD1C:				; ...
 		BNE	loc_6000_AD1C
 		DEY
 		BNE	loc_6000_AD1A
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_6000_AD1A
 		LDX	#$40 ; '@'
 		LDA	#$AA ; 'к'
@@ -38474,12 +38680,12 @@ loc_6000_AD2D:				; ...
 		JSR	sub_6000_925B
 		LDA	#0
 		STA	byte_0_BD
-		STA	byte_0_1E
+		STA	tmp_var_1e
 		LDA	#2
 		STA	byte_0_CE
 		JSR	loc_6000_E584
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JMP	loc_6000_A87D
 ; ---------------------------------------------------------------------------
 
@@ -38506,7 +38712,7 @@ loc_6000_AD7A:				; ...
 		JSR	sub_6000_925B
 		LDA	#0
 		STA	byte_0_BD
-		STA	byte_0_1E
+		STA	tmp_var_1e
 		LDA	#3
 		STA	byte_0_CE
 		LDA	game_end_caller_var
@@ -38554,24 +38760,24 @@ loc_6000_ADF5:				; ...
 
 loc_6000_ADF8:				; ...
 		LDX	#0
-		STX	byte_0_90
+		STX	for_spr_unk_90	; смещение?
 		STX	tmp_var_1B
 		LDA	#$80 ; 'А'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$77 ; 'w'
 		STA	byte_0_8C
 		LDY	#$A
 		JSR	sub_6000_AA3D
 		JSR	sub_6000_AE15
 		LDA	#$FF
-		STA	Level_ID	; $10
+		STA	Level_ID
 		JMP	loc_6000_A87D
 
 ; =============== S U B	R O U T	I N E =======================================
 
 
 sub_6000_AE15:				; ...
-		LDA	FrameCounter	; $B
+		LDA	FrameCounter
 		LSR	A
 		LSR	A
 		TAY
@@ -38588,9 +38794,9 @@ loc_6000_AE23:				; ...
 loc_6000_AE29:				; ...
 		ASL	A
 		ASL	A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		ASL	A
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 		LDX	#0
 
@@ -38625,7 +38831,7 @@ level_base_load:			; ...
 		LDA	#2
 		JSR	sub_6000_D765
 		JSR	sub_6000_D5EE
-		LDX	Level_ID	; $10
+		LDX	Level_ID
 		LDA	level_infobar_colors,X
 
 loc_6000_D5D7:				; ...
@@ -38658,7 +38864,7 @@ sub_6000_D5FB:				; ...
 loc_6000_D5FE:				; ...
 		LDA	byte_6000_D618,X
 		BEQ	locret_6000_D616
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_6000_D617,X
 		INX
 		INX
@@ -38667,7 +38873,7 @@ loc_6000_D60A:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		DEY
 		BEQ	locret_6000_D616
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_6000_D60A
 		BEQ	loc_6000_D5FE
 
@@ -38694,7 +38900,7 @@ sub_6000_D6D9:				; ...
 loc_6000_D6DC:				; ...
 		LDA	byte_6000_D6F6,X
 		BEQ	locret_6000_D6F4
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_6000_D6F5,X
 		INX
 		INX
@@ -38703,7 +38909,7 @@ loc_6000_D6E8:				; ...
 		STA	PPU_DATA	; VRAM I/O Register (RW)
 		DEY
 		BEQ	locret_6000_D6F4
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_6000_D6E8
 		BEQ	loc_6000_D6DC
 
@@ -38724,7 +38930,7 @@ byte_6000_D6F6:	.BYTE 9, $88, 1, $AA, 1, $80, 1, $62, 1, $10, 1, 0, 3, $2A, 1, 2
 sub_6000_D765:				; ...
 		STX	tmp_var_19
 		STY	tmp_var_1A
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDY	#0
 
 loc_6000_D76D:				; ...
@@ -38755,7 +38961,7 @@ loc_6000_D781:				; ...
 loc_6000_D792:				; ...
 		PLA
 		BPL	loc_6000_D781
-		DEC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		DEC	tmp_var_15	;  / Object Counter / various tmp
 		BNE	loc_6000_D76D
 		RTS
 ; End of function sub_6000_D765
@@ -38787,16 +38993,16 @@ byte_6000_DA8B:	.BYTE 0, $FE, $FF, $B4,	0, $BD,	0, $FD,	$96, $8E, $8F, $E, $C, $
 
 
 sub_6000_DAD1:				; ...
-		LDA	RandomValue_1	; $25
-		EOR	RandomValue_4	; $28
-		ADC	RandomValue_3	; $27
-		STA	RandomValue_2	; $26
-		LDA	RandomValue_3	; $27
+		LDA	RandomValue_1
+		EOR	RandomValue_4
+		ADC	RandomValue_3
+		STA	RandomValue_2
+		LDA	RandomValue_3
 		ROL	A
-		SBC	RandomValue_4	; $28
-		STA	RandomValue_3	; $27
-		EOR	RandomValue_2	; $26
-		STA	RandomValue_1	; $25
+		SBC	RandomValue_4
+		STA	RandomValue_3
+		EOR	RandomValue_2
+		STA	RandomValue_1
 		RTS
 ; End of function sub_6000_DAD1
 
@@ -38807,7 +39013,7 @@ sub_6000_DAD1:				; ...
 sub_6000_DAE5:				; ...
 		LDX	#6
 		LDY	#2
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		JMP	loc_6000_FFCB
 ; End of function sub_6000_DAE5
 
@@ -38829,13 +39035,13 @@ sub_6000_DAEE:				; ...
 
 
 level_values_load:			; ...
-		LDA	byte_0_2D
+		LDA	previous_bankID
 		PHA
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		ASL	A
 		ASL	A
 		ASL	A
-		ADC	Level_ID	; $10
+		ADC	Level_ID
 		TAY
 		LDA	level_base_X_H,Y
 		STA	LevelPos_CamPosX_H
@@ -38847,19 +39053,19 @@ level_values_load:			; ...
 		STA	LevelPos_CamPosY_L
 		LDA	level_struct_id,Y
 		STA	level_struct
-		STY	byte_0_17
+		STY	tmp_var_17
 		LDX	level_bg_pal_id,Y
 		LDA	level_obj_pal_id,Y
 		TAY
 		JSR	sub_6000_DAEE
-		LDY	byte_0_17
+		LDY	tmp_var_17
 		LDA	level_obj_gfx_id,Y
 		PHA
 		LDA	level_bg_gfx_id,Y
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		AND	#$7F ; ''
 		LDY	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		BCC	loc_6000_DB41
 		LDY	#4
 
@@ -38869,7 +39075,7 @@ loc_6000_DB41:				; ...
 		JSR	sub_6000_DB92
 		PLA
 		JSR	sub_6000_DB92
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#$D
 		BNE	loc_6000_DB6B
 		LDY	#4
@@ -38904,7 +39110,7 @@ loc_6000_DB89:				; ...
 		LDA	#$42 ; 'B'
 		JSR	sub_6000_DB92
 		PLA
-		STA	byte_0_2D
+		STA	previous_bankID
 		RTS
 ; End of function level_values_load
 
@@ -38921,7 +39127,7 @@ sub_6000_DB92:				; ...
 
 
 sub_6000_DB94:				; ...
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#3
 		JMP	loc_6000_FFCB
 ; End of function sub_6000_DB94
@@ -38932,7 +39138,7 @@ sub_6000_DB94:				; ...
 
 sub_6000_DB9B:				; ...
 		LDY	#7
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDX	#$12
 		JMP	loc_6000_FFCB
 ; ---------------------------------------------------------------------------
@@ -39076,21 +39282,21 @@ loc_6000_E5A4:				; ...
 		LSR	A
 		LSR	A
 		LSR	A
-		STA	byte_0_1D
+		STA	tmp_var_1d
 		LDA	byte_6000_E6BD,Y
 		CLC
 		ADC	#$F2 ; 'Є'
 		STA	tmp_var_1C
-		LDA	byte_0_1D
+		LDA	tmp_var_1d
 		ADC	#$E6 ; 'ц'
-		STA	byte_0_1D
+		STA	tmp_var_1d
 		INX
 		TXA
 		AND	#7
-		STA	byte_0_1E
+		STA	tmp_var_1e
 		LDA	#8
 		SEC
-		SBC	byte_0_1E
+		SBC	tmp_var_1e
 		AND	#7
 		BEQ	loc_6000_E5E9
 		TAX
@@ -39108,7 +39314,7 @@ loc_6000_E5E1:				; ...
 		STA	tmp_var_1B
 		INC	tmp_var_1C
 		BNE	loc_6000_E5E9
-		INC	byte_0_1D
+		INC	tmp_var_1d
 
 loc_6000_E5E9:				; ...
 		LDA	tmp_var_19
@@ -39144,15 +39350,15 @@ text_decompress:			; ...
 		LDX	#0		; X stores current tree	node index
 
 loc_6000_E611:				; ...
-		DEC	byte_0_1E	; $1E counts bits left in the current byte at $1B
+		DEC	tmp_var_1e	; $1E counts bits left in the current byte at $1B
 		BPL	loc_6000_E623	; if we're out of bits, load a new byte
 		LDY	#7
-		STY	byte_0_1E	; reset	$1E to tell us there are 8 available bits
+		STY	tmp_var_1e	; reset	$1E to tell us there are 8 available bits
 		LDA	(tmp_var_1C),Y	; load byte from indirect $1C/$1D address + 7
 		STA	tmp_var_1B	; store	byte in	$1B
 		INC	tmp_var_1C	; increment stream byte	position ($1C/$1D)
 		BNE	loc_6000_E623
-		INC	byte_0_1D
+		INC	tmp_var_1d
 
 loc_6000_E623:				; ...
 		ASL	tmp_var_1B	; shift	the high bit out of $1B	and...
@@ -39455,13 +39661,13 @@ loc_6000_FF5D:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_6000_FF84:				; ...
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_6000_FFB3,Y
 		JSR	byte_6000_FEC9
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_6000_FFB3,Y
 		RTS
@@ -39476,7 +39682,7 @@ loc_6000_FF98:				; ...
 		JMP	byte_6000_FEC9
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_6000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -39493,16 +39699,16 @@ byte_6000_FFC9:	.BYTE $16, $17		; ...
 loc_6000_FFCB:				; ...
 		LDA	#0
 		ORA	#6
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_6000_FFB3,Y
 		STA	byte_6000_FFB3,Y
 		JSR	sub_6000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_6000_FFB3,Y
 		STA	byte_6000_FFB3,Y
 		RTS
@@ -39542,7 +39748,7 @@ loc_6000_FFF2:				; ...
 
 
 sub_7000_8000:				; ...
-		JMP	(JumpTable_ptr_main) ; $13
+		JMP	(JumpTable_ptr_main) ; указатель на функцию при	переходе в другой банк
 ; End of function sub_7000_8000
 
 ; ---------------------------------------------------------------------------
@@ -39568,18 +39774,18 @@ byte_7000_801B:	.BYTE 8, 9, $A,	$B, $C,	$D, $E,	$E, $D,	$FF, $FF, 6, 6,	6, 7 ; .
 
 
 sub_7000_802A:				; ...
-		STY	byte_0_22
+		STY	tmp_var_22
 		LDY	byte_0_C1
 		DEY
 		LDA	#0
-		STY	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STY	tmp_var_15	;  / Object Counter / various tmp
 		STX	tmp_var_16
 		LDX	#8
 
 loc_7000_8037:				; ...
 		ROR	tmp_var_16
 		BCC	loc_7000_803D
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 
 loc_7000_803D:				; ...
 		ROR	A
@@ -39587,8 +39793,8 @@ loc_7000_803D:				; ...
 		BNE	loc_7000_8037
 		STX	byte_0_BD
 		STX	byte_0_BE
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	word_0_1F+1
+		STA	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_20
 		ROR	tmp_var_16
 		LDY	tmp_var_16
 		LSR	A
@@ -39596,32 +39802,32 @@ loc_7000_803D:				; ...
 		LSR	A
 		ROR	tmp_var_16
 		TAX
-		STY	word_0_1F
+		STY	tmp_var_1f
 		TYA
 		ASL	A
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	byte_0_BD
 		ASL	A
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	byte_0_BD
 		ASL	A
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		ROL	byte_0_BD
-		LDY	byte_0_22
+		LDY	tmp_var_22
 		CPY	#$1C
 		BNE	loc_7000_8078
-		SBC	word_0_1F
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		SBC	word_0_1F+1
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_1f
+		LDA	tmp_var_15	;  / Object Counter / various tmp
+		SBC	tmp_var_20
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		BCS	loc_7000_8078
 		DEC	byte_0_BD
 
 loc_7000_8078:				; ...
-		LDA	byte_0_22
+		LDA	tmp_var_22
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		TAY
 		LDA	#0
 		SBC	byte_0_BD
@@ -39698,7 +39904,7 @@ loc_7000_852F:				; ...
 		LDA	Objects_X_speed
 		BNE	loc_7000_8539
 		STX	PPU_CTRL_REG1	; PPU Control Register #1 (W)
-		STX	nmi_flags
+		STX	nmi_flags	;  > $80  кадр завершен
 
 loc_7000_8539:				; ...
 		TSX
@@ -39723,10 +39929,10 @@ loc_7000_854F:				; ...
 		LDY	#$1C
 		JSR	sub_7000_802A
 		STX	tmp_var_16
-		STY	byte_0_17
+		STY	tmp_var_17
 		TAY
 		LDX	#0
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 
 loc_7000_8562:				; ...
 		LDA	byte_0_BD
@@ -39741,10 +39947,10 @@ loc_7000_8562:				; ...
 
 loc_7000_8577:				; ...
 		STA	byte_0_138,X
-		LDA	byte_0_17
+		LDA	tmp_var_17
 		CLC
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		TYA
 		ADC	tmp_var_16
 		TAY
@@ -39778,13 +39984,13 @@ loc_7000_85AC:				; ...
 		AND	#$F
 		STY	byte_0_BC
 		TAX
-		STY	byte_0_17
+		STY	tmp_var_17
 		LDA	byte_7000_80AC,X
 		TAX
 		LDY	#$20 ; ' '
 		JSR	sub_7000_802A
 		STA	byte_0_BB
-		INC	byte_0_17
+		INC	tmp_var_17
 		BNE	loc_7000_85D9
 		LDA	#$3F ; '?'
 		SEC
@@ -39810,7 +40016,7 @@ loc_7000_85DD:				; ...
 		LDX	#0
 
 loc_7000_85E1:				; ...
-		STX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	byte_0_BD
 		BNE	loc_7000_85EF
 		TYA
@@ -39824,7 +40030,7 @@ loc_7000_85EF:				; ...
 
 loc_7000_85F1:				; ...
 		LDA	table_multiple_7,X
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		STA	byte_0_1E0,X
 		LDA	byte_0_C0
 		CLC
@@ -39864,7 +40070,7 @@ loc_7000_85F1:				; ...
 
 loc_7000_8636:				; ...
 		LDA	#$70 ; 'p'
-		STA	byte_0_17
+		STA	tmp_var_17
 		LDA	#$11
 		LDX	Objects_X_speed
 		BEQ	loc_7000_8643
@@ -39881,44 +40087,44 @@ loc_7000_864A:				; ...
 		LDA	byte_0_138,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_101,X
 		LDA	byte_0_139,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_102,X
 		LDA	byte_0_13A,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_103,X
 		LDA	byte_0_13B,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_104,X
 		LDA	byte_0_13C,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_105,X
 		LDA	byte_0_13D,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_106,X
 		LDA	byte_0_13E,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		ROL	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ROL	tmp_var_15	;  / Object Counter / various tmp
 		LDY	byte_0_107,X
 		LDA	byte_0_13F,X
 		AND	(tmp_var_19),Y
 		CMP	#1
-		LDA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDA	tmp_var_15	;  / Object Counter / various tmp
 		ROL	A
-		LDY	byte_0_17
+		LDY	tmp_var_17
 		STA	byte_0_100,Y
 		TXA
 		CLC
@@ -39926,11 +40132,11 @@ loc_7000_864A:				; ...
 		TAX
 		TYA
 		ADC	#$10
-		STA	byte_0_17
+		STA	tmp_var_17
 		CPX	#$38 ; '8'
 		BNE	loc_7000_864A
 		SBC	#$6F ; 'o'
-		STA	byte_0_17
+		STA	tmp_var_17
 
 loc_7000_86C2:				; ...
 		PLA
@@ -39969,11 +40175,11 @@ loc_7000_86EC:				; ...
 		LDA	tmp_var_1A
 		ROL	A
 		AND	#3
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	rest_point_id
 		ASL	A
 		ASL	A
-		ADC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		ADC	tmp_var_15	;  / Object Counter / various tmp
 		TAX
 		LDY	rest_point_id
 		LDA	byte_7000_8817,Y
@@ -39989,11 +40195,11 @@ loc_7000_86EC:				; ...
 		LSR	A
 		LSR	A
 		AND	#$FE ; '■'
-		STA	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		STA	tmp_var_15	;  / Object Counter / various tmp
 		LDA	tmp_var_19
 		AND	#$7F ; ''
 		SEC
-		SBC	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		SBC	tmp_var_15	;  / Object Counter / various tmp
 		TAX
 		DEX
 		LDY	#$FF
@@ -40004,7 +40210,7 @@ loc_7000_8725:				; ...
 		BMI	loc_7000_8730
 		DEX
 		BPL	loc_7000_8725
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		RTS
 ; ---------------------------------------------------------------------------
 
@@ -40012,7 +40218,7 @@ loc_7000_8730:				; ...
 		CMP	#$F0 ; 'Ё'
 		BCS	loc_7000_8725
 		AND	#$7F ; ''
-		STA	byte_0_8D
+		STA	tmp_var_8d
 		INY
 		TXA
 		SEC
@@ -40047,7 +40253,7 @@ loc_7000_8741:				; ...
 loc_7000_876B:				; ...
 		LDA	byte_7000_8817,Y
 		STA	PPU_DATA	; VRAM I/O Register (RW)
-		STA	byte_0_55,X
+		STA	palette,X
 		INY
 		INX
 		CPX	#$10
@@ -40056,8 +40262,8 @@ loc_7000_876B:				; ...
 loc_7000_8779:				; ...
 		LDY	#0
 		STY	tmp_var_1B
-		STY	word_0_1F
-		STY	word_0_1F+1
+		STY	tmp_var_1f
+		STY	tmp_var_20
 ; ---------------------------------------------------------------------------
 byte_7000_8781:	.BYTE $EE, $15,	0	; ...
 					; INC tmp_v15_obj_cnt
@@ -40112,9 +40318,9 @@ loc_7000_87BD:				; ...
 		TAX
 		LDA	byte_7000_87FF,X
 		JSR	sub_7000_87DC
-		LDA	word_0_1F+1
+		LDA	tmp_var_20
 		BEQ	byte_7000_8781
-		LDA	word_0_1F
+		LDA	tmp_var_1f
 		BPL	byte_7000_8781
 		RTS
 
@@ -40123,20 +40329,20 @@ loc_7000_87BD:				; ...
 
 sub_7000_87DC:				; ...
 		STY	tmp_var_1B
-		LDY	word_0_1F+1
+		LDY	tmp_var_20
 		BNE	loc_7000_87E9
-		LDY	word_0_1F
+		LDY	tmp_var_1f
 		STA	byte_0_600,Y
 		BNE	loc_7000_87EE
 
 loc_7000_87E9:				; ...
-		LDY	word_0_1F
+		LDY	tmp_var_1f
 		STA	byte_0_700,Y
 
 loc_7000_87EE:				; ...
-		INC	word_0_1F
+		INC	tmp_var_1f
 		BNE	loc_7000_87F4
-		INC	word_0_1F+1
+		INC	tmp_var_20
 
 loc_7000_87F4:				; ...
 		LDY	tmp_var_1B
@@ -40185,7 +40391,7 @@ loc_7000_8A9E:				; ...
 ; ---------------------------------------------------------------------------
 
 loc_7000_8AA3:				; ...
-		LDX	ObjCounter_tmp_var_15 ;	счетчик	объектов / временные значения  $15
+		LDX	tmp_var_15	;  / Object Counter / various tmp
 		LDA	#1
 		STA	tmp_var_00
 		LDA	PPU_STATUS	; PPU Status Register (R)
@@ -40351,13 +40557,13 @@ byte_7000_8C08:	.BYTE 0, 0, $FF, 4, $1E, $DB, 0	; ...
 byte_7000_8C0F:	.BYTE 0, $10, $FF, 4, $92, $E8,	0 ; ...
 byte_7000_8C16:	.BYTE 0, 8, $7C, 4, $2F, $FB, 0	; ...
 byte_7000_8C1D:	.BYTE 0, $14, $BF, 4	; ...
-byte_7000_8C21:	.BYTE $2F, $F3,	0	; ...
+		.BYTE $2F, $F3,	0
 byte_7000_8C24:	.BYTE $10, $18,	$1C, 4,	$E8, $F1, 0 ; ...
 ; ---------------------------------------------------------------------------
 
 loc_7000_8C2B:				; ...
 		LDX	#7
-		LDA	Level_ID	; $10
+		LDA	Level_ID
 		CMP	#3
 		BEQ	loc_7000_8C4B
 		LDX	#$B
@@ -40393,16 +40599,16 @@ clear_objtmp_ids:			; ...
 		CPX	#$F
 		BNE	clear_objtmp_ids
 		LDA	#$10
-		STA	byte_0_9D
+		STA	ptr_adr?	; 10
 		LDX	#$82 ; 'В'
 
 loc_7000_8C67:				; ...
-		LDA	byte_7000_8C21,X
-		STA	byte_0_700,X
+		LDA	gfx_copy_code -	$82,X ;	code to	be copied in RAM $782
+		STA	byte_0_700,X	; 782
 		INX
 		BNE	loc_7000_8C67
-		STX	byte_0_9C
-		LDA	Level_ID	; $10
+		STX	obj_slotID_tmp2
+		LDA	Level_ID
 		CMP	#2
 		BNE	locret_7000_8C8E
 		LDY	#0
@@ -40423,13 +40629,69 @@ loc_7000_8C83:				; ...
 locret_7000_8C8E:			; ...
 		RTS
 ; ---------------------------------------------------------------------------
-byte_7000_8C8F:	.BYTE $1C, 0, $40, $FE,	$8C, $81, 0, 6,	$92, $81, $60, 3, $27, 0, $40, $FE, $27, 0, $40, $FE, $A9, $12,	$8D, $C5, $FF ;	...
-		.BYTE $A5, $9C,	$8D, 6,	$20, $A5, $9D, $8D, 6, $20, $A9, 0, $18, $AA, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C
-		.BYTE 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C, 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C
-		.BYTE 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C, 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C
-		.BYTE 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C, 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C
-		.BYTE 7, $20, $BC, $A3,	$8C, $8C, 7, $20, $BC, $A3, $8C, $8C, 7, $20, $69, $10,	$AA, $D0, $9B, $A9, $10, $8D, $C3, $FF
-		.BYTE $60
+byte_7000_8C8F:	.BYTE  $1C,   0, $40, $FE ; ...
+		.BYTE  $8C, $81,   0,	6
+		.BYTE  $92, $81, $60,	3
+		.BYTE  $27,   0, $40, $FE
+		.BYTE  $27,   0, $40, $FE
+
+; =============== S U B	R O U T	I N E =======================================
+
+; code to be copied in RAM $782
+
+gfx_copy_code:				; ...
+		LDA	#$12
+		STA	byte_7000_FFC5
+		LDA	obj_slotID_tmp2
+		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
+		LDA	ptr_adr?	; 10
+		STA	PPU_ADDRESS	; VRAM Address Register	#2 (W2)
+		LDA	#0
+		CLC
+		TAX
+
+loc_7000_8CB6:				; ...
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		LDY	$8CA3,X
+		STY	PPU_DATA	; VRAM I/O Register (RW)
+		ADC	#$10
+		TAX
+		BNE	loc_7000_8CB6
+		LDA	#$10
+		STA	byte_7000_FFC3
+		RTS
+; End of function gfx_copy_code
+
+; ---------------------------------------------------------------------------
 byte_7000_8D21:	.BYTE $D1, $D0,	$D0, $A2, $A7, $A1, $48, $4E, 7, $99, $4E, $43,	$40, $64, $A7, $A7, $A7, $B3, $D2, $D2,	$D1, $D9, $E8 ;	...
 		.BYTE $E8, $E8,	$EC, $F4, $F4, $F0, $F1, $E9, $E8, $D1,	$D0, $D0, $A2, $A7, $A1, $48, $4E, $93,	$29, $58, $52, $92, $C1
 		.BYTE $F4, $20,	6, 6, $4C, $8C,	$D9, $19, $33, $B3, $60, $60, $C0, $C4,	$8C, $96, 4, $30, 1, $83, $F6, $EC, $D8, $B0
@@ -40467,7 +40729,7 @@ loc_7000_8EF1:				; ...
 		LDA	byte_7000_8EA5,Y
 		STA	Objects_unk2,X
 		LDA	byte_7000_8EA6,Y
-		STA	Objects_HitID,X
+		STA	Objects_HitID,X	; номер	движения для запуска
 		TYA
 		CLC
 		ADC	#5
@@ -40500,13 +40762,13 @@ word_7000_FF40:	.WORD $FFFF, $FFFF, $FFFF, $FFFF ; ...
 		STA	byte_7000_FFB3
 		RTS
 ; ---------------------------------------------------------------------------
-		STA	byte_0_3E
+		STA	prev_bank_id_
 		AND	#$10
 		ORA	#3
 		TAY
 		STA	byte_7000_FFB3,Y
 		JSR	word_7000_FF40
-		LDA	byte_0_3E
+		LDA	prev_bank_id_
 		TAY
 		STA	byte_7000_FFB3,Y
 		RTS
@@ -40526,7 +40788,7 @@ NMI:					; ...
 
 ; ---------------------------------------------------------------------------
 		LDX	NMI_Xreg_saver
-		LDA	prev_bank_id
+		LDA	previous_bankID_NMI
 		TAY
 		STA	byte_7000_FFB3,Y
 		LDY	NMI_Yreg_saver
@@ -40535,20 +40797,23 @@ NMI:					; ...
 ; ---------------------------------------------------------------------------
 byte_7000_FFB3:	.BYTE 0, 1, 2		; ...
 byte_7000_FFB6:	.BYTE 3, 4, 5, 6	; ...
-byte_7000_FFBA:	.BYTE 7, 8, 9, $A, $B, $C, $D, $E, $F, $10, $11, $12, $13, $14,	$15, $16, $17 ;	...
+byte_7000_FFBA:	.BYTE 7, 8, 9, $A, $B, $C, $D, $E, $F ;	...
+byte_7000_FFC3:	.BYTE $10		; ...
+		.BYTE $11
+byte_7000_FFC5:	.BYTE $12, $13,	$14, $15, $16, $17 ; ...
 ; ---------------------------------------------------------------------------
 		LDA	#0
 		ORA	#7
-		STA	byte_0_2D
-		LDA	JumpTable_ptr_main ; $13
+		STA	previous_bankID
+		LDA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		PHA
-		STX	JumpTable_ptr_main ; $13
+		STX	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_7000_FFB3,Y
 		STA	byte_7000_FFB3,Y
 		JSR	sub_7000_8000
-		LDY	byte_0_2D
+		LDY	previous_bankID
 		PLA
-		STA	JumpTable_ptr_main ; $13
+		STA	JumpTable_ptr_main ; указатель на функцию при переходе в другой	банк
 		LDA	byte_7000_FFB3,Y
 		STA	byte_7000_FFB3,Y
 		RTS
@@ -40576,6 +40841,5 @@ RESET:					; ...
 		.WORD RESET
 		.WORD IRQ
 ; end of 'BANK7'
-
 
 

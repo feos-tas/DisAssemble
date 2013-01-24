@@ -156,13 +156,13 @@ word_6000_BF5E:	.WORD $30B, $302, $10D7, $D620,	$2000, $8D6, $B20, $206, $E503,	
 		.WORD $C308, $1018, $10C3, $C310, $1008, $C3, $C310, $1816, $12C3, $C318, $180A, $2C3, $C318, $1010, $90FF, $1658, $C300
 		.WORD $E, $6C3,	$C300, 2, $18C3, $C308,	$810, $8C3, $C308, $800, $18C3,	$C310, $1010, $8C3, $C310, $1000, $16C3, $C318
 		.WORD $1812, $AC3, $C318, $1802, $5C3, $204, $2901, 0
-byte_6000_C532:	.BYTE $38, $32,	$53, $15, $F4, $D5, $B8, $9B, $7E, $38,	$5B, $76, $95, $95, $AE, $D1, $F0, $11,	$30, $53, $72, $91, $AE	; ...
+rash_sprcfg_ptrH:.BYTE $38, $32, $53, $15, $F4,	$D5, $B8, $9B, $7E, $38, $5B, $76, $95,	$95, $AE, $D1, $F0, $11, $30, $53, $72,	$91, $AE ; ...
 		.BYTE $1A, $CF,	$F2, $13, $40, $5D, $82, $A1, $CC, $F1,	$12, $35, $54, $77, $98, $BD, $E0, $FF,	$1A, $3D, $5C, $7F, $9E
 		.BYTE $C3, $E8,	7, $26,	$4B, $6C, $91, $AC, $CF, $F0, $11, $48,	$68, $7F, $9A, $59, $59, $20, $33, $B1,	$C8, $EB, 8
 		.BYTE $27, $8E,	$4A, $4A, $4A, $4A, $69, $B3, $E2, $D, $D, $32,	$55, $7A, $9F, $C0, $E3, $F8, 7, $2A, $47, $62,	$83
 		.BYTE $94, $A5,	$BE, $E3, 6, $25, $4A, $65, $80, $A6, $CF, $EC,	$38, $38, $38, $38, $38, $38, $38, $38,	$38, $38, $38
 		.BYTE $38, $A5,	$BA, $CF, $E6, $FD, $1A, $37, $57, $77,	$9C, $C1, $F6, $38, $B6, $E5, $7B, $22,	$B4, $F2
-byte_6000_C5B9:	.BYTE $38, $22,	$2F, $4C, $67, $84, $A1, $C2, $E3, $FE,	$19, $32, $4B, $94, $9B, $A2, $AF, $C6,	$D6, $46, $52, $5E, $65	; ...
+obj_sprcfg_ptrH:.BYTE $38, $22,	$2F, $4C, $67, $84, $A1, $C2, $E3, $FE,	$19, $32, $4B, $94, $9B, $A2, $AF, $C6,	$D6, $46, $52, $5E, $65	; ...
 		.BYTE $6C, $A2,	$73, $73, $86, $89, $A0, $B5, $CC, $E5,	$F4, 5,	$18, $47, $5B, $A6, $CE, $F3, $2B, $18,	$35, $4A, $4A
 		.BYTE $61, $61,	$A2, $C0, $95, $CA, $D7, $E4, $F1, 1, $31, $6F,	$87, $9F, $9F, $9F, $60, $8B, $51, $9B,	$D0, $20, $30
 		.BYTE $39, $49,	$5F, $7B, $9D, $C5, $91, $FD, $AC, $D4,	$7C, $3F, $48, $57, $64, $73, $AB, $75,	$3B, $D4, $E7, $F4, 1
@@ -173,13 +173,13 @@ byte_6000_C5B9:	.BYTE $38, $22,	$2F, $4C, $67, $84, $A1, $C2, $E3, $FE,	$19, $32
 		.BYTE $9E, $C9,	$EE, $2A, $43, 1, 0, 2,	$22, $88, $92, $9C, 8, $11, $C3, $DE, $F9, $A, $3E, $5C, $6D, $4B, $84,	$AC
 		.BYTE $D8, 4, $25, $1C,	$13, $47, $62, $2E, $7E, $73, $8B, $9B,	$A5, $BB, $AC, $CE, $E1, $F7, 2, $D, $1A, $2A, $52, $67
 		.BYTE $7E, $9B,	$AF, $C3, $D8, $F5, 6, $39, $6A, 7, $93, $BC, $E9, $4D,	$24, $71, $B4, $B2, $2B
-byte_6000_C6B5:	.BYTE $C8, $C9,	$C9, $C9, $C8, $C8, $C8, $C8, $C8, $C8,	$C8, $C9, $C9, $C9, $C9, $C9, $C9, $CA,	$CA, $CA, $CA, $CA, $CA	; ...
+rash_sprcfg_ptrL:.BYTE $C8, $C9, $C9, $C9, $C8,	$C8, $C8, $C8, $C8, $C8, $C8, $C9, $C9,	$C9, $C9, $C9, $C9, $CA, $CA, $CA, $CA,	$CA, $CA ; ...
 		.BYTE $CD, $CA,	$CA, $CB, $CB, $CB, $CB, $CB, $CB, $CB,	$CC, $CC, $CC, $CC, $CC, $CC, $CC, $CC,	$CD, $CD, $CD, $CD, $CD
 		.BYTE $CD, $CD,	$CE, $CE, $CE, $CE, $CE, $CE, $CE, $CE,	$CF, $CF, $CF, $CF, $CF, $CF, $CF, $CF,	$CF, $CF, $CF, $CF, $D0
 		.BYTE $D0, $D0,	$D0, $D0, $D0, $D0, $D0, $D0, $D0, $D1,	$D1, $D1, $D1, $D1, $D1, $D1, $D1, $D1,	$D2, $D2, $D2, $D2, $D2
 		.BYTE $D2, $D2,	$D2, $D2, $D3, $D3, $D3, $D3, $D3, $D3,	$D3, $D3, $C8, $C8, $C8, $C8, $C8, $C8,	$C8, $C8, $C8, $C8, $C8
 		.BYTE $C8, $C3,	$C3, $C3, $C3, $C3, $C4, $C4, $C4, $C4,	$C4, $C4, $C4, $C8, $DF, $DF, $E0, $E0,	$E0, $E0
-word_6000_C73C:	.WORD $DCC8, $DCDC, $DCDC, $DCDC, $DCDC, $DDDD,	$DDDD, $DDDD, $DDDD, $DEDD, $DEDE, $DEDE, $DEDD, $DEDE,	$AFAF, $AFAF ; ...
+obj_sprcfg_ptrL:.WORD $DCC8, $DCDC, $DCDC, $DCDC, $DCDC, $DDDD,	$DDDD, $DDDD, $DDDD, $DEDD, $DEDE, $DEDE, $DEDD, $DEDE,	$AFAF, $AFAF ; ...
 		.WORD $AFAF, $B0B0, $B0B0, $B0B0, $B0B0, $B1B1,	$B1B1, $B1B1, $B1B1, $B1B1, $B1B1, $B2B1, $B0B2, $B0B0,	$B0B0, $DDDD
 		.WORD $B2B2, $B3B2, $B3B3, $B3B3, $B3B3, $B4B3,	$B4B3, $B1B4, $BBBB, $BBBB, $BBBB, $B4B4, $BBBB, $BCBB,	$BCBC, $BCBC
 		.WORD $BCBC, $BCBC, $B7B4, $B8B8, $B8B8, $B5B8,	$B5B5, $B5B5, $B6B5, $B6B6, $B6B6, $B6B6, $B6B6, $B6B6,	$B6B6, $B7B7
