@@ -1,10 +1,6 @@
 $FF3F#IRQ#
 $FF98#NMI#
 $FFF2#RESET#
-$FFB3#banks_ids_0#
-$FFB6#byte_7000_FFB6#
-$FFBA#byte_7000_FFBA#
-$FFC3#byte_7000_FFC3#
-$FFC5#byte_7000_FFC5#
-$FFEB#loc_7000_FFEB#
+$FFB3#banks_ids7#
+$FFEB#wait7#
 $FF40#word_7000_FF40#

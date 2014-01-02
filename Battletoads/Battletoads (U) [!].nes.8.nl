@@ -1,5 +1,5 @@
-$FFB3#byte_3000_FFB3#
-$FFB6#byte_3000_FFB6#
+$FF98#NMI3#
+$FFB3#banks_ids3#
 $8147#byte_4000_8147#
 $81BE#byte_4000_81BE#
 $8470#byte_4000_8470#
@@ -11,9 +11,7 @@ $FFCB#jump_from_bank3#
 $F91C#level5_checkp3#
 $FAB4#level6_cfg#
 $FF3A#loc_3000_FF3A#
-$FF98#loc_3000_FF98#
 $FFE1#loc_3000_FFE1#
-$FFEB#loc_3000_FFEB#
 $FFF2#loc_3000_FFF2#
 $8026#loc_4000_8026#
 $8068#loc_4000_8068#
@@ -47,6 +45,7 @@ $8129#unk_4000_8129#
 $813B#unk_4000_813B#
 $8141#unk_4000_8141#
 $8007#unpack_backg_gfx?#
+$FFEB#wait3#
 $FF46#word_3000_FF46#
 $8DC7#word_4000_8DC7#
 $9A95#word_4000_9A95#

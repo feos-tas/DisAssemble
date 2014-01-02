@@ -64,15 +64,18 @@
  0000:002F Abs   stackp_save
  0000:0030 Abs   vram_inc_for_maps
  0000:0032 Abs   music_id
- 0000:0033 Abs   music_info
+ 0000:0033 Abs   music_speed
  0000:0034 Abs   music_id_ror
- 0000:0037 Abs   jump_ptr_unk_0
+ 0000:0037 Abs   sound_ptr
  0000:0039 Abs   tmp_var_39
  0000:003A Abs   tmp_var_snds
- 0000:003E Abs   prev_bank_id_
+ 0000:003E Abs   prev_bank_id_m
+ 0000:003F Abs   wait_after_pcm_cnt
+ 0000:0040 Abs   nmi_flag_xz
  0000:0042 Abs   music_id__
- 0000:0045 Abs   jump_ptr_unk
+ 0000:0045 Abs   jump_ptr_pcm
  0000:004F Abs   music_id_
+ 0000:0051 Abs   pcm_unknown
  0000:0055 Abs   palette
  0000:0056 Abs   bg_pal_color1
  0000:0057 Abs   bg_pal_color2
@@ -103,11 +106,11 @@
  0000:008B Abs   tmp_var_8b
  0000:008C Abs   tmp_var_8c
  0000:008D Abs   tmp_var_8d
- 0000:008E Abs   spr_cnt_pal_players
+ 0000:008E Abs   tmp_var_8e
  0000:008F Abs   tmp_var_8F
- 0000:0090 Abs   obj_dir_tmp
- 0000:0091 Abs   cfg_low_B
- 0000:0092 Abs   cfg_high_B
+ 0000:0090 Abs   tmp_var_90
+ 0000:0091 Abs   tmp_var_91
+ 0000:0092 Abs   tmp_var_92
  0000:0093 Abs   cam_X_sbc?
  0000:0094 Abs   cam_Y_sbc?
  0000:0095 Abs   upd_gfx_flag2
@@ -117,14 +120,14 @@
  0000:0099 Abs   tmp_var_99
  0000:009A Abs   tmp_var_9A
  0000:009B Abs   tmp_var_9B
- 0000:009C Abs   obj_slotID_tmp2
- 0000:009D Abs   gfx_cod_ptra
- 0000:009E Abs   Objects_RamSlotIDs_tmp
+ 0000:009C Abs   gfxcopy_vram_ptrh
+ 0000:009D Abs   gfxcopy_vram_ptrl
+ 0000:009E Abs   obj_slotIDs_for_spr
  0000:00AD Abs   obj_ZposL_tmp
  0000:00AE Abs   obj_ZposH_tmp
  0000:00AF Abs   Obj_Z_floor_tmp
  0000:00B1 Abs   tmp_var_b1
- 0000:00B2 Abs   global_cnt?
+ 0000:00B2 Abs   camera_lock_cnt
  0000:00B3 Abs   ppu_dat_lenght
  0000:00B4 Abs   ppu_wait_lenght
  0000:00B5 Abs   unkn_cnt3
@@ -134,37 +137,43 @@
  0000:00B9 Abs   global_counter
  0000:00BA Abs   global_flags
  0000:00BB Abs   four_values_unk
- 0000:00BF Abs   inc_to_xz
+ 0000:00BC Abs   rev_tower_Xl
+ 0000:00BD Abs   rev_tower_XH
+ 0000:00BE Abs   inc_to_xh
+ 0000:00BF Abs   inc_to_xl
  0000:00C0 Abs   cnt_to_xz
+ 0000:00C2 Abs   check_xz0
  0000:00C3 Abs   level_map1_adrL
  0000:00C4 Abs   level_map1_adrH
  0000:00C5 Abs   level_map2_adrL
  0000:00C6 Abs   level_map2_adrH
- 0000:00C7 Abs   level_struct
+ 0000:00C7 Abs   X_block_lenght
  0000:00C8 Abs   tmp_var_c8
  0000:00C9 Abs   pal_reduce_value
  0000:00CB Abs   pal_offset
  0000:00CC Abs   scroll_value2?
  0000:00CD Abs   update_p1_p2_gfx
- 0000:00D0 Abs   unkn_cnt4
+ 0000:00CE Abs   timer_cont_scrn_sec
+ 0000:00CF Abs   timer_cont_scrn_60
+ 0000:00D0 Abs   update_ui_flag
  0000:00D1 Abs   flag_boss_1
  0000:00D2 Abs   lvl_moving?
  0000:00D3 Abs   camera_speed?
- 0000:00D4 Abs   bikes_accelerate
+ 0000:00D4 Abs   bikes_speed_sub
  0000:00D5 Abs   bikes_speed
  0000:00D6 Abs   bikes_acc_cnt
  0000:00D7 Abs   gfx_buff_off
  0000:00D9 Abs   some_lvl_flag_cnt
  0000:00DA Abs   some_for_Z?
  0000:00DB Abs   some_counter
- 0000:00DC Abs   some_flag
+ 0000:00DC Abs   some_sound_flag
  0000:00DD Abs   some_anim_tmp?
- 0000:00DE Abs   global_cnt_xz
+ 0000:00DE Abs   hit_Z_table_index
  0000:00DF Abs   tmp_var_df
  0000:00E0 Abs   tmp_var_e0
  0000:00E1 Abs   tmp_var_e1
  0000:00E2 Abs   tmp_var_e2
- 0000:00E3 Abs   cam_X_flag?
+ 0000:00E3 Abs   turbotunnel_X_flag
  0000:00E4 Abs   stop_scroll_flag
  0000:00E5 Abs   Level_CfgAdr_new
  0000:00E6 Abs   Level_CfgAdr_newH
@@ -179,20 +188,22 @@
  0000:00F0 Abs   rest_point_id
  0000:00F1 Abs   ptr_to_some_gfx
  0000:00F2 Abs   ptr_to_some_gfxi
- 0000:00F3 Abs   rat_slot_id?
+ 0000:00F3 Abs   rat_slot_id
  0000:00F4 Abs   game_end_caller_var
  0000:00F5 Abs   count_of_xz_snd
  0000:00F6 Abs   pause_flag
  0000:00F7 Abs   pause_snd_cnt1
  0000:00F8 Abs   pause_snd_cnt2
- 0000:00FC Abs   unused?
- 0000:00FD Abs   load_flag?
+ 0000:00FC Abs   unused?_scroll_info
+ 0000:00FD Abs   load_flag2?
  0000:00FE Abs   cont_screen_cnt
  0000:00FF Abs   second_load
  0000:0100 Abs   stack_100
  0000:0120 Abs   attributes_buff
+ 0000:0160 Abs   block_tiles_buff
  0000:0178 Abs   tmap_adr_h
  0000:017C Abs   tmap_adr_l
+ 0000:019F Abs   levelr?
  0000:01FD Abs   stack_1fd
  0000:0200 Abs   Sprites_Ypos
  0000:0201 Abs   Sprites_Adress
@@ -229,19 +240,19 @@
  0000:0352 Abs   sounds_r_4001
  0000:03B0 Abs   snd_some_lastvar
  0000:03B1 Abs   players_obj_unk1
- 0000:03B3 Abs   players_obj_unk2
+ 0000:03B3 Abs   player1_eye_clos
  0000:03B5 Abs   player1_obj_wanted_frame
  0000:03B6 Abs   player2_obj_wanted_frame
  0000:03B7 Abs   players_obj_un5
- 0000:03B9 Abs   players_obj_un4
+ 0000:03B9 Abs   players_tongue_dir
  0000:03BB Abs   players_obj_un3
  0000:03BD Abs   players_obj_un2
  0000:03BF Abs   players_obj_unk
  0000:03C1 Abs   Objects_TypeID
  0000:03C2 Abs   player2_TypeID
- 0000:03D0 Abs   Obj_anim_frame
- 0000:03D1 Abs   player2_anim_frame
- 0000:03DF Abs   Objects_unk_cnt
+ 0000:03D0 Abs   Objects_gfx_frame
+ 0000:03D1 Abs   player2_gfx_frame
+ 0000:03DF Abs   Obj_various_cnt
  0000:03ED Abs   Object15_unk_cnt
  0000:03EE Abs   Objects_Xpos_H
  0000:03EF Abs   player2_Xpos_H
@@ -278,8 +289,8 @@
  0000:04C0 Abs   Objects_Z_speed
  0000:04C1 Abs   player2_Z_speed
  0000:04C2 Abs   object3_Z_speed
- 0000:04CF Abs   Objects_unk1
- 0000:04D1 Abs   object2_unk1
+ 0000:04CF Abs   Objects_Z_spd_sub
+ 0000:04D1 Abs   player2_Z_spd_sub
  0000:04DE Abs   Objects_unk_cnt2
  0000:04ED Abs   Objects_unk2
  0000:04FC Abs   Objects_AnimID
@@ -310,19 +321,26 @@
  0000:05B4 Abs   players_obj_unk5
  0000:05B6 Abs   players_obj_unk6
  0000:05B8 Abs   players_obj_unk7
+ 0000:05B9 Abs   player2_unk_7
  0000:05BA Abs   players_obj_unk8
- 0000:05BD Abs   players_obj_unk9
- 0000:05BF Abs   players_obj_unk10
- 0000:05C1 Abs   players_obj_unk11
- 0000:05C3 Abs   players_obj_unk12
- 0000:05C5 Abs   players_obj_unk13
+ 0000:05BB Abs   player2_unk_var
+ 0000:05BC Abs   pl1_or_pl2_xz
+ 0000:05BD Abs   player1_updown_slide_cnt
+ 0000:05BF Abs   player1_unused?
+ 0000:05C1 Abs   player1_razdvalen_flag?
+ 0000:05C3 Abs   players_shock_timer
+ 0000:05C5 Abs   players_gas_slot?
  0000:05C7 Abs   players_obj_unk14
  0000:05C8 Abs   player2_obj_unk14
- 0000:05C9 Abs   players_obj_unk15
+ 0000:05C9 Abs   players_slizen_id
+ 0000:05CB Abs   some_ptr_saver_h
+ 0000:05CC Abs   some_ptr_saver_l
+ 0000:05CD Abs   some_dat_saver
  0000:05CE Abs   players_obj_unk16
  0000:05CF Abs   player2_obj_unk16
- 0000:05D0 Abs   players_obj_unk17
- 0000:05EF Abs   Scores_tmp
+ 0000:05D0 Abs   player1_water_flag
+ 0000:05D2 Abs   lvl_map?
+ 0000:05EF Abs   Scores_base
  0000:05F4 Abs   Score_Player1_100k
  0000:05F5 Abs   Score_Player1_10k
  0000:05F6 Abs   Score_Player1_1k
@@ -331,6 +349,7 @@
  0000:05F9 Abs   Score_Player1_1
  0000:05FA Abs   Score_Player2
  0000:0600 Abs   level_ram?
+ 0000:0650 Abs   palette_saver?
  0000:06F0 Abs   some_code_here
  0000:0700 Abs   gfx_buff_adr_h
  0000:0701 Abs   gfx_buff_adr_l
@@ -371,6 +390,7 @@
  0000:4015 Abs   SND_MASTERCTRL_REG
  0000:4016 Abs   JOYPAD_PORT1
  0000:4017 Abs   JOYPAD_PORT2
+ 0000:809A       inferno_race_effect
  0000:80D4       not_h_scrl_upd
  0000:8108       tilemaps_write
  0000:8148       update_continue_chk
@@ -381,9 +401,10 @@
  0000:822E       upd_tilemap_30
  0000:8236       update_tilemap_28
  0000:82A9       RESET_0
- 0000:82AB       RESET__
+ 0000:82AB       reset_restart_game
  0000:831C       call_game_end
  0000:8326       set_game_end
+ 0000:8376       music_for_bank2
  0000:837E       set_level_music
  0000:8380       set_music_by_level_id
  0000:8383       set_music_track
@@ -395,7 +416,11 @@
  0000:84E1       some_sounds
  0000:853A       levels_3_and_6_scroll?
  0000:8566       restart_on_bike_chk
- 0000:85B5       some_with_ppu
+ 0000:856A       std_level_restart
+ 0000:856F       restart_sub_lvl?
+ 0000:857A       restart_for_karnath
+ 0000:8588       some_vram_updates
+ 0000:85B5       vram_update_functions
  0000:86B9       level_scr2_val?
  0000:86EE       set_nmi_func_ptr
  0000:8705       update_frame_counters
@@ -406,72 +431,121 @@
  0000:8757       level_backg_scroll
  0000:876B       clear_ram
  0000:87A3       level_camera_moving
+ 0000:87AA       level_inc?
  0000:87C2       objects_functions
  0000:88EB       no_obj_code
  0000:88EC       launch_obj_code
  0000:8961       bike_frames_ids
+ 0000:896B       samolet_frames
  0000:898B       object_dragon
+ 0000:8A57       set_on_transport
+ 0000:8A59       set_on_transport_
+ 0000:8A94       compare_for_hit_Z?
+ 0000:8AD9       hit_Z_table
+ 0000:8AE8       hit_Z_table2
  0000:8AF7       check_hitting
+ 0000:8AFB       check_hitting_
+ 0000:8BA2       create_obj_4_
  0000:8C91       anim_picking_enemy
  0000:8CC7       animID_poedanie_muh
  0000:8CF5       anim_picking_obj
- 0000:8D01       test_checkpoint_pos
+ 0000:8D01       obj_cmp_and_get_X_dist
+ 0000:8D39       obj_compare_Y?
+ 0000:8D4D       object_compare_Z
  0000:8D78       joypads_reading
+ 0000:8DC1       players_Z?
+ 0000:8E52       objects_Z?
+ 0000:8E7A       objects_Z_phys?
+ 0000:8EE1       obj_add_Z_by_Zspd?
+ 0000:8EE4       obj_add_Z_by_Zspd?_
+ 0000:8EEE       objects_add_Z?
+ 0000:8F44       clear_obj_anims_timer
+ 0000:8F4A       obj_moving_by_speed_
+ 0000:8F4C       obj_moving_by_speed
+ 0000:8F4F       change_obj_coord?_
+ 0000:904A       spd_table
  0000:913A       object_dmg_hit
- 0000:9142       xz_sound
+ 0000:9142       play_sound_62
  0000:9148       sound_type4
- 0000:914A       some_sound_and_reload_X
+ 0000:914A       some_sound_and_restore_X
  0000:9150       object_level1_boss_noga
- 0000:91A6       write_anim_Fear
+ 0000:918F       write_anim_fear
+ 0000:91DF       music_for_noga
  0000:91F2       screen_off
  0000:9200       object_level1_boss_dead
  0000:923E       object_level1_boss_dmg_spr
  0000:9252       object_level1_boss_turrets
+ 0000:92D6       level1_boss_sub
+ 0000:92E6       level1_boss_loc
+ 0000:92FC       object_X_by_camera
+ 0000:92FD       object_X_by_camera_
  0000:930A       object_level1_boss
  0000:9396       object_level1_boss_bullet
+ 0000:93FE       drop_and_remove_stick
+ 0000:940A       drop_stick_
+ 0000:942B       create_obj_stick
  0000:944E       object_tall_walker
+ 0000:95CE       create_obj_ravenclaw
+ 0000:95D0       create_obj_ravenclaw_
  0000:95EB       object_dead_raven
  0000:9636       rnd_swap_flags_dir?
  0000:9643       object_raven_large
  0000:96AE       object_raven
+ 0000:96E9       obj_set_dir_by_Xlow
  0000:9936       obj_inc_Xspeed_by_4
  0000:99D3       object_invader
  0000:9A9C       object_flying_life_bar
  0000:9B8A       obj_code_ptrs
  0000:9C8A       objects_unk_dat1
  0000:9D09       objects_unk_dat2
- 0000:9D87       objects_unk_dat3
- 0000:9E06       level_flag_xz6
- 0000:9E12       can_make_game_end?
+ 0000:9D87       obj_hit_flags_cfg
+ 0000:9E06       level_camlock_cnt
+ 0000:9E12       object_vs_camera_check
+ 0000:9E99       some_state_upd
+ 0000:9EA3       write_life_and_state
+ 0000:9EA6       upd_state_
+ 0000:9EA8       upd_state
  0000:9EAF       mov_dir_table
+ 0000:9EBF       speed_limit
+ 0000:9ED2       level1_on_rope
  0000:9F0E       Level_CanMove_Dir
  0000:9F1C       Level_CarryObjSpeed
+ 0000:9F2D       ragnarok_canyon_end
  0000:9F7B       player_taken_by_enemy
  0000:9F84       taken_by_flower
- 0000:9F89       taken_by_dragon
+ 0000:9F89       taken_by_dragon_or_pl
+ 0000:9F99       level1_on_rope_
  0000:9FD8       object_player
  0000:A01C       levels_flag_unk
+ 0000:A028       play_sound_89
  0000:A16C       fall_from_surfboard_frame
  0000:A177       frame_fall_from_bike
  0000:A181       fall_from_bike_
  0000:A18A       frames_razdavlen
+ 0000:A1BB       frame_when_slizen
  0000:A21A       shocked_on_lvl2
  0000:A226       player_shocked
  0000:A24B       take_dmg_on_a_rope
+ 0000:A252       unused_shocked_on_rope
+ 0000:A2C5       popal_v_ventilyator
+ 0000:A49A       udar_s_propellera
+ 0000:A4DF       stick_hit_from_dragon
  0000:A517       stick_hit_ID
  0000:A546       tol4ok_on_steni
  0000:A54A       udar_girei
  0000:A56C       botinkami_po_pushke
- 0000:A575       uppercut_po_pushke
  0000:A57B       udar_po_pushkam_l2
  0000:A585       udar_po_voronam
  0000:A58E       udar_botinkami_s_verevki
+ 0000:A599       udar_kluvom
  0000:A5A4       hit_id_on_rope
  0000:A5B5       anim_throw_obj
+ 0000:A5EB       po_robotam
  0000:A610       udar_nogoi
  0000:A644       power_hits
  0000:A64A       power_punch
  0000:A690       write_obj_Hit_ID_
+ 0000:A712       sound_6c
  0000:AB8F       rope_near_wall1
  0000:AB93       rope_near_wall2
  0000:AB97       on_rope_or_propeller
@@ -485,21 +559,32 @@
  0000:ADC5       level_flags_sit_and_xz
  0000:ADD7       object_delete?
  0000:ADE3       object_WARP
+ 0000:AE2D       warp_part?
  0000:AE9A       object_level1_boss_ball
  0000:AF4B       object_tall_walker_head
  0000:AFB6       object_hodulya_palka
+ 0000:B024       test_Z_speed_and_floor?
+ 0000:B099       wind_hold_frames
  0000:B110       object_rope
  0000:B167       copy_objects_XYZ_and_dir
  0000:B16A       set_obj_dir_and_copy_obj_XYZ
  0000:B16D       copy_objects_XYZ
  0000:B179       copy_objects_XY
  0000:B185       copy_objects_Y
+ 0000:B192       frames_on_koleso
+ 0000:B196       frames_koleso
+ 0000:B19A       flags_koleso
+ 0000:B1A2       clinger_winger_char_frames
+ 0000:B230       add_scores_for_bikes
  0000:B2E6       object_bike
  0000:B35B       object_set_palette
  0000:B3F7       object_screen_light
  0000:B458       object_rat_race_palette_fade
  0000:B465       object_infernorace_animation
  0000:B4DF       object_muhi
+ 0000:B553       create_obj_delete
+ 0000:B563       some_for_bank3
+ 0000:B5D1       obj_wall_destroy
  0000:B5F9       object_psyko_Pig_ambush
  0000:B63A       object_fireball
  0000:B69D       object_turbo_tunnel_falling_obstacle
@@ -507,46 +592,77 @@
  0000:B6D0       object_turbo_tunnel_obstacle_up
  0000:B6D4       object_turbo_tunnel_obstacle
  0000:B761       object_checkpoint_part2
+ 0000:B778       bikes_check_point_sub
+ 0000:B7F4       play_sound_56
+ 0000:B7F6       play_sound_xC_cF
+ 0000:B7FD       play_sound_xF
  0000:B81D       reset_bikes_speed
+ 0000:B88F       Z_speed_table
  0000:B8D4       stop_bikes_scroll
+ 0000:B91D       obj_inc_to_X_by_
+ 0000:B920       obj_increment_to_X
  0000:B92D       object_turbo_tunnel_rat_rocket
  0000:B988       object_turbo_tunnel_fly_obstacle
  0000:B9AE       object_turbo_tunnel_balls
  0000:B9C1       object_saturn_toadtrap
  0000:BB24       object_electro_trap
+ 0000:BBB4       electro_damage
+ 0000:BC0A       play_sound_16
  0000:BC12       object_raven_claw
+ 0000:BC57       create_scores_obj
+ 0000:BC59       create_scores_obj_
  0000:BC93       objects_power_ups
  0000:BCCF       add_scores
  0000:BD36       scores_table
  0000:BDAE       object_retro_blaster
  0000:BF0E       object_hordhead
  0000:C044       object_inferno_race_electricity
- 0000:C0C7       object_level5_watermine_p1
+ 0000:C0C7       object_mines_rokets_creator
  0000:C1B6       object_level7_fires
+ 0000:C1E5       compare_with_roket_and_fire_hit
  0000:C21A       object_level7_rockets
  0000:C257       object_rocket_rat2_inferno
+ 0000:C2F5       shesterenka_sub
  0000:C31D       object_shesterenka
- 0000:C419       object_water_hit
+ 0000:C3DC       compare_X_vs_player
+ 0000:C3F0       shesterenka_movement
+ 0000:C419       object_water_splash
  0000:C4C4       object_robot
+ 0000:C56A       robot_explosion
+ 0000:C56D       compare_pos_vs_players
  0000:C5E8       object_utka
  0000:C656       object_electrofish
  0000:C71A       object_hammerfish
+ 0000:C7AC       start_read_anim_and_clr_Zfloor
+ 0000:C7B1       start_read_anim__
  0000:C7CF       object_shark
+ 0000:C819       start_read_anim_
  0000:C88D       object_verevka_s_propellerom
  0000:C8D4       object_terra_tubes_xz
  0000:C972       object_vodovorot
  0000:C9ED       load_PL_1_or_2
  0000:C9F9       object_brevno
- 0000:CAA4       object_level5_watermine_p2
+ 0000:CA61       brevno_dmg
+ 0000:CA6A       death_effects_on_bikes
+ 0000:CA7F       bike_death_effects
+ 0000:CAA4       object_surfcity_watermine
+ 0000:CB07       big_blag_and_ball_death
  0000:CB74       object_electroball_phase2
  0000:CBE4       object_big_blag
+ 0000:CC03       big_blag_and_electroball_sub
  0000:CDB6       object_general_slaughter
  0000:CE74       object_robu_manus
+ 0000:CF66       obj_set_flags_by_dir
+ 0000:CF72       obj_set_flags_by_dir_
+ 0000:CF81       obj_set_flags_by_dir__
  0000:CF90       rash_walk_frames
- 0000:CF98       rash_walk_frames2
+ 0000:CF98       rash_run_frames
  0000:CFA0       rash_with_obj_frames
  0000:CFA4       rash_move_UD_frames
- 0000:D080       reset_some_vars
+ 0000:CFA8       muha_add_life
+ 0000:CFD0       obj_tongue
+ 0000:D06A       object_inc_to_Xspeed
+ 0000:D080       clear_object_vars
  0000:D0A2       object_last_lvl_flying
  0000:D11E       object_palka_v_stene
  0000:D1A6       object_last_lvl_head
@@ -558,32 +674,53 @@
  0000:D39C       object_dark_queen
  0000:D5A6       level_planA_pic
  0000:D5B7       Level_ID_Table
- 0000:D603       level_scroll_xz
+ 0000:D603       level_name_pos
+ 0000:D611       level_plans_NMI
+ 0000:D662       electro_ball_sub
+ 0000:D69F       electroball_set_gfx
  0000:D6BD       object_electroball
+ 0000:D6E9       Electroball_set_Y_low
+ 0000:DAA0       screen_off_and_reset
+ 0000:DAA5       game_end
  0000:DAC0       fill_sprite_buffer
  0000:DAD7       wait_vblank
- 0000:DADD       write_obj_Hit_ID
- 0000:DAF6       read_anim_and_inc_timer
- 0000:DAFD       read_anim_seq
- 0000:DB04       read_anim_sequence
+ 0000:DADD       write_obj_Anim_ID
+ 0000:DAF6       start_read_anim
+ 0000:DAFD       read_obj_anim
+ 0000:DB04       continue_read_anim
  0000:DB29       set_object_animation
  0000:DB3A       obj_moves_code_ptr
  0000:DB68       anim_write_X_speed
  0000:DB7F       write_obj_speed
  0000:DB89       write_new_obj_dir
- 0000:DB8F       swap_obj_dir_by_anim2
+ 0000:DB8F       anim_write_obj_dir
  0000:DB94       swap_obj_dir
- 0000:DB9C       direction_change_X
+ 0000:DB9C       direction_set_by_Xlow
  0000:DBA4       add_obj_x_speed
  0000:DBB0       swap_obj_dir_
  0000:DBB8       make_tongue
  0000:DBEF       anim_write_Z_speed_and_clear_unk1
  0000:DC0A       set_obj_x_speed_by_shadow
  0000:DC20       anim_make_hit
+ 0000:DC45       anim_damage_by_table
+ 0000:DD22       create_obj_4_or_C
+ 0000:DD27       create_weapon
+ 0000:DD78       create_obj_4
+ 0000:DD87       create_obj_C
+ 0000:DD99       dmg_hit_X
+ 0000:DD9A       dmg_hit_YZ
  0000:DDC4       delete_stick
+ 0000:DE3D       anim_damage_linked
+ 0000:DE47       damage_linked_object
  0000:DEC3       unlink_objects
  0000:DECC       anim_set_flag_4
+ 0000:DED7       anim_create_obj_C_frame_38
+ 0000:DEDE       anim_create_obj_C_frame_37
+ 0000:DF02       anim_create_obj_32
+ 0000:DF0A       anim_write_in_someflag
  0000:DF12       anim_play_sound
+ 0000:DF24       anim_add_Z?
+ 0000:DF37       anim_create_obj_32_
  0000:DF6D       make_weapon
  0000:DFE6       clear_state_80
  0000:DFEF       set_z_speed
@@ -592,25 +729,38 @@
  0000:E0A0       write_new_obj_life
  0000:E0CF       dmg_Xspeed
  0000:E0D0       dmg_Zspeed
- 0000:E0D1       dmg_Xspeed_
+ 0000:E0D1       dmg_Xspeed_and_pos
  0000:E0D2       dmg_levels
  0000:E0D3       dmg_anims_timer
  0000:E206       object_Psyko_Pig
+ 0000:E2A4       create_Psyko_Pig
+ 0000:E2D5       obj_counter_inc_by_speed
+ 0000:E2D8       obj_unjk_cnt_add
+ 0000:E2DA       obj_unjk_cnt_add_
+ 0000:E2DC       obj_unjk_cnt_add__
+ 0000:E2E9       set_target_random
+ 0000:E4AD       levels_physics_bank5
  0000:E4B4       start_first_jump
- 0000:E543       clear_scrolls
- 0000:E54D       scroll_V
- 0000:E555       jump_from_bank0__
+ 0000:E543       clear_scrolls_and_jump_to_music
+ 0000:E54D       write_scrolls_and_jump_to_music
+ 0000:E555       jump_to_music_play
  0000:E5E7       set_players_lifes
- 0000:E62A       some_with_sound
+ 0000:E62A       sounds_stop
  0000:E71F       continue_screen
+ 0000:E75C       nmi_func_cont_screen2
  0000:E7B2       update_pal_to_vram
  0000:E7B8       prujina_Z_spd
  0000:E7DD       object_prujina
  0000:E872       object_level4_platform_mov_down
  0000:E8C2       object_level4_moving_platform
+ 0000:E909       add_1_to_obj_X
+ 0000:E90B       add_to_obj_X_with_dir
+ 0000:E90E       add_to_obj_X
  0000:E94F       object_platform_last_level
  0000:EAFD       object_rotating_spike
+ 0000:EB49       rat_sub
  0000:EC16       object_dead_robo_manus_ili_begushaya_krisa
+ 0000:EC91       rat_frame_ids
  0000:EC95       object_giblet
  0000:EDBD       object_inferno_race_create
  0000:EDFE       object_turbo_tunnel_warning_sprite
@@ -619,55 +769,80 @@
  0000:EEC7       object_snake
  0000:EECB       object_snake_animation
  0000:EED2       object_snake_hide_head
- 0000:EEDE       object_snake_pit_unk
+ 0000:EEDE       object_snake_pit_hole?
+ 0000:EEE3       warp_sub
  0000:EF45       object_sentry_drone
  0000:EF7B       object_slizen
  0000:F042       object_gas_turret
  0000:F07C       object_gas
  0000:F0E9       object_ventilyator
+ 0000:F22B       moved_by_wind
+ 0000:F350       object_veter2?
  0000:F354       object_veter
  0000:F406       object_ball_laucnh_hole
  0000:F442       object_ball
- 0000:F4E3       object_l10_xz
+ 0000:F4CB       obj_ratbomb_sub?
+ 0000:F4E3       object_ratrace_bomb
+ 0000:F560       search_object_5b_scrn_lght
  0000:F5F8       call_game_end_2
  0000:F60B       object_retro_blaster_shoot
  0000:F651       object_snowman
+ 0000:F739       check_collision_Z_index_2
+ 0000:F73B       check_collision_Z_index
+ 0000:F745       obj_swap_2_dirs
+ 0000:F789       obj_upd_some_flags
  0000:F794       object_ice_cube
+ 0000:FA27       sound_87
  0000:FA31       object_sosulka
+ 0000:FA94       create_object_4
+ 0000:FAAD       snowball_speed
  0000:FAE1       object_snowball
+ 0000:FBD2       electro_or_snow_gfx
+ 0000:FBF9       damage_from_tbl_heavy
+ 0000:FC03       damage_from_table
  0000:FC17       object_snow
  0000:FC1D       object_level4_sosulka_kamennaya
  0000:FC36       object_level4_wall_moving
  0000:FC5A       object_leve4_wall
+ 0000:FCFB       player_razdavlen
  0000:FD2C       object_large_snowball
  0000:FD8F       object_level4_spike_moving
+ 0000:FD9E       object_multiple_del?
  0000:FDB2       object_levels_checkpoint
  0000:FE03       object_restore_point
+ 0000:FE11       delete_object_except_checkp_and_DQ
  0000:FE42       copy_xyz_from_rest_point
  0000:FE51       level_cfg_read
  0000:FE58       get_free_obj_slot_IDX
+ 0000:FE5A       search_obj_slot
  0000:FE66       get_obj_slot_type_by_ID
  0000:FE6D       search_object_6b
- 0000:FE74       IRQ_
- 0000:FE75       NMI__
+ 0000:FE74       IRQ0
+ 0000:FE75       NMI_
  0000:FE93       lagged_frame
  0000:FEB3       not_a_level
+ 0000:FEDA       volkmire_inferno_sub
  0000:FF65       set_second_nametable
  0000:FF6A       wait_by_X
  0000:FF6E       read_anims_dat
- 0000:FF84       jump_from_bank0_
- 0000:FF98       NMI_
+ 0000:FF78       karnath_lair_bank3_f
+ 0000:FF84       music_play_bank3
+ 0000:FF98       NMI0
  0000:FFA6       return_from_nmi
- 0000:FFB3       banks_ids
- 0000:FFB6       banks_ids_
- 0000:FFC3       banks_ids__
+ 0000:FFB3       banks_ids0
  0000:FFCB       jump_from_bank0
- 0000:FFEB       wait_
- 0000:FFF2       RESET_
+ 0000:FFCD       jump_from_bank0_
+ 0000:FFEB       wait0
+ 0000:FFF2       RESET0
  1000:801B       write_to_ppu_from_stack
  1000:80A2       unpack_objects_gfx
  1000:80F5       set_vram_adr
+ 1000:8129       unpack_type2
  1000:816B       write_gfx
+ 1000:81A8       write_16unpacked
+ 1000:81B4       write_8unpacked_and_8zeros
+ 1000:81C5       write_8_zeros_and_u_8unpacked
+ 1000:81D6       write_16zeros
  1000:8201       write_to_ppu
  1000:8217       write_0_to_ppu_
  1000:8220       obj_gfx_ptrs
@@ -679,37 +854,127 @@
  1000:82F0       level_1_boss_gfx
  1000:82FB       level_1_boss_gfx_
  1000:8302       level_plan_gfx
+ 1000:8340       snake_pit_gfxs
+ 1000:8362       surf_city_obj?
  1000:8389       base_obj_gfx2
  1000:83AC       base_obj_gfx
  1000:83BF       level_end_gfx_
+ 1000:853E       plan_spr_posY
+ 1000:853F       plan_spr_posX
  1000:855A       vram_adr_h
  1000:855B       vram_adr_l
  1000:8568       planA_spr_blink
+ 1000:85B2       level1_some_gfx
+ 1000:85D2       ropes
+ 1000:B0AD       many_lvls_gfx
+ 1000:B0BD       many_lvls_gfx2
+ 1000:B14D       level1_gfx
+ 1000:B903       l1_and_surfcity_gfx
+ 1000:BB14       tall_walker_gfx
+ 1000:BBAD       stick_parts_gfx
+ 1000:BBDF       some_common_obj
+ 1000:C6A6       surf_city_obj_gfx
+ 1000:CC42       snake_pit_gfx
+ 1000:D99A       TurboTunnel_Obj_gfx
+ 1000:FF98       NMI1
+ 1000:FFB3       banks_ids1
  1000:FFCB       jump_from_bank1
+ 1000:FFEB       wait1
  2000:8024       unknown_
  2000:8030       rash_gfx
+ 2000:C8A0       shadow_tbl?
+ 2000:C958       revolution_unkf
+ 2000:C9A2       wookie_hole_ropes_gfx
  2000:CA0E       unpack_unk?
+ 2000:ECAD       jump_from_bank2_
+ 2000:EE55       set_some_ptr_by_life
  2000:F23F       level_moving
+ 2000:F2D6       surfcity_spd_by_cam
  2000:F525       bikes_camera_move
  2000:F5C6       level_flags_xz2
  2000:F7CD       Camera_Y_update
  2000:F891       palettes
  2000:F9F1       some_ptrs_h
  2000:F9F9       some_ptrs_l
+ 2000:FA01       revolution_anim?
+ 2000:FB19       electro_shafts_func
  2000:FDD6       players_gfx
+ 2000:FE08       update_players_chars_gfx
  2000:FE22       write_obj_wanted_frame
+ 2000:FE30       set_gfxanim_ptr
  2000:FE53       gfx_ptrs
+ 2000:FF23       some_levels_init_part?
  2000:FF68       read_from_vram
+ 2000:FF98       NMI2
+ 2000:FFB3       banks_ids2
  2000:FFCB       jump_from_bank2
+ 2000:FFEB       wait2
+ 3000:8054       karnath_lair_f
+ 3000:852F       playing_pcm?
  3000:855E       set_pcm_ptr
  3000:856A       play_pcm
+ 3000:86A5       return_to_bank0
  3000:86D1       play_pcm_cycle?
- 3000:87FA       random_
+ 3000:87FA       random3
  3000:880E       start_play_music
+ 3000:8865       playing_music
+ 3000:8A5F       no_snd_clr?
  3000:8A7B       some_sounds_x0
  3000:8A7F       some_sounds_x4
  3000:8A83       some_sounds_x8
  3000:8A87       some_sounds_xC
+ 3000:8AA4       sound_get_ptr
+ 3000:8AD7       sound_playing
+ 3000:8E20       noteTable?
+ 3000:8E9A       sounds_ptrs
+ 3000:8F44       sound00
+ 3000:8F48       sound01
+ 3000:8F54       sound02
+ 3000:8F5E       sound03
+ 3000:8F64       sound04
+ 3000:8F6A       sound05
+ 3000:8F8D       sound06
+ 3000:8F93       sound07
+ 3000:8FAE       sound08
+ 3000:8FB4       sound09
+ 3000:8FD6       sound0A
+ 3000:901E       sound0B
+ 3000:902C       sound0C
+ 3000:90BA       sound0D
+ 3000:90C0       sound17
+ 3000:90C6       sound0E
+ 3000:911A       sound0F
+ 3000:9122       sound10
+ 3000:912F       sound11
+ 3000:9145       sound12
+ 3000:9153       sound13
+ 3000:9161       sound14
+ 3000:9167       sound15
+ 3000:9179       sound16
+ 3000:9185       sound18
+ 3000:9193       sound19
+ 3000:91A1       sound1A
+ 3000:91A9       sound1B
+ 3000:91BD       sound1C
+ 3000:91FD       sound1D
+ 3000:9207       sound1E
+ 3000:9213       sound1F
+ 3000:921F       sound20
+ 3000:924B       sound21
+ 3000:9279       sound22
+ 3000:928F       sound23
+ 3000:92A7       sound24
+ 3000:92BF       sound25
+ 3000:92CB       sound26
+ 3000:92D5       sound27
+ 3000:92DB       sound28
+ 3000:92E1       sound29
+ 3000:92E7       sound2A
+ 3000:92F9       sound2B
+ 3000:9301       sound2C
+ 3000:9329       sound2D
+ 3000:932F       stick_snd
+ 3000:9589       sound54
  3000:959E       music_info_tbl
  3000:95B3       music_dat_ptrs
  3000:B2C4       hidden_track_p1
@@ -722,12 +987,14 @@
  3000:D022       restart_on_checkpoint
  3000:D0B1       levels_respawn_X
  3000:D0E7       levels_respawn_Y
+ 3000:D11D       playe_on_bikes_init_vars
  3000:D137       level_backgn_Y_pos
  3000:D144       background_vs_sprites_pos
  3000:D173       update_UI
  3000:D177       unkn_loc1
  3000:D1FC       get_slot_with_obj_42
  3000:D20A       copy_player_coord
+ 3000:D22F       player_life_for_ui
  3000:D235       load_lvl_obj_config
  3000:D247       level_cfg_ptrl
  3000:D255       level_cfg_ptrh
@@ -736,6 +1003,7 @@
  3000:D2BB       lvl_sub_pth
  3000:D2BF       stop_read_cfg
  3000:D2C0       level_config_reading
+ 3000:D340       read_lvl_obj_cfg
  3000:D392       level9_cfg
  3000:D3B3       level9_checkp1
  3000:D437       level9_checkp2
@@ -772,36 +1040,40 @@
  3000:E12A       udar_small_punch
  3000:E13F       udar_small_punch2
  3000:E154       udar_uppercut
- 3000:E179       move_podnyat
- 3000:E18B       move_podnyat2
+ 3000:E179       move_pick_obj
+ 3000:E18B       move_pick_enemy
  3000:E19D       move_brosok
  3000:E1C5       move_brosok_shara_vpered
  3000:E1E3       udar_big_punch
  3000:E211       udar_big_punch_fast
  3000:E22A       udar_big_uppercut_fast
- 3000:E23C       udar_big_bad_foot_fast
+ 3000:E23C       udar_big_bad_boot_fast
  3000:E254       udar_po_golove_fast
  3000:E266       udar_big_uppercut
  3000:E27D       udar_big_uppercut2
- 3000:E299       udar_big_bad_foot
+ 3000:E299       udar_big_bad_boot
  3000:E2C8       udar_s_razbega
  3000:E311       move_yazik_s_verevki
  3000:E32E       move_yazik
  3000:E34B       udar_po_golove_palka?
- 3000:E365       udar_po_golove
+ 3000:E365       udar_palkoi
  3000:E391       udar_po_golove_razmah
  3000:E3B1       udar_s_verevki
  3000:E3C6       udar_s_verevki_fast
- 3000:E3D9       udar_s_verevki_fast2
+ 3000:E3D9       udar_s_verevki_kluvom
  3000:E3F1       udar_nogami_s_verevki
+ 3000:E419       nogoi_s_propellera
+ 3000:E42A       udar_botinkami_po_pushke
+ 3000:E446       udar_vs_big_raven
  3000:E465       udar_s_verevki2
  3000:E48C       ugar_girya
+ 3000:E4C5       udar_girei_po_pushke
  3000:E4E1       move_jump_hit?
  3000:E4EB       udar_jump_hit2?
  3000:E505       move_jump_mini?
  3000:E50E       udar_i_prijok
  3000:E51A       move_fear
- 3000:E524       move_fear2
+ 3000:E524       move_fear_front
  3000:E52E       udar_small_foot
  3000:E53D       udar_golova?
  3000:E54C       move_golova?
@@ -809,8 +1081,12 @@
  3000:E5FD       move_effect_ot_electro
  3000:E64D       move_effect_ot_electro2
  3000:E664       move_effect_ot_electro3
+ 3000:E6CE       anim_throw_snowball
  3000:E773       udar_po_robotam
- 3000:E784       move_veter
+ 3000:E784       anim_moved_by_wind
+ 3000:E795       udar_akuli
+ 3000:E7B1       udar_utki
+ 3000:E7D7       udar_big_blag
  3000:E834       level1_cfg
  3000:E9EE       level2_cfg
  3000:ED1D       level3_cfg
@@ -830,17 +1106,30 @@
  3000:F91C       level5_checkp3
  3000:FAB4       level6_cfg
  3000:FF38       get_object_empty_slot
+ 3000:FF98       NMI3
+ 3000:FFB3       banks_ids3
  3000:FFCB       jump_from_bank3
+ 3000:FFEB       wait3
  4000:8007       unpack_backg_gfx?
  4000:810B       turbo_tunnel_
  4000:8111       ice_caverns
  4000:811D       surf_city_
  4000:ACFB       turbo_tunnel
  4000:F404       surf_city
+ 4000:FF98       NMI4
+ 4000:FFB3       banks_ids4
+ 4000:FFEB       wait4
  5000:801B       level3_map3
- 5000:8335       jump_from_bank_with_save
+ 5000:816B       turbotunnel_screens
+ 5000:826B       volkmire_screens
+ 5000:8289       suftcity_screens
+ 5000:82E2       wookie_hole_screens
+ 5000:82FE       rat_race_screens
+ 5000:82FF       rat_race_screens_
+ 5000:8335       sound_for_bank5?
+ 5000:8349       lvl_map_def?
  5000:836F       level_backgnd_scroll
- 5000:8676       level_map3
+ 5000:8676       level_get_big_block_ptr
  5000:8705       level_maps_load
  5000:873A       level_map2_ptrL
  5000:8748       level_map2_ptrH
@@ -868,6 +1157,18 @@
  5000:AEF7       level7_map3
  5000:B047       level7_map2
  5000:B217       level7_map1
+ 5000:B25A       clinger_winger_xz
+ 5000:B2E0       write_tiles_of_block
+ 5000:B3DF       Surf_City_gnd_Z
+ 5000:B551       revolution_xz_
+ 5000:B554       intr_excl_and_ratrace_xz_
+ 5000:B67D       revolution_xz
+ 5000:B693       intr_excl_and_ratrace_xz
+ 5000:B6A0       Create_water_splash_
+ 5000:B6AB       Create_water_splash
+ 5000:B6D2       terra_tubes_blocks_code
+ 5000:BA3A       add_to_obj_X_speed
+ 5000:BC39       levels_physics
  5000:BDEA       level_cfgmap_ptrL
  5000:BDF6       level_cfgmap_ptrH
  5000:BE3D       level1_map_cfg
@@ -887,23 +1188,56 @@
  5000:F5DC       terratubes_map1
  5000:F65C       level5_map3
  5000:F91C       level10_map3
+ 5000:FF56       to_bank6
+ 5000:FF98       NMI5
+ 5000:FFB3       banks_ids5
  5000:FFCB       jump_from_bank5
+ 5000:FFEB       wait5
+ 6000:8070       some_waiting
+ 6000:812B       level5_map2
+ 6000:84EB       level5_map1
+ 6000:85DF       inferno_electro_sprites
  6000:862F       obj_sprites_
  6000:863C       object_sprites
+ 6000:86B4       std_objects_sprites
+ 6000:86CC       cont_obj_spr_c
  6000:86D5       object_sprites_cycle
  6000:86E3       odd_or_even_frame
  6000:86EF       objects_second_pal
- 6000:870C       object_sprites_
- 6000:870E       object_sprites_cycle_
+ 6000:870C       object_sprites_shadows?
+ 6000:870E       object_sprites_cycle_2
  6000:8778       hide_sprites_by_Y
+ 6000:8784       get_shadow_xy
+ 6000:8798       rope_sprites
+ 6000:8806       hoduli_tiles
+ 6000:8841       electro_sprites
+ 6000:887D       saturn_toadtrap_sprites
+ 6000:8918       powerups_sprites
+ 6000:8990       tall_walker_sprites
  6000:89F7       level4_stick_bug
- 6000:8C0A       objects_some_sprites
- 6000:8CC9       read_obj_anim
+ 6000:89FE       hoduli_spr_sub
+ 6000:8A78       tongue_sprites
+ 6000:8AF0       level1_boss_sprites
+ 6000:8B3F       stick_wall_sprites?
+ 6000:8B83       hit_sprites
+ 6000:8C05       no_obj_sprite
+ 6000:8C0A       objects_set_sprites
+ 6000:8CC9       read_obj_frame
+ 6000:8CEA       write_std_obj_spr
+ 6000:8CEF       obj_sprite_flags
  6000:8D03       write_obj_sprites
+ 6000:8D23       read_sprites_from_ptr
+ 6000:8D5D       sprite_writing_part
+ 6000:8E67       checkit_bug????
+ 6000:8F0D       screen_off?
  6000:9146       clear_scrolls_reg
  6000:914B       write_scroll_by_V
  6000:91AC       game_end_event_starter
+ 6000:93CC       unknown_1
  6000:97C0       game_over_event
+ 6000:995C       Cont_screen_sprites?
+ 6000:9A15       some_screen_sprites
+ 6000:9E53       starship_sprites?
  6000:A16D       first_load
  6000:A228       pal_to_ppu
  6000:A243       wait_vblank_
@@ -913,44 +1247,93 @@
  6000:A281       levels_pals_ptr
  6000:A3DD       palette_chars
  6000:A87D       set_previous_bank_as_0
+ 6000:A883       jump_to_bank0_func1
+ 6000:AA3D       some_sprites_ptr
  6000:AA58       unk1_ptr_L
  6000:AA64       unk1_ptr_H
  6000:ACB8       continue_game_end
- 6000:AE89       sprtable_X_offs
- 6000:AE8A       sprtable_Y_offs
- 6000:C532       rash_sprcfg_ptrH
- 6000:C5B9       obj_sprcfg_ptrH
- 6000:C6B5       rash_sprcfg_ptrL
- 6000:C73C       obj_sprcfg_ptrL
+ 6000:AE89       stick_spr_posX
+ 6000:AE8A       stick_spr_posY
+ 6000:C532       rash_sprcfg_ptr_l
+ 6000:C5B9       obj_sprcfg_ptr_l
+ 6000:C6B5       rash_sprcfg_ptr_h
+ 6000:C73C       obj_sprcfg_ptr_h
  6000:C838       sprite_lists
  6000:D5BB       level_base_load
  6000:D5E0       level_infobar_colors
  6000:D5EE       set_attributes_vram
- 6000:DAD1       random_for_bank6
+ 6000:D5FB       load_attributes
+ 6000:D617       attrib_dat
+ 6000:D618       attrib_cnt
+ 6000:D6D9       load_attributes2
+ 6000:D6F5       attrib2_dat
+ 6000:D6F6       attrib2_cnt
+ 6000:D765       write_some_text_to_vram
+ 6000:D79A       text_d79a
+ 6000:D7A0       text_d7a0
+ 6000:D7BA       text_d7ba
+ 6000:D7DE       text_d7de
+ 6000:D806       text_d806
+ 6000:D81D       text_d81d
+ 6000:D81F       aStarrin
+ 6000:D827       text_d827
+ 6000:D883       text_d883
+ 6000:D88B       text_d88b
+ 6000:D8D4       text_d8d4
+ 6000:D8E4       text_d8e4
+ 6000:D933       text_d933
+ 6000:D98D       text_d9d8
+ 6000:D9D5       text_d9d5
+ 6000:DA6B       text_inf
+ 6000:DA6D       text_da6d
+ 6000:DAD1       random6
+ 6000:DAEE       checkit2
  6000:DAFC       level_values_load
  6000:DBA4       level_base_X_H
  6000:DBA5       level_base_X_L
  6000:DBA6       level_base_Y_H
  6000:DBA7       level_base_Y_L
- 6000:DBA8       level_struct_id
+ 6000:DBA8       level_X_blk_cnt
  6000:DBA9       level_bg_pal_id
  6000:DBAA       level_obj_pal_id
  6000:DBAB       level_bg_gfx_id
  6000:DBAC       level_obj_gfx_id
  6000:E60F       text_decompress
+ 6000:FE88       clear_tilemaps
  6000:FEB2       fill_sprite_buffer_
  6000:FEB4       hide_sprites_from_n
  6000:FEBD       clear_sprites
  6000:FEC0       dma_for_sprites
+ 6000:FEC9       IRQ6
+ 6000:FF56       to_bank5
+ 6000:FF5D       get_byte_from_bank5
+ 6000:FF84       goto_bank3_upd_play_music
+ 6000:FF98       NMI6
+ 6000:FFB3       banks_ids6
  6000:FFCB       jump_from_bank6
- 6000:FFEB       wait_by_X_and_Y
+ 6000:FFEB       wait6
+ 6000:FFF2       RESET6
  7000:801B       tbl_for_vscroll
  7000:808A       table_multiple_7
+ 7000:86EC       karnath_block_to_restore
+ 7000:8741       load_karnathl_slvl
+ 7000:87DC       write_karn_lvl_block
+ 7000:87F7       karnath_leftbord
+ 7000:87FF       karnath_righbord
+ 7000:8807       karnath_arch_off
+ 7000:8817       karnath_l_ptrl
+ 7000:881B       karnath_l_ptrh
+ 7000:8837       karnath_l1_cfg
+ 7000:88AF       karnath_l2_cfg
+ 7000:8943       karnath_l3_cfg
+ 7000:89E0       karnath_l4_cfg
  7000:8AA3       unpack_some?
  7000:8B6F       level_planp_ptr
+ 7000:8C2B       some_lvls_inits
  7000:8C59       clear_objtmp_ids
  7000:8CA3       gfx_copy_code
  7000:FF3F       IRQ
  7000:FF98       NMI
- 7000:FFB3       banks_ids_0
+ 7000:FFB3       banks_ids7
+ 7000:FFEB       wait7
  7000:FFF2       RESET

@@ -1,3 +1,4 @@
+$BA3A#add_to_obj_X_speed#
 $BBCE#byte_5000_BBCE#
 $BBD2#byte_5000_BBD2#
 $E1FC#level11_map1#
@@ -15,6 +16,7 @@ $C75C#level8_map2#
 $C29D#level8_map3#
 $BDF6#level_cfgmap_ptrH#
 $BDEA#level_cfgmap_ptrL#
+$BC39#levels_physics#
 $B7EF#loc_5000_B7EF#
 $B809#loc_5000_B809#
 $B812#loc_5000_B812#
@@ -125,7 +127,6 @@ $BDCB#locret_5000_BDCB#
 $BE3C#locret_5000_BE3C#
 $B80F#sub_5000_B80F#
 $B818#sub_5000_B818#
-$BA3A#sub_5000_BA3A#
 $BA44#sub_5000_BA44#
 $BA87#sub_5000_BA87#
 $BB59#sub_5000_BB59#
@@ -134,7 +135,6 @@ $BBD6#sub_5000_BBD6#
 $BBDA#sub_5000_BBDA#
 $BBFF#sub_5000_BBFF#
 $BC2D#sub_5000_BC2D#
-$BC39#sub_5000_BC39#
 $BC53#sub_5000_BC53#
 $BCB0#sub_5000_BCB0#
 $BCBC#sub_5000_BCBC#

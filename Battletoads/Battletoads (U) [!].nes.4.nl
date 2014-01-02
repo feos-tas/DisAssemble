@@ -1,7 +1,7 @@
+$FF98#NMI1#
+$FFB3#banks_ids1#
 $FCE5#byte_1000_FCE5#
 $FEB5#byte_1000_FEB5#
-$FFB3#byte_1000_FFB3#
-$FFB6#byte_1000_FFB6#
 $8120#byte_2000_8120#
 $81E0#byte_2000_81E0#
 $82C0#byte_2000_82C0#
@@ -68,12 +68,10 @@ $B560#byte_2000_B560#
 $B660#byte_2000_B660#
 $B760#byte_2000_B760#
 $FFCB#jump_from_bank1#
-$FF98#loc_1000_FF98#
-$FFEB#loc_1000_FFEB#
 $FFF2#loc_1000_FFF2#
-$8021#loc_2000_8021#
 $FF65#locret_1000_FF65#
 $8030#rash_gfx#
 $8000#sub_2000_8000#
 $8024#unknown_#
+$FFEB#wait1#
 $FF66#word_1000_FF66#
