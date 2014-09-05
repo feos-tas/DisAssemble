@@ -1,3 +1,4 @@
+$E543#Clear_Scrolls_ScreenON_UpdMusic#
 $D6E9#Electroball_set_Y_low#
 $D5B7#Level_ID_Table#
 $B88F#Z_speed_table#
@@ -20,6 +21,7 @@ $DB68#anim_write_X_speed#
 $DBEF#anim_write_Z_speed_and_clear_unk1#
 $DF0A#anim_write_in_someflag#
 $DB8F#anim_write_obj_dir#
+$F493#ball_frames_id#
 $CB07#big_blag_and_ball_death#
 $CC03#big_blag_and_electroball_sub#
 $CA7F#bike_death_effects#
@@ -48,13 +50,7 @@ $D93C#byte_0_D93C#
 $E294#byte_0_E294#
 $E44F#byte_0_E44F#
 $E46D#byte_0_E46D#
-$E626#byte_0_E626#
-$E628#byte_0_E628#
 $F0D9#byte_0_F0D9#
-$F493#byte_0_F493#
-$F5DD#byte_0_F5DD#
-$F5DE#byte_0_F5DE#
-$F5DF#byte_0_F5DF#
 $F75B#byte_0_F75B#
 $F75C#byte_0_F75C#
 $F772#byte_0_F772#
@@ -62,9 +58,9 @@ $F5F8#call_game_end_2#
 $F73B#check_collision_Z_index#
 $F739#check_collision_Z_index_2#
 $D080#clear_object_vars#
-$E543#clear_scrolls_and_jump_to_music#
 $D528#clear_stack_#
 $DFE6#clear_state_80#
+$D50C#clears_between_levels?#
 $C3DC#compare_X_vs_player#
 $C56D#compare_pos_vs_players#
 $C1E5#compare_with_roket_and_fire_hit#
@@ -76,10 +72,13 @@ $E2A4#create_Psyko_Pig#
 $DD78#create_obj_4#
 $DD22#create_obj_4_or_C#
 $DD87#create_obj_C#
+$F560#create_obj_screen_light#
+$F58F#create_on_screen_explosions#
 $BC57#create_scores_obj#
 $BC59#create_scores_obj_#
 $DD27#create_weapon#
 $DE47#damage_linked_object#
+$EEA0#damage_shock#
 $CA6A#death_effects_on_bikes#
 $DDC4#delete_stick#
 $DB9C#direction_set_by_Xlow#
@@ -96,8 +95,11 @@ $D706#electroball_change_to_phase2#
 $CB84#electroball_half_life#
 $CB8F#electroball_movements#
 $D69F#electroball_set_gfx#
+$F579#fill_pal_with_white_color#
 $DAC0#fill_sprite_buffer#
 $DAA5#game_end#
+$E4B4#game_start_entry#
+$E4C6#game_start_nmi#
 $DFFF#gen_damage_effects#
 $E001#gen_damage_effects_#
 $EE1E#get_object_Y_on_screen#
@@ -589,7 +591,6 @@ $E426#loc_0_E426#
 $E438#loc_0_E438#
 $E43B#loc_0_E43B#
 $E452#loc_0_E452#
-$E4C6#loc_0_E4C6#
 $E4C8#loc_0_E4C8#
 $E4EE#loc_0_E4EE#
 $E4F1#loc_0_E4F1#
@@ -804,9 +805,6 @@ $F530#loc_0_F530#
 $F53D#loc_0_F53D#
 $F54B#loc_0_F54B#
 $F552#loc_0_F552#
-$F579#loc_0_F579#
-$F58F#loc_0_F58F#
-$F5C3#loc_0_F5C3#
 $F608#loc_0_F608#
 $F621#loc_0_F621#
 $F646#loc_0_F646#
@@ -887,6 +885,9 @@ $F5DC#locret_0_F5DC#
 $F638#locret_0_F638#
 $F650#locret_0_F650#
 $F75A#locret_0_F75A#
+$F5DD#lvl_explode_posXl#
+$F5DE#lvl_explode_posZh#
+$F5DF#lvl_explode_posZl#
 $DBB8#make_tongue#
 $DF6D#make_weapon#
 $D07D#max_speed#
@@ -978,8 +979,9 @@ $BC93#objects_power_ups#
 $BCD7#one_up#
 $BC0A#play_sound_16#
 $B7F4#play_sound_56#
-$B7F6#play_sound_xC_cF#
-$B7FD#play_sound_xF#
+$F5C3#play_sound_A#
+$B7F6#play_sound_ch1_and_ch2#
+$B7FD#play_sound_ch2#
 $E7B8#prujina_Z_spd#
 $CFA4#rash_move_UD_frames#
 $CF98#rash_run_frames#
@@ -994,7 +996,6 @@ $C56A#robot_explosion#
 $BD03#scores_adding#
 $BD36#scores_table#
 $DAA0#screen_off_and_reset#
-$F560#search_object_5b_scrn_lght#
 $DC0A#set_obj_x_speed_by_shadow#
 $DB29#set_object_animation#
 $E5E7#set_players_lifes#
@@ -1005,8 +1006,9 @@ $C3F0#shesterenka_movement#
 $C377#shesterenka_started_mov#
 $C2F5#shesterenka_sub#
 $F016#slizen_gfx_frame#
+$E628#snd_ch_pl_appear#
+$E626#snd_pl_appear#
 $E62A#sounds_stop#
-$E4B4#start_first_jump#
 $DAF6#start_read_anim#
 $C819#start_read_anim_#
 $C7B1#start_read_anim__#
@@ -1036,7 +1038,6 @@ $CBDE#sub_0_CBDE#
 $CCE7#sub_0_CCE7#
 $CD70#sub_0_CD70#
 $CD7D#sub_0_CD7D#
-$CE0C#sub_0_CE0C#
 $CE1A#sub_0_CE1A#
 $CF4A#sub_0_CF4A#
 $CF59#sub_0_CF59#
@@ -1044,7 +1045,6 @@ $D352#sub_0_D352#
 $D406#sub_0_D406#
 $D40F#sub_0_D40F#
 $D4DA#sub_0_D4DA#
-$D50C#sub_0_D50C#
 $D547#sub_0_D547#
 $D54E#sub_0_D54E#
 $D5C9#sub_0_D5C9#
@@ -1094,7 +1094,6 @@ $E926#sub_0_E926#
 $E988#sub_0_E988#
 $E98F#sub_0_E98F#
 $EE61#sub_0_EE61#
-$EEA0#sub_0_EEA0#
 $EEB7#sub_0_EEB7#
 $F025#sub_0_F025#
 $F10E#sub_0_F10E#
@@ -1112,8 +1111,9 @@ $E7B2#update_pal_to_vram#
 $DAD7#wait_vblank#
 $EF32#warp_end#
 $EEE3#warp_sub#
+$E54D#write_VScrlReg_ScreenON_UpdMusic#
+$CE0C#write_dir_and_anim_fear#
 $DB89#write_new_obj_dir#
 $E0A0#write_new_obj_life#
 $DADD#write_obj_Anim_ID#
 $DB7F#write_obj_speed#
-$E54D#write_scrolls_and_jump_to_music#
